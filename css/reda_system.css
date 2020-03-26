@@ -1,0 +1,481 @@
+body{
+    font-family: sans-serif;
+    overflow-x: hidden; 
+    overflow-y: scroll;
+}
+a:hover{
+    text-decoration: none;
+}
+/* -----------------------------------------------   INDEX   -----------------------------------------------------------*/
+*{
+    list-style: none;
+}
+#header{
+    background: #11b6a0;
+   margin-top: -15px;
+
+}
+.menu_inicio {
+    height: 90px;
+}
+#demo{
+    box-shadow: 2px 2px 5px #000;
+    height: 530px;
+}
+#boton{
+    width: 8em;
+    margin-left: 0.7em;
+    margin-top: 0.2em;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.315);
+    border-radius: 0; 
+    transition: all .5 ease;
+}
+#boton2{
+    width: 8em;
+    margin-top: 0.2em;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.315);
+    border-radius: 0; 
+    transition: all .5 ease;
+}
+#boton:hover, #boton2:hover{
+    color: #fff;
+    background: #fa7e36;
+}
+#boton{
+    list-style-image: url("../REDA/add-user.png");
+}
+.div-imagen {
+    display:inline-block;
+    position:relative;
+  }
+  
+  .div-imagen > div {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-1;
+    padding:10px;
+    margin:0;
+  }
+  
+  .desvanecer:hover {
+    opacity: 0.07;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    -ms-transition: opacity 500ms;
+    transition: opacity 500ms;
+  }
+
+  .grid-container {
+    display: grid;
+    height: 800px;
+    align-content: center;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    background-color:white;
+    padding: 50px;
+  }
+  
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+
+  .flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    margin-left: 20%;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  
+  
+  .flip-card-back {
+    background-color:#fa7e36;
+    color: white;
+    font-size: 23px;
+    text-align: left;
+    transform: rotateY(180deg);
+    padding: 2px;
+    margin-right: 5px;
+  }
+
+  .flip-card-back p{
+    margin-left: 15px;
+  }
+  .titulos{
+      text-align: center;
+  }
+.center{
+    margin-left: 20px;
+}
+
+
+/* -----------------------------------------------LOG IN-----------------------------------------------------------*/
+#contenido_sesion{
+    border: 4px solid rgb(255, 255, 255);
+    
+}
+.modal-body, .modal-header{
+    background-color:rgba(35, 130, 117, 0.589);
+    text-align: center;
+    border-radius: 2px;
+}
+#log_in{
+    background-image: url("icons/finger_lock.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.form-group label{
+    color: #fff;
+    font-size: 1em;
+}
+.form-group input, .form-group select{
+    border: none;
+    border-radius: 0;
+    font-weight: bold;
+    margin-left: 1.1em;
+}
+.form-group input:focus, .form-group select:focus{
+    box-shadow: 5px 5px 5px rgb(35, 130, 117);
+}
+#login_text{
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.377);
+}
+#perfil{
+    float: left;
+    letter-spacing: 0.03em;
+    font-size: 1.1em;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.747);
+    margin-left: 1em;
+}
+#enter_button{
+    font-size: 1.1em;
+    background-color: rgba(0, 0, 0, 0.603);
+    color: #fff;
+    border-radius: 0;
+    transition: 0.5s;
+    width: 11em;
+    margin-left: 7em;
+    
+}
+#enter_button:hover{
+    background-color: rgba(0, 0, 0, 0.76);
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2);
+}
+p a{
+    color: rgb(255, 255, 255);
+    transition: 0.2s;
+}
+p a:hover{
+    color: #fff;
+    border-bottom: 1px solid rgba(225,115,35);
+    text-decoration: none;
+}
+.description{
+    display: none;
+}
+span a{
+    color: #fff;
+}
+span a:hover{
+    color: #fff;
+    border-bottom: 2px solid rgb(35, 130, 118);;
+    text-decoration: none;
+}
+#about_button{
+    color: #fff;
+    border-radius: 0;
+    background-color: #fa7e36;
+    border: 2px solid #fff;
+    transition: 0.5s;
+}
+#about_button:hover{
+    background-color: #db6f31;
+    transition: 0.5s;
+}
+
+/* ----------------------------------------------SIGN UP------------------------------------------------------------*/
+#bgcolor{
+    background-color: rgb(255, 255, 255);
+}
+#registro, #inicio{
+    font-weight: bold;
+    font-size: 2em;
+}
+#sign_up{
+    margin-left: auto;
+    margin-right: auto; 
+    background-image: url("icons/finger_add.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#contenido_sign{
+    background-color: #11b6a0;
+}
+/* ----------------------------------------------MAIN SYSTEM------------------------------------------------------------*/
+#title{
+    font-size: 2em;
+    font-family: sans-serif;
+    font-weight: 900;
+}
+
+.cerrar_sesion{
+    padding:5px;
+   
+}
+#dropdownMenuButton1{
+    color: #000;
+    background-color: #fff;
+    font-weight: bold;
+    border-radius: 0;
+    transition: 0.5s;
+}
+#conf_button{
+    border-radius: 0;
+    font-size: 1.5em;
+    font-family: sans-serif;
+}
+#conf_button a{
+    transition: 0.2s;
+    border-bottom: 1px solid rgb(82, 79, 79);
+}
+#conf_button a:hover{
+    background-color: rgb(235, 158, 16);
+    color: #fff;
+}
+.welcome{
+    position: relative;
+    color: rgb(56, 52, 52);
+    font-size: 1.6em;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 4em;
+
+}
+.banner{
+    position: absolute;
+    margin-top: -2em;
+    z-index: -1;
+   
+    
+}
+#input_div{
+    margin-top: 6.5em;
+}
+#input{
+    border-radius: 0.2em;
+    width: 17em;
+    height: 2em;
+    font-size: 1.5em;
+}
+#input_b{
+    border-radius: 0.3;
+    background-color: orange;
+    height: 3em;
+}
+#input_b:hover{
+    background-color: #11b6a0;
+}
+#funciones{
+    margin-top: 8em;
+}
+#funciones a{
+    color:rgba(12, 11, 11, 0.719);
+    font-weight: 900;
+}
+#funciones a:hover{
+    text-decoration: none;
+}
+.title_search{
+    font-size: 2.5em;
+}
+#label{
+    color:black;
+}
+#principal{
+    width: 100em;
+    height: 12em;
+    position: relative;
+    margin: 1.25em auto;
+}
+#f3:hover,#f2:hover, #f1:hover {
+    display: inline-block;
+    filter: opacity(0.9);
+    color: rgb(127, 148, 124);
+    margin-top: -0.2em;
+}
+.form-control{
+    border-radius: 50%;
+}
+#busqueda{
+    margin-top: 2em;
+}
+#asearch{
+    padding: 2em 0 2em 0;
+}
+#sinput{
+    border-radius: 0.5em;
+    width: 29em;
+    height: 1.5em;
+    font-size: 1.6em;
+}
+#sinput_b{
+    border-radius: 0.3;
+    background-color: orange;
+    color: white;
+    height: 4.2em;
+}
+#sinput_b:hover{
+    background-color: #84cf596e;
+}
+#prefooter{
+    margin-top: -0.8em;
+    background-color: #fa7e36;
+}
+.pitem , #pitem1 {
+    margin-top: 2em;
+    color: black;
+    font-size: 1.2em;
+}
+#fimg{
+    margin-top: 0.2em;
+}
+/* ----------------------------------------------CHANGE PASSWORD------------------------------------------------------------*/
+.pass_change{
+    font-weight: bold;
+}
+
+/* ----------------------------------------------HISTORY------------------------------------------------------------*/
+#modal_history .modal-body, #modal_backup .modal-body{
+    background-color: rgb(255, 255, 255);
+}
+#txt_button{
+    background-color: rgb(204, 102, 29);
+    border: 1px solid rgb(225, 115, 35);
+    border-radius: 0;
+    transition: 0.5s;
+}
+#txt_button:hover{
+    background-color: rgb(225, 115, 35);
+}
+#font{
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253);
+}
+/* ----------------------------------------------REPORTS------------------------------------------------------------*/
+.point span{
+    border-right: 1em solid rgb(89, 181, 72);
+}
+.point2 span{
+    border-right: 1em solid rgb(225, 115, 35);
+}
+.point3 span{
+    border-right: 1em solid rgb(35, 130, 118);
+}
+#selectr{
+    background-color: rgba(0, 0, 0, 0.048);
+    border: 1px solid rgba(2, 2, 2, 0.267);
+}
+#report{
+    background-color: rgba(228, 228, 228, 0.233);
+    height: 35em;
+    border-radius: 0.2em;
+    box-shadow: 1px 1px 5px #000, -1px -1px 5px #000;
+}
+/* ----------------------------------------------LIST RESULT------------------------------------------------------------*/
+.view img:hover, .down img:hover{
+    background-color: rgb(89, 181, 72);
+    border-radius: 30%;
+    transition: 0.2s;
+}
+/* ----------------------------------------------REG CONFIG------------------------------------------------------------*/
+#save{
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 0;
+    background-color:rgba(35, 130, 117, 0.589);
+}
+#save:hover{
+    background-color:rgba(35, 130, 117, 0.733);
+}
+/* ----------------------------------------------BACKUP------------------------------------------------------------*/
+#delete:hover{
+    background-color: rgb(255, 0, 0);
+    border-radius: 40%;
+    transition: 0.2s;
+}
+#button_log{
+    width: 9em;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.315);
+    border-radius: 0; 
+    transition: all .5 ease;
+    font-size:1.2em;
+    
+  
+
+}
+#button_log:hover{
+    color: #fff;
+    background: #fa7e36df;
+    transition: 0.4s;
+}
+#button_log a{
+    color: rgb(56, 52, 52);
+}
+#button_log a:hover{
+    color: #fff;
+    text-decoration: none; 
+}
+#button_nav{
+    font-size: 1.2em;
+    color: rgb(56, 52, 52);
+    border-radius: 0;
+    margin-left: 3em;
+
+}
+#button_nav:hover{
+    color: #fff;
+    background-color: #fa7e36df;
+}
+/*
+rgb(89, 181, 72);
+rgb(35, 130, 118);
+rgb(225, 115, 35); */
+    
+   
+    
+  
