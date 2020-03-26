@@ -2,22 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-9">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="css/reda_system.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" href="css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>REDA</title>
     <link rel="icon" href="icons/reda4.png">
 </head>
@@ -27,8 +20,7 @@
     <div class="container-fluid" style="background-color: #11b6a0;">
         <div class="row">
             <div class="col-xl-12">
-                <nav class="navbar navbar-expand-sm navbar-light menu_inicio"
-                    style="background-color: #11b6a0; border-radius: 0;">
+                <nav class="navbar navbar-expand-sm navbar-light menu_inicio" style="background-color: #11b6a0; border-radius: 0;">
                     <div class="navbar-collapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
@@ -60,46 +52,36 @@
                                                             <div class="form-group">
                                                                 <span id="perfil"
                                                                     class="badge font-weight-bold">Cargo</span>
-                                                                <select name="cargo" class="form-control"
-                                                                    style="width: 25em;">
+                        <select name="cargo" class="form-control" style="width: 25em;">
                                                                     <option>Instructor</option>
                                                                     <option>Personal administrativo</option>
                                                                     <option>Administrador</option>
                                                                 </select>
-                                                            </div>
-                                                            <div class="form-group ">
-                                                                <input type="text" name="documento" class="form-control"
-                                                                    id="usuario" aria-describedby="emailHelp"
-                                                                    placeholder="Número de documento" required
-                                                                    style="width: 25em;">
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <div>
-                                                                    <input type="password" name="contraseña"
-                                                                        class="form-control" id="password"
-                                                                        placeholder="Contraseña" required
-                                                                        style="width: 23em;">
-                                                                    <img src="icons/eye.png" title="Mostrar contraseña"id="show_password"
-                                                                        width="20" onclick="mostrarPassword()">
-                                                                </div>
-
-
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <a href="">¿Olvidaste tú contraseña?</a>
-                                                            </div>
-                                                            <br>
-                                                            <button type="submit" name="ingresar"
-                                                                class="btn btn-md btn-block text-center"
-                                                                id="enter_button">Ingresar</button>
-                                                            <br>
-
-                                        </form>
-                                    </div>
                     </div>
+                    <div class="form-group ">
+                        <input type="text" name="documento" class="form-control" id="usuario" aria-describedby="emailHelp" placeholder="Número de documento" required style="width: 25em;">
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            <input type="password" name="contraseña" class="form-control" id="password" placeholder="Contraseña" required style="width: 23em;">
+                            <img src="icons/eye.png" title="Mostrar contraseña" id="show_password" width="20" onclick="mostrarPassword()">
+                        </div>
+
+
+                    </div>
+                    <div class="form-group">
+                        <a href="">¿Olvidaste tú contraseña?</a>
+                    </div>
+                    <br>
+                    <button type="submit" name="ingresar" class="btn btn-md btn-block text-center" id="enter_button">Ingresar</button>
+                    <br>
+
+                    </form>
             </div>
         </div>
+    </div>
+    </div>
     </div>
     </li>
     </ol>
@@ -150,35 +132,26 @@
                     <p class="card-text " style="font-size: 20px; text-align: justify;">REDA (por sus siglas:<strong>
                             Registro
                             Digital del
-                            Aprendiz</strong>) es un sistema construido para el CTGI ubicado en el complejo SENA de
-                        Pedregal. Su objetivo es hacer que haya más dinamismo en la toma de asistencia por medio del uso
-                        de una computadora y un lector de huellas. Facilitándose
-                        así la acción tanto para instructores como para aprendices al estarse usando la huella dactilar
-                        como principal herramienta para registrar la asistencia.</p>
+                            Aprendiz</strong>) es un sistema construido para el CTGI ubicado en el complejo SENA de Pedregal. Su objetivo es hacer que haya más dinamismo en la toma de asistencia por medio del uso de una computadora y un lector de huellas.
+                        Facilitándose así la acción tanto para instructores como para aprendices al estarse usando la huella dactilar como principal herramienta para registrar la asistencia.</p>
 
                 </div>
                 <div class="card-deck py-3">
                     <div class="card " style="background: #20c7b1;">
                         <div class="card-body">
-                            <h3 class="card-title card-footer text-center border border-dark"
-                                style="background-color:#20c7b1;">Misión
+                            <h3 class="card-title card-footer text-center border border-dark" style="background-color:#20c7b1;">Misión
                             </h3>
-                            <p class="card-text" style="font-size: 20px">La misión de REDA es ser un sistema de
-                                información que permita almacenar la huella dactilar de los aprendices para su posterior
-                                uso como evidencia de la asistencia del aprendiz a clase con el uso del lector
-                                biométrico.</p>
+                            <p class="card-text" style="font-size: 20px">La misión de REDA es ser un sistema de información que permita almacenar la huella dactilar de los aprendices para su posterior uso como evidencia de la asistencia del aprendiz a clase con el uso del lector biométrico.
+                            </p>
                         </div>
 
                     </div>
                     <div class="card" style="background:#20c7b1;">
                         <div class="card-body">
-                            <h3 class="card-title card-footer text-center border border-dark"
-                                style="background-color: #20c7b1;">
+                            <h3 class="card-title card-footer text-center border border-dark" style="background-color: #20c7b1;">
                                 Visión</h3>
                             <p class="card-text" style="font-size: 20px">
-                                La visión de REDA es ser un sistema de información que pueda ser escalable a nivel
-                                tecnológico, ofreciendo así nuevas posibilidades u opciones de uso que faciliten la
-                                tarea de tomar asistencia.
+                                La visión de REDA es ser un sistema de información que pueda ser escalable a nivel tecnológico, ofreciendo así nuevas posibilidades u opciones de uso que faciliten la tarea de tomar asistencia.
                             </p>
                         </div>
 
@@ -209,9 +182,7 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title"><strong>Computador</strong></h5>
-                                    <p class="card-text">Con el uso de una computadora el instructor puede observar los
-                                        listados de ficha correspondientes a su formación y ver cual es el estado de
-                                        asistencia de cada uno de los aprendices.
+                                    <p class="card-text">Con el uso de una computadora el instructor puede observar los listados de ficha correspondientes a su formación y ver cual es el estado de asistencia de cada uno de los aprendices.
                                     </p>
 
                                 </div>
@@ -229,9 +200,7 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title"><strong>Lector de huellas</strong></h5>
-                                    <p class="card-text">Con el uso de un lector biométrico los aprendices pueden
-                                        registrar su asistencia con su huella dactilar una vez esta se encuentre
-                                        registrada en el sistema..</p>
+                                    <p class="card-text">Con el uso de un lector biométrico los aprendices pueden registrar su asistencia con su huella dactilar una vez esta se encuentre registrada en el sistema..</p>
 
                                 </div>
                             </div>
@@ -255,8 +224,7 @@
                     </div>
                     <div class="flip-card-back">
                         <h1 class="titulos">DINAMICO</h1>
-                        <p>Con el uso de los dos objetos principales (lector y computadora) ya no es tan repetitiva la
-                            toma de asistencia. </p>
+                        <p>Con el uso de los dos objetos principales (lector y computadora) ya no es tan repetitiva la toma de asistencia. </p>
 
                     </div>
                 </div>
@@ -270,8 +238,7 @@
                     </div>
                     <div class="flip-card-back">
                         <h1 class="titulos">AHORRO DE PAPEL</h1>
-                        <p> Ya no hace falta el uso de los formatos impresos de toma de asistencia, con REDA esto ya no
-                            es necesario. </p>
+                        <p> Ya no hace falta el uso de los formatos impresos de toma de asistencia, con REDA esto ya no es necesario. </p>
 
                     </div>
                 </div>
@@ -285,8 +252,7 @@
                     </div>
                     <div class="flip-card-back">
                         <h2 class="titulos">AHORRO DE ENERGIA</h2>
-                        <p>El uso de impresoras evita que haya un consumo innecesario de energía al no estarse
-                            utilizando más las hojas de papel para los formatos.</p>
+                        <p>El uso de impresoras evita que haya un consumo innecesario de energía al no estarse utilizando más las hojas de papel para los formatos.</p>
 
                     </div>
                 </div>
@@ -300,8 +266,7 @@
                     </div>
                     <div class="flip-card-back">
                         <h1 class="titulos">AHORRO DE TINTA</h1>
-                        <p>Con el gasto reducido de tinta se obtiene el beneficio de usar esta para otro tipo de
-                            formatos diferentes a los de la asistencia.</p>
+                        <p>Con el gasto reducido de tinta se obtiene el beneficio de usar esta para otro tipo de formatos diferentes a los de la asistencia.</p>
 
                     </div>
                 </div>
@@ -315,8 +280,7 @@
                     </div>
                     <div class="flip-card-back">
                         <h1 class="titulos"> MÁS SIMPLE</h1>
-                        <p>REDA es un software sin complicaciones. Se centra en lo necesario para poder llevar
-                            correctamente el manejo de la asistencia de cada uno de los aprendices. </p>
+                        <p>REDA es un software sin complicaciones. Se centra en lo necesario para poder llevar correctamente el manejo de la asistencia de cada uno de los aprendices. </p>
 
                     </div>
                 </div>
@@ -343,29 +307,26 @@
         <div class="row">
             <div class="card-deck">
                 <div class="card" style="border: none;">
-                    <img class="card-img-top mx-auto d-block" src="icons/creator.png" alt="Card image cap"
-                        style="width: 15em;">
+                    <img class="card-img-top mx-auto d-block" src="icons/creator.png" alt="Card image cap" style="width: 15em;">
                     <div class="card-body">
-                        <p class="card-text"><span style="font-size:1.5em;"><strong>Breyder González Castillo</strong></span> <br/>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo assumenda corporis voluptates eius magnam iure eos reprehenderit deserunt ad facere veniam, officia neque, at nihil ea consectetur, vero consequuntur sunt.
+                        <p class="card-text"><span style="font-size:1.5em;"><strong>Breyder González Castillo</strong></span> <br/> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo assumenda corporis voluptates eius magnam iure eos reprehenderit deserunt ad facere
+                            veniam, officia neque, at nihil ea consectetur, vero consequuntur sunt.
                         </p>
                     </div>
                 </div>
                 <div class="card" style="border: none;">
-                    <img class="card-img-top mx-auto d-block" src="icons/creator1.jpg" alt="Card image cap"
-                        style="width: 15em;">
+                    <img class="card-img-top mx-auto d-block" src="icons/creator1.jpg" alt="Card image cap" style="width: 15em;">
                     <div class="card-body">
-                        <p class="card-text"><span style="font-size:1.5em;"><strong>Camila Parra Bedoya</strong></span> <br/>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo assumenda corporis voluptates eius magnam iure eos reprehenderit deserunt ad facere veniam, officia neque, at nihil ea consectetur, vero consequuntur sunt.
+                        <p class="card-text"><span style="font-size:1.5em;"><strong>Camila Parra Bedoya</strong></span> <br/> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo assumenda corporis voluptates eius magnam iure eos reprehenderit deserunt ad facere
+                            veniam, officia neque, at nihil ea consectetur, vero consequuntur sunt.
                         </p>
                     </div>
                 </div>
                 <div class="card" style="border: none;">
-                    <img class="card-img-top mx-auto d-block" src="icons/creator2.jpg" alt="Card image cap"
-                        style="width: 15em;">
+                    <img class="card-img-top mx-auto d-block" src="icons/creator2.jpg" alt="Card image cap" style="width: 15em;">
                     <div class="card-body">
-                        <p class="card-text"><span style="font-size:1.5em;"><strong>Santiago Jiménez Jiménez</strong></span> <br/>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo assumenda corporis voluptates eius magnam iure eos reprehenderit deserunt ad facere veniam, officia neque, at nihil ea consectetur, vero consequuntur sunt.
+                        <p class="card-text"><span style="font-size:1.5em;"><strong>Santiago Jiménez Jiménez</strong></span> <br/> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo assumenda corporis voluptates eius magnam iure eos reprehenderit deserunt ad facere
+                            veniam, officia neque, at nihil ea consectetur, vero consequuntur sunt.
                     </div>
                 </div>
             </div>
@@ -384,37 +345,33 @@
                         reservados -
                         SENA 2019</span></div>
                 <div class="col-xl-2"></div>
-                <div class="col-xl-1"><img src="icons/logoSena.png" class="justify-content-center"
-                        style=" width: 3em; filter: invert(100%);">
+                <div class="col-xl-1"><img src="icons/logoSena.png" class="justify-content-center" style=" width: 3em; filter: invert(100%);">
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-body" style="background-color: #fff; border-radius: 0;">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h2 class="modal-title font-weight-bold" id="exampleModalLabel">Acerca de <span
-                                class="text_d">este
+                        <h2 class="modal-title font-weight-bold" id="exampleModalLabel">Acerca de <span class="text_d">este
                                 software</span></h2><br>
                         <div class="row">
                             <div class="col-xl-4">
                                 <img src="icons/bootstrap.png" class="rounded-circle" style="width: 7em; height: 6em;">
-                                <p> Con el uso del Framework Bootstrap, se desarrolló  el diseño, el cual se adapta a los colores institucionales y a la funciones del sistema.
+                                <p> Con el uso del Framework Bootstrap, se desarrolló el diseño, el cual se adapta a los colores institucionales y a la funciones del sistema.
                                 </p>
                             </div>
                             <div class="col-xl-4">
                                 <img src="icons/java.png" style="width: 5em;">
-                                <p>La configuración del lector biométrico se logró con la utilización del lenguaje de programación Java, 
-                                    implementando las librerías propias del lector de huellas digitalPersona.
+                                <p>La configuración del lector biométrico se logró con la utilización del lenguaje de programación Java, implementando las librerías propias del lector de huellas digitalPersona.
                                 </p>
                             </div>
                             <div class="col-xl-4">
                                 <img src="icons/php.png" class="rounded-circle" style="width: 7em; height: 6em;">
-                                <p>Este lenguaje de programación es el motor de esta plataforma, con el se lograron todas las funcionalidades que realiza el sistema.            
+                                <p>Este lenguaje de programación es el motor de esta plataforma, con el se lograron todas las funcionalidades que realiza el sistema.
 
                                 </p>
                             </div>
@@ -438,7 +395,6 @@
 </html>
 
 <script>
-
     function showpass() {
 
         var tipo = document.getElementById('password');
@@ -449,6 +405,7 @@
         }
 
     }
+
     function mostrarPassword() {
         var cambio = document.getElementById('password');
         if (cambio.type == "password") {
@@ -460,9 +417,9 @@
         }
     }
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         //CheckBox mostrar contraseña
-        $('#ShowPassword').click(function () {
+        $('#ShowPassword').click(function() {
             $('#Password').attr('type', $(this).is(':checked') ? 'text' : 'password');
         });
     });
