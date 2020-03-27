@@ -124,7 +124,7 @@ if (isset($_SESSION['administrador'])){
 
 </html>
 
-<script src="validacion_registro.js">
+<script src="js/validacion_registro.js">
     
 </script>
 
