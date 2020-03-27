@@ -89,7 +89,7 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
     
     <br>
     <div class="modal-footer">
-        <p><a href="system.php" style="color: black;">Finalizar y volver al inicio</a></p>
+        <p><a href="PHPMAILER/ACTION_Correo.php" style="color: black;">Finalizar y volver al inicio</a></p>
     </div>
 </body>
 
