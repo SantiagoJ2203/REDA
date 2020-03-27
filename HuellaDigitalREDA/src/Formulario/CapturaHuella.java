@@ -28,6 +28,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -288,8 +289,25 @@ public class CapturaHuella extends javax.swing.JFrame {
        if (result.isVerified()){
        //crea la imagen de los datos guardado de las huellas guardadas en la base de datos
        JOptionPane.showMessageDialog(null, "La huella capturada es de "+documento,"Verificacion de Huella", JOptionPane.INFORMATION_MESSAGE);
-       
-       PreparedStatement identificarStmt3 = c.prepareStatement("INSERT INTO register (documento_aprendiz) VALUES('"+documento+"') ;");
+       LocalDateTime ahora= LocalDateTime.now();
+            int year = ahora.getYear();
+            int month = ahora.getMonthValue();
+            int day = ahora.getDayOfMonth();
+            int hour = ahora.getHour();
+            int minutes = ahora.getMinute();
+            int seconds = ahora.getSecond();
+            
+            String año= String.valueOf(year);
+            String mes= String.valueOf(month);
+            String dia= String.valueOf(day);
+            String hora= String.valueOf(hour);
+            String minutos= String.valueOf(minutes);
+            String segundos= String.valueOf(seconds);
+
+            String fecha = año+"-"+mes+"-"+dia;
+            String horaR = hora+":"+minutos+":"+segundos;
+            
+       PreparedStatement identificarStmt3 = c.prepareStatement("INSERT INTO register (documento_aprendiz, fecha_registroA, hora_registro) VALUES('"+documento+"','"+fecha+"','"+horaR+"') ;");
        identificarStmt3.executeUpdate();
         return;}
        }

@@ -1,9 +1,17 @@
 <?php 
 session_start();
-
 include ('ACTION_conexionBD.php');
 
-if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SESSION['administrador'])  ){
+if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SESSION['administrador'])){
+
+    if (isset($_POST['registrar'])){
+        $ficha = $_POST['ficha'];
+        $date = date("Y-m-d");
+
+        $con=mysqli_connect("localhost","root","","reda");
+        $resultado = mysqli_query($con, "INSERT INTO tbl_registro_asistencia (fecha_registroA , numero_ficha) VALUES ('$date', '$ficha');");
+
+    }
 
 ?> 
 
@@ -21,15 +29,13 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script type="text/javascript">
-    setTimeout("document.location=document.location", 4000);
+    setTimeout("document.location=document.location", 7000);
     </script>
 </head>
 
 <body>
 <?php 
 
-    
-    $con=mysqli_connect("localhost","root","","reda");
     $query = mysqli_query ($con, "SELECT * FROM register;");
     $row = mysqli_fetch_array($query);
     $num = mysqli_num_rows($query);
@@ -45,7 +51,7 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
             </div>
         </div>
     </nav>
-    <p class="display-4 text-center" style="color: rgb(225, 115, 35); background-color: rgb(255, 255, 255);">Número de ficha: <span style="color:rgb(35, 130, 118);"> 1828182 </span></p>
+    <p class="display-4 text-center" style="color: rgb(225, 115, 35); background-color: rgb(255, 255, 255);">Número de ficha: 1828182 </p>
     <div class="container-fluid">
         <table class="table text-center">
             <thead style="color: #fff; background-color: rgba(35, 130, 117);">
@@ -63,6 +69,8 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
                     $i += 1;
                     $row = mysqli_fetch_array($query);
                     $documento = $row['documento_aprendiz'];
+                    $date = $row['fecha_registroA'];
+                    $hora = $row['hora_registro'];
                     $query1 = mysqli_query ($con, "SELECT * FROM tbl_aprendiz WHERE documento_aprendiz = '$documento';");
                     $row2 = mysqli_fetch_array($query1);
                     $name1 = $row2['nombre1_aprendiz'];
@@ -70,13 +78,12 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
                     $apellido1 = $row2['apellido1_aprendiz'];
                     $apellido2 = $row2['apellido2_aprendiz'];
                     $nombre = $name1. " " .$name2. " " .$apellido1. " " .$apellido2 ;
-                    $date = "11:59am";
                     ?>
             <tbody style="background-color: rgba(128, 128, 128, 0.103);">
                 <tr>
-                    <td> 25/03/2020</td>
+                    <td> <?php  echo $date;  ?></td>
                     <td> <?php  echo $nombre;  ?> </td>
-                    <td> <?php  echo $date;  ?> </td>
+                    <td> <?php  echo $hora;  ?> </td>
                     <td class="view"><a href="#" class="view"><img src="icons/view.png" width="25em"></a></td>
                 </tr>
             </tbody>
@@ -86,11 +93,16 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
         </table>
         
     </div>
-    
-    <br>
     <div class="modal-footer">
-        <p><a href="PHPMAILER/ACTION_Correo.php" style="color: black;">Finalizar y volver al inicio</a></p>
+        </div>
+        <div class="container">
+        <a href="PHPMAILER/ACTION_Correo.php"style="text-decoration: none;"><button type="button" class="btn btn-primary btn-lg btn-block" id="txt_button"
+            style="border: 3px solid rgb(226, 225, 225);">Finalizar registro</button></a>
     </div>
+    <div class="footer">
+        <p><a href="system.php" style="color: black; float: right; margin-right: 2em;">Volver al inicio</a></p>
+    </div>
+    
 </body>
 
 </html>

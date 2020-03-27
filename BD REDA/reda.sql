@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2020 a las 19:22:54
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.6.15
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 27-03-2020 a las 22:41:14
+-- Versión del servidor: 5.7.26
+-- Versión de PHP: 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -24,6 +26,7 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `actualizar_tbl_administrador`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_administrador` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(20))  BEGIN
 UPDATE tbl_administrador SET
 nombre1_administrador = _nombre1,
@@ -35,6 +38,7 @@ contrasena_administrador = _contrasena
 WHERE documento_administrador = _documento;
 END$$
 
+DROP PROCEDURE IF EXISTS `actualizar_tbl_aprendiz`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_aprendiz` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `numero_ficha` VARCHAR(20))  BEGIN
 UPDATE tbl_aprendiz SET
 nombre1_aprendiz = _nombre1,
@@ -46,6 +50,7 @@ numero_ficha = _numero_ficha
 WHERE documento_aprendiz = _documento;
 END$$
 
+DROP PROCEDURE IF EXISTS `actualizar_tbl_ficha`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_ficha` (`_numero_ficha` VARCHAR(20), `_nombre_ficha` VARCHAR(100), `_fecha_inicio` DATE, `_fecha_fin` DATE, `_documento_instructor` VARCHAR(15))  BEGIN
 UPDATE tbl_ficha SET
 nombre_ficha = _nombre_ficha,
@@ -55,6 +60,7 @@ documento_instructor = _documento_instructor
 WHERE numero_ficha = _numero_ficha;
 END$$
 
+DROP PROCEDURE IF EXISTS `actualizar_tbl_instructor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_instructor` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(20))  BEGIN
 UPDATE tbl_instructor SET
 nombre1_instructor = _nombre1,
@@ -66,6 +72,7 @@ contrasena_instructor = _contrasena
 WHERE documento_instructor = _documento;
 END$$
 
+DROP PROCEDURE IF EXISTS `actualizar_tbl_personal_administrativo`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_personal_administrativo` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(20))  BEGIN
 UPDATE tbl_personal_administrativo SET
 nombre1_administrativo = _nombre1,
@@ -77,30 +84,37 @@ contrasena_administrativo = _contrasena
 WHERE documento_administrativo = _documento;
 END$$
 
+DROP PROCEDURE IF EXISTS `eliminar_tbl_administrador`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_tbl_administrador` (`_documento` VARCHAR(15))  BEGIN
 DELETE FROM tbl_administrador WHERE documento_administrador = _documento;
 END$$
 
+DROP PROCEDURE IF EXISTS `eliminar_tbl_aprendiz`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_tbl_aprendiz` (`_documento` VARCHAR(15))  BEGIN
 DELETE FROM tbl_aprendiz WHERE documento_aprendiz = _documento;
 END$$
 
+DROP PROCEDURE IF EXISTS `eliminar_tbl_ficha`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_tbl_ficha` (`_numero_ficha` VARCHAR(20))  BEGIN
 DELETE FROM tbl_ficha WHERE numero_ficha = _numero_ficha;
 END$$
 
+DROP PROCEDURE IF EXISTS `eliminar_tbl_historial`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_tbl_historial` (`_id` VARCHAR(15))  BEGIN
 DELETE FROM tbl_historial WHERE id_aprendiz = _id;
 END$$
 
+DROP PROCEDURE IF EXISTS `eliminar_tbl_instructor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_tbl_instructor` (`_documento` VARCHAR(15))  BEGIN
 DELETE FROM tbl_instructor WHERE documento_instructor = _documento;
 END$$
 
+DROP PROCEDURE IF EXISTS `eliminar_tbl_personal_administrativo`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_tbl_personal_administrativo` (`_documento` VARCHAR(15))  BEGIN
 DELETE FROM tbl_personal_administrativo WHERE documento_personal_administrativo = _documento;
 END$$
 
+DROP PROCEDURE IF EXISTS `insertar_tbl_administrador`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_administrador` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(20))  BEGIN
 INSERT INTO tbl_administrador (
 documento_administrador,
@@ -120,6 +134,7 @@ correo,
 contrasena);
 END$$
 
+DROP PROCEDURE IF EXISTS `insertar_tbl_aprendiz`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_aprendiz` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `numero_ficha` VARCHAR(20))  BEGIN
 INSERT INTO tbl_aprendiz (
 documento_aprendiz,
@@ -139,6 +154,7 @@ correo,
 numero_ficha);
 END$$
 
+DROP PROCEDURE IF EXISTS `insertar_tbl_ficha`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_ficha` (IN `_numero_ficha` VARCHAR(20), IN `_nombre_ficha` VARCHAR(100), IN `_fecha_inicio` DATE, IN `_fecha_fin` DATE, IN `_documento_instructor` VARCHAR(15))  BEGIN
 INSERT INTO tbl_ficha (
 numero_ficha,
@@ -155,6 +171,7 @@ _fecha_fin,
 _documento_instructor);
 END$$
 
+DROP PROCEDURE IF EXISTS `insertar_tbl_historial`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_historial` (IN `id` VARCHAR(15), IN `_fecha_hora` DATETIME, IN `_nombre_actividad` VARCHAR(30))  BEGIN
 INSERT INTO tbl_historial (
 id_historial,
@@ -167,6 +184,7 @@ _fecha_hora,
 _nombre_actividad);
 END$$
 
+DROP PROCEDURE IF EXISTS `insertar_tbl_instructor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_instructor` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(20))  BEGIN
 INSERT INTO tbl_instructor (
 documento_instructor,
@@ -187,6 +205,7 @@ correo,
 contrasena);
 END$$
 
+DROP PROCEDURE IF EXISTS `insertar_tbl_personal_administrativo`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_personal_administrativo` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(20))  BEGIN
 INSERT INTO tbl_personal_administrativo (
 documento_administrativo,
@@ -207,26 +226,32 @@ correo,
 contrasena);
 END$$
 
+DROP PROCEDURE IF EXISTS `mostrar_tbl_administrador`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_tbl_administrador` ()  BEGIN
 SELECT * FROM tbl_administrador;
 END$$
 
+DROP PROCEDURE IF EXISTS `mostrar_tbl_aprendiz`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_tbl_aprendiz` ()  BEGIN
 SELECT * FROM tbl_aprendiz;
 END$$
 
+DROP PROCEDURE IF EXISTS `mostrar_tbl_ficha`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_tbl_ficha` ()  BEGIN
 SELECT * FROM tbl_ficha;
 END$$
 
+DROP PROCEDURE IF EXISTS `mostrar_tbl_historial`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_tbl_historial` ()  BEGIN
 SELECT * FROM tbl_historial;
 END$$
 
+DROP PROCEDURE IF EXISTS `mostrar_tbl_instructor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_tbl_instructor` ()  BEGIN
 SELECT * FROM tbl_instructor;
 END$$
 
+DROP PROCEDURE IF EXISTS `mostrar_tbl_personal_administrativo`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `mostrar_tbl_personal_administrativo` ()  BEGIN
 SELECT * FROM tbl_personal_administrativo;
 END$$
@@ -239,22 +264,26 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `register`
 --
 
-CREATE TABLE `register` (
-  `documento_aprendiz` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `register`;
+CREATE TABLE IF NOT EXISTS `register` (
+  `documento_aprendiz` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_registroA` date DEFAULT NULL,
+  `hora_registro` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`documento_aprendiz`),
+  KEY `fecha_registroA` (`fecha_registroA`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `register`
 --
 
-INSERT INTO `register` (`documento_aprendiz`) VALUES
-('1000089059'),
-('1000290467'),
-('1000903237'),
-('1007633617'),
-('1007807779'),
-('1062955761'),
-('1193227960');
+INSERT INTO `register` (`documento_aprendiz`, `fecha_registroA`, `hora_registro`) VALUES
+('1000089059', '2020-03-27', '11:57:20'),
+('1000290467', '2020-03-27', '11:58:28'),
+('1000903237', '2020-03-27', '11:58:42'),
+('1007633617', '2020-03-27', '11:59:28'),
+('1007807779', '2020-03-27', '11:59:57'),
+('1062955761', '2020-03-27', '12:00:28');
 
 -- --------------------------------------------------------
 
@@ -262,14 +291,16 @@ INSERT INTO `register` (`documento_aprendiz`) VALUES
 -- Estructura de tabla para la tabla `tbl_administrador`
 --
 
-CREATE TABLE `tbl_administrador` (
+DROP TABLE IF EXISTS `tbl_administrador`;
+CREATE TABLE IF NOT EXISTS `tbl_administrador` (
   `documento_administrador` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `nombre1_administrador` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `nombre2_administrador` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
   `apellido1_administrador` varchar(35) CHARACTER SET utf8 NOT NULL,
   `apellido2_administrador` varchar(35) COLLATE utf8_spanish_ci DEFAULT NULL,
   `correo_administrador` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `contrasena_administrador` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `contrasena_administrador` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`documento_administrador`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -277,7 +308,7 @@ CREATE TABLE `tbl_administrador` (
 --
 
 INSERT INTO `tbl_administrador` (`documento_administrador`, `nombre1_administrador`, `nombre2_administrador`, `apellido1_administrador`, `apellido2_administrador`, `correo_administrador`, `contrasena_administrador`) VALUES
-('1193227960', 'Santiago', '', 'Jiménez', 'Jiménez', 'santyjimenz22@gmail.com', 'reda');
+('1193227960', 'Santiago', '', 'JimÃ©nez', 'JimÃ©nez', 'santyjimenz22@gmail.com', 'reda');
 
 -- --------------------------------------------------------
 
@@ -285,14 +316,17 @@ INSERT INTO `tbl_administrador` (`documento_administrador`, `nombre1_administrad
 -- Estructura de tabla para la tabla `tbl_aprendiz`
 --
 
-CREATE TABLE `tbl_aprendiz` (
+DROP TABLE IF EXISTS `tbl_aprendiz`;
+CREATE TABLE IF NOT EXISTS `tbl_aprendiz` (
   `documento_aprendiz` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `nombre1_aprendiz` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `nombre2_aprendiz` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `apellido1_aprendiz` varchar(35) CHARACTER SET utf8 NOT NULL,
-  `apellido2_aprendiz` varchar(35) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `apellido1_aprendiz` varchar(35) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
+  `apellido2_aprendiz` varchar(35) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   `correo_aprendiz` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `numero_ficha` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL
+  `numero_ficha` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`documento_aprendiz`),
+  KEY `numero_ficha` (`numero_ficha`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -302,11 +336,11 @@ CREATE TABLE `tbl_aprendiz` (
 INSERT INTO `tbl_aprendiz` (`documento_aprendiz`, `nombre1_aprendiz`, `nombre2_aprendiz`, `apellido1_aprendiz`, `apellido2_aprendiz`, `correo_aprendiz`, `numero_ficha`) VALUES
 ('1000089059', 'Maicol', 'Andres', 'Zapata', '\0Taborda', 'maicol-zx@hotmail.com', '1828182'),
 ('1000290467', 'Breyder', 'Camilo', 'Gonzalez', 'Castillo', 'breydersax@gmail.com', '1828182'),
-('1000903237', 'Ana', 'Sofía', 'Agudelo', 'Blandón', 'ana933749@gmail.com', '1828182'),
-('1007633617', 'Maria', 'Camila', 'Parra', 'Bedoya', 'parramariacamila00@gmail.com', '1828182'),
-('1007807779', 'Eduer', 'de Jesus', 'Jaramillo', 'Balvin', 'eduermisena@gmail.com', '1828182'),
-('1062955761', 'Edwin', 'Andres', 'Perez', '\0Foronda', 'edwinandres0509@gmail.com', '1828182'),
-('1193227960', 'Santiago', '', 'Jiménez', 'Jiménez', 'santyjimenz22@gmail.com', '1828182');
+('1000903237', 'Ana', 'Sofia', 'Agudelo', 'Blandon', 'ana933749@gmail.com', '1828182'),
+('1007633617', 'Maria', 'Camila', '\0Parra', 'Bedoya', 'parramariacamila00@gmail.com', '1828182'),
+('1007807779', 'Eduer', 'de Jesus', '\0Jaramillo', 'Balvin', 'eduermisena@gmail.com', '1828182'),
+('1062955761', 'Edwin', 'Andres', '\0Perez', '\0Foronda', 'edwinandres0509@gmail.com', '1828182'),
+('1193227960', 'Santiago', '', 'JimÃ©nez', 'JimÃ©nez', 'santyjimenz22@gmail.com', '1828182');
 
 -- --------------------------------------------------------
 
@@ -314,12 +348,15 @@ INSERT INTO `tbl_aprendiz` (`documento_aprendiz`, `nombre1_aprendiz`, `nombre2_a
 -- Estructura de tabla para la tabla `tbl_ficha`
 --
 
-CREATE TABLE `tbl_ficha` (
+DROP TABLE IF EXISTS `tbl_ficha`;
+CREATE TABLE IF NOT EXISTS `tbl_ficha` (
   `numero_ficha` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `nombre_ficha` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL,
-  `documento_instructor` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
+  `documento_instructor` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`numero_ficha`),
+  KEY `documento_instructor` (`documento_instructor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -335,10 +372,12 @@ INSERT INTO `tbl_ficha` (`numero_ficha`, `nombre_ficha`, `fecha_inicio`, `fecha_
 -- Estructura de tabla para la tabla `tbl_historial`
 --
 
-CREATE TABLE `tbl_historial` (
+DROP TABLE IF EXISTS `tbl_historial`;
+CREATE TABLE IF NOT EXISTS `tbl_historial` (
   `id_historial` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_hora` datetime DEFAULT NULL,
-  `nombre_actividad` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `nombre_actividad` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_historial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -347,9 +386,12 @@ CREATE TABLE `tbl_historial` (
 -- Estructura de tabla para la tabla `tbl_historial_administrador`
 --
 
-CREATE TABLE `tbl_historial_administrador` (
+DROP TABLE IF EXISTS `tbl_historial_administrador`;
+CREATE TABLE IF NOT EXISTS `tbl_historial_administrador` (
   `id_historial` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `documento_administrador` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
+  `documento_administrador` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  KEY `id_historial` (`id_historial`),
+  KEY `documento_administrador` (`documento_administrador`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -358,9 +400,12 @@ CREATE TABLE `tbl_historial_administrador` (
 -- Estructura de tabla para la tabla `tbl_historial_instructor`
 --
 
-CREATE TABLE `tbl_historial_instructor` (
+DROP TABLE IF EXISTS `tbl_historial_instructor`;
+CREATE TABLE IF NOT EXISTS `tbl_historial_instructor` (
   `id_historial` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `documento_instructor` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
+  `documento_instructor` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  KEY `id_historial` (`id_historial`),
+  KEY `documento_instructor` (`documento_instructor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -369,9 +414,12 @@ CREATE TABLE `tbl_historial_instructor` (
 -- Estructura de tabla para la tabla `tbl_historial_personal_administrativo`
 --
 
-CREATE TABLE `tbl_historial_personal_administrativo` (
+DROP TABLE IF EXISTS `tbl_historial_personal_administrativo`;
+CREATE TABLE IF NOT EXISTS `tbl_historial_personal_administrativo` (
   `id_historial` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `documento_administrativo` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
+  `documento_administrativo` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  KEY `id_historial` (`id_historial`),
+  KEY `documento_administrativo` (`documento_administrativo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -380,9 +428,11 @@ CREATE TABLE `tbl_historial_personal_administrativo` (
 -- Estructura de tabla para la tabla `tbl_huella_aprendiz`
 --
 
-CREATE TABLE `tbl_huella_aprendiz` (
+DROP TABLE IF EXISTS `tbl_huella_aprendiz`;
+CREATE TABLE IF NOT EXISTS `tbl_huella_aprendiz` (
   `documento_aprendiz` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `huella` blob
+  `huella` blob,
+  KEY `documento_aprendiz` (`documento_aprendiz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -405,14 +455,16 @@ INSERT INTO `tbl_huella_aprendiz` (`documento_aprendiz`, `huella`) VALUES
 -- Estructura de tabla para la tabla `tbl_instructor`
 --
 
-CREATE TABLE `tbl_instructor` (
+DROP TABLE IF EXISTS `tbl_instructor`;
+CREATE TABLE IF NOT EXISTS `tbl_instructor` (
   `documento_instructor` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `nombre1_instructor` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `nombre2_instructor` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `apellido1_instructor` varchar(35) CHARACTER SET utf8 NOT NULL,
+  `apellido1_instructor` varchar(35) COLLATE utf8_spanish_ci NOT NULL,
   `apellido2_instructor` varchar(35) COLLATE utf8_spanish_ci DEFAULT NULL,
   `correo_instructor` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `contrasena_instructor` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `contrasena_instructor` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`documento_instructor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -421,8 +473,9 @@ CREATE TABLE `tbl_instructor` (
 
 INSERT INTO `tbl_instructor` (`documento_instructor`, `nombre1_instructor`, `nombre2_instructor`, `apellido1_instructor`, `apellido2_instructor`, `correo_instructor`, `contrasena_instructor`) VALUES
 ('1152441385', 'Alejandro', '', 'Mejia', 'Jaramillo', 'amejia583@misena.edu.co', '123reda'),
+('147852369', 'Camilo', '', 'Perez', 'MartÃ­nez', 'sadixss28@gmail.com', 'reda'),
 ('15675009', 'Aharon', 'Alexander', 'Aguas', 'Navarro', 'aaaguas@gmail.com', 'reda'),
-('158749631', 'Aurelio', 'Estefano', 'RodriÂ­guez', 'Palomares', 'aurelio11@gmail.com4', 'reda123');
+('158749631', 'Aurelio', 'Estefano', 'Rodrí­guez', 'Palomares', 'aurelio11@gmail.com4', 'reda123');
 
 -- --------------------------------------------------------
 
@@ -430,14 +483,16 @@ INSERT INTO `tbl_instructor` (`documento_instructor`, `nombre1_instructor`, `nom
 -- Estructura de tabla para la tabla `tbl_personal_administrativo`
 --
 
-CREATE TABLE `tbl_personal_administrativo` (
+DROP TABLE IF EXISTS `tbl_personal_administrativo`;
+CREATE TABLE IF NOT EXISTS `tbl_personal_administrativo` (
   `documento_administrativo` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `nombre1_administrativo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `nombre2_administrativo` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
   `apellido1_administrativo` varchar(35) COLLATE utf8_spanish_ci NOT NULL,
   `apellido2_administrativo` varchar(35) COLLATE utf8_spanish_ci DEFAULT NULL,
   `correo_administrativo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `contrasena_administrativo` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `contrasena_administrativo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`documento_administrativo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -446,13 +501,18 @@ CREATE TABLE `tbl_personal_administrativo` (
 -- Estructura de tabla para la tabla `tbl_registro`
 --
 
-CREATE TABLE `tbl_registro` (
+DROP TABLE IF EXISTS `tbl_registro`;
+CREATE TABLE IF NOT EXISTS `tbl_registro` (
   `id_registro` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `numero_asistencia` float NOT NULL,
   `numero_inasistencia` float NOT NULL,
   `numero_ficha` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `documento_instructor` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `documento_administrativo` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
+  `documento_administrativo` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_registro`),
+  KEY `numero_ficha` (`numero_ficha`),
+  KEY `documento_instructor` (`documento_instructor`),
+  KEY `documento_administrativo` (`documento_administrativo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -461,10 +521,34 @@ CREATE TABLE `tbl_registro` (
 -- Estructura de tabla para la tabla `tbl_registro_aprendiz`
 --
 
-CREATE TABLE `tbl_registro_aprendiz` (
+DROP TABLE IF EXISTS `tbl_registro_aprendiz`;
+CREATE TABLE IF NOT EXISTS `tbl_registro_aprendiz` (
   `id_registro` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `documento_aprendiz` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
+  `documento_aprendiz` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  KEY `id_registro` (`id_registro`),
+  KEY `documento_aprendiz` (`documento_aprendiz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_registro_asistencia`
+--
+
+DROP TABLE IF EXISTS `tbl_registro_asistencia`;
+CREATE TABLE IF NOT EXISTS `tbl_registro_asistencia` (
+  `fecha_registroA` date NOT NULL,
+  `numero_ficha` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`fecha_registroA`),
+  KEY `numero_ficha` (`numero_ficha`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_registro_asistencia`
+--
+
+INSERT INTO `tbl_registro_asistencia` (`fecha_registroA`, `numero_ficha`) VALUES
+('2020-03-27', '1828182');
 
 -- --------------------------------------------------------
 
@@ -472,9 +556,12 @@ CREATE TABLE `tbl_registro_aprendiz` (
 -- Estructura de tabla para la tabla `tbl_registro_reportes`
 --
 
-CREATE TABLE `tbl_registro_reportes` (
+DROP TABLE IF EXISTS `tbl_registro_reportes`;
+CREATE TABLE IF NOT EXISTS `tbl_registro_reportes` (
   `id_registro` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `id_reporte` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL
+  `id_reporte` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
+  KEY `id_registro` (`id_registro`),
+  KEY `id_reporte` (`id_reporte`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -483,120 +570,25 @@ CREATE TABLE `tbl_registro_reportes` (
 -- Estructura de tabla para la tabla `tbl_reportes`
 --
 
-CREATE TABLE `tbl_reportes` (
+DROP TABLE IF EXISTS `tbl_reportes`;
+CREATE TABLE IF NOT EXISTS `tbl_reportes` (
   `id_reporte` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `porcentaje_faltas` float NOT NULL,
   `porcentaje_asistencias` float NOT NULL,
-  `grafico` float DEFAULT NULL
+  `grafico` float DEFAULT NULL,
+  PRIMARY KEY (`id_reporte`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `register`
---
-ALTER TABLE `register`
-  ADD PRIMARY KEY (`documento_aprendiz`);
-
---
--- Indices de la tabla `tbl_administrador`
---
-ALTER TABLE `tbl_administrador`
-  ADD PRIMARY KEY (`documento_administrador`);
-
---
--- Indices de la tabla `tbl_aprendiz`
---
-ALTER TABLE `tbl_aprendiz`
-  ADD PRIMARY KEY (`documento_aprendiz`),
-  ADD KEY `numero_ficha` (`numero_ficha`);
-
---
--- Indices de la tabla `tbl_ficha`
---
-ALTER TABLE `tbl_ficha`
-  ADD PRIMARY KEY (`numero_ficha`),
-  ADD KEY `documento_instructor` (`documento_instructor`);
-
---
--- Indices de la tabla `tbl_historial`
---
-ALTER TABLE `tbl_historial`
-  ADD PRIMARY KEY (`id_historial`);
-
---
--- Indices de la tabla `tbl_historial_administrador`
---
-ALTER TABLE `tbl_historial_administrador`
-  ADD KEY `id_historial` (`id_historial`),
-  ADD KEY `documento_administrador` (`documento_administrador`);
-
---
--- Indices de la tabla `tbl_historial_instructor`
---
-ALTER TABLE `tbl_historial_instructor`
-  ADD KEY `id_historial` (`id_historial`),
-  ADD KEY `documento_instructor` (`documento_instructor`);
-
---
--- Indices de la tabla `tbl_historial_personal_administrativo`
---
-ALTER TABLE `tbl_historial_personal_administrativo`
-  ADD KEY `id_historial` (`id_historial`),
-  ADD KEY `documento_administrativo` (`documento_administrativo`);
-
---
--- Indices de la tabla `tbl_huella_aprendiz`
---
-ALTER TABLE `tbl_huella_aprendiz`
-  ADD KEY `documento_aprendiz` (`documento_aprendiz`);
-
---
--- Indices de la tabla `tbl_instructor`
---
-ALTER TABLE `tbl_instructor`
-  ADD PRIMARY KEY (`documento_instructor`);
-
---
--- Indices de la tabla `tbl_personal_administrativo`
---
-ALTER TABLE `tbl_personal_administrativo`
-  ADD PRIMARY KEY (`documento_administrativo`);
-
---
--- Indices de la tabla `tbl_registro`
---
-ALTER TABLE `tbl_registro`
-  ADD PRIMARY KEY (`id_registro`),
-  ADD KEY `numero_ficha` (`numero_ficha`),
-  ADD KEY `documento_instructor` (`documento_instructor`),
-  ADD KEY `documento_administrativo` (`documento_administrativo`);
-
---
--- Indices de la tabla `tbl_registro_aprendiz`
---
-ALTER TABLE `tbl_registro_aprendiz`
-  ADD KEY `id_registro` (`id_registro`),
-  ADD KEY `documento_aprendiz` (`documento_aprendiz`);
-
---
--- Indices de la tabla `tbl_registro_reportes`
---
-ALTER TABLE `tbl_registro_reportes`
-  ADD KEY `id_registro` (`id_registro`),
-  ADD KEY `id_reporte` (`id_reporte`);
-
---
--- Indices de la tabla `tbl_reportes`
---
-ALTER TABLE `tbl_reportes`
-  ADD PRIMARY KEY (`id_reporte`);
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `register`
+--
+ALTER TABLE `register`
+  ADD CONSTRAINT `register_ibfk_1` FOREIGN KEY (`documento_aprendiz`) REFERENCES `tbl_aprendiz` (`documento_aprendiz`),
+  ADD CONSTRAINT `register_ibfk_2` FOREIGN KEY (`fecha_registroA`) REFERENCES `tbl_registro_asistencia` (`fecha_registroA`);
 
 --
 -- Filtros para la tabla `tbl_aprendiz`
@@ -653,11 +645,18 @@ ALTER TABLE `tbl_registro_aprendiz`
   ADD CONSTRAINT `tbl_registro_aprendiz_ibfk_2` FOREIGN KEY (`documento_aprendiz`) REFERENCES `tbl_aprendiz` (`documento_aprendiz`);
 
 --
+-- Filtros para la tabla `tbl_registro_asistencia`
+--
+ALTER TABLE `tbl_registro_asistencia`
+  ADD CONSTRAINT `tbl_registro_asistencia_ibfk_1` FOREIGN KEY (`numero_ficha`) REFERENCES `tbl_ficha` (`numero_ficha`);
+
+--
 -- Filtros para la tabla `tbl_registro_reportes`
 --
 ALTER TABLE `tbl_registro_reportes`
   ADD CONSTRAINT `tbl_registro_reportes_ibfk_1` FOREIGN KEY (`id_registro`) REFERENCES `tbl_registro` (`id_registro`),
   ADD CONSTRAINT `tbl_registro_reportes_ibfk_2` FOREIGN KEY (`id_reporte`) REFERENCES `tbl_reportes` (`id_reporte`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

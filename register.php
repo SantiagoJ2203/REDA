@@ -42,13 +42,14 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
     </nav>
     <p class="display-4 text-center" style="color: rgb(225, 115, 35); background-color: rgb(255, 255, 255);">Registrar
         asistencia de <span style="color:rgb(35, 130, 118);">los aprendices</span></p>
+        <form action="list_register.php" method="POST">
     <div class="container-fluid justify-content-around">
         <div class="card-group text-center" style="margin-top: 2em;">
             <div class="card" style="border: 2px solid rgba(0, 0, 0, 0.267); border-radius: 0;">
                 <img class="card-img-top mx-auto d-block" src="icons/people.png" alt="Ficha" style="width: 10em;">
                 <div class="card-body">
                     <h5 class="card-title text-center font-weight-bold">Seleccionar ficha</h5>
-                    <select>
+                    <select name=ficha>
                         <option>1828182</option>
                         <option>1254868</option>
                         <option>1985428</option>
@@ -90,9 +91,10 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
         </div>
     </div>
     <div class="container">
-        <a href="list_register.php"><button type="button" class="btn btn-primary btn-lg btn-block" id="txt_button"
-            style="border: 3px solid rgb(226, 225, 225); margin-top: 2em;">Comenzar registro</button></a>
+        <button type="submit" name="registrar" class="btn btn-primary btn-lg btn-block" id="txt_button"
+            style="border: 3px solid rgb(226, 225, 225); margin-top: 2em;">Comenzar registro</button>
     </div>
+    </form>
     <br>
     <div class="modal-footer">
         <p><a href="system.html" style="color: black;">Volver al inicio</a></p>

@@ -12,6 +12,7 @@ $correo = $row['correo_aprendiz'];
 $nombre = $row['nombre1_aprendiz'];
 $apellido = $row['apellido1_aprendiz'];
 $x = 0;
+$fecha = date("Y/m/d");
 while ($x < $num) {
 	require ('../PHPMAILER/PHPMailer.php');
 	require ('../PHPMAILER/SMTP.php');
@@ -36,14 +37,15 @@ while ($x < $num) {
 	$mail->Password = "12345reda";
 	$mail->setFrom('registrodigitalreda@gmail.com', 'REDA');
 	$mail->addAddress($correo, 'Estimado aprendiz');
-	$mail->Subject = 'REDA';
-	$mail->Body = "Cordial Saludo <br /><br />"  .$nombre. " " .$apellido. "<br /><br /> Nuestro sistema registró su ausencia el viernes 27 de Marzo. Recuerde por favor enviar su excusa justificada al instructor.  <br /><br /> Buen día";
+	$mail->Subject = 'RECORDATORIO';
+	$mail->Body = "Cordial Saludo <br /><br />Aprendiz "  .$nombre. " " .$apellido. "<br /><br /> Nuestro sistema registró su ausencia en la fecha ".$fecha.". Recuerde por favor enviar su excusa justificada al instructor ".$_SESSION['nombre_instructor'].".  <br /><br /> Buen día";
 	$mail->CharSet = 'UTF-8'; // Con esto ya funcionan los acentos
 	$mail->IsHTML(true);
 	
 	if (!$mail->send())
 	{
 		echo "Error al enviar el E-Mail: ".$mail->ErrorInfo;
+		header ('location: ../system.php');
 	}
 	else
 	{
