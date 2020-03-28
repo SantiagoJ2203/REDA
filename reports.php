@@ -84,6 +84,9 @@
     <div class="modal-footer">
         <p><a href="system.php" style="color: black;">Volver al inicio</a></p>
     </div>
+
+    <script src="JQuery/jquery-3.3.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
 </body>
 
 </html>
