@@ -29,14 +29,14 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <script type="text/javascript">
-    setTimeout("document.location=document.location", 7000);
+    setTimeout("document.location=document.location", 9000);
     </script>
 </head>
 
 <body>
 <?php 
-
-    $query = mysqli_query ($con, "SELECT * FROM register;");
+    $fecha = date("Y-m-d");
+    $query = mysqli_query ($con, "SELECT * FROM register WHERE fecha_registroA = '$fecha';");
     $row = mysqli_fetch_array($query);
     $num = mysqli_num_rows($query);
 
@@ -64,7 +64,7 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
             </thead>
             <?php 
                 $i = 0;
-                $query = mysqli_query ($con, "SELECT * FROM register;");
+                $query = mysqli_query ($con, "SELECT * FROM register WHERE fecha_registroA = '$fecha';");
                 while($i<$num){
                     $i += 1;
                     $row = mysqli_fetch_array($query);

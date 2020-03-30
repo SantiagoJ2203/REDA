@@ -54,16 +54,16 @@ if(isset($_POST['buscar'])){
                 <tr>
                     <th scope="col">Número de ficha</th>
                     <th scope="col">Nombre del programa</th>
-                    <th scope="col">Descarga al sistema</th>
                     <th scope="col">Visualización</th>
+                    <th scope="col">Descarga al sistema</th>
                 </tr>
             </thead>
             <tbody style="background-color: rgba(128, 128, 128, 0.103);">
                 <tr>
                     <td> <?php  echo $list;  ?> </td>
                     <td> <?php  echo $name;  ?> </td>
-                    <td class="download"><a href="#" class="down"><img src="icons/download.png" width="25em"></a></td>
                     <td class="view"><a href="#" class="view"><img src="icons/view.png" width="25em"></a></td>
+                    <td class="download"><a href="#" class="down"><img src="icons/download.png" width="25em"></a></td>
                 </tr>
             </tbody>
         </table>

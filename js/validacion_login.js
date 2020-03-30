@@ -52,7 +52,6 @@ function validar_login() {
     if (formulario.contraseña.value == "" || validar_espacios(formulario.contraseña.value) == false) {
         document.getElementById("aviso2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" style="border-radius: 0; font-weight: bold; width: 87%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert">&times;</button>Ingrese su contraseña de usuario</div>';
         formulario.contraseña.value = "";
-        formulario.contraseña.focus();
         correcto_login = false;
     } else {
         document.getElementById("aviso2").innerHTML = '';

@@ -107,7 +107,6 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal'])){
                                             <th scope="col">Hora</th>
                                             <th scope="col">Lugar cercano de ingreso</th>
                                             <th scope="col">Característica del dispositivo usado</th>
-                                            <th scope="col">Descargar como archivo TXT</th>
                                         </tr>
                                     </thead>
                                     <tbody style="background-color: rgba(128, 128, 128, 0.103);">
@@ -116,34 +115,23 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal'])){
                                             <th>18:55</th>
                                             <td>Medellín, Antioquia</td>
                                             <td>SO Windows 7</td>
-                                            <td class="download">
-                                                <a href="#" class="down"><img src="icons/download.png" width="25em"></a>
-                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">18/07/2019</th>
                                             <th>09:14</th>
                                             <td>Medellín, Antioquia</td>
                                             <td>SO Windows 10</td>
-                                            <td class="download">
-                                                <a href="#" class="down"><img src="icons/download.png" width="25em"></a>
-                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">01/10/2019</th>
                                             <th>20:40</th>
                                             <td>Medellín, Antioquia</td>
                                             <td>SO Windows 8</td>
-                                            <td class="download">
-                                                <a href="#" class="down"><img src="icons/download.png" width="25em"></a>
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" id="txt_button">Descargar todo en un
-                            archivo TXT</button>
                     </div>
                 </div>
             </div>
@@ -219,7 +207,7 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal'])){
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <p id="font" style="font-size:27px" class="font-weight-bold">Cambio de contraseña</p>
-                            <<div class="form-group">
+                            <div class="form-group">
                                 <input type="password" class="form-control" id="current_pass" required placeholder="Contraseña actual" required style="width: 25em;  margin-left: 2em;">
                             </div>
                             <div class="form-group">

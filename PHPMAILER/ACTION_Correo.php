@@ -1,26 +1,30 @@
 <?php
 
+	require ('../PHPMAILER/PHPMailer.php');
+	require ('../PHPMAILER/SMTP.php');
+	require ('../PHPMAILER/Exception.php');
+	require ('../PHPMAILER/OAuth.php');
 
 session_start();
 
 $con=mysqli_connect("localhost","root","","reda");
 
 $resultado = mysqli_query($con, "SELECT * FROM tbl_aprendiz a LEFT JOIN register r ON a.documento_aprendiz = r.documento_aprendiz WHERE r.documento_aprendiz IS NULL;");
-$row = mysqli_fetch_array($resultado);
 $num = mysqli_num_rows($resultado); 
-$correo = $row['correo_aprendiz'];
-$nombre = $row['nombre1_aprendiz'];
-$apellido = $row['apellido1_aprendiz'];
+
 $x = 0;
 $fecha = date("Y/m/d");
+$resultado = mysqli_query($con, "SELECT * FROM tbl_aprendiz a LEFT JOIN register r ON a.documento_aprendiz = r.documento_aprendiz WHERE r.documento_aprendiz IS NULL;");
 while ($x < $num) {
-	require ('../PHPMAILER/PHPMailer.php');
-	require ('../PHPMAILER/SMTP.php');
-	require ('../PHPMAILER/Exception.php');
-	require ('../PHPMAILER/OAuth.php');
+	
 	
 	$mail = new PHPMailer\PHPMailer\PHPMailer();
-	
+
+	$row = mysqli_fetch_array($resultado);
+	$correo = $row['correo_aprendiz'];
+	$nombre = $row['nombre1_aprendiz'];
+	$apellido = $row['apellido1_aprendiz'];
+
 	$mail->isSMTP();
 	/*
 	Enable SMTP debugging
@@ -45,7 +49,7 @@ while ($x < $num) {
 	if (!$mail->send())
 	{
 		echo "Error al enviar el E-Mail: ".$mail->ErrorInfo;
-		header ('location: ../system.php');
+
 	}
 	else
 	{

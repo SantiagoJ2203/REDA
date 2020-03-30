@@ -52,8 +52,7 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
                         <th scope="col">Número</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descargar a la computadora</th>
-                        <th scope="col">Compartir con instructor/es</th>
-                        <th scope="col">Eliminar del sistema</th>
+                        <th scope="col">Registrar asistencia</th>
                     </tr>
                 </thead>
                 <?php 
@@ -70,7 +69,6 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
                         <th> <?php echo $name; ?>  </th>
                         <td class="download"><a href="#" class="down"> <img src="icons/download.png" width="25em"></td>
                         <td class="download"><a href="#" class="down"> <img src="icons/group.png" width="25em"></td>
-                        <td class="download"><a href="#"><img src="icons/delete.png" id="delete" width="25em"></a>
                         </td>
                     </tr>
                 </tbody>
