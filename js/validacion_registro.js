@@ -39,7 +39,7 @@ function validar_password(contrasena){
         var num = false;
         var especial = false;
 
-        for(var i = 0;i<contrasena.lenght;i++){
+        for(var i = 0;i<contrasena.length;i++){
             if(contrasena.charCodeAt(i) >= 65 && contrasena.charCodeAt(i) <= 90){
                 mayus = true;
             }else if(contrasena.charCodeAt(i) >= 97 && contrasena.charCodeAt(i) <= 122){
@@ -62,100 +62,132 @@ function validar_registro(){
     var correcto_registrar = true;
     var formulario = document.form_registro;
 
-    if(form_registro.contraseña.value == "" || validar_espacios(formulario.contraseña.value) == false){
-        document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese una contraseña</div>';
-        formulario.contraseña.value = "";
-        formulario.contraseña.focus();
+    if(validar_password(formulario.contraseña.value) == false){
+        document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>La contraseña no cumple con los parámetros requeridos</div>';
         correcto_registrar = false;
-    }else if(validar_password(form_registro.contraseña.value) == true){
-        document.getElementById("alerta5").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>La contraseña no cumple con los parámetros requeridos</div>';
-        formulario.contraseña.focus();
-        correcto_registrar = false;
-    }
-    else if(validar_password(form_registro.contraseña.value) == false){
+    }else if(validar_password(formulario.contraseña.value) == true){
         document.getElementById("alerta5").innerHTML = "";
+    } 
+
+    if(validar_espacios(formulario.contraseña.value) == false){
+        document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese una contraseña</div>';
+        correcto_registrar = false;
     }
-    if(form_registro.confirmar_contraseña.value == "" || validar_espacios(formulario.confirmar_contraseña.value) == false){
+    if(validar_espacios(formulario.confirmar_contraseña.value) == false){
         document.getElementById("alerta6").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Confirme su contraseña</div>';
-        formulario.confirmar_contraseña.value = "";
         correcto_registrar = false;
     }else if(formulario.contraseña.value === formulario.confirmar_contraseña.value){
         document.getElementById("alerta6").innerHTML = "";
     }
 
-    if(form_registro.contraseña.value != form_registro.confirmar_contraseña.value){
-        document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseñas digitadas no coinciden</div>';
-        form_registro.contraseña.value = "";
-        form_registro.confirmar_contraseña.value = "";
-        formulario.contraseña.focus();
-        correcto_registrar = false;
-    }else if(form_registro.contraseña.value === form_registro.confirmar_contraseña.value){
-        document.getElementById("alerta5").innerHTML = "";
-    }
-
-    if(form_registro.email.value == ""){
-        document.getElementById("alerta4").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese una dirección de correo electrónico</div>';
-        formulario.email.focus();
-        correcto_registrar = false;
-    }else if(ValidarEmail(form_registro.email.value) == false){
-        document.getElementById("alerta4").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>La dirección de correo electrónico es incorrecta</div>';
-        formulario.email.focus();
-        correcto_registrar = false;
-    }else if(ValidarEmail(form_registro.email.value) == true){
+    if(ValidarEmail(form_registro.email.value) == true){
         document.getElementById("alerta4").innerHTML = "";
     }
 
     if(SoloNumeros(form_registro.documento.value) == false){
         document.getElementById("alerta3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo números para el número de documento</div>';
-        formulario.documento.focus();
         correcto_registrar = false;
-    }else if(form_registro.documento.value == "" || validar_espacios(formulario.documento.value) == false){
+    }else if(validar_espacios(formulario.documento.value) == false){
         document.getElementById("alerta3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese su número de documento</div>';
         formulario.documento.value = "";
-        formulario.documento.focus();
         correcto_registrar = false;
     }else if(SoloNumeros(form_registro.documento.value) == true){
         document.getElementById("alerta3").innerHTML = "";
     }
 
     if(SoloLetras(form_registro.nombre1.value) == false){
-        document.getElementById("alerta").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres y apellidos</div>';
-        formulario.nombre1.focus();
+        document.getElementById("alerta").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres</div>';
         correcto_registrar = false;
-    }else if(SoloLetras(form_registro.nombre2.value) == false){
-        document.getElementById("alerta").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres y apellidos</div>';
-        formulario.nombre2.focus();
+    }
+    if(SoloLetras(form_registro.nombre2.value) == false){
+        document.getElementById("alerta9").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres</div>';
         correcto_registrar = false;
     }
     if(SoloLetras(form_registro.apellido1.value) == false){
-        document.getElementById("alerta2").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres y apellidos</div>';
-        formulario.apellido1.focus();
-        correcto_registrar = false;
-    }else if(SoloLetras(form_registro.apellido2.value) == false){
-        document.getElementById("alerta2").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres y apellidos</div>';
-        formulario.apellido2.focus();
+        document.getElementById("alerta2").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los apellidos</div>';
         correcto_registrar = false;
     }
-
-    if(formulario.apellido1.value == "" || validar_espacios(formulario.apellido1.value) == false){
+    if(SoloLetras(form_registro.apellido2.value) == false){
+        document.getElementById("alerta8").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los apellidos</div>';
+        correcto_registrar = false;
+    }
+    
+    if(validar_espacios(formulario.apellido1.value) == false){
         document.getElementById("alerta2").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold; width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese como mínimo su primer apellido</div>';
         formulario.apellido1.value = "";
-        formulario.apellido1.focus();
         correcto_registrar = false;
     }else if(SoloLetras(form_registro.apellido1.value) == true){
         document.getElementById("alerta2").innerHTML = "";
     }
 
-    if(formulario.nombre1.value == "" || validar_espacios(formulario.nombre1.value) == false){
-        document.getElementById("alerta").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese como mínimo su primer nombre</div>';;
+    if(validar_espacios(formulario.apellido2.value) == false){
+        document.getElementById("alerta8").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold; width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los apellidos</div>';
+        formulario.apellido2.value = "";
+        correcto_registrar = false;
+    }else if(SoloLetras(form_registro.apellido2.value) == true){
+        document.getElementById("alerta8").innerHTML = "";
+    }
+
+    if(validar_espacios(formulario.nombre1.value) == false){
+        document.getElementById("alerta").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese como mínimo su primer nombre</div>';
         formulario.nombre1.value = "";
-        formulario.nombre1.focus();
         correcto_registrar = false;
     }else if(SoloLetras(form_registro.nombre1.value) == true){
         document.getElementById("alerta").innerHTML = "";
     }
 
+    if(validar_espacios(formulario.nombre2.value) == false){
+        document.getElementById("alerta9").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres</div>';
+        formulario.nombre2.value = "";
+        correcto_registrar = false;
+    }else if(SoloLetras(form_registro.nombre2.value) == true){
+        document.getElementById("alerta9").innerHTML = "";
+    }
+
 return correcto_registrar;
+}
+
+function registro_enviado(){
+
+    var correcto_enviado = true;
+    var formulario2 = document.form_registro;
+
+    if(form_registro.contraseña.value != form_registro.confirmar_contraseña.value){
+        document.getElementById("alerta6").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseñas digitadas no coinciden</div>';
+        correcto_enviado = false;
+    }
+
+    if(form_registro.contraseña.value == ""){
+        document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese una contraseña</div>';
+        correcto_enviado = false;
+    }
+    if(form_registro.confirmar_contraseña.value == ""){
+        document.getElementById("alerta6").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Confirme su contraseña</div>';
+        correcto_enviado = false;
+    }
+
+    if(form_registro.email.value == "" || ValidarEmail(form_registro.email.value) == false){
+        document.getElementById("alerta4").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>La dirección de correo electrónico es incorrecta o no se ha ingresado ninguna</div>';
+        correcto_enviado = false;
+    }
+
+    if(form_registro.documento.value == ""){
+        document.getElementById("alerta3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese su número de documento</div>';
+        formulario2.documento.value = "";
+        correcto_enviado = false;
+    }
+
+    if(formulario2.apellido1.value == ""){
+        document.getElementById("alerta2").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold; width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese como mínimo su primer apellido</div>';
+        correcto_enviado = false;
+    }
+
+    if(formulario2.nombre1.value == ""){
+        document.getElementById("alerta").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese como mínimo su primer nombre</div>';
+        correcto_enviado = false;
+    }
+
+return correcto_enviado;
 }
 
 $(document).ready(function(){
