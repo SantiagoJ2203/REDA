@@ -1,12 +1,15 @@
-<?php 
+<?php
+
+// Se inicia o reanuda una sesión en caso de que un usuario ya haya ingresado al sistema por medio del log in o inicio de sesión:
 session_start();
 
-include ('ACTION_conexionBD.php');
+// Se incluye el archivo 'ACTION_conexionBD.php' para acceder a la conexion de la base de datos 'reda' sin tener que escribir el script de conexión:
+include 'ACTION_conexionBD.php';
 
-if (isset($_SESSION['administrador'])){
+// Se verifica con 'isset' si la sesión con el cargo de administrador existe o está siendo utilizada en el sistema:
+if (isset($_SESSION['administrador'])) {
 
-
-?> 
+    ?>
 <!Doctype html>
 <html>
 
@@ -16,14 +19,15 @@ if (isset($_SESSION['administrador'])){
     <link rel="stylesheet" type="text/css" href="css/reda_system.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/reda_system.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/ddefb55be1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="icon" href="icons/reda4.png">
 </head>
 
 <body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #11b6a0; border-radius: 0;">
         <div class="navbar-collapse">
             <img src="icons/reda2.png" class="d-inline-block align-top" alt="">
@@ -32,15 +36,15 @@ if (isset($_SESSION['administrador'])){
             </div>
             <div class="row">
                 <div class="col-xl-12">
-                    <h2 class="welcome">Bienvenido, <?php echo $_SESSION['nombre_administrador'];?> </h2>
+                    <h2 class="welcome">Bienvenido, <?php echo $_SESSION['nombre_administrador']; ?> </h2>
                 </div>
             </div>
     </nav>
 
 
-    
+
     <nav class="navbar navbar-expand-md navbar-light" style="background-color: #11b6a0;  border-radius: 0;">
-    
+
            <div class="collapse navbar-collapse" id="navbarNavAltMarkup" >
             <div style="background-color: rgba(255, 255, 255, 0.315);margin-left:4em">
                 <div class="row">
@@ -59,10 +63,10 @@ if (isset($_SESSION['administrador'])){
                         </button>
                     </div>
                     <div class="col-xl-3">
-                    <a href="ACTION_cerrar_sesion.php"> 
+                    <a href="ACTION_cerrar_sesion.php">
                     <button type="button" class="btn btn-outline" style="width: 11em" id="button_nav">
                         Cerrar sesión
-                                   
+
                         </button>
                         </a>
                     </div>
@@ -221,7 +225,7 @@ if (isset($_SESSION['administrador'])){
                     </div>
                 </div>
             </div>
-            <form action="ACTION_cambiopass.php" method="POST">
+            <form name="form_pass" action="ACTION_cambiopass.php" method="POST" oninput="return validacion_pass()" onsubmit="return enviado_pass() && validacion_pass();">
             <div class="modal fade" id="c_pass" tabindex="-1" role="dialog" aria-labelledby="c_pass" aria-hidden="true">
                 <div class="modal-dialog modal-md" role="document">
                     <div class="modal-content" id="contenido_sesion">
@@ -231,15 +235,62 @@ if (isset($_SESSION['administrador'])){
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <p id="font" style="font-size:27px" class="font-weight-bold">Cambio de contraseña</p>
-                            <<div class="form-group">
-                                <input type="password" class="form-control" id="current_pass" required placeholder="Contraseña actual" required style="width: 25em;  margin-left: 2em;">
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="actual" name="actual" placeholder="Contraseña actual"  style="width: 25em;  margin-left: 2em;">
+                            <i class="fa fa-eye fa-lg" tool-tip-toggle="tooltip-pass" data-original-title="Mostrar contraseñas" id="passwords" id="show_password" style="margin-top: -1.2em; margin-right: 2.5em; float: right;"></i>
+                                <div id="change"></div>
                             </div>
                             <div class="form-group">
-                                    <input type="password" name="new" class="form-control" id="new_pass" placeholder="Nueva contraseña" required style="width: 25em;  margin-left: 2em;">
+                                    <input type="password" name="new" class="form-control" id="new_pass" placeholder="Nueva contraseña" style="width: 25em;  margin-left: 2em;">
                                 </div>
+                                <i class="fa fa-info-circle fa-lg" tool-tip-toggle="tooltip-show" data-original-title="INFORMACIÓN: Se recomienda que para crear una contraseña fuerte siga los siguientes parámetros, es decir, que la contraseña contenga: 8 carácteres, una mayúscula, una minúscula, un número y un caracter raro o especial. Por ejemplo, la contraseña 'Sena_1234' cumple con los parámetros recomendados." style="float: right; margin-right: 2.6em; margin-top: -1.9em;"></i>
+                            <script type="text/javascript">
+                            /* Se crea una función JQuery para el formulario de cambiar contraseña. Esta función contendrá un par de eventos para activar 2 tooltips de bootstrap (cajas con texto) las cuales proporcionarán información al usuario al hacer 'hover' sobre alguno de ellos: */
+                                $(document).ready(function(){
+                                // Usando el atributo 'tool-tip-toggle' se toma el nombre del tooltip que se quiere activar (en este caso, el tooltip se llama 'tooltip-show'). Este tooltip indica al usuario las recomendaciones para crear una contraseña segura.
+                                    // Después de indicar que es un tooltip, se le coloca, para este caso, que esté posicionado a la derecha:
+                                    $('[tool-tip-toggle="tooltip-show"]').tooltip({
+                                        placement : 'right'
+                                    });
+                                    // El mismo proceso anterior acontece con el tooltip llamado 'tooltip-pass', el cual indica al usuario que las contraseñas colocadas en los campos pueden ser visualizadas:
+                                    $('[tool-tip-toggle="tooltip-pass"]').tooltip({
+                                        placement : 'right'
+                                    });
+                                });
+                            </script>
+                                <div id="change3"></div>
+
                                 <div class="form-group">
-                                    
-                                    <input type="password" class="form-control" id="conf_npass" placeholder="Confirmar contraseña"required style="width: 25em;  margin-left: 2em;"><br>
+                                    <input type="password" class="form-control" id="confirmar_pass" name="confirmar_pass" placeholder="Confirmar contraseña" style="width: 25em;  margin-left: 2em;">
+                                    <div id="change2"></div>
+                                    <?php
+// Se verifica si el valor 'notfound' está definido y se obtiene si el valor 'notfound' ubicado en el archivo 'ACTION_cambiopass.php' devuelve true:
+if (isset($_GET["notfound"]) && $_GET["notfound"] == 'true') {
+        // En caso de que lo anterior sea cierto, una alerta bootstrap de tipo 'danger' aparecerá abajo del campo de confirmar contraseña del formulario de cambiar contraseña. Esta alerta indica que la contraseña actual ingresada no coincide con la registrada en la base de datos:
+        echo "<div class= 'alert alert-danger alert-dismissible fade show' role='alert' style='border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>La contraseña actual no coincide con la registrada en la base de datos</div>";
+    }
+    // Nuevamente, se verifican y obtienen los valores como en el caso anterior:
+    if (isset($_GET["notfound"]) && $_GET["notfound"] == 'true') {
+    // Y en caso de que devuelvan un resultado true, la ventana modal bootstrap de cambio de contraseña, al cargar todo el código HTML, se abrirá automaticamente para informar al usuario de que el cambio de contraseña no ha sido posible.
+        // Para hacer esto, se llama el nombre del formulario y se indica que el mismo se encuentra en una ventana modal, y que lo que se requiere es que se active ('toggle'):
+        echo "<script>$(document).ready(function() {
+                                    $('#c_pass').modal('toggle')
+                                });</script>";
+    }
+    // Si el valor definido 'success' y el valor obtenido 'success' devuelven true, se muestra otra alerta diferente a la anterior:
+    if (isset($_GET["success"]) && $_GET["success"] == 'true') {
+        // En este caso, la alerta bootstrap es de tipo 'success' e indica que la contraseña ha sido cambiada con éxito:
+        echo "<div class= 'alert alert-success alert-dismissible fade show' role='alert' style='border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>La contraseña ha sido cambiada con éxito</div>";
+    }
+    // Este tooltip activa igualmente la ventana modal de cambio de contraseña si la contraseña del usuario ha sido cambiada, mostrándole la alerta 'success' anterior mencionada:
+    if (isset($_GET["success"]) && $_GET["success"] == 'true') {
+        echo "<script>$(document).ready(function() {
+                                    $('#c_pass').modal('toggle')
+                                });</script>";
+    }
+
+    ?>
+                                    <br>
                                     <button type="submit" name="cambio" class="btn btn-md btn-block text-center" id="enter_button">Guardar cambios
                                     </button>
                                 </div>
@@ -270,19 +321,19 @@ if (isset($_SESSION['administrador'])){
     <div id="funciones" class="container-fluid text-center py-3">
         <div class="row justify-content-around">
             <div id="f1" class="col-4">
-                <a href="manage_list.html">
+                <a href="manage_list.php">
                     <img src="icons/responsive.png" width="220em" height="180em" style="z-index:2;">
                     <h3>Gestionar listados</h3>
                 </a>
             </div>
             <div id="f2" class="col-4">
-                <a href="register.html">
+                <a href="register.php">
                     <img src="icons/fingerprints.png" width="220em" height="180em">
                     <h3>Registrar la asistencia</h3>
                 </a>
             </div>
             <div id="f3" class="col-4">
-                <a href="reports.html">
+                <a href="reports.php">
                     <img src="icons/report.png" width="220em" height="180em">
                     <h3>Ver reportes</h3>
                 </a>
@@ -333,15 +384,12 @@ if (isset($_SESSION['administrador'])){
             </div>
         </div>
 </body>
-
 </html>
+<script src="js/cambio_pass.js"></script>
 <?php
-}else{
-    
-    echo "<script>alert('Debes iniciar sesión');</script>";
-    echo "<script>window.location='index.html';</script>";
-    
+} else {
+    // En caso de no haber ninguna sesión iniciada, se le redireccionará al usuario al archivo 'index.php' (página inicial) para indicarle con una alerta bootstrap que debe de iniciar sesión para usar las funcionaldiades del sistema:
+    header("location: index.php?failone=true");
+
 }
-
-
 ?>

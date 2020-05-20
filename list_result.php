@@ -1,11 +1,15 @@
-<?php 
+<?php
+
+// Se inicia o reanuda una sesión en caso de que un usuario ya haya ingresado al sistema por medio del log in o inicio de sesión:
 session_start();
 
-include ('ACTION_conexionBD.php');
+// Se incluye el archivo 'ACTION_conexionBD.php' para acceder a la conexion de la base de datos 'reda' sin tener que escribir el script de conexión:
+include 'ACTION_conexionBD.php';
 
-if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SESSION['administrador'])  ){
-
-?> 
+// Se verifica con 'isset' si alguna de las tres sesiones disponibles existe en el momento con alguno de los cargos en el sistema (instructor, personal administrativo o administrador):
+if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SESSION['administrador'])) {
+    // En caso de estar en una sesión, el siguiente código para ver el resultado de las fichas buscadas será ejecutado:
+    ?>
 
 <!DOCTYPE html>
 
@@ -22,22 +26,22 @@ if (isset($_SESSION['instructor'])  || isset($_SESSION['personal']) ||isset($_SE
 </head>
 
 <body>
-<?php 
+<?php
 
-if(isset($_POST['buscar'])){
+    if (isset($_POST['buscar'])) {
 
-    $fichanombre = $_POST['fichanombre'];
+        $fichanombre = $_POST['fichanombre'];
 
-    $con=mysqli_connect("localhost","root","","reda");
-    $query = mysqli_query ($con, "SELECT * FROM tbl_ficha WHERE numero_ficha = '$fichanombre';");
-    $row = mysqli_fetch_array($query);
-    $list = $row['numero_ficha'];
-    $name = $row['nombre_ficha'];
-    $num = mysqli_num_rows($query);
+        $con = mysqli_connect("localhost", "root", "", "reda");
+        $query = mysqli_query($con, "SELECT * FROM tbl_ficha WHERE numero_ficha = '$fichanombre';");
+        $row = mysqli_fetch_array($query);
+        $list = $row['numero_ficha'];
+        $name = $row['nombre_ficha'];
+        $num = mysqli_num_rows($query);
 
-}
+    }
 
-?>
+    ?>
     <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #11b6a0; border-radius: 0%;">
         <div class="navbar-collapse">
             <img src="icons/reda2.png" class="d-inline-block align-top" alt="">
@@ -47,7 +51,7 @@ if(isset($_POST['buscar'])){
         </div>
     </nav>
     <p class="display-4 text-center" style="color: rgb(225, 115, 35); background-color: rgb(255, 255, 255);">Resultados
-        totales:  <span style="color:rgb(35, 130, 118);"><?php  echo $num;  ?> </span></p>
+        totales:  <span style="color:rgb(35, 130, 118);"><?php echo $num; ?> </span></p>
     <div class="container-fluid">
         <table class="table text-center">
             <thead style="color: #fff; background-color: rgba(35, 130, 117);">
@@ -60,8 +64,8 @@ if(isset($_POST['buscar'])){
             </thead>
             <tbody style="background-color: rgba(128, 128, 128, 0.103);">
                 <tr>
-                    <td> <?php  echo $list;  ?> </td>
-                    <td> <?php  echo $name;  ?> </td>
+                    <td> <?php echo $list; ?> </td>
+                    <td> <?php echo $name; ?> </td>
                     <td class="view"><a href="#" class="view"><img src="icons/view.png" width="25em"></a></td>
                     <td class="download"><a href="#" class="down"><img src="icons/download.png" width="25em"></a></td>
                 </tr>
@@ -70,18 +74,25 @@ if(isset($_POST['buscar'])){
     </div>
     <br>
     <div class="modal-footer">
-        <p><a href="system.php" style="color: black;">Volver al inicio</a></p>
+    <?php
+// Con este condicional, se verifica si el usuario esta en una sesión con el rol de instructor o de personal administrativo:
+if ($_SESSION['rol'] == 'Instructor' || $_SESSION['rol'] == 'Personal administrativo') {
+        // En caso de estar con alguno de los dos cargos anteriores, se le redireccionará al archivo 'system.php' en caso de que haga click en el siguiente enlace: 
+        echo "<p><a style='color: black;' href='system.php'>Volver al inicio</a></p>";
+    // Si en vez del caso anterior, el usuario está usando el sistema como administrador, se le redireccionará, en este caso, al archivo 'system_admin.php' debido a la diferencia de funcionalidades entre cargos:
+    } elseif ($_SESSION['rol'] == 'Administrador') {
+        echo "<p><a style='color: black;' href='system_admin.php'>Volver al inicio</a></p>";
+    }
+    ?>
     </div>
 </body>
 
 </html>
-<?php
-}else{
-    
-    echo "<script>alert('Debes iniciar sesión');</script>";
-    echo "<script>window.location='index.html';</script>";
-    
-}
+ <?php
+} else {
+    // En caso de no haber ninguna sesión iniciada, se le redireccionará al usuario al archivo 'index.php' (página inicial) para indicarle con una alerta bootstrap que debe de iniciar sesión para usar las funcionaldiades del sistema:
+    header("location: index.php?failone=true");
 
+}
 
 ?>
