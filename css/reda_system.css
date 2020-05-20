@@ -1,400 +1,336 @@
+/* Estilos para todo el cuerpo de los archivos del sistema: */
 body{
-    font-family: sans-serif;
-    overflow-x: hidden; 
-    overflow-y: scroll;
+    font-family: sans-serif; /* Se usa la fuente sans-serif para una mejor lectura del texto. */
+    overflow-x: hidden; /* Esconde un scroll horizontal en caso de haberlo. */
+    overflow-y: scroll; /* Permite que haya un scroll vertical en todos los casos donde se requiera tenerlo. */
 }
+/* Estilo añadido a todos los elementos que son un enlace y que tienen una decoración al hacerse un 'hover' sobre ellos: */
 a:hover{
-    text-decoration: none;
+    text-decoration: none; /* Con el valor 'none' se quita toda decoración que el enlace pueda tener al hacerse 'hover' sobre él. */
 }
-/* -----------------------------------------------   INDEX   -----------------------------------------------------------*/
+/* Estilo  añadido al selector universal (afecta el estilo de todos los elementos en cada uno de los archivos): */
 *{
-    list-style: none;
+    list-style: none; /* En este caso, el valor 'none' quita el estilo que un elemento recibe automaticamente al estar dentro de una lista HTML (<ol> o <ul>). */
 }
-#header{
-    background: #11b6a0;
-   margin-top: -15px;
-
+/* Estilos para el diseño interior de los tooltip generados por el framework de diseño Bootstrap: */
+.tooltip-inner{
+    text-align: center !important; /* El texto dentro de los tooltips es alineado centralmente. Se usa la declaración '!important' para definir que tal valor siempre va a ser aplicado en primer lugar, sin importar el orden del mismo. */ 
+    border: 2px solid #fff; /* Se define un borde sólido de color blanco para los tooltips. */
 }
+/* Estilo dado a la barra de navegación ubicada tanto en el archivo 'index.php' como en 'system.php': */
 .menu_inicio {
-    height: 90px;
+    height: 90px; /* Se específica la longitud vertical o la altura para el elemento en cuestión. */
 }
+/* Estilos para el carousel o slider ubicado en el archivo 'index.php' */
 #demo{
-    box-shadow: 2px 2px 5px #000;
-    height: 530px;
+    box-shadow: 2px 2px 5px #000; /* Se crea en la parte derecha e inferior del elemento una sombra de color negro. */
+    height: 530px; /* Se específica la longitud vertical o la altura para el elemento en cuestión. */
 }
-#boton{
-    width: 8em;
-    margin-left: 0.7em;
-    margin-top: 0.2em;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.315);
-    border-radius: 0; 
-    transition: all .5 ease;
-}
+/* Estilos aplicados para el botón de inicio de sesión en el archivo 'index.php': */ 
 #boton2{
-    width: 8em;
-    margin-top: 0.2em;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.315);
-    border-radius: 0; 
-    transition: all .5 ease;
+    width: 8em; /* Se específica el ancho del elemento con la unidad de medida 'em', la cual facilita el proceso al querer hacer un sitio responsive debido a su mayor precisión con los tamaños de los elementos (a diferencia de otras medidas como la 'px'). */
+    margin-top: 0.2em; /* Se crea un margen superior para controlar el posicionamiento del elemento de manera vertical.*/
+    color: #fff; /* Se define el color blanco para el texto dentro del elemento. */
+    background: rgba(255, 255, 255, 0.315); /* Se define el color de fondo para el elemento (en este caso, se usa el modelo de color RGB junto al adicional 'alpha', que otorga transparencia al color). */
+    border-radius: 0; /* Con el valor '0', no se añade a ningún extremo del elemento un borde redondo. */
+    transition: all .5 ease; /* Se hace una transición que dura 0.5 milisegundos, la cual aplica un cambio a todas las propiedades supuestas a cambiar su valor (all) y específica la velocidad de la transición (ease). Esto sucede al dejar de hacer hover sobre el elemento. */
 }
-#boton:hover, #boton2:hover{
-    color: #fff;
-    background: #fa7e36;
+/* Al hacer un 'hover' o pasar el cursor sobre el botón de iniciar sesión, suceden los siguientes cambios: */
+#boton2:hover{
+    color: #fff; /* El color blanco para el texto permanece en los elementos. */
+    background: #fa7e36; /* Mientras que el color de fondo para estos cambia ligeramente (en los 0.5 milisegundos mencionados anteriormente). */
 }
-#boton{
-    list-style-image: url("../REDA/add-user.png");
-}
-.div-imagen {
-    display:inline-block;
-    position:relative;
-  }
-  
-  .div-imagen > div {
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:-1;
-    padding:10px;
-    margin:0;
-  }
-  
-  .desvanecer:hover {
-    opacity: 0.07;
-    -webkit-transition: opacity 500ms;
-    -moz-transition: opacity 500ms;
-    -o-transition: opacity 500ms;
-    -ms-transition: opacity 500ms;
-    transition: opacity 500ms;
-  }
-
+/* Contenedor 'grid' o de grilla que guarda varios elementos en conjunto y con un diseño personalizado: */
   .grid-container {
-    display: grid;
-    height: 800px;
-    align-content: center;
-    grid-template-columns: auto auto auto;
-    grid-gap: 10px;
-    background-color:white;
-    padding: 50px;
+    display: grid; /* Se específica que la clase será mostrada en pantalla como un 'grid' o grilla: */
+    height: 800px; /* Se asigna el tamaño que tendrá el 'grid'. */
+    align-content: center; /* Se alinea de manera centrada el contenido que tendrá. */
+    grid-template-columns: auto auto auto; /* Se declara que hayan 3 elementos por cada columna y que el tamaño de cada uno sea automático. */
+    grid-gap: 10px; /* Se asigna un espaciado entre cada elemento del 'grid': */
+    background-color:white; /* Se asigna un color blanco de fondo al 'grid': */
+    padding: 50px; /* Se le otorga un espaciado interno al 'grid'. */
   }
-  
+/* Estilos asignados a todos los elementos dentro de la clase 'grid-container' y que, adicionalmente, estén dentro de una etiqueta 'div': */  
   .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.8); /* Se les asigna un color claro de fondo. */
+    text-align: center; /* Se les indica que el texto que contengan irá alineado en el centro del elemento. */
+    padding: 20px 0; /* Se asigna un espaciado interno al elemento contenido. */
+    font-size: 30px; /* Se da un tamaño personalizado al texto. */
   }
-
+/* Estilos dados a la clase 'flip-card' que contiene todo lo relacionado a cada 'card' o carta del CSS Grid en el archivo 'index.php': */
   .flip-card {
     background-color: transparent;
-    width: 300px;
-    height: 300px;
-    perspective: 1000px;
-    margin-left: 20%;
+    width: 300px; /* Se asigna el ancho de la 'card' o carta. */
+    height: 300px; /* Se asigna la altura de la 'card' o carta. */
+    perspective: 1000px; /* Otorga una suave perspectiva 3D a la carta. */
+    margin-left: 20%; /* Se controla el posicionamiento horizontal de la carta con  un margen izquierdo. */
   }
-  
+/* Estilos dados en general a cada carta o 'card' del CSS Grid en el archivo 'index.php': */  
   .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    position: relative; /* Se usa una posición relativa para controlar el posicionamiento de cada elemento en la pantalla.
+     */
+    width: 100%; /* Se indica que el ancho interior de la carta para contener sus elementos debe ser igual a todo el que permite el 'grid' tener. */
+    height: 100%; /* Se indica que la altura interior de la carta para contener sus elementos debe ser igual a todo el que permite el 'grid' tener. */
+    text-align: center; /* Se centra el texto de la carta. */
+    transition: transform 0.6s; /* Se crea una pequeña transición al momento de hacer un 'hover' sobre alguna de las cartas. */
+    transform-style: preserve-3d; /* Se preserva el estilo 3D para que el elemento posea su propio espacio al momento de hacer su movimiento para mostrar la cara frontal o trasera de la carta. */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Se agrega una sombra oscura con difuminado a la cara frontal de cada carta. */
   }
-  
+/* Cambio general que ocurrirá a una 'card' o carta del Grid CSS al hacer 'hover' sobre esta: */  
   .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg); /* La carta hace un giro de 180 grados para dejar ver su parte trasera mientras el 'hover' se mantenga. */
   }
-  
+/* Estilos dados tanto a la cara frontal como a la cara trasera de las 'cards' o cartas en el archivo 'index.php': */  
   .flip-card-front, .flip-card-back {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
+    position: fixed; /* Se usa la posición 'fixed' para que la cara trasera y frontal se mantengan en su posición supuesta antes y después de un 'hover' */
+    width: 100%; /* Se específica que el ancho de la cara frontal y trasera de cada carta sea el máximo asignado por el 'grid' */
+    height: 100%; /* Se específica que la altura de la cara frontal y trasera de cada carta sea el máximo asignado por el 'grid' */
+    backface-visibility: hidden; /* Se declara que desde la parte frontal de la carta no pueda ser observada la parte trasera, y viceversa. */
   }
-  
-  
-  
+/* Estilos añadidos a la parte trasera de las 'cards' o cartas en el archivo 'index.php': */ 
   .flip-card-back {
-    background-color:#fa7e36;
-    color: white;
-    font-size: 23px;
-    text-align: left;
-    transform: rotateY(180deg);
-    padding: 2px;
+    background-color:#fa7e36; /* Se asigna el color de fondo para la parte trasera. */
+    color: white; /* Se le asigna el color blanco al texto. */
+    font-size: 23px; /* Se le asigna un tamaño personalizado al texto. */
+    transform: rotateY(180deg); /* Se usa la propiedad 'transform' para indicar el cambio de orientación de la parte trasera de la carta al dejar de ser tocada por el cursor ('hover'). */
+    padding: 2px; /* Se indica el espaciado interno entre elementos. */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Se agrega una sombra oscura con difuminado a la cara trasera de cada carta. */
+  }
+/* Se asigna un margen izquierdo y margen derecho al texto añadido a cada 'card' o carta del CSS Grid al ser volteda con un 'hover'; además de alinear el texto al centro: */
+.flip-card-back p{
+    text-align: center;
+    margin-left: 5px;
     margin-right: 5px;
-  }
-
-  .flip-card-back p{
-    margin-left: 15px;
-  }
-  .titulos{
-      text-align: center;
-  }
-.center{
-    margin-left: 20px;
 }
-
-
-/* -----------------------------------------------LOG IN-----------------------------------------------------------*/
+/* Se alínea al centro el título que contiene cada 'card' o carta del CSS Grid al ser volteada con un 'hover': */
+.titulos{
+    text-align: center;
+}
+/* Borde aplicado a las ventanas modales ubicadas en los siguientes archivos del sistema: ACTION_restaurar_pass.php, form_cambio.php, index.php, system_admin.php y system.php: */
 #contenido_sesion{
-    border: 4px solid rgb(255, 255, 255);
-    
+    border: 4px solid rgb(255, 255, 255); /* Se aplica un borde sólido, de color blanco y con un tamaño de 4 pixles alrededor del elemento. */
 }
-.modal-body, .modal-header{
-    background-color:rgba(35, 130, 117, 0.589);
-    text-align: center;
-    border-radius: 2px;
+/* Estilo aplicado al cuerpo de las ventanas modales ubicadas en los siguientes archivos del sistema: ACTION_restaurar_pass.php, form_cambio.php, index.php, sign_up.php, system_admin.php y system.php: */
+.modal-body{
+    background-color:rgba(35, 130, 117, 0.589); /* Se define un color verde oscuro como el fondo de la ventana modal. */
+    text-align: center; /* Se alinea el texto incluido en la ventana modal al centro de las misma. */
+    border-radius: 2px; /* Se aplica un borde redondo a cada extremo de la ventana modal. */
 }
+/* Estilos aplicados para la ventana modal de inicio de sesión en el archivo 'index.php': */
 #log_in{
-    background-image: url("icons/finger_lock.png"); 
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: contain; /* Se usa el valor 'contain' para especificar a la imagen correspondiente que se muestre completa en la pantalla. */
+    background-repeat: no-repeat; /* Valor 'no-repeat' aplicado para que la imagen correspondiente no se repita al mostrarse en la pantalla. */
 }
+/* Estilos aplicados a los campos de los formularios de los archivos 'ACTION_restaurar_pass.php', 'form_cambio.php', 'index.php', 'sign_up.php', 'system_admin.php' y 'system.php' con la clase 'form-group' de Bootstrap y a la etiqueta '<label>' que lo contiene:*/
 .form-group label{
-    color: #fff;
-    font-size: 1em;
+    color: #fff; /* Se define el color para el texto en cuestión. */
+    font-size: 1em; /* Se aplica el tamaño del texto con la medida 'em'. */
 }
+/* Estilos aplicados a los campos de los formularios de los archivos 'ACTION_restaurar_pass.php', 'form_cambio.php', 'index.php', 'sign_up.php', 'system_admin.php' y 'system.php' que se encuentran contenidos en la etiqueta '<input>' o en la etiqueta '<select>': */
 .form-group input, .form-group select{
-    border: none;
-    border-radius: 0;
-    font-weight: bold;
-    margin-left: 1.1em;
+    border: none; /* Se define que los elementos no posean ningún borde. */
+    border-radius: 0; /* Se define que no hayan bordes redondeados para los elementos. */
+    font-weight: bold; /* Se define que el texto de los elementos esté en negrita. */
+    margin-left: 1.1em; /* Se crea un margen izquierdo para controlar el posicionamiento vertical de los elementos. */ 
 }
+/* Estilo aplicados a los campos de los formularios de los archivos 'ACTION_restaurar_pass.php', 'form_cambio.php', 'index.php', 'sign_up.php', 'system_admin.php' y 'system.php' cuando son fijados (focus) para agregar datos a un campo específico del formulario: */
 .form-group input:focus, .form-group select:focus{
-    box-shadow: 5px 5px 5px rgb(35, 130, 117);
+    box-shadow: 5px 5px 5px rgb(35, 130, 117); /* Se aplica una sombra de color verde oscuro al lado derecho e inferior del elemento (campo del formulario). */
 }
-#login_text{
-    width: 100%;
-    text-align: center;
-    font-size: 3em;
-    color: rgb(0, 0, 0);
-    background-color: rgba(255, 255, 255, 0.377);
-}
+/* Estilos añadidos a los elementos con el id 'perfil'. El id es usado para añadir diseño a la clase 'badge' de Bootstrap y a su respectivo texto, estos elementos se encuentran en los archivos 'index.php' y 'sign_up.php' con el texto de 'Cargo': */
 #perfil{
-    float: left;
-    letter-spacing: 0.03em;
-    font-size: 1.1em;
-    border-radius: 0;
-    background-color: rgba(255, 255, 255, 0.747);
-    margin-left: 1em;
+    float: left; /* Se posiciona el 'badge' o insignia totalmente a la izquierda de donde está contenido.*/
+    letter-spacing: 0.03em; /* Se genera un pequeño espaciado entre cada letra de la palabra. */
+    font-size: 1.1em; /* Se define el tamaño para el texto dentro del 'badge' o insignia. */
+    border-radius: 0; /* Se declara que el 'badge' no contenga bordes redondos en sus extremos. */
+    background-color: rgba(255, 255, 255, 0.747); /* Se agrega un color de fondo para el 'badge'. */
+    margin-left: 1em; /* Se controla el posicionamiento horizontal del elemento con un margen izquierdo. */
 }
+/* Estilos agregados al botón que sirve para enviar datos de un formulario desde los archivos 'ACTION_restaurar_pass.php', 'form_cambio.php', 'index.php', 'sign_up.php', 'system_admin.php', 'system.php': */
 #enter_button{
-    font-size: 1.1em;
-    background-color: rgba(0, 0, 0, 0.603);
-    color: #fff;
-    border-radius: 0;
-    transition: 0.5s;
-    width: 11em;
-    margin-left: 7em;
-    
+    font-size: 1.1em; /* Se define el tamaño del texto dentro del botón. */
+    background-color: rgba(0, 0, 0, 0.603); /* Se asigna un color de fondo con transparencia para el botón. */
+    color: #fff; /* Se asigna el color para el texto dentro del botón. */
+    border-radius: 0; /* Se declara que el botón no contenga ningún borde redondo. */
+    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos. */
+    width: 11em; /* Se define el ancho del botón. */
+    margin-left: 7em; /* Se controla el posicionamiento horizontal del botón con un margen izquierdo. */
 }
+/* Cambios al botón de enviar datos desde un formulario al hacer un 'hover' o pasar el cursor sobre el mismo: */
 #enter_button:hover{
-    background-color: rgba(0, 0, 0, 0.76);
-    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.76); /* Se asigna un color de fondo que cambia ligeramente a uno más oscuro que el original. */
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris difuminada. */
 }
+/* Estilos añadidos a etiquetas '<p>' que contienen dentro una etiqueta '<a>' y seguidamente el elemento en cuestión: */
 p a{
-    color: rgb(255, 255, 255);
-    transition: 0.2s;
+    color: rgb(255, 255, 255); /* Se asigna un color blanco para el texto. */
+    transition: 0.2s; /* Se crea una transición rápida para los elementos. */
 }
+/* Estilos añadidos a los elementos contenidos en etiquetas '<a>' y '<p>' cuando se realiza un 'hover' sobre el mismo con el cursor: */
 p a:hover{
-    color: #fff;
-    border-bottom: 1px solid rgba(225,115,35);
-    text-decoration: none;
+    color: #fff; /* Se mantiene el color blanco del texto. */
+    border-bottom: 1px solid rgba(225,115,35); /* Se crea un borde inferior, sólido y delgado de color naranja claro. */
+    text-decoration: none; /* Se quita todo tipo de decoración adicional que pudiera tener por defecto el texto del elemento. */
 }
-.description{
-    display: none;
-}
+/* Estilo para los elementos dentro de la etiqueta '<a>' y la etiqueta '<span>': */
 span a{
-    color: #fff;
+    color: #fff; /* Se asigna un color blanco para el texto de los elementos. */
 }
+/* Estilos para los elementos dentro de las etiquetas '<a>' y '<span>' al hacer un 'hover' sobre los mismos: */
 span a:hover{
-    color: #fff;
-    border-bottom: 2px solid rgb(35, 130, 118);;
-    text-decoration: none;
+    color: #fff; /* Se mantiene el color blanco en el texto. */
+    border-bottom: 2px solid rgb(35, 130, 118); /* Se crea un borde inferior, solido y ligeramente delgado de color verde oscuro. */
+    text-decoration: none; /* Se le quita a los elementos cualquier decoración de texto adicional que pudiera tener. */
 }
+/* Estilo para el botón con el identificador 'about_button'. Este botón corresponde a aquel ubicado en la zona inferior izquierda del archivo 'index.php', el cual es para saber más acerca del software: */
 #about_button{
-    color: #fff;
-    border-radius: 0;
-    background-color: #fa7e36;
-    border: 2px solid #fff;
-    transition: 0.5s;
+    color: #fff; /* Se asigna el color para el texto. */
+    border-radius: 0; /* Se retiran los bordes redondos que el elemento posee. */
+    background-color: #fa7e36; /* Se añade un color de fondo al botón. */
+    border: 2px solid #fff; /* Se añade un borde solido de color claro y con un tamaño delgado. */
+    transition: 0.5s; /* Se crea una transición con una duración de 0.5 milisegundos al dejar de hacer 'hover'. */
 }
+/* Estilos añadidos a el botón de 'acerca de este software' al hacer 'hover' sobre el mismo con el cursor: */
 #about_button:hover{
-    background-color: #db6f31;
-    transition: 0.5s;
+    background-color: #db6f31; /* Se cambia el color de fondo del botón a uno más opaco. */
+    transition: 0.5s; /* Se genera una transición de 0.5 milisegundos al comenzarse a generar los cambios en el botón. */
 }
-
-/* ----------------------------------------------SIGN UP------------------------------------------------------------*/
+/* Estilos añadidos al archivo 'sign_up.php en su totalidad: */
 #bgcolor{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255); /* Se añade un color de fondo blanco para todo el espacio de la pestaña- */
 }
-#registro, #inicio{
-    font-weight: bold;
-    font-size: 2em;
-}
-#sign_up{
-    margin-left: auto;
-    margin-right: auto; 
-    background-image: url("icons/finger_add.png"); 
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+/* Estilo añadido al formulario de registrar un usuario: */
 #contenido_sign{
-    background-color: #11b6a0;
+    background-color: #11b6a0; /* Se asigna un color de fondo a todo el formulario.*/
 }
-/* ----------------------------------------------MAIN SYSTEM------------------------------------------------------------*/
+/* Estilos añadido al texto que contiene el nombre completo del sistema en los archivos 'index.php', 'list_register.php', 'list_result.php', 'manage_list.php', 'register.php', 'reports.php', 'system_admin.php' y 'system.php': */
 #title{
-    font-size: 2em;
-    font-family: sans-serif;
-    font-weight: 900;
+    font-size: 2em; /* Se define el tamaño del texto. */
+    font-family: sans-serif; /* Se define la familia de fuentes, en este caso, se usa 'sans-serif' para una mejor lectura del texto. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita usando un valor numérico de 900. */
 }
-
-.cerrar_sesion{
-    padding:5px;
-   
-}
-#dropdownMenuButton1{
-    color: #000;
-    background-color: #fff;
-    font-weight: bold;
-    border-radius: 0;
-    transition: 0.5s;
-}
-#conf_button{
-    border-radius: 0;
-    font-size: 1.5em;
-    font-family: sans-serif;
-}
-#conf_button a{
-    transition: 0.2s;
-    border-bottom: 1px solid rgb(82, 79, 79);
-}
-#conf_button a:hover{
-    background-color: rgb(235, 158, 16);
-    color: #fff;
-}
+/* Estilos para el mensaje de bienvenida mostrado al usuario al iniciar sesión para el archivo 'system.php' o 'system_admin.php': */
 .welcome{
-    position: relative;
-    color: rgb(56, 52, 52);
-    font-size: 1.6em;
-    font-family: sans-serif;
-    font-weight: 700;
-    margin-left: 4em;
-
+    position: relative; /* Se asigna una posición relativa para un control de posicionamiento más exacto del texto. */
+    color: rgb(56, 52, 52); /* Se asigna un color oscuro al texto. */
+    font-size: 1.6em; /* Se define el tamaño de la fuente. */
+    font-family: sans-serif; /* Se define el tipo de fuente para el texto. */
+    font-weight: 700; /* Con un valor numérico de 700, el grosor de la fuente es en negrita. */
+    margin-left: 4em; /* Se controla el posicionamiento horizontal del texto, iniciando desde donde fue agregado en los archivos en cuestión. */
 }
+/* Estilos para la imagen que contiene el formulario de búsqueda de fichas halladas en el sistema: */
 .banner{
-    position: absolute;
-    margin-top: -2em;
-    z-index: -1;
-   
-    
+    position: absolute; /* Se define una posición absoluta para la imagen con la intención de controlar su posicionamiento desde el inicio de su contenedor. */
+    margin-top: -2em; /* Se maneja el posicionameinto vertical de la imagen con una margen superior. */
+    z-index: -1; /* Se asigna que el elemento sea superpuesto por otros elementos que sean agregados sobre él. */
 }
+/* Control del posicionamiento vertical del contenedor del formulario de buscar una ficha en el sistema: */
 #input_div{
     margin-top: 6.5em;
 }
+/* Estilos para el campo del formulario de buscar una ficha en el sistema: */
 #input{
-    border-radius: 0.2em;
-    width: 17em;
-    height: 2em;
-    font-size: 1.5em;
+    border-radius: 0.2em; /* Se le asignan pequeños bordes redondos al campo. */
+    width: 17em; /* Se define el ancho que ocupará el campo. */
+    height: 2em; /* Se define la altura del campo. */
+    font-size: 1.5em; /* Se asigna un tamaño personalizada al texto mostrado e ingresado en el campo.*/
 }
+/* Estilos para el botón de buscar en el formulario de buscar una ficha en el sistema ('system_admin.php' y 'system.php'): */
 #input_b{
-    border-radius: 0.3;
-    background-color: orange;
-    height: 3em;
+    border-radius: 0.3; /* Se le agregan bordes redondos al botón. */
+    background-color: orange; /* Se le asigna un color naranja de fondo. */
+    height: 3em; /* Se determina que altura tendrá el botón. */
 }
+/* Al hacer 'hover' sobre el botón anteriormente descrito sucede el siguiente cambio: */
 #input_b:hover{
-    background-color: #11b6a0;
+    background-color: #11b6a0; /* Se cambia el color de fondo del botón a un verde esmeralda. */
 }
+/* Contenedor para las 3 funciones principales del sistema: */
 #funciones{
-    margin-top: 8em;
+    margin-top: 8em; /* Se agrega un margen superior para controlar el posicionamiento vertical en la pantalla. */
 }
+/* Estilo para los enlaces que cada función principal contiene con una etiqueta '<a>': */
 #funciones a{
-    color:rgba(12, 11, 11, 0.719);
-    font-weight: 900;
+    color:rgba(12, 11, 11, 0.719); /* Se asigna un color al texto de los enlaces. */
+    font-weight: 900; /* Se le otorga un grosor a la letra que, en este caso, corresponde a negrita con el valor numérico 900. */
 }
+/* Al hacer 'hover' sobre los enlaces se realiza el siguiente cambio: */
 #funciones a:hover{
-    text-decoration: none;
+    text-decoration: none; /* Se quita cualquier decoración que el texto pueda tener, como, por ejemplo, el subrayado. */
 }
+/* Estilo para el título de 'búsqueda de aprendiz' en los archivos 'system.php' y 'system_admin.php': */
 .title_search{
     font-size: 2.5em;
 }
-#label{
-    color:black;
-}
-#principal{
-    width: 100em;
-    height: 12em;
-    position: relative;
-    margin: 1.25em auto;
-}
+/* Cambio producido a los iconos y a los elementos que representan a las funciones principales del sistema. El cambio sucede cuando se realiza un 'hover' sobre alguno de los iconos: */
 #f3:hover,#f2:hover, #f1:hover {
-    display: inline-block;
-    filter: opacity(0.9);
-    color: rgb(127, 148, 124);
-    margin-top: -0.2em;
+    display: inline-block; /* Cada elemento puede ser ubicado al lado de otro y tanto las margenes como el tamaño y la altura pueden ser modificados sin problema alguno con 'inline-block'. */
+    filter: opacity(0.9); /* Se da un ligero cambio a la opacidad del icono. */
+    color: rgb(127, 148, 124); /* Se asigna un color al texto más claro que el original. */ 
+    margin-top: -0.2em; /* Se controla el posicionamiento vertical de los elementos en conjunto. */
 }
-.form-control{
-    border-radius: 50%;
-}
+/* Control del posicionamiento vertical del contenedor del formulario de búsqueda de un aprendiz: */
 #busqueda{
     margin-top: 2em;
 }
+/* Espaciado interno para los elementos dentro del formulario de búsqueda de aprendiz:  */
 #asearch{
     padding: 2em 0 2em 0;
 }
+/* Estilos para los campos del formulario de búsqueda de un aprendiz en los archivos 'system.php' y 'system_admin.php': */
 #sinput{
-    border-radius: 0.5em;
-    width: 29em;
-    height: 1.5em;
-    font-size: 1.6em;
+    border-radius: 0.5em; /* Se les agregan bordes redondos a cada extremo de cada campo. */
+    width: 29em; /* Se define el ancho de los campos. */
+    height: 1.5em; /* Se define la altura de los campos. */
+    font-size: 1.6em; /* Se asigna un tamaño personalizado al texto mostrado e eeingresado dentro de los campos. */
 }
+/* Estilo para el botón del formulario de buscar un aprendiz en los archivos 'system.php' y 'system_admin.php': */
 #sinput_b{
-    border-radius: 0.3;
-    background-color: orange;
-    color: white;
-    height: 4.2em;
+    border-radius: 0.3; /* Se le asignan bordes redondos a cada extremo del contenedor. */
+    background-color: orange; /* Se otorga un color naranja claro de fondo para el contenedor. */
+    color: white; /* Se le asigna un color blanco al texto. */
+    height: 4.2em; /* Se declara la altura del contenedor. */
 }
+/* Al hacer 'hover' sobre el botón anteriormente dicho, se genera el siguiente cambio: */
 #sinput_b:hover{
-    background-color: #84cf596e;
+    background-color: #84cf596e; /* El color del fondo cambia a un verde oscuro. */
 }
+/* Estilos para el footer hallado en los archivos 'system.php' y 'system_admin.php': */
 #prefooter{
-    margin-top: -0.8em;
-    background-color: #fa7e36;
+    margin-top: -0.8em; /* Se controla el posicionamiento vertical del contenedor del footer con un margen superior. */
+    background-color: #fa7e36; /* Se asigna un color de fondo al footer. */
 }
+/* Estilos para el enlace al manual de usuario y al texto de derechos reservados en el footer de los archivos 'system.php' y 'system_admin.php': */
 .pitem , #pitem1 {
-    margin-top: 2em;
-    color: black;
-    font-size: 1.2em;
+    margin-top: 2em; /* Se les agrega un margen superior para controlar su posicionamiento vertical. */
+    color: black; /* Se les asigna el color del texto. */
+    font-size: 1.2em; /* Se asigna un tamaño un poco mayor al normal al texto. */
 }
+/* Estilo para la imagen que corresponde al logo del SENA, la cual puede ser visible en el footer de los archivos 'system.php' y 'system_admin.php': */
 #fimg{
-    margin-top: 0.2em;
-}
-/* ----------------------------------------------CHANGE PASSWORD------------------------------------------------------------*/
-.pass_change{
-    font-weight: bold;
+    margin-top: 0.2em; /* Se controla el posicionamiento vertical de la imagen  con un pequeño margen izquierdo. */
 }
 
-/* ----------------------------------------------HISTORY------------------------------------------------------------*/
+/* Estilo agregado a las ventanas modales que contienen la tabla de ingresos al sistema y la tabla de backups hechos por el usuario: */
 #modal_history .modal-body, #modal_backup .modal-body{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255); /* Se asigna un color de fondo para las tablas en cuestión. */
 }
+/* Botón para comenzar una acción o crear un archivo en los archivos de 'list_register.php', 'register.php', 'system_admin.php' y/o 'system.php': */
 #txt_button{
-    background-color: rgb(204, 102, 29);
-    border: 1px solid rgb(225, 115, 35);
-    border-radius: 0;
-    transition: 0.5s;
+    background-color: rgb(204, 102, 29); /* Se asigna un color naranja claro al botón. */
+    border: 1px solid rgb(225, 115, 35); /* Se crea un borde para el botón con un color un poco más oscuro que el de fondo. */
+    border-radius: 0; /* Se declara que el botón no posea bordes redondos. */
+    transition: 0.5s; /* Se inserta una transición ligera al hacer un 'hover' sobre el botón. */
 }
+/* Cambio que sucederá al hacer un 'hover' sobre el botón anterior descrito: */
 #txt_button:hover{
-    background-color: rgb(225, 115, 35);
+    background-color: rgb(225, 115, 35); /* El color del botón cambiará ligeramente a uno más claro que el original. */
 }
+/* Estilo otorgaado al título principal de los formularios de registro de un usuario, inicio de sesión y cambio de contraseña: */
 #font{
-    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253);
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto, una sombra oscura que contiene un suave difuminado. */
 }
-/* ----------------------------------------------REPORTS------------------------------------------------------------*/
+/* Para los 3 siguientes selectores de elementos, se toman los indicadores hallados abajo del visualizador de reportes. Todos ellos poseen colores diferentes, estos últimos siendo hechos con un borde derecho de '1em': */
 .point span{
     border-right: 1em solid rgb(89, 181, 72);
 }
@@ -404,78 +340,39 @@ span a:hover{
 .point3 span{
     border-right: 1em solid rgb(35, 130, 118);
 }
+/* Estilos dados a los contenedores que tienen dentro a varias cajas de selección correspondientes a los reportes en el archivo 'reports.php': */
 #selectr{
-    background-color: rgba(0, 0, 0, 0.048);
-    border: 1px solid rgba(2, 2, 2, 0.267);
+    background-color: rgba(0, 0, 0, 0.048); /* Se asigna un color oscuro al que se le aplica una transparencia casi máxima. */
+    border: 1px solid rgba(2, 2, 2, 0.267); /* Se le crea un borde a los contenedores medianamente oscuro. */
 }
+/* Estilos agregados al contenedor del visualizador de reportes en el archivo 'reports.php': */
 #report{
-    background-color: rgba(228, 228, 228, 0.233);
-    height: 35em;
-    border-radius: 0.2em;
-    box-shadow: 1px 1px 5px #000, -1px -1px 5px #000;
+    background-color: rgba(228, 228, 228, 0.233); /* Se asigna un color de fondo para el contenedor. */
+    height: 35em; /* Se le da una longitud mediana como tamaño al contenedor con '35em': */
+    border-radius: 0.2em; /* Se añaden ligeros bordes redondos al contenedor. */
+    box-shadow: 1px 1px 5px #000, -1px -1px 5px #000; /* Se crean dos suaves sombras para el contenedor, las cuales abarcan cada lado de este. */ 
 }
-/* ----------------------------------------------LIST RESULT------------------------------------------------------------*/
+/* Estilos para los iconos ubicados en el archivo 'list_result.php' al pasar el cursor por encima de ellos ('hover'): */
 .view img:hover, .down img:hover{
-    background-color: rgb(89, 181, 72);
-    border-radius: 30%;
-    transition: 0.2s;
+    background-color: rgb(89, 181, 72); /* Se asigna un color de fondo verde claro para estos. */
+    border-radius: 30%; /* Se declara que el color de fondo tenga un borde redondo pronunciado en sus extremos. */
+    transition: 0.2s; /* Se asigna una transición ligera al pasar el cursor por encima de los iconos. */
 }
-/* ----------------------------------------------REG CONFIG------------------------------------------------------------*/
-#save{
-    width: 100%;
-    font-weight: bold;
-    color: #fff;
-    border-radius: 0;
-    background-color:rgba(35, 130, 117, 0.589);
-}
-#save:hover{
-    background-color:rgba(35, 130, 117, 0.733);
-}
-/* ----------------------------------------------BACKUP------------------------------------------------------------*/
+/* Estilo añadido cuando se hace un 'hover' sobre el icono en la ventana modal de agregar/eliminar una ficha ('system_admin.php') y/o ver copias de seguridad ('system.php'): */
 #delete:hover{
-    background-color: rgb(255, 0, 0);
-    border-radius: 40%;
-    transition: 0.2s;
+    background-color: rgb(255, 0, 0); /* Se asigna que aparezca un color de fondo para el icono, en este caso, el rojo indica una acción que debe hacerse con cautela. */
+    border-radius: 40%; /* Se añaden bordes redondos al color de fondo que aparece sobre el icono. */
+    transition: 0.2s; /* Se añade una transición de 0.2 milisegundos para hacer más ligera la aparición del color de fondo. */
 }
-#button_log{
-    width: 9em;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.315);
-    border-radius: 0; 
-    transition: all .5 ease;
-    font-size:1.2em;
-    
-  
-
-}
-#button_log:hover{
-    color: #fff;
-    background: #fa7e36df;
-    transition: 0.4s;
-}
-#button_log a{
-    color: rgb(56, 52, 52);
-}
-#button_log a:hover{
-    color: #fff;
-    text-decoration: none; 
-}
+/* Identificador de aquellos botones asignados para mostrar las opciones secundarias del sistema, hallados en la barra de navegación de los archivos 'system_admin.php' y 'system.php': */
 #button_nav{
-    font-size: 1.2em;
-    color: rgb(56, 52, 52);
-    border-radius: 0;
-    margin-left: 3em;
-
+    font-size: 1.2em; /* Se define el tamaño del texto dentro de los botones. */
+    color: rgb(56, 52, 52); /* Se define un color para el texto. */
+    border-radius: 0; /* Se declara que no hayan bordes redondos en ningún extremo de los botones. */
+    margin-left: 3em; /* Se controla el posicionamiento horizontal agregando un margen izquierdo para todos los botones. */
 }
+/* Estilos para los botones de las opciones secundarias al hacer un 'hover' o pasar el cursor sobre los mismos: */
 #button_nav:hover{
-    color: #fff;
-    background-color: #fa7e36df;
+    color: #fff; /* Se cambia el color del texto a un color claro como el blanco. */
+    background-color: #fa7e36df; /* Se añade un color de fondo diferente al original. */
 }
-/*
-rgb(89, 181, 72);
-rgb(35, 130, 118);
-rgb(225, 115, 35); */
-    
-   
-    
-  
