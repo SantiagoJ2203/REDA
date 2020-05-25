@@ -1,0 +1,69 @@
+body{
+    font-family: sans-serif; /* Se usa la fuente sans-serif para una mejor lectura del texto. */
+}
+li{
+    list-style: none;
+}
+thead{
+    color: #fff; 
+    background-color: rgba(35, 130, 117);
+}
+tbody{
+    background-color: rgba(128, 128, 128, 0.103);
+}
+a:hover{
+    text-decoration: none;
+}
+#header{
+    background-color: #11b6a0; 
+    border-radius: 0%;
+}
+#title{
+    font-size: 2em; /* Se define el tamaño del texto. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita usando un valor numérico de 900. */
+}
+#txt_button{
+    background-color: rgb(204, 102, 29); /* Se asigna un color naranja claro al botón. */
+    border: 3px solid rgb(238, 210, 191); /* Se crea un borde para el botón con un color un poco más oscuro que el de fondo. */
+    border-radius: 0; /* Se declara que el botón no posea bordes redondos. */
+    transition: 0.5s; /* Se inserta una transición ligera al hacer un 'hover' sobre el botón. */
+    margin-top: 1em;
+}
+/* Cambio que sucederá al hacer un 'hover' sobre el botón anterior descrito: */
+#txt_button:hover{
+    background-color: rgb(225, 115, 35); /* El color del botón cambiará ligeramente a uno más claro que el original. */
+}
+#go_back{
+    color: #000;
+    float: right;
+    margin-right: 2em;
+    transition: 0.2s;
+}
+#go_back:hover{
+    border-bottom: 2px solid #e17323;
+}
+.course_number{
+    color: rgb(225, 115, 35); 
+    background-color: rgb(255, 255, 255);
+}
+.view{
+    color: #000;
+    transition: 0.2s;
+}
+.view:hover{
+    font-size: 1.1em;
+    transition: 0.2s;
+    color: #59b548;
+}
+@media (max-width: 990px) {
+    #title {
+      text-align: center;
+    }
+  }
+@media (max-width: 990px) {
+    .reda_image img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }

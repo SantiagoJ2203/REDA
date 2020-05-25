@@ -1,0 +1,56 @@
+body{
+    font-family: sans-serif; /* Se usa la fuente sans-serif para una mejor lectura del texto. */
+}
+a:hover{
+    text-decoration: none;
+}
+#font{
+    font-size: 2.5em;
+}
+#passwords{
+    margin-top: -1.9em; 
+    margin-right: 0.5em; 
+    float: right;
+}
+#information{
+    float: right; 
+    margin-right: 2.2em; 
+    margin-top: -1.9em;
+}
+#contenido_sesion{
+    border: 4px solid rgb(255, 255, 255); /* Se aplica un borde sólido, de color blanco y con un tamaño de 4 pixles alrededor del elemento. */
+}
+#font, .change_icon{
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto, una sombra oscura que contiene un suave difuminado. */
+}
+#enter_button{
+    font-size: 1.1em; /* Se define el tamaño del texto dentro del botón. */
+    background-color: rgba(0, 0, 0, 0.603); /* Se asigna un color de fondo con transparencia para el botón. */
+    color: #fff; /* Se asigna el color para el texto dentro del botón. */
+    border-radius: 0; /* Se declara que el botón no contenga ningún borde redondo. */
+    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos. */
+    width: 11em; /* Se define el ancho del botón. */
+}
+/* Cambios al botón de enviar datos desde un formulario al hacer un 'hover' o pasar el cursor sobre el mismo: */
+#enter_button:hover{
+    background-color: rgba(0, 0, 0, 0.76); /* Se asigna un color de fondo que cambia ligeramente a uno más oscuro que el original. */
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris difuminada. */
+}
+/* Estilo aplicado al cuerpo de las ventanas modales ubicadas en los siguientes archivos del sistema: ACTION_restaurar_pass.php, form_cambio.php, index.php, sign_up.php, system_admin.php y system.php: */
+.modal-body{
+    background-color:rgba(35, 130, 117, 0.589); /* Se define un color verde oscuro como el fondo de la ventana modal. */
+    text-align: center; /* Se alinea el texto incluido en la ventana modal al centro de las misma. */
+    border-radius: 2px; /* Se aplica un borde redondo a cada extremo de la ventana modal. */
+}
+.form-group input{
+    border: none; /* Se define que los elementos no posean ningún borde. */
+    border-radius: 0; /* Se define que no hayan bordes redondeados para los elementos. */
+    font-weight: bold; /* Se define que el texto de los elementos esté en negrita. */
+}
+.form-group input:focus{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.513); /* Se aplica una sombra de color verde oscuro al lado derecho e inferior del elemento (campo del formulario). */
+}
+.tooltip-inner{
+    text-align: center !important; /* El texto dentro de los tooltips es alineado centralmente. Se usa la declaración '!important' para definir que tal valor siempre va a ser aplicado en primer lugar, sin importar el orden del mismo. */ 
+    border: 2px solid #fff; /* Se define un borde sólido de color blanco para los tooltips. */
+}

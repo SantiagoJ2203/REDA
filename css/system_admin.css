@@ -1,0 +1,321 @@
+body{
+    font-family: sans-serif; /* Se usa la fuente sans-serif para una mejor lectura del texto. */
+    overflow-x: hidden;
+}
+a:hover{
+    text-decoration: none;
+}
+thead{
+    color: #fff; 
+    background-color: rgba(35, 130, 117);
+}
+tbody{
+    background-color: rgba(128, 128, 128, 0.103);
+}
+#header{
+    background-color: #11b6a0; 
+    border-radius: 0%;
+}
+#title{
+    font-size: 2em; /* Se define el tamaño del texto. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita usando un valor numérico de 900. */
+}
+#button_nav{
+    width: 100%;
+    font-size: 1.2em; /* Se define el tamaño del texto dentro de los botones. */
+    color: rgb(56, 52, 52); /* Se define un color para el texto. */
+    border-radius: 0; /* Se declara que no hayan bordes redondos en ningún extremo de los botones. */
+}
+/* Estilos para los botones de las opciones secundarias al hacer un 'hover' o pasar el cursor sobre los mismos: */
+#button_nav:hover{
+    color: #fff; /* Se cambia el color del texto a un color claro como el blanco. */
+    background-color: #fa7e36df; /* Se añade un color de fondo diferente al original. */
+}
+/* Botón para comenzar una acción o crear un archivo en los archivos de 'list_register.php', 'register.php', 'system_admin.php' y/o 'system.php': */
+#txt_button{
+    background-color: rgb(204, 102, 29); /* Se asigna un color naranja claro al botón. */
+    border: 1px solid rgb(225, 115, 35); /* Se crea un borde para el botón con un color un poco más oscuro que el de fondo. */
+    border-radius: 0; /* Se declara que el botón no posea bordes redondos. */
+    transition: 0.5s; /* Se inserta una transición ligera al hacer un 'hover' sobre el botón. */
+}
+/* Cambio que sucederá al hacer un 'hover' sobre el botón anterior descrito: */
+#txt_button:hover{
+    background-color: rgb(225, 115, 35); /* El color del botón cambiará ligeramente a uno más claro que el original. */
+}
+#font{
+    font-size: 2.5em;
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto, una sombra oscura que contiene un suave difuminado. */
+}
+#enter_button{
+    font-size: 1.1em; /* Se define el tamaño del texto dentro del botón. */
+    background-color: rgba(0, 0, 0, 0.603); /* Se asigna un color de fondo con transparencia para el botón. */
+    color: #fff; /* Se asigna el color para el texto dentro del botón. */
+    border-radius: 0; /* Se declara que el botón no contenga ningún borde redondo. */
+    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos. */
+    width: 11em; /* Se define el ancho del botón. */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Cambios al botón de enviar datos desde un formulario al hacer un 'hover' o pasar el cursor sobre el mismo: */
+#enter_button:hover{
+    background-color: rgba(0, 0, 0, 0.76); /* Se asigna un color de fondo que cambia ligeramente a uno más oscuro que el original. */
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris difuminada. */
+}
+#search_button{
+    height: 3.5em;
+    border-radius: 0;
+}
+#manual_button{
+    border-radius: 0; /* Se retiran los bordes redondos que el elemento posee. */
+    background-color: #11b6a0; ; /* Se añade un color de fondo al botón. */
+    border: 2px solid #fff; /* Se añade un borde solido de color claro y con un tamaño delgado. */
+    transition: 0.5s; /* Se crea una transición con una duración de 0.5 milisegundos al dejar de hacer 'hover'. */
+}
+#manual_button a{
+    color: #fff; /* Se asigna el color para el texto. */
+}
+#manual_button:hover{
+    background-color: #109e8b; /* Se cambia el color de fondo del botón a uno más opaco. */
+    transition: 0.5s; /* Se genera una transición de 0.5 milisegundos al comenzarse a generar los cambios en el botón. */
+}
+.welcome{
+    position: relative; /* Se asigna una posición relativa para un control de posicionamiento más exacto del texto. */
+    color: rgb(56, 52, 52); /* Se asigna un color oscuro al texto. */
+    font-size: 1.6em; /* Se define el tamaño de la fuente. */
+    font-weight: 700; /* Con un valor numérico de 700, el grosor de la fuente es en negrita. */
+    margin-left: 4em; /* Se controla el posicionamiento horizontal del texto, iniciando desde donde fue agregado en los archivos en cuestión. */
+}
+.container_options{
+    background-color: rgba(255, 255, 255, 0.315);
+}
+.modal-content{
+    border-radius: 0;
+}
+.modal-body{
+    background-color: rgba(35, 130, 117, 0.589); /* Se define un color verde oscuro como el fondo de la ventana modal. */
+    text-align: center; /* Se alinea el texto incluido en la ventana modal al centro de las misma. */
+    border: 3px solid #fff;
+}
+#modal_add_delete .modal-body, #modal_backup .modal-body{
+    background-color: rgb(255, 255, 255); /* Se asigna un color de fondo para las tablas en cuestión. */
+}
+.change_icon{
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto, una sombra oscura que contiene un suave difuminado. */
+}
+.info_icon{
+    float: right; 
+    margin-right: 1.4em; 
+    margin-top: -2.8em;
+}
+.show_icon{
+    margin-top: -1.8em; 
+    margin-right: 1.3em; 
+    float: right;
+}
+.delete_icon{
+    font-size: 1.8em;
+    color: #000;
+}
+.delete_icon:hover{
+    color: #f50000df;
+}
+.select_frequency{
+    border: none; 
+    background-color: rgba(211, 211, 211, 0.226);
+}
+.form-group input{
+    border: none; /* Se define que los elementos no posean ningún borde. */
+    border-radius: 0; /* Se define que no hayan bordes redondeados para los elementos. */
+    font-weight: bold; /* Se define que el texto de los elementos esté en negrita. */
+}
+.form-group input:focus{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.513); /* Se aplica una sombra de color verde oscuro al lado derecho e inferior del elemento (campo del formulario). */
+}
+/* Estilos para el diseño interior de los tooltip generados por el framework de diseño Bootstrap: */
+.tooltip-inner{
+    text-align: center !important; /* El texto dentro de los tooltips es alineado centralmente. Se usa la declaración '!important' para definir que tal valor siempre va a ser aplicado en primer lugar, sin importar el orden del mismo. */ 
+    border: 2px solid #fff; /* Se define un borde sólido de color blanco para los tooltips. */
+}
+.navbar-toggler{
+    background-color: rgb(32, 172, 153);
+    border: 2px solid rgb(89, 181, 72);
+    border-radius: 0;
+    transition: 0.2s;
+}
+.navbar-toggler:hover{
+    border: 2px solid #fff;
+    border-radius: 3px;
+}
+.banner{
+    height: 20em;
+    background-image: url("../icons/slide1.png");
+    background-size: 100% 20em;
+    background-repeat: no-repeat;
+}
+.search_course label{
+    margin-left: 7.95em;
+    margin-top: 3.5em;
+}
+.search_badge{
+    height: 2em;
+    background-color: #11b6a0;
+    color: #fff;
+    font-size: 1.5em;
+    border-radius: 0;
+    line-height: 1.4em;
+}
+.input-group{
+    width: 50em;
+    margin-top: -0.5em;
+}
+.input_search{
+    height: 4em;
+    font-weight: bold;
+    border-radius: 0;
+    border: 1px solid rgba(0, 0, 0, 0.253);
+    margin-left: 12em;
+}
+.search_icon{
+    background-color: #fa7e36;
+    font-size: 1.07em;
+    border: 2px solid #fa7e36df;
+    border-radius: 0;
+    color: #fff;
+    transition: 0.2s;
+}
+.btn_search{
+    background-color: #fa7e36;
+    border-radius: 0;
+    transition: 0.2s;
+}
+.btn_search:hover{
+    background-color: #11b6a0;
+}
+.btn_search:hover > .search_icon{
+    background-color: #11b6a0;
+    border: 2px solid #11b6a0;
+}
+.img_functions{
+    width: 15em;
+    height: 13.5em;
+}
+.functions{
+    margin-top: 1.5em;
+    border: none;
+    transition: 0.2s;
+}
+.functions:hover{
+    filter: opacity(0.9);
+    border-radius: 0;
+    box-shadow: 2px 2px 5px #000000;
+}
+.txt_functions{
+    font-size: 1em;
+}
+.txt_functions a{
+    color: #000;
+}
+.container_search_appr{
+    background-color: rgba(219, 219, 219, 0.219);
+}
+.form_search_appr{
+    margin-top: 2em;
+}
+.form_search_appr input{
+    border: 2px solid rgba(0, 0, 0, 0.061);
+}
+.id_card_icon{
+    font-size: 15em;
+}
+.title_search_appr{
+    font-weight: bold;
+    font-size: 2.5em;
+}
+.input_search_appr{
+    background-color: #fa7e36;
+    font-size: 1em;
+    border: 2px solid #fa7e36df;
+    border-radius: 0;
+    color: #fff;
+    transition: 0.2s;
+}
+.input_search_appr:hover{
+    color: #fff;
+    background-color: #11b6a0;
+    border: 2px solid #11b6a0; 
+}
+.system_footer{
+    background-color: #11b6a0; 
+}
+.manual_button{
+    line-height: 3em;
+}
+.site_rights{
+    text-align: center; 
+    line-height: 3em; 
+    color: #fff;
+}
+.sena_logo{
+    filter: invert(100%);
+}
+@media (max-width: 1250px) {
+    .search_course label{
+      margin-left: 0em;
+    }
+  }
+@media (max-width: 1250px) {
+    .input-group {
+      width: 40em;
+      margin-left: -11.95em;
+    }
+  }
+@media (max-width: 575px) {
+    .button_search_div {
+      margin-top: -0.5em;
+    }
+  }
+@media (max-width: 1000px) {
+    #title {
+      text-align: center;
+    }
+  }
+@media (max-width: 1000px) {
+    .reda_image img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+@media (max-width: 1000px) {
+    .welcome {
+      text-align: center;
+      margin-left: 0em;
+    }
+  }
+@media (max-width: 1200px) {
+    .container_search_appr {
+      height: 34em;
+    }
+  }
+@media (max-width: 1079px) {
+    .container_search_appr {
+      height: 38em;
+    }
+  }
+@media (max-width: 580px) {
+    .container_search_appr {
+      height: 41em;
+    }
+  }
+@media (max-width: 1200px) {
+    .form_search_appr {
+      margin-top: 15em;
+    }
+  }
+  @media (max-width: 1200px) {
+    .id_card_icon i{
+      position: absolute;
+      text-align: center;
+      display: inline-block;
+    }
+  }

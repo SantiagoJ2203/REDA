@@ -1,0 +1,71 @@
+body{
+    font-family: sans-serif; /* Se usa la fuente sans-serif para una mejor lectura del texto. */
+}
+li{
+    list-style: none;
+}
+a:hover{
+    text-decoration: none;
+}
+#header{
+    background-color: #11b6a0; 
+    border-radius: 0%;
+}
+#title{
+    font-size: 2em; /* Se define el tamaño del texto. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita usando un valor numérico de 900. */
+}
+/* Botón para comenzar una acción o crear un archivo en los archivos de 'list_register.php', 'register.php', 'system_admin.php' y/o 'system.php': */
+#txt_button{
+    background-color: rgb(204, 102, 29); /* Se asigna un color naranja claro al botón. */
+    border: 3px solid rgb(238, 210, 191); /* Se crea un borde para el botón con un color un poco más oscuro que el de fondo. */
+    border-radius: 0; /* Se declara que el botón no posea bordes redondos. */
+    transition: 0.5s; /* Se inserta una transición ligera al hacer un 'hover' sobre el botón. */
+    margin-top: 1em;
+}
+/* Cambio que sucederá al hacer un 'hover' sobre el botón anterior descrito: */
+#txt_button:hover{
+    background-color: rgb(225, 115, 35); /* El color del botón cambiará ligeramente a uno más claro que el original. */
+}
+#go_back{
+    color: #000;
+    transition: 0.2s;
+}
+#go_back:hover{
+    border-bottom: 2px solid #e17323;
+}
+.first_line{
+    color: rgb(225, 115, 35); 
+    background-color: rgb(255, 255, 255);
+}
+.second_line{
+    color:rgb(35, 130, 118);
+}
+.course, .date, .clock_ini, .clock_fin, .verify{
+    font-size: 8em;
+    background: -webkit-linear-gradient(left, #238276 0%,	#59b548 50%, #e17323 100%); 
+    background: linear-gradient(to right, #238276 20%,	#59b548 50%, #e17323 70%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+   -webkit-text-fill-color:transparent;
+}
+.card{
+    border: 2px solid rgba(0, 0, 0, 0.267); 
+    border-radius: 0;
+}
+.card-body input{
+    border-radius: 0;
+}
+@media (max-width: 990px) {
+    #title {
+      text-align: center;
+    }
+  }
+@media (max-width: 990px) {
+    .reda_image img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }

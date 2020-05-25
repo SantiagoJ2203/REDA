@@ -1,0 +1,58 @@
+body{
+    font-family: sans-serif; /* Se usa la fuente sans-serif para una mejor lectura del texto. */
+}
+li{
+    list-style: none;
+}
+thead{
+    color: #fff; 
+    background-color: rgba(35, 130, 117);
+}
+tbody{
+    background-color: rgba(128, 128, 128, 0.103);
+}
+a:hover{
+    text-decoration: none;
+}
+#header{
+    background-color: #11b6a0; 
+    border-radius: 0%;
+}
+#title{
+    font-size: 2em; /* Se define el tamaño del texto. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita usando un valor numérico de 900. */
+}
+#go_back{
+    color: #000;
+    transition: 0.2s;
+}
+#go_back:hover{
+    border-bottom: 2px solid #e17323;
+}
+.first_line{
+    color: rgb(225, 115, 35); 
+    background-color: rgb(255, 255, 255);
+}
+.second_line{
+    color:rgb(35, 130, 118);
+}
+.download, .check{
+    color: #000;
+    transition: 0.2s;
+}
+.download:hover, .check:hover{
+    transition: 0.2s;
+    color: #59b548;
+}
+@media (max-width: 990px) {
+    #title {
+      text-align: center;
+    }
+  }
+@media (max-width: 990px) {
+    .reda_image img{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
