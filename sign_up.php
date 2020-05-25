@@ -18,10 +18,9 @@ if (isset($_SESSION['administrador'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Registro de usuario - REDA</title>
     <link rel="icon" href="icons/reda2.png">
-    <link rel="stylesheet" type="text/css" href="css/reda_system.css">
-    <link rel="stylesheet" href="css/reda_system.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/ddefb55be1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="css/sign_up.css">
 </head>
 
 <body id="bgcolor">
@@ -33,45 +32,47 @@ if (isset($_SESSION['administrador'])) {
         <div class="modal-dialog modal-lg">
             <div class="modal-content" id="contenido_sign">
                 <div class="modal-body">
-                    <i class="fas fa-user-plus fa-6x"></i>
+                    <span class="user_plus_icon"><i class="fas fa-user-plus fa-6x"></i></span>
                     <p id="font" class="display-4 font-weight-bold">Registro</p>
                     <form name="form_registro" action="ACTION_sign_up.php" method="POST" oninput="return validar_registro()" onsubmit="return registro_enviado() && validar_registro();">
                         <div class="form-group">
                             <input type="text" name="nombre1" class="form-control" id="nombre1" aria-describedby="emailHelp"
-                                placeholder="Primer nombre *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio" style="width: 95%">
+                                placeholder="Primer nombre *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
                             <div id="alerta"></div>
                         </div>
                         <div class="form-group">
                             <input type="text" name="nombre2" class="form-control" id="nombre2" aria-describedby="emailHelp"
-                                placeholder="Segundo nombre" style="width: 95%" >
+                                placeholder="Segundo nombre">
                                 <div id="alerta9"></div>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="apellido1" class="form-control" id="apellido1" placeholder="Primer apellido *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio" style="width: 95%">
+                            <input type="text" name="apellido1" class="form-control" id="apellido1" placeholder="Primer apellido *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
                             <div id="alerta2"></div>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" name="apellido2" class="form-control" id="apellido2" placeholder="Segundo apellido" style="width: 95%">
+                            <input type="text" name="apellido2" class="form-control" id="apellido2" placeholder="Segundo apellido">
                             <div id="alerta8"></div>
                         </div>
                         <div class="form-group">
                             <input type="text" name="documento" class="form-control" id="documento" aria-describedby="emailHelp"
-                                placeholder="Número de documento *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio" style="width: 95%">
+                                placeholder="Número de documento *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
                                 <div id="alerta3"></div>
                         </div>
 
                         <div class="form-group">
                             <input type="email" name="email" class="form-control" id="email"
-                                aria-describedby="emailHelp" placeholder="Correo electrónico *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio" style="width: 95%">
+                                aria-describedby="emailHelp" placeholder="Correo electrónico *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
                                 <!-- Se añade un icono de Font Awesome que permite indicar al usuario, al hacer hover sobre el mismo, que el correo electrónico debe funcionar con el servidor de Gmail: -->
-                                <i class="fa fa-envelope fa-lg" tool-tip-toggle="tooltip-email" data-original-title="Se requiere que el correo electrónico funcione con el servidor de Gmail para así poder realizar la recuperación de la contraseña en caso de ser necesario. Por ejemplo, el correo 'example1@gmail.com' cumple con lo requerido." style="float: right; margin-right: 1.5em; margin-top: -1.2em;"></i>
+                                <span class="mail_icon">
+                                    <i class="fa fa-envelope fa-lg" tool-tip-toggle="tooltip-email" data-original-title="Se requiere que el correo electrónico funcione con el servidor de Gmail para así poder realizar la recuperación de la contraseña en caso de ser necesario. Por ejemplo, el correo 'example1@gmail.com' cumple con lo requerido."></i>
+                                </span>
                                 <div id="alerta4"></div>
                         </div>
 
                         <div class="form-group">
                             <span id="perfil" class="badge font-weight-bold">Cargo *</span>
-                            <select name="cargo" class="form-control" tool-tip-toggle="tooltip-required" data-original-title="Escoja el cargo de acuerdo a la funcionalidad del usuario" style="width: 95%;">
+                            <select name="cargo" class="form-control" tool-tip-toggle="tooltip-required" data-original-title="Escoja el cargo de acuerdo a la funcionalidad del usuario">
                                 <option>Instructor</option>
                                 <option>Personal administrativo</option>
                                 <option>Administrador</option>
@@ -79,8 +80,10 @@ if (isset($_SESSION['administrador'])) {
                         </div>
                         <div class="form-group">
                             <input type="password" name="contraseña" class="form-control" id="contraseña"
-                                aria-describedby="emailHelp" placeholder="Contraseña *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio" style="width: 95%;">
-                            <i class="fa fa-info-circle fa-lg" tool-tip-toggle="tooltip-show" data-original-title="INFORMACIÓN: Se recomienda que para crear una contraseña fuerte siga los siguientes parámetros, es decir, que la contraseña contenga: 8 carácteres, una mayúscula, una minúscula, un número y un caracter raro o especial. Por ejemplo, la contraseña 'Sena_1234' cumple con los parámetros recomendados." style="float: right; margin-right: 3.5em; margin-top: -1.2em;"></i>
+                                aria-describedby="emailHelp" placeholder="Contraseña *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
+                            <span class="info_icon">
+                                <i class="fa fa-info-circle fa-lg" tool-tip-toggle="tooltip-show" data-original-title="INFORMACIÓN: Se recomienda que para crear una contraseña fuerte siga los siguientes parámetros, es decir, que la contraseña contenga: 8 carácteres, una mayúscula, una minúscula, un número y un caracter raro o especial. Por ejemplo, la contraseña 'Sena_1234' cumple con los parámetros recomendados."></i>
+                            </span>
                             <script type="text/javascript">
                                 /* Se crea una función que posee diferentes eventos con código JQuery. Las mismas permiten, usando el atributo 'tool-tip-toggle', que una pequeña caja con texto pueda ser mostrada arriba, abajo, a la izquierda o a la derecha del elemento que posee el valor puesto dentro del atributo ya mencionado. Una vez el código HTMl haya sido cargado correctamente, estas funciones podrán mostrarse haciendo 'hover' sobre el elemento que posee el atributo 'tool-tip-toggle': */
                                 $(document).ready(function(){
@@ -112,33 +115,35 @@ if (isset($_SESSION['administrador'])) {
                                 });
                             </script>
 
-                            <i class="fa fa-eye fa-lg" tool-tip-toggle="tooltip-pass" data-original-title="Mostrar contraseñas" id="show_password" style="margin-top: -1.2em; margin-right: 1.5em; float: right;"></i>
+                            <span class="show_icon">
+                                <i class="fa fa-eye fa-lg show" tool-tip-toggle="tooltip-pass" data-original-title="Mostrar contraseñas" id="show_password"></i>
+                            </span>
                             <div id="alerta5"></div>
                         </div>
 
                         <div class="form-group">
                             <input type="password" class="form-control" id="confirmar_contraseña"
-                                aria-describedby="emailHelp" placeholder="Confirmar contraseña *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio" style="width: 95%">
+                                aria-describedby="emailHelp" placeholder="Confirmar contraseña *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
                             <div id="alerta6"></div>
                             <?php
 // Se verifica si el valor 'new_user' está definido y se obtiene si el valor 'new_user' ubicado en el archivo 'ACTION_sign_up.php' devuelve true: 
 if (isset($_GET["new_user"]) && $_GET["new_user"] == 'true') {
         // En caso de ser así, se insertará código HTML en este archivo para realizar la aparición de una alerta tipo 'success' de bootstrap, la cual aparecerá abajo del campo de confirmar contraseña. Esta alerta indica el registro exitoso de un nuevo usuario en el sistema:
-        echo "<div class= 'alert alert-success alert-dismissible fade show' role='alert' style='border-radius: 0; font-weight: bold;width: 95%; margin-left: 1.1em;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>Registro de usuario exitoso</div>";
+        echo "<div class= 'alert alert-success alert-dismissible fade show last_alerts' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>Registro de usuario exitoso</div>";
     }
     // Se verifica si el valor 'double' está definido y se obtiene si el valor 'double' ubicado en el archivo 'ACTION_sign_up.php' devuelve true:  
     if (isset($_GET["double"]) && $_GET["double"] == 'true') {
         // En caso de ser así, la alerta, en este caso, es de tipo 'danger' e indica que tanto el número de documento y el correo electrónico ya se encuentran registrados en el sistema, y, por lo tanto, no es posible hacer el registro:
-        echo "<div class= 'alert alert-danger alert-dismissible fade show' role='alert' style='border-radius: 0; font-weight: bold;width:95%; margin-left: 1.1em;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>El documento y el correo electrónico ingresados ya se encuentran en la base de datos. Por favor corrija o ingrese un documento y un correo nuevo.</div>";
+        echo "<div class= 'alert alert-danger alert-dismissible fade show last_alerts' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>El documento y el correo electrónico ingresados ya se encuentran en la base de datos. Por favor corrija o ingrese un documento y un correo nuevos.</div>";
     }
     // Se verifica si el valor 'notavailable' está definido y se obtiene si el valor 'notavailable' ubicado en el archivo 'ACTION_sign_up.php' devuelve true: 
     if (isset($_GET["notavailable"]) && $_GET["notavailable"] == 'true') {
         // En caso de ser así, la alerta, en este caso, es de tipo 'danger' e indica que el número de documento ya se encuentra registrado en la base de datos, y, por lo tanto, no es posible hacer el registro:
-        echo "<div class= 'alert alert-danger alert-dismissible fade show' role='alert' style='border-radius: 0; font-weight: bold;width:95%; margin-left: 1.1em;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>El documento ingresado ya se encuentra en la base de datos. Por favor corrija o ingrese uno nuevo</div>";
+        echo "<div class= 'alert alert-danger alert-dismissible fade show last_alerts' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>El documento ingresado ya se encuentra en la base de datos. Por favor corrija o ingrese uno nuevo</div>";
     // Si el anterior condicional devuelve false, entonces se verifica si el valor 'notemail' está definido y se obtiene si el valor 'notemail' ubicado en el archivo 'ACTION_sign_up.php' devuelve true: 
     } elseif (isset($_GET["notemail"]) && $_GET["notemail"] == 'true') {
         // En caso de ser así, la alerta, en este caso, es de tipo 'danger' e indica que el correo electrónico ingresado ya está registrado en la base de datos, y, por lo tanto, no es posible hacer el registro: 
-        echo "<div class= 'alert alert-danger alert-dismissible fade show' role='alert' style='border-radius: 0; font-weight: bold;width:95%; margin-left: 1.1em;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>El correo electrónico ingresado ya se encuentra en la base de datos. Por favor ingrese uno nuevo</div>";
+        echo "<div class= 'alert alert-danger alert-dismissible fade show last_alerts' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>El correo electrónico ingresado ya se encuentra en la base de datos. Por favor ingrese uno nuevo</div>";
     }
     ?>
                         </div>
@@ -148,7 +153,7 @@ if (isset($_GET["new_user"]) && $_GET["new_user"] == 'true') {
                             id="enter_button" onclick="validar_formulario()">
                         <br>
                         <div class="modal-footer">
-                            <p><a href="system_admin.php">Volver al inicio</a></p>
+                            <p><a href="system_admin.php" id="go_back2">Volver al inicio</a></p>
                         </div>
 
                     </form>

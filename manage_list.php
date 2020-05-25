@@ -19,12 +19,13 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
     <title>Gestión de listados - REDA</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/reda_system.css">
     <link rel="stylesheet" href="css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="js/bootstrap.min.js"></script>
     <link rel="icon" href="icons/reda4.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/ddefb55be1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/manage_list.css">
 </head>
 
 <body>
@@ -35,22 +36,21 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
     $num = mysqli_num_rows($query);
 
     ?>
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #11b6a0; border-radius: 0%;">
-        <div class="navbar-collapse">
-            <img src="icons/reda2.png" class="d-inline-block align-top" alt="">
-            <div class="col-6">
+    <nav class="navbar navbar-expand-lg navbar-light" id="header">
+        <div class="navbar-collapse reda_image">
+            <img src="icons/reda2.png" alt="">
+            <li class="nav-item py-4">
                 <h3 id="title"> Registro Digital del Aprendiz</h3>
-            </div>
+            </li>
         </div>
     </nav>
-    <p class="display-4 text-center"
-        style="color: rgb(225, 115, 35); background-color: rgb(255, 255, 255);">Gestión de
-        <span style="color:rgb(35, 130, 118);">listados</span></p>
+    <p class="display-4 text-center first_line">Gestión de
+        <span class="second_line">listados</span></p>
     <div class="container-fluid">
         <h2 class="font-weight-bold">Número de listados totales: <?php echo $num; ?> </h2>
         <div class="table-responsive-xl">
-            <table class="table text-center">
-                <thead style="color: #fff; background-color: rgb(35, 130, 117);">
+            <table class="table text-center table-hover">
+                <thead>
                     <tr>
                         <th scope="col">Número</th>
                         <th scope="col">Nombre</th>
@@ -66,12 +66,13 @@ $i = 0;
         $list = $row['numero_ficha'];
         $name = $row['nombre_ficha'];
         ?>
-                <tbody style="background-color: rgba(128, 128, 128, 0.103);">
+                <tbody>
                     <tr>
                         <th scope="row"> <?php echo $list; ?> </th>
                         <th> <?php echo $name; ?>  </th>
-                        <td class="download"><a href="#" class="down"> <img src="icons/download.png" width="25em"></td>
-                        <td class="download"><a href="#" class="down"> <img src="icons/group.png" width="25em"></td>
+                        <td><a href="#" class="download"><i class="fas fa-download fa-lg"></i></a></td>
+                        <td><a href="#" class="check"><i class='fas fa-user-check fa-lg'></i></a></td>
+
                         </td>
                     </tr>
                 </tbody>
@@ -83,10 +84,10 @@ $i = 0;
 // Con este condicional, se verifica si el usuario esta en una sesión con el rol de instructor o de personal administrativo:
 if ($_SESSION['rol'] == 'Instructor' || $_SESSION['rol'] == 'Personal administrativo') {
         // En caso de estar con alguno de los dos cargos anteriores, se le redireccionará al archivo 'system.php' en caso de que haga click en el siguiente enlace: 
-        echo "<p><a style='color: black;' href='system.php'>Volver al inicio</a></p>";
+        echo "<p><a href='system.php' id='go_back'>Volver al inicio</a></p>";
       // Si en vez del caso anterior, el usuario está usando el sistema como administrador, se le redireccionará, en este caso, al archivo 'system_admin.php' debido a la diferencia de funcionalidades entre cargos:
     } elseif ($_SESSION['rol'] == 'Administrador') {
-        echo "<p><a style='color: black;' href='system_admin.php'>Volver al inicio</a></p>";
+        echo "<p><a href='system_admin.php' id='go_back'>Volver al inicio</a></p>";
     }
     ?>
         </div>
