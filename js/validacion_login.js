@@ -22,7 +22,7 @@ function validar_login() {
 // Pieza de código que llama a una función (en este caso, SoloNumeros, la cual valida que el documento del usuario contenga solo números). Este mismo proceso acontece con todas las demás alertas donde el condicional 'if' verifica si el valor ingresado devuelve un valor tipo false o true a la función:
     if(SoloNumeros(formulario.documento.value) == false) {
         // En caso de que el valor escrito en el campo devuelva un valor false a la función, se hará uso del innerHTML para permitir la aparición de una alerta bootstrap al llamar el id 'aviso', el cual se encuentra en el formulario de inicio de sesión en el archivo 'index.php':
-        document.getElementById("aviso").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo números en el número de documento</div>';
+        document.getElementById("aviso").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo números en el número de documento</div>';
         correcto_login = false;
     }else if(SoloNumeros(formulario.documento.value) == true){
         // En caso contrario (si el valor es true), la alerta desaparecerá al instante, ya que el documento contiene solo números en el campo:
@@ -46,12 +46,12 @@ function enviado_login(){
 // Esta pieza de código indica que si el valor del campo de contraseña se encuentra vacío al enviar el formulario se le pedirá a este que ingrese una. Este proceso acontece también con todos los demás campos que estén vacíos y que sean obligatorios completar:
     if(formulario3.contraseña.value == ""){
         // Si el campo de contraseña está vacío, aparecerá la siguiente alerta bootstrap:
-        document.getElementById("aviso2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese su contraseña de usuario</div>';
+        document.getElementById("aviso2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese su contraseña de usuario</div>';
         correcto_enviado = false;
     }
     if(formulario3.documento.value == ""){
         // Si el campo de número de documento está vacío, aparecerá la siguiente alerta bootstrap:
-        document.getElementById("aviso").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese su número de documento</div>';
+        document.getElementById("aviso").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese su número de documento</div>';
         correcto_enviado = false;
     }
     // Si la 'variable correcto_enviado' devuelve un valor true, la alerta del documento y de la contraseña desaparecerán, usando de esta última el id 'aviso2' que es utilizado en la función 'validar_login' de este archivo; caso contrario, el formulario no será enviado y se mantendrán las alertas hasta que los parámetros sean correctos:
@@ -66,7 +66,7 @@ function enviado_login(){
 
     if(form_cambio.email.value == ""){
         // Si el campo de correo electrónico se encuentra vacío, aparecerá la siguiente alerta bootstrap:
-        document.getElementById("warning3").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 1.1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese un correo electrónico</div>';
+        document.getElementById("warning3").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese un correo electrónico</div>';
         correo_enviado = false;
     }
     // Se devuelve el valor true o false a la variable 'correcto_enviado':

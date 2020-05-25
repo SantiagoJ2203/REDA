@@ -40,7 +40,7 @@ function validacion_pass(){
 
     // Esta pieza de código indica que si el valor del campo de contraseña actual se encuentra vacío al enviar el formulario se le pedirá a este que ingrese una. Este proceso acontece también con todos los demás campos que estén vacíos y que sean obligatorios completar:
     if(form_cambio.actual.value == ""){
-        document.getElementById("change").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Digite su contraseña actual</div>';
+        document.getElementById("change").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Digite su contraseña actual</div>';
         correcto_cambio = false;
     // Si se ingresan datos en el campo, la alerta desaparecerá automaticamente. Esto mismo sucede con los demás condicionales que tengan las mismas pautas en este archivo:
     }else if(form_cambio.actual.value == true){
@@ -49,7 +49,7 @@ function validacion_pass(){
 
     // Esta pieza de código verifica si el valor del campo de contraseña y el de confirmar contraseña no coinciden. En este caso, se le notificará con una alerta al usuario de que ambas contraseñas no son coincidentes:
     if(form_cambio.new.value != form_cambio.confirmar_pass.value){
-        document.getElementById("change2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseñas digitadas no coinciden</div>';
+        document.getElementById("change2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseñas digitadas no coinciden</div>';
         correcto_cambio = false;
     // En caso de que ambas contraseñas coincidan, la alerta de bootstrap desaparecerá automaticamente:
     }else if(form_cambio.new.value === form_cambio.confirmar_pass.value){
@@ -59,7 +59,7 @@ function validacion_pass(){
     // Pieza de código que llama a una función (en este caso, validar_password, la cual valida que la contraseña contenga los parámetros requeridos):
     /*  if(validar_password(form_cambio.new.value) == false){
         // En caso de que el valor de la misma devuelva un valor false a la función, se hará uso del innerHTML para permitir la aparición de una alerta de bootstrap al llamar el id 'alerta5', el cual se encuentra en el formulario de registro en el archivo 'sign_up.php':
-        document.getElementById("change3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseña no cumple con los parámetros requeridos</div>';
+        document.getElementById("change3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseña no cumple con los parámetros requeridos</div>';
         correcto_cambio = false;
         // En caso contrario, la alerta desaparecerá al instante si la contraseña cumple con los parámetros requeridos. Este mismo proceso acontece con todas las demás alertas donde el condicional verifica si el valor ingresado devuelve un valor tipo false a la función. 
     }else if(validar_password(form_cambio.new.value) == true){
@@ -68,7 +68,7 @@ function validacion_pass(){
 
     // El siguiente código lanza una alerta de bootstrap indicando que la contraseña actual y la contraseña nueva son las mismas. Mientras estas coincidan, la variable 'correcto_cambio' devolverá false:
     if(form_cambio.actual.value === form_cambio.new.value){
-        document.getElementById("change3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Por favor ingrese una contraseña diferente a la actual</div>';
+        document.getElementById("change3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Por favor ingrese una contraseña diferente a la actual</div>';
         correcto_cambio = false;
     // Si ambas dejan de coincidir, la alerta desaparecerá automaticamente y el valor devuelto será true:
     }else if(form_cambio.actual.value != form_cambio.new.value){
@@ -85,7 +85,7 @@ var correcto_enviado = true;
 var form_dos = document.form_pass;
 
     if(form_dos.actual.value == ""){
-        document.getElementById("change").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Escriba su contraseña actual</div>';
+        document.getElementById("change").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Escriba su contraseña actual</div>';
         correcto_enviado = false;
     }else if(form_dos.actual.value == true){
         document.getElementById("change").innerHTML = "";
@@ -93,13 +93,13 @@ var form_dos = document.form_pass;
 
     /* Esta pieza de código verifica si la nueva contraseña y la confirmación de esta coinciden correctamente. En caso de no hacerlo, se lanzará una alerta pidiendo al usuario que rectifique esto: */
     if(form_dos.new.value != form_dos.confirmar_pass.value || form_dos.new.value == "" && form_dos.confirmar_pass.value == ""){
-        document.getElementById("change2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseñas digitadas no coinciden</div>';
+        document.getElementById("change2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseñas digitadas no coinciden</div>';
         correcto_enviado = false;
     }
 
     // Pieza de código para verificar si la nueva contraseña y la confirmación de esta no se encuentran vacías. En caso de estarlo, se lanzará una alerta:
     if(form_dos.new.value == "" && form_dos.confirmar_pass.value == ""){
-        document.getElementById("change2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese por favor su nueva contraseña y confirmela</div>';
+        document.getElementById("change2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese por favor su nueva contraseña y confirmela</div>';
         correcto_enviado = false;
     }
     // Se regresa la variable 'correcto_enviado', la cual tiene las mismas características que la variable 'correcto_cambio' de la función anterior:
@@ -113,7 +113,7 @@ var form_dos = document.form_pass;
     var form_change = document.form_change;
 
     if(form_change.new.value = "" && form_change.confirmar_pass.value == ""){
-        document.getElementById("change2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;width: 87%; margin-left: 2em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese por favor su nueva contraseña y confirmela</div>';
+        document.getElementById("change2").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese por favor su nueva contraseña y confirmela</div>';
         cambio_correcto = false;
     }
     // Se regresa la variable 'cambio_correcto' con un valor true o false:
