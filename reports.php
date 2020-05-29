@@ -77,7 +77,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
     <br>
 
      <!--En este container se muestran los gráficos-->
-     <div id="contenedor"></div>
+     <!-- <div id="contenedor"></div> -->
               
               <!--Modal para gráficos-->    
               <div id="modal-1" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
@@ -90,7 +90,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
                       </div>        
                       <div class="modal-body"> 
                           <!--En este container se muestran los gráficos-->
-                          <div id="contenedor-modal"></div>
+                          <!-- <div id="contenedor-modal"></div> -->
                       </div>                    
               </div>
               </div>
