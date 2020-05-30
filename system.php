@@ -10,11 +10,12 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
 ?>
 
 <!Doctype html>
-<!-- Idioma en el que el archivo está compuesto el documento: -->
+<!-- Idioma en el que el archivo está compuesto: -->
 <html>
 <head lang="es">
-    <!-- Cofifiación de caracteres 'UTF-8' para evitar errores de escritura al mostrar el texto en la pantalla: --> 
+    <!-- Codifiación de caracteres 'UTF-8' para evitar errores de escritura al mostrar el texto en la pantalla: --> 
     <meta charset="utf-8">
+    <!-- Uso de la etique meta viewport para mostrar los elementos de manera responsive u ordenada dependiendo del tamaño de la pantalla del dispositivo: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título de la pestaña: -->
     <title>REDA - SISTEMA</title>
@@ -24,7 +25,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
     <link rel="icon" href="icons/reda4.png">
     <!-- Kit de Font Awesome para utilizar sus iconos: -->
     <script src="https://kit.fontawesome.com/ddefb55be1.js" crossorigin="anonymous"></script>
-    <!-- Archivo CSS (hoja de estilos) de la plataforma REDA: -->
+    <!-- Archivo CSS (hoja de estilos) de la vista en cuestión: -->
     <link rel="stylesheet" type="text/css" href="css/system.css">
 </head>
 
@@ -33,7 +34,9 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            <!-- Se crea un contenedor fluido de Bootstrap que adapta su tamaño automaticamente a la resolución de la pantalla: -->
             <div class="container-fluid" id="header">
+                <!-- Se crea una barra de navegación que ocupa todo el ancho del contenedor: -->
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <!-- Se usa la clase 'navbar-collapse' para beneficiar el comportamiento de la barra de navegación al mostrarse en dispositivos con diferentes resoluciones de pantalla: -->
                     <div class="navbar-collapse">
@@ -48,7 +51,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                                 </h3>
                             </li>
                         </ul>
-                        <!-- Se hace uso de una etiqueta 'h2' para mostrar un mensaje de bienvenido con el nombre del usuario en cuestión. -->
+                        <!-- Se hace uso de una etiqueta 'h2' para mostrar un mensaje de bienvenida con el nombre del usuario que ha iniciado sesión: -->
                         <h2 class="welcome" >Bienvenido, 
                             <!-- Para mostrar el nombre del usuario se hace uso del siguiente código PHP: -->
                             <?php
@@ -70,18 +73,18 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
 
 <!-- Creación de una barra de navegación con Bootstrap, la misma contiene las opciones secundarias del sistema: -->
 <nav class="navbar navbar-expand-md navbar-light d-flex justify-content-center" id="header">
-        <!-- Se crea un botón que permite la aparición de un icono una vez la ventana toma una resolución bastante pequeña a la predeterminada: -->
+        <!-- Se crea un botón que permite la aparición de un icono una vez la ventana toma una resolución bastante pequeña compara a la predeterminada: -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <!-- Se usa la siguiente clase para hacer aparecer el icono, este sirve para activar la visibilidad de las opciones secundarias ante ciertos cambios de resolución de pantalla: -->
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Barra de navegación con opciones secundarias del sistema: -->
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" >
-            <!-- Se añaden estilos CSS a la barra de navegación: -->
+            <!-- Se asigna una clase al elemento 'div' para añadirle estilos al contenedor desde el archivo CSS: -->
             <div class="container-fluid container_options">
                 <!-- Se indica que cada elemento estará dentro de una fila: -->
                 <div class="row">
-                    <!-- Se usan 3 columnas de las 12 que posee el contenedor Bootstrap: -->
+                    <!-- Se usan de manera predeterminada 3 columnas de las 12 que posee el contenedor Bootstrap: -->
                     <div class="col">
                         <!-- Se crea un botón que permite abrir una ventana modal para visualiar los ingresos que el usuario ha realizado en el sistema: -->
                         <button type="button" class="btn btn-outline" data-toggle="modal" data-target="#modal_history"  id="button_nav">
@@ -116,7 +119,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
             <!-- Aquí finaliza la estructura de esta barra de navegación. -->
 
         <!-- Aquí empieza a comentarse la estructura de cada ventana modal: -->
-            <!-- Estructura de ventana modal tipo 'fade' de historial de ingresos al sistema: -->
+            <!-- Estructura de la ventana modal tipo 'fade' del historial de ingresos al sistema: -->
             <div class="modal fade" id="modal_history" tabindex="-1" role="dialog" aria-labelledby="modal_history" aria-hidden="true">|
                 <!-- Se define el tamaño de la ventana modal: -->
                 <div class="modal-dialog modal-lg" role="document">
@@ -132,11 +135,11 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                             <h1 class="modal-title font-weight-bold text-center">
                                 Ingresos realizados al sistema
                             </h1>
-                            <!-- Se define que la ventana modal se adapte a cualquier tipo de resolución: -->
+                            <!-- Se define que la ventana modal se adapte a cualquier tipo de resolución de pantalla: -->
                             <div class="table-responsive-xl">
                                 <!-- Se crea una tabla para mostrar la información de los ingresos realizados al sistema por el usuario: -->
                                 <table class="table table-hover text-center">
-                                    <!-- Se crea la cabecera de la tabla con algunos estilos en ella: -->
+                                    <!-- Se crea la cabecera de la tabla con algunos estilos aplicados desde el archivo CSS: -->
                                     <thead>
                                         <!-- Se definen los títulos para cada columna de la tabla: -->
                                         <tr>
@@ -261,36 +264,37 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
             </div>
 
     <!-- Estructura de ventana modal con formulario para cambiar la contraseña: -->
-    <!-- Se crea el formulario de cambiar contraseña, el mismo tiene el nombre 'form_pass' y utiliza los eventos 'onsubmit' y 'oninput' para regresar alertas programadas de bootstrap desde el archivo 'cambio_pass.js': -->
+    <!-- Se crea el formulario de cambiar contraseña, el mismo tiene el nombre 'form_pass' y utiliza los eventos 'onsubmit' y 'oninput' para regresar alertas programadas de Bootstrap desde el archivo 'cambio_pass.js': -->
     <form name="form_pass" action="ACTION_cambiopass.php" method="POST" oninput="return validacion_pass()" onsubmit="return enviado_pass() && validacion_pass();">
             <!-- Se crea una ventana modal que contiene una animación tipo 'fade': -->
             <div class="modal fade" id="c_pass" tabindex="-1" role="dialog" aria-labelledby="c_pass" aria-hidden="true">
                 <!-- Se define el tamaño de la ventana modal: -->
                 <div class="modal-dialog modal-md" role="document">
-                    <!-- La clase 'modal-content' permite indicar el inicio de contenido por parte del formlario: -->
+                    <!-- La clase 'modal-content' permite indicar el inicio de contenido por parte del formulario: -->
                     <div class="modal-content">
                         <!-- Se comienzan a crear los elementos para el cuerpo del formulario: -->
                         <div class="modal-body">
+                            <!-- Se crea el botón para cerrar la ventana modal: -->
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
+                            <!-- Se crea un 'div' que contiene la clase que permite añadir estilos al icono principal del formulario: -->
                             <div class="change_icon">
-                                <!-- Se añade una imagen que hace alusión al formulario como parte del estilo del mismo: -->
+                                <!-- Se añade un icono que hace alusión al formulario como parte del estilo del mismo: -->
                                 <i class='fas fa-sync-alt fa-5x'></i>
                             </div>
-                            <!-- El botón para cerrar la ventana modal es creado: -->
-                            <!-- Se asigna el título principal del formulario: -->
+                            <!-- Se asigna el título principal del formulario con un identificador para sus estilos y una clase Bootstrap para estilos de la fuente: -->
                             <p id="font" class="font-weight-bold">
                                 Cambio de contraseña
                             </p>
                             <!-- Se crea el primer campo del formulario, el cual está hecho para que el usuario digite su contraseña actual. La clase 'form-group' de Bootstrap es usada para indicar que el campo hace parte de un formulario: -->
                             <div class="form-group">
                                 <input type="password" class="form-control" id="actual" name="actual" placeholder="Contraseña actual">
-                                <!-- Se añade un icono de Font Awesome que permite indicar al usuario, al hacer hover sobre el mismo, que las contraseñas ingresadas en los campos puedens er visualizadas: -->
+                                <!-- Se añade un icono de Font Awesome que permite indicar al usuario, al hacer hover sobre el mismo, que las contraseñas ingresadas en los campos puedens ser visualizadas: -->
                                 <div class="show_icon">
                                     <i class="fa fa-eye fa-lg" tool-tip-toggle="tooltip-pass" data-original-title="Mostrar contraseñas" id="passwords" id="show_password"></i>
                                 </div>
-                                <!-- Este 'div', con el id 'change' dentro de él, sirve para mostrar algunas de las alertas bootstrap progamadas en caso de ser necesario: -->
+                                <!-- Este 'div', con el id 'change' dentro de él, sirve para mostrar algunas de las alertas Bootstrap progamadas en caso de haber anomalías en el formulario: -->
                                 <div id="change"></div>
                             </div>
                             <!-- Se crea el segundo campo del formulario, el mismo está hecho para que el usuario ingrese su contraseña nueva: -->
@@ -343,7 +347,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                                                 // En este caso, la alerta bootstrap es de tipo 'success' e indica que la contraseña ha sido cambiada con éxito:
                                                 echo "<div class= 'alert alert-success alert-dismissible fade show' role='alert' style='border-radius: 0; font-weight: bold;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>La contraseña ha sido cambiada con éxito</div>";
                                             }
-                                            // Este tooltip activa igualmente la ventana modal de cambio de contraseña si la contraseña del usuario ha sido cambiada, mostrándole la alerta 'success' anterior mencionada:
+                                            // Este código activa igualmente la ventana modal de cambio de contraseña si la contraseña del usuario ha sido cambiada, mostrándole la alerta 'success' anterior mencionada:
                                             if (isset($_GET["success"]) && $_GET["success"] == 'true') {
                                                     echo "<script>$(document).ready(function() {
                                                             $('#c_pass').modal('toggle')
@@ -352,7 +356,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                                     ?>
 
                                     <br>
-                                    <!-- El botón para enviar el formulario es creado, en caso de haber inconsistencias en el mismo, las alertas Bootstrap aparecerán y el cambio de contraseña no ocurrirá:-->
+                                    <!-- El botón para enviar el formulario es creado, en caso de haber inconsistencias en el mismo las alertas Bootstrap aparecerán y el cambio de contraseña no ocurrirá:-->
                                     <button type="submit" name="cambio" class="btn btn-md btn-block text-center" id="enter_button">
                                         Guardar cambios
                                     </button>
@@ -366,59 +370,94 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
 </nav>
 <!-- Aquí termina el uso de la barra de navegación que contiene las opciones secundarias del sistema. -->
 
+<!-- Contenedor fluido de Bootstrap para crear el formulario de buscar una ficha en el sistema: -->
 <div class="container-fluid banner">
+    <!-- Se crea un 'div' con su respectiva clase para añadir estilos CSS a todos los elementos del formulario en conjunto: -->
     <div class="form-group search_course">
+            <!-- Se crea un 'badge' o insignia de Bootstrap para mostrar el nombre del formulario: -->
             <label class="badge badge-info search_badge" for="input_search">Búsqueda de una ficha:</label>
+            <!-- Se crea el formulario con su respectivo método de envío y la acción que hará una vez se realice la búsqueda: -->
             <form action="list_result.php" method="POST">
+            <!-- Se utiliza la clase 'input-group' para indicar que habrán dos o más elementos en línea a partir de un campo input: -->
             <div class="input-group">
                 <div class="input-group-prepend"></div>
+                <!-- Se crea el input en el que el usuario puede agregar el número de ficha que desea buscar: -->
                 <input type="text" class="form-control input_search" placeholder="Ingrese el número de la ficha a buscar...">
+                <!-- Se crea el 'div' que contendrá todos los elementos relacionados al botón del formulario: -->
                 <div class="button_search_div">
+                <!-- Se crea el botón en cuestión para buscar una ficha: -->
                 <button name="buscar" class="btn my-2 my-sm-0 btn_search">
+                    <!-- Se inserta un icono de Font Awesome con su respectiva clase para añadir estilos CSS al mismo: -->
                     <div class="input-group-text search_icon"><i class="fas fa-search fa-2x"></i></div>
                 </button>
                 </div>
             </form>
+            <!-- Aquí finaliza el formulario de buscar una ficha. -->
         </div>
     </div>
 </div>
+<!-- Aquí acaba de usarse el contenedor para el formulario de buscar una ficha. -->
 
+    <!-- Se crea un contenedor fluido de Bootstrap que contiene todo lo relacionado a las funciones principales del sistema: -->
     <div class="container-fluid text-center">
+        <!-- Se indica que cada elemento estará dentro de una fila, que se adaptarán al tamaño de la pantalla del navegador y que cada uno estará alineado en el centro del contenedor: -->
         <div class="row d-flex justify-content-center">
+            <!-- Se usa la clase 'card-deck' de Bootstrap para crear una serie de 'cards' o cartas Bootstrap en el contenedor -->
             <div class="card-deck">
+                <!-- Se crea una única y primera carta que posee una clase para los estilos CSS ('functions') y que ocupa automaticamente parte de las columnas de Bootstrap -->
                 <div class="card col functions">
+                    <!-- Enlace hacia el cual será direccionado el usuario una vez dé click sobre la carta: -->
                     <a href="manage_list.php">
+                    <!-- Se añade una imagen alusiva a la función, la misma posee una clase para los estilos CSS ('img_functions'): -->
                     <img class="card-img-top mx-auto d-block img_functions" src="icons/responsive.png" alt="Card image cap">
+                    <!-- Texto añadido al cuerpo de la carta, el mismo indica el nombre de la función: -->
                     <div class="card-body">
+                        <!-- El texto posee su propia clase CSS y hace parte del enlace que direcciona al usuario a la pestaña de la función: -->
                         <p class="card-text txt_functions"><span><strong>Gestionar listados</strong></span></a>
                     </div>
+                <!-- Aquí finaliza esta carta: -->
                 </div>
+                <!-- Se crea una segunda carta que posee una las mismas características que la anterior: -->
                 <div class="card col functions">
+                    <!-- Se agrega el enlace hacia el cual será direccionado el usuario una vez dé click sobre la carta: -->
                     <a href="register.php">
+                    <!-- Se añade una imagen alusiva a la función, la cual posee la misma clase que la de la anterior carta: -->
                     <img class="card-img-top mx-auto d-block img_functions" src="icons/fingerprints.png" alt="Card image cap">
+                    <!-- Texto añadido al cuerpo de la carta, el mismo indica el nombre de la función: -->
                     <div class="card-body">
+                        <!-- El texto posee su propia clase CSS y hace también parte del enlace que direcciona al usuario a la pestaña de la función: -->
                         <p class="card-text txt_functions"><span><strong>Registrar asistencia</strong></span></a>
                     </div>
+                <!-- Aquí finaliza esta segunda carta: -->
                 </div>
+                <!-- Se crea una segunda carta que posee las mismas características que las dos anteriores: -->
                 <div class="card col functions">
+                    <!-- Se agrega el enlace hacia el cual será direccionado el usuario una vez dé click sobre la carta: -->
                     <a href="reports.php">
+                    <!-- Se añade una imagen alusiva a la función, la cual posee la misma clase que la de las dos anteriores cartas: -->
                     <img class="card-img-top mx-auto d-block img_functions" src="icons/report.png" alt="Card image cap">
+                    <!-- Texto añadido al cuerpo de la carta, el mismo indica el nombre de la función: -->
                     <div class="card-body">
+                        <!-- El texto posee su propia clase CSS y hace también parte del enlace que direcciona al usuario a la pestaña de la función: -->
                         <p class="card-text txt_functions"><span><strong>Reportes de asistencia</strong></span></a>
                     </div>
+                <!-- Aquí finaliza esta tercera y última carta: -->
                 </div>
             </div>
+            <!-- Aquí finaliza el 'div' para el conjunto de cartas creadas. -->
         </div>
     </div>
+    <!-- Aquí termina de utilizarse el contenedor para las cartas. -->
 
     <!-- Formulario para buscar a un aprendiz: -->
     <!-- Se crea un contenedor Bootstrap que abarca todo el ancho de la pantalla: -->
     <div class="container-fluid py-3">
-        <!-- Se indica que los elementos estarán en una fila cada uno y que estarán repartidos por el contenedor: -->
+        <!-- Se indica que los elementos estarán en una fila y que estarán centrados en el contenedor: -->
         <div class="row justify-content-center text-center container_search_appr">
-            <!-- Se toman 3 columnas del contenedor para agregar un icono alusivo al formulario de búsqueda: -->
             <div class="text-center">
+                <!-- Se toman 3 columnas del contenedor para agregar un icono alusivo al formulario de búsqueda: -->
                 <div class="col-3 id_card_icon">
+                    <!-- Aquí se inserta el icono en cuestión: -->
                     <i class='fas fa-id-card'></i>
                 </div>
             </div>
@@ -426,8 +465,9 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
             <div class="col-6">
                 <!-- Inicia el formulario para ingresar los datos del aprendiz a buscar: -->
                 <form class="form_search_appr">
-                    <!-- Se muestra el texto que indica que el formulario corresponde a la búsqueda de un aprendiz en el sistema: -->
+                    <!-- Se muestra el título que indica que el formulario corresponde a la búsqueda de un aprendiz en el sistema: -->
                     <div class="form-group">
+                        <!-- Se asigna una clase al título para añadirle estilos desde el archivo CSS: -->
                         <span class="title_search_appr">Búsqueda de un aprendiz:</span>
                     </div>
                     <!-- Se crea el primer campo del formulario, el cual sirve para ingresar el nombre del aprendiz:-->
@@ -444,6 +484,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                     </div>
                     <!-- Se crea un botón con un icono de una lupa dentro de él; esto indica que al hacer click en el mismo la búsqueda del aprendiz comenzará a producirse en el sistema: -->
                     <button class="btn input_search_appr" type="submit">
+                        <!-- Aquí se inserta el icono con forma de lupa: -->
                         <i class="fas fa-search fa-2x"></i>
                     </button>
                 </form>
@@ -451,24 +492,33 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
             </div>
         </div>
     </div>
-    <!-- Aquí termina de usarse el contenedor. -->
+    <!-- Aquí termina de usarse el contenedor para el formulario. -->
 
+    <!-- Aquí comienza el footer o pie de página del archivo: -->
     <footer>
+        <!-- Se crea un contenedor fluido para que su tamaño se adapte automaticamente a la pantalla; además de crearse una clase para agrgarl estilos al mismo desde el archivo CSS: -->
         <div class="container-fluid system_footer">
+            <!-- Se indica que cada elemento estará dentro de una fila y que el texto de cada uno estará centrado: -->
             <div class="row text-center py-3">
+                <!-- Se toman 2 columnas del contenedor para crear el botón que permite visualizar el manual de usuario del sistema. Dicho botón posee una clase para el estilo del texto del enlace y un identificador para su estilo en general: -->
                 <div class="col-xl-2 manual_button"><span><a href="user_manual.php"><button type="button" class="btn btn-primary" id="manual_button">Manual de usuario</button></span></a>
                 </div>
+                <!-- Se genera un espacio entre el botón y el siguiente texto con la siguiente columna de Bootstrap: -->
                 <div class="col-xl-1"></div>
+                <!-- Se crea el texto que muestra el copyright o los derechos reservados del sistema. Este texto ocupa 6 columnas de Bootstrap y pose una clase de CSS para sus estilos: -->
                 <div class="col-xl-6 site_rights"><span>&copy; Todos los
                         derechos
                         reservados -
                         SENA 2020</span></div>
+                <!-- Nuevamente se usan las columnas de Bootstrap para generar espacio entre el texto anterior y la imagen correspondiente al logo de la entidad SENA: -->
                 <div class="col-xl-2"></div>
+                <!-- Se agrega el logo de la entidad SENA con su respectivo tamaño, su clase CSS para los estilos y la última columna Bootstrap que ocupa el elemento: -->
                 <div class="col-xl-1 sena_logo" class="justify-content-center"><img src="icons/logoSena.png" width="50em">
                 </div>
             </div>
         </div>
     </footer>
+    <!-- Aquí finaliza el footer o pie de página del archivo. -->
 </body>
 <!-- Se añade el uso del archivo 'cambio_pass.js' para permitir la aparición de alertas bootstrap en los casos donde sucedan cambios o anomalías en el formulario de cambiar contraseña: -->
 <script src="js/cambio_pass.js"></script>
