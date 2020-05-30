@@ -90,7 +90,7 @@ if (isset($_SESSION['administrador'])) {
                             <h1 class="modal-title font-weight-bold">Agregar/Eliminar fichas</h1>
                             <div class="table-responsive-xl">
                                 <table class="table table-hover text-center">
-                                    <thead style="color: #fff; background-color: rgb(35, 130, 117);">
+                                    <thead>
                                         <tr>
                                             <th scope="col">Fecha de inicio</th>
                                             <th scope="col">Fecha de fin</th>
@@ -100,7 +100,7 @@ if (isset($_SESSION['administrador'])) {
                                             <th scope="col">Eliminar</th>
                                         </tr>
                                     </thead>
-                                    <tbody style="background-color: rgba(128, 128, 128, 0.103);">
+                                    <tbody>
                                         <tr>
                                             <th scope="row">12/12/2018</th>
                                             <th>12/12/2020</th>
