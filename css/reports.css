@@ -1,58 +1,74 @@
+/* ARCHIVO CSS PARA LA VISTA 'reports.php' */
+
+/* Se nombra a la etiqueta de HTML llamada 'body' para añadir estilo a todos los elementos que se encuentren dentro de dicha etiqueta: */
 body{
-    font-family: sans-serif; /* Se usa la fuente sans-serif para una mejor lectura del texto. */
-    overflow-x: hidden;
+    font-family: sans-serif; /* Se define una fuente sans-serif para todo el texto del archivo, esto para hacer más fácil la lectura de las palabras. */
+    overflow-x: hidden; /* Se evita que exista un scroll lateral al momento de cargarse el documento en el navegador web. */
 }
+/* Se llama a la etiqueta HTML llamada 'a' para añadirle un estilo al momento de que el usuraio hace un 'hover' o, en otras palabras, pasar el cursor por encima de un enlace: */
 a:hover{
-    text-decoration: none;
+    text-decoration: none; /* En este caso, se indica que el texto del enlace no contenga ningún tipo de decoración (como el subrayado) al hacer un 'hover' sobre el mismo. */
 }
+/* Se añade un estilo para todos los elementos que estén dentro de la etiqueta HTML llamada 'li': */
 li{
-    list-style: none;
+    list-style: none; /* La propiedad 'list-style' permite personalizar el signo que aparece antes de cada elemento dentro de una lista. Para este caso se ha definido que ningún elemento posea algún estilo de lista, como un número o un círculo. */
 }
+/* Se nombra al identificador 'header' para dar estilo a la cabecera que contiene el logo y el título del proyecto: */
 #header{
-    background-color: #11b6a0; 
-    border-radius: 0%;
+    background-color: #11b6a0; /* Se asigna un color verde esmeralda a la cabecera. */ 
+    border-radius: 0%; /* Se define que la cabecera no contenga ningún borde redondo en alguno de sus extremos. */
 }
+/* Se llama al identificador 'title' para otorgale estilos al nombre del proyecto que se encuentra dentro del contenedor que posee el identificador 'header': */
 #title{
     font-size: 2em; /* Se define el tamaño del texto. */
-    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita usando un valor numérico de 900. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita al usarse un valor numérico de 900. */
 }
-#contenedor{
+/* #contenedor{
     min-width: 120px; 
     height: 370px; 
     margin: 0 auto;
-}
-#contenedor-modal{
+} */
+/* #contenedor-modal{
     min-width: 310px; 
     height: 400px; 
     margin: 0 auto;
-}
+} */
+/* Se nombra al identificador 'go_back' para asignarle estilos al enlace que permite volver al inicio del sistema del proyecto: */
 #go_back{
-    color: #000;
-    transition: 0.2s;
+    color: #000; /* Se asigna que el color del texto sea negro. */
+    transition: 0.2s; /* Se crea una transición para que el cambio sucedido al hacer 'hover' sobre el enlace no sea tan repentino. */
 }
+/* Se llama nuevamente al identificador 'go_back', en este caso para asignarle un estilo cada vez que se hace 'hover' sobre el enlace: */
 #go_back:hover{
-    border-bottom: 2px solid #e17323;
+    border-bottom: 2px solid #e17323;  /* Se crea un borde inferior al enlace, el cual permite identificar que el cursor está sobre el enlace. */
 }
+/* Las clases 'first_line' y 'second_line' contienen el título principal del archivo. La primera clase asigna un color a las dos primeras palabras del título, mientras que la segunda clase da un color diferente a la última palabra de este:*/
 .first_line{
-    color: rgb(225, 115, 35); 
-    background-color: rgb(255, 255, 255);
+    color: rgb(225, 115, 35); /* Color naranja asignado a las dos primeras palabras. */
 }
 .second_line{
-    color:rgb(35, 130, 118);
+    color:rgb(35, 130, 118); /* Color verde esmeralda aplicado a la última palabra. */
 }
+/* Estilos asignados al contenedor de la etiqueta 'select' y a las opciones que este contiene: */
 .select{
-    font-size: 1.5em; 
-    border: 1px solid rgb(89, 181, 72); 
-    background-color: rgba(0, 0, 0, 0.048);
+    font-size: 1.5em; /* Se define el tamaño del texto. */
+    border: 1px solid rgb(89, 181, 72); /* Se asigna un borde delgado y de color verde claro al contenedor. */
+    background-color: rgba(117, 117, 117, 0.103); /* Se define un color de fondo para el contenedor. */
 }
+/* Se utiliza la regla '@media' para aplicar un estilo determinado cada vez que la resolución de la pantalla del dispositivo muestre la interfaz del navegador en 990 pixeles: */
 @media (max-width: 990px) {
+    /* Se llama al elemento al que se le hará un cambio al llegar a la resolución mencionada anteriormente. En este caso, el elemento es aquel que posee el identificador 'title': */
     #title {
-      text-align: center;
+      text-align: center; /* La alineación del texto pasará a ser en el centro y no a la izquierda del contenedor. */
     }
   }
+/* Se utiliza nuevamente la regla '@media' para aplicar un estilo determinado cada vez que la resolución de la pantalla del dispositivo muestre la interfaz del navegador en 990 pixeles: */
 @media (max-width: 990px) {
+    /* Ahora el cambio es aplicado a la imagen que se encuentra dentro de la clase 'reda_image', la cual corresponde al logo del proyecto. */
     .reda_image img{
+      /* Se define que la imagen sea un elemento en bloque y que, por lo tanto, tome todo el ancho del contendeor. */
       display: block;
+      /* Se define que el margen izquierdo y derecho alineen de manera automática la imagen, la cual quedaría alineada en el centro del contenedor. */
       margin-left: auto;
       margin-right: auto;
     }

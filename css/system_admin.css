@@ -1,321 +1,383 @@
+/* ARCHIVO CSS PARA LA VISTA 'system_admin.php' */
+
+/* Se nombra a la etiqueta de HTML llamada 'body' para añadir estilo a todos los elementos que se encuentren dentro de dicha etiqueta:*/
 body{
-    font-family: sans-serif; /* Se usa la fuente sans-serif para una mejor lectura del texto. */
-    overflow-x: hidden;
+    font-family: sans-serif; /* Se define una fuente sans-serif para todo el texto del archivo, esto para hacer más fácil la lectura de las palabras. */
+    overflow-x: hidden; /* Se evita que exista un scroll lateral al momento de cargarse el documento en el navegador web. */
 }
+/* Se llama a la etiqueta HTML llamada 'a' para añadirle un estilo al momento de que el usuraio hace un 'hover' o, en otras palabras, pasar el cursor por encima de un enlace: */
 a:hover{
-    text-decoration: none;
+    text-decoration: none; /* En este caso, se indica que el texto del enlace no contenga ningún tipo de decoración (como el subrayado) al hacer un 'hover' sobre el mismo. */
 }
+/* Estilos añadidos a los elementos contenidos dentro de la etiqueta 'thead', la cual es usada para la cabecera de las tablas HTML: */
 thead{
-    color: #fff; 
-    background-color: rgba(35, 130, 117);
+    color: #fff; /* Se define que el color del texto en la cabecera sea blanco. */
+    background-color: rgba(35, 130, 117); /* Se asigna el color de fondo para la cabecera de la tabla. */
 }
+/* Estilo agregado a los elementos dentro de la etiqueta 'tbody', la cual permite definir el cuerpo de una tabla HTML: */
 tbody{
-    background-color: rgba(128, 128, 128, 0.103);
+    background-color: rgba(128, 128, 128, 0.103); /* Se asigna un color de fondo con transparencia al cuerpo de la tabla. */
 }
+/* Se nombra al identificador 'header' para dar estilo a la cabecera que contiene el logo y el título del proyecto: */
 #header{
-    background-color: #11b6a0; 
-    border-radius: 0%;
+    background-color: #11b6a0; /* Se asigna un color verde esmeralda a la cabecera. */  
+    border-radius: 0%; /* Se define que la cabecera no contenga ningún borde redondo en alguno de sus extremos. */
 }
+/* Se llama al identificador 'title' para otorgale estilos al nombre del proyecto que se encuentra dentro del contenedor que posee el identificador 'header': */
 #title{
     font-size: 2em; /* Se define el tamaño del texto. */
-    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita usando un valor numérico de 900. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita al usarse un valor numérico de 900. */
 }
+/* Estilos agregados a los botones que contienen los enlaces a las opciones secundarias del sistema (historial de ingreso, copias de seguridad, cambiar contraseña y cerrar sesión): */
 #button_nav{
-    width: 100%;
+    width: 100%; /* Se define el uso del 100% del ancho del contenedor del botón. */
     font-size: 1.2em; /* Se define el tamaño del texto dentro de los botones. */
     color: rgb(56, 52, 52); /* Se define un color para el texto. */
-    border-radius: 0; /* Se declara que no hayan bordes redondos en ningún extremo de los botones. */
+    border-radius: 0; /* Se declara que no hayan bordes redondeados en ningún extremo de los botones. */
 }
 /* Estilos para los botones de las opciones secundarias al hacer un 'hover' o pasar el cursor sobre los mismos: */
 #button_nav:hover{
-    color: #fff; /* Se cambia el color del texto a un color claro como el blanco. */
+    color: #fff; /* Se cambia el color del texto a blanco. */
     background-color: #fa7e36df; /* Se añade un color de fondo diferente al original. */
 }
-/* Botón para comenzar una acción o crear un archivo en los archivos de 'list_register.php', 'register.php', 'system_admin.php' y/o 'system.php': */
+/* Botón para crear una nueva copia de seguridad en la ventana modal 'Copias de seguridad': */
 #txt_button{
     background-color: rgb(204, 102, 29); /* Se asigna un color naranja claro al botón. */
-    border: 1px solid rgb(225, 115, 35); /* Se crea un borde para el botón con un color un poco más oscuro que el de fondo. */
+    border: 1px solid rgb(225, 115, 35); /* Se crea un borde para el botón con un color un poco más claro que el de fondo. */
     border-radius: 0; /* Se declara que el botón no posea bordes redondos. */
-    transition: 0.5s; /* Se inserta una transición ligera al hacer un 'hover' sobre el botón. */
+    transition: 0.5s; /* Se inserta una transición ligera para los cambios al botón al hacer un 'hover' sobre el mismo. */
 }
 /* Cambio que sucederá al hacer un 'hover' sobre el botón anterior descrito: */
 #txt_button:hover{
     background-color: rgb(225, 115, 35); /* El color del botón cambiará ligeramente a uno más claro que el original. */
 }
+/* Estilos para el título de la ventana modal 'Cambiar contraseña': */
 #font{
-    font-size: 2.5em;
-    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto, una sombra oscura que contiene un suave difuminado. */
+    font-size: 2.5em; /* Se define el tamaño del texto del título. */
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto, una sombra oscura que contiene un difuminado suave. */
 }
+/* Estilos para el botón que permite guardar los cambios una vez el usuario haya cambiado la contraseña de su cuenta: */
 #enter_button{
     font-size: 1.1em; /* Se define el tamaño del texto dentro del botón. */
     background-color: rgba(0, 0, 0, 0.603); /* Se asigna un color de fondo con transparencia para el botón. */
     color: #fff; /* Se asigna el color para el texto dentro del botón. */
     border-radius: 0; /* Se declara que el botón no contenga ningún borde redondo. */
-    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos. */
+    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos al hacer los cambios de estilo con un 'hover'. */
     width: 11em; /* Se define el ancho del botón. */
-    margin-left: auto;
+    margin-left: auto; /* Se define que el margen izquierdo y derecho alineen de manera automática el botón, el cual quedaría alineado al centro de su contenedor. */
     margin-right: auto;
 }
-/* Cambios al botón de enviar datos desde un formulario al hacer un 'hover' o pasar el cursor sobre el mismo: */
+/* Cambios al botón de guardar cambios para crear una nueva contraseña al hacer un 'hover' o pasar el cursor sobre el mismo: */
 #enter_button:hover{
     background-color: rgba(0, 0, 0, 0.76); /* Se asigna un color de fondo que cambia ligeramente a uno más oscuro que el original. */
-    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris difuminada. */
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris y difuminada. */
 }
-#search_button{
-    height: 3.5em;
-    border-radius: 0;
-}
+/* Estilos agregados al botón que contiene el enlace hacia el manual de usuario ('user_manual.php'): */
 #manual_button{
-    border-radius: 0; /* Se retiran los bordes redondos que el elemento posee. */
-    background-color: #11b6a0; ; /* Se añade un color de fondo al botón. */
-    border: 2px solid #fff; /* Se añade un borde solido de color claro y con un tamaño delgado. */
-    transition: 0.5s; /* Se crea una transición con una duración de 0.5 milisegundos al dejar de hacer 'hover'. */
+    border-radius: 0; /* Se retiran los bordes redondos que el elemento posee por predeterminado. */
+    background-color: #11b6a0; /* Se añade un color de fondo al botón. */
+    border: 2px solid #fff; /* Se añade un borde solido de color claro y con un grosor delgado. */
+    transition: 0.5s; /* Se crea una transición con una duración de 0.5 milisegundos para los cambios de estilo  al hacer un 'hover' sobre el botón. */
 }
+/* Estilo para el enlace del botón de manual de usuario: */
 #manual_button a{
-    color: #fff; /* Se asigna el color para el texto. */
+    color: #fff; /* Se asigna el color blanco para el texto del enlace. */
 }
+/* Estilos añadidos al botón de manual de usuario cuando se realiza un 'hover' sobre el mismo: */
 #manual_button:hover{
     background-color: #109e8b; /* Se cambia el color de fondo del botón a uno más opaco. */
-    transition: 0.5s; /* Se genera una transición de 0.5 milisegundos al comenzarse a generar los cambios en el botón. */
+    transition: 0.5s; /* Se genera una transición de 0.5 milisegundos al comenzar a desaparecer ligeramente los cambios hechos en el botón. */
 }
+/* Estilos para el texto que muestra un mensaje de bienvenida junto al nombre del usuario que ha iniciado sesión: */
 .welcome{
     position: relative; /* Se asigna una posición relativa para un control de posicionamiento más exacto del texto. */
     color: rgb(56, 52, 52); /* Se asigna un color oscuro al texto. */
     font-size: 1.6em; /* Se define el tamaño de la fuente. */
     font-weight: 700; /* Con un valor numérico de 700, el grosor de la fuente es en negrita. */
-    margin-left: 4em; /* Se controla el posicionamiento horizontal del texto, iniciando desde donde fue agregado en los archivos en cuestión. */
+    margin-left: 4em; /* Se controla el posicionamiento horizontal del texto. */
 }
+/* Estilo para el contendor que muestra los botones que poseen las opciones secundarias del sistema: */
 .container_options{
-    background-color: rgba(255, 255, 255, 0.315);
+    background-color: rgba(255, 255, 255, 0.315); /* Se asigna un color de fondo blanco que posee una transparencia notable. */
 }
+/* Estilo para el contenido de todas las ventanas modales Bootstrap: */
 .modal-content{
-    border-radius: 0;
+    border-radius: 0; /* Se declara que ningún elemento dentro del contenido posea bordes redondeados. */
 }
+/* Estilo para el cuerpo de la ventana modal 'Cambio de contraseña': */
 .modal-body{
     background-color: rgba(35, 130, 117, 0.589); /* Se define un color verde oscuro como el fondo de la ventana modal. */
     text-align: center; /* Se alinea el texto incluido en la ventana modal al centro de las misma. */
-    border: 3px solid #fff;
+    border: 3px solid #fff; /* Se crea un borde blanco y sólido alrededor de la ventana modal. */
 }
+/* Estilo para el cuerpo de las ventanas modales 'Agregar/eliminar fichas' y 'Copias de seguridad': */
 #modal_add_delete .modal-body, #modal_backup .modal-body{
-    background-color: rgb(255, 255, 255); /* Se asigna un color de fondo para las tablas en cuestión. */
+    background-color: rgb(255, 255, 255); /* Se asigna un color de fondo blanco para las tablas en cuestión. */
 }
+/* Estilo para el icono principal mostrado en la ventana modal 'Cambio de contraseña: */
 .change_icon{
-    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto, una sombra oscura que contiene un suave difuminado. */
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del icono, una sombra oscura que contiene un difuminado suave. */
 }
+/* Estilo para el icono que permite mostrar al usuario las recomendaciones para crear una contraseña segura en la ventana modal 'Cambio de contraseña': */
 .info_icon{
-    float: right; 
-    margin-right: 1.4em; 
-    margin-top: -2.8em;
+    float: right; /* Se flota el icono a la derecha del campo input. Dicho icono quedaría posicionado en el extremo derecho del campo. */ 
+    margin-right: 1.4em; /* Se controla la alineación horizontal del icono con un margen derecho. */  
+    margin-top: -2.8em; /* Se controla la alineación vertical con un margen superior. */
 }
+/* Estilo para el icono que permite mostrar y ocultar las contraseñas ingresadas en los campos input: */
 .show_icon{
-    margin-top: -1.8em; 
-    margin-right: 1.3em; 
-    float: right;
+    float: right; /* Se flota el icono a la derecha del campo input. Dicho icono quedaría posicionado en el extremo derecho del campo. */
+    margin-right: 1.3em; /* Se controla la alineación vertical con un margen derecho. */  
+    margin-top: -1.8em; /* Se controla la alineación horizontal del icono con un margen superior. */  
 }
+/* Estilo para el icono de eliminar una copia de seguridad hecha por el usuario en la ventana modal 'Copias de seguridad': */
 .delete_icon{
-    font-size: 1.8em;
-    color: #000;
+    font-size: 1.8em; /* Se define el tamaño del icono. */
+    color: #000; /* Se define el color negro como el color del icono. */
+    transition: 0.2s; /* Transición suave para los cambios hechos en el icono al hacerse un 'hover' sobre el mismo. */
 }
+/* Estilo que sucederá al hacer un 'hover' sobre el icono anterior descrito: */
 .delete_icon:hover{
-    color: #f50000df;
+    color: #f50000df; /* El icono pasará a ser de un indicativo color rojo. */
 }
+/* Estilos para el campo de selección de frecuencia de creación de copias de seguridad en la ventana modal 'Copias de seguridad': */
 .select_frequency{
-    border: none; 
-    background-color: rgba(211, 211, 211, 0.226);
+    border: 2px solid #59b548;; /* Se indica que el campo posea un borde verde claro alrededor suyo. */
+    background-color: rgba(211, 211, 211, 0.226); /* Se asigna un color de fondo oscuro y transparente al campo. */
 }
+/* Estilos para todos los campos de formulario existentes en el archivo: */
 .form-group input{
-    border: none; /* Se define que los elementos no posean ningún borde. */
-    border-radius: 0; /* Se define que no hayan bordes redondeados para los elementos. */
+    border: none; /* Se define que los campos no posean ningún borde. */
+    border-radius: 0; /* Se define que no hayan bordes redondeados para los campos. */
     font-weight: bold; /* Se define que el texto de los elementos esté en negrita. */
 }
+/* Estilos para los campos de formulario al hacer un enfoque (ingresar datos) en alguno de ellos: */
 .form-group input:focus{
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.513); /* Se aplica una sombra de color verde oscuro al lado derecho e inferior del elemento (campo del formulario). */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.513); /* Se aplica una sombra de color oscuro al lado derecho e inferior del campo. */
 }
-/* Estilos para el diseño interior de los tooltip generados por el framework de diseño Bootstrap: */
+/* Estilos para las cajas de mensaje (tooltips) que aparecen al hacerce 'hover' sobre alguno de los iconos dentro de los campos input: */
 .tooltip-inner{
     text-align: center !important; /* El texto dentro de los tooltips es alineado centralmente. Se usa la declaración '!important' para definir que tal valor siempre va a ser aplicado en primer lugar, sin importar el orden del mismo. */ 
-    border: 2px solid #fff; /* Se define un borde sólido de color blanco para los tooltips. */
+    border: 2px solid #fff; /* Se crea un borde sólido de color blanco alrededor los tooltips. */
 }
+/* Estilos para el botón que muestra las opciones secundarias del sistema cuando la resolución de la pantalla es menor a 800px: */
 .navbar-toggler{
-    background-color: rgb(32, 172, 153);
-    border: 2px solid rgb(89, 181, 72);
-    border-radius: 0;
-    transition: 0.2s;
+    background-color: rgb(32, 172, 153); /* Se asigna un color de fondo al botón. */
+    border: 2px solid rgb(89, 181, 72); /* Se le asigna un borde delgado y sólido. */
+    border-radius: 0; /* Se indica que el botón no posea bordes redondeados en ninguno de sus extremos. */
+    transition: 0.2s; /* Se crea una transición ligera para cuando los cambios en el botón cominzan a suceder al hacerse un 'hover' sobre el mismo. */
 }
+/* Cambios que sucederán al botón anterior descrito al hacerse un 'hover' sobre él: */
 .navbar-toggler:hover{
-    border: 2px solid #fff;
-    border-radius: 3px;
+    border: 2px solid #fff; /* El color del borde pasará a ser blanco. */
+    border-radius: 3px; /* El botón pasará a tener bordes redondos. */
 }
+/* Estilos para la imagen que contiene el formulario de buscar a una ficha en el sistema:*/
 .banner{
-    height: 20em;
-    background-image: url("../icons/slide1.png");
-    background-size: 100% 20em;
-    background-repeat: no-repeat;
+    height: 20em; /* Se define la altura que ocupará la imagen. */
+    background-image: url("../icons/slide1.png"); /* Se indica que imagen será utilizada en el contendor. */
+    background-size: 100% 20em; /* Se indica que el 100% del ancho del contenedor será usado y que la altura del mismo será contenida (se mostrará toda la imagen) en los '20em' ya definidos. */
+    background-repeat: no-repeat; /* Se declara que la imagen no se repita en la pantalla. */
 }
+/* Estilos para el elemento contenido dentro de la etiqueta 'label' que está en el formulario de buscar una ficha: */
 .search_course label{
-    margin-left: 7.95em;
-    margin-top: 3.5em;
+    margin-left: 7.95em; /* Se controla el posicionamiento horizontal del elemnto. */
+    margin-top: 3.5em; /* Se controla el posicionamiento vertical del elemnto. */
 }
+/* Estilos para la insignia o 'badge' de Bootstrap contenida dentro de la clase ubicada en la etiqueta 'label' del formulario de buscar una ficha: */
 .search_badge{
-    height: 2em;
-    background-color: #11b6a0;
-    color: #fff;
-    font-size: 1.5em;
-    border-radius: 0;
-    line-height: 1.4em;
+    height: 2em; /* Se define la altura que ocupará la insignia. */
+    background-color: #11b6a0; /* Se indica el color de fondo que poseerá. */
+    color: #fff; /* Se le da el color que poseerá el texto dentro de la insignia. */
+    font-size: 1.5em; /* Se define el tamaño del texto. */
+    border-radius: 0; /* Se indica que la insignia no posea bordes redondo alrededor suyo. */
+    line-height: 1.4em; /* Se le da una altura a la línea de texto escrita dentro de la insignia. */
 }
+/* Estilos para el campo input y para el botón de buscar ubicados en el formulario de buscar una ficha: */
 .input-group{
-    width: 50em;
-    margin-top: -0.5em;
+    width: 50em; /* Se indica el ancho del campo.*/
+    margin-top: -0.5em; /* Se controla la alineación vertical del campo con un margen superior. */
 }
+/* Estilos para el campo input del formulario de buscar una ficha: */
 .input_search{
-    height: 4em;
-    font-weight: bold;
-    border-radius: 0;
+    height: 4em; /* Se indica la altura del campo. */
+    font-weight: bold; /* Se define el grosor del texto. */
+    border-radius: 0; /* Se aplica que el campo no posea bordes redondos alrededor suyo. */
     border: 1px solid rgba(0, 0, 0, 0.253);
-    margin-left: 12em;
+    margin-left: 12em; /* Se controla la alineación horizontal del campo con un margen izquierdo. */
 }
+/* Estilos para el icono con forma de lupa en el formulario de buscar una ficha: */
 .search_icon{
-    background-color: #fa7e36;
-    font-size: 1.07em;
-    border: 2px solid #fa7e36df;
-    border-radius: 0;
-    color: #fff;
-    transition: 0.2s;
+    background-color: #fa7e36; /* Color de fondo aplicado al icono. */
+    font-size: 1.07em;  /* Tamaño del icono definido. */
+    border: 2px solid #fa7e36df; /* Borde creado alrededor del icono. */
+    border-radius: 0; /* Bordes redondos retirados del icono. */
+    color: #fff; /* Color prederteminado del icono. */
+    transition: 0.2s; /* Transición ligera creada para cuando se aplican los cambios al icono al hacer un 'hover' sobre el mismo. */
 }
+/* Estilos para el botón que contiene al icono y a la acción que realizará en caso de que el usuario busque una ficha. */
 .btn_search{
-    background-color: #fa7e36;
-    border-radius: 0;
-    transition: 0.2s;
+    background-color: #fa7e36; /* Color de fondo aplicado al botón. */
+    border-radius: 0; /* Bordes redondos retirados del botón. */
+    transition: 0.2s; /* Transición ligera para cuando hay cambios en el botón al hacer un 'hover' sobre el mismo. */
 }
+/* Cambio de estilo que sucederá al hacerse un 'hover' sobre el botón anterior descrito: */
 .btn_search:hover{
-    background-color: #11b6a0;
+    background-color: #11b6a0; /* El color de fondo cambia a uno diferente. */
 }
+/* Cambios de estilo que sucederán al icono de buscar del formulario al hacerse 'hover' sobre el botón anterior:*/
 .btn_search:hover > .search_icon{
-    background-color: #11b6a0;
-    border: 2px solid #11b6a0;
+    background-color: #11b6a0; /* El color de fondo pasa a ser otro. */
+    border: 2px solid #11b6a0; /* El borde también toma otro color distinto al original. */
 }
+/* Estilo para las imágenes que contienen los enlaces hacia las funciones principales del sistema: */
 .img_functions{
-    width: 15em;
-    height: 13.5em;
+    width: 15em; /* Ancho de la imagen definido. */
+    height: 13.5em; /* Altura de la imagen definida. */
 }
+/* Estilo para las 'cards' o cartas de Bootstrap que contienen las imágenes y el texto de las funciones principales en el archivo: */
 .functions{
-    margin-top: 1.5em;
-    border: none;
-    transition: 0.2s;
+    margin-top: 1.5em; /* Las 3 cartas son alineadas de manera vertical con un margen superior. */
+    border: none; /* Se indica que ninguna carta posea bordes. */
+    transition: 0.2s; /* Se crea una transición ligera para cuando suceden cambios en las cartas al hacerse un 'hover' sobre alguna de ellas: */
 }
+/* Estilos para las cartas anterior descritas cuando se realiza un 'hover' sobre alguna de ellas: */
 .functions:hover{
-    filter: opacity(0.9);
-    border-radius: 0;
-    box-shadow: 2px 2px 5px #000000;
+    filter: opacity(0.9); /* La carta tendrá un pequeño cambio en su opacidad. */
+    border-radius: 0; /* La carta no poseerá bordes redondos alrededor suyo. */
+    box-shadow: 2px 2px 5px #000000; /* Se crea una sombra oscura y difuminada en las zonas derecha e inferior de la carta. */
 }
+/* Estilo para el texto de las cartas de las funciones principales: */
 .txt_functions{
-    font-size: 1em;
+    font-size: 1em; /* Tamaño del texto definido. */
 }
+/* Estilo para los textos que contienen los enlaces a las funciones principales en las cartas: */
 .txt_functions a{
-    color: #000;
+    color: #000; /* Color negro asignado a los enlaces. */
 }
+/* Estilo asignado al contenedor que posee todos los elementos referentes al formulario de búsqueda de un aprendiz: */
 .container_search_appr{
-    background-color: rgba(219, 219, 219, 0.219);
+    background-color: rgba(219, 219, 219, 0.219); /* Color de fondo transparente asignado al contenedor. */
 }
+/* Estilo dado a todos los elementos ubicados dentro del formulario de búsqueda de un aprendiz: */
 .form_search_appr{
-    margin-top: 2em;
-}
+    margin-top: 2em; /* Se controla la alineación vertical del formulario con un margen superior. */
+}/* Estilo añadido a los campos input del formulario de búsqueda de un aprendiz: */
 .form_search_appr input{
-    border: 2px solid rgba(0, 0, 0, 0.061);
+    border: 2px solid rgba(0, 0, 0, 0.061); /* Se añade un borde transparente alrededor de cada campo. */
 }
+/* Estilo otorgado al icono con forma de carta de identificación en el formulario de búsqueda de aprendiz: */
 .id_card_icon{
-    font-size: 15em;
+    font-size: 15em; /* Tamaño del icono definido. */
 }
+/* Estilos para el título principal del formulario de búsqueda de aprendiz: */
 .title_search_appr{
-    font-weight: bold;
-    font-size: 2.5em;
+    font-weight: bold; /* Grosor del texto en negrita. */
+    font-size: 2.5em; /* Tamaño de texto aplicado. */
 }
+/* Estilos dados al botón de buscar ubicado en el formulario de búsqueda de aprendiz: */
 .input_search_appr{
-    background-color: #fa7e36;
-    font-size: 1em;
-    border: 2px solid #fa7e36df;
-    border-radius: 0;
-    color: #fff;
-    transition: 0.2s;
+    background-color: #fa7e36; /* Color de fondo para el botón. */
+    font-size: 1em; /* Tamaño del icono de lupa definido. */
+    border: 2px solid #fa7e36df; /* Borde delgado creado para el botón. */
+    border-radius: 0; /* Bordes redondos retirados del botón. */
+    color: #fff; /* Color blanco aplicado al icono en cuestión. */
+    transition: 0.2s; /* Transición ligera al comenzarse a aplicar los cambios al botón cuando se realiza un 'hover' sobre el mismo. */
 }
+/* Cambios de estilo aplicados al botón de búsqueda de aprendiz cuando se realiza un 'hover' sobre el mismo: */
 .input_search_appr:hover{
-    color: #fff;
-    background-color: #11b6a0;
-    border: 2px solid #11b6a0; 
+    color: #fff; /* El color del icono se mantiene. */
+    background-color: #11b6a0; /* El color de fondo del botón cambia a uno diferente. */
+    border: 2px solid #11b6a0; /* El borde del botón toma un color distinto al original. */ 
 }
+/* Estilo dado al footer o al pie de página del archivo: */
 .system_footer{
-    background-color: #11b6a0; 
+    background-color: #11b6a0; /* Color de fondo asignado al footer. */
 }
+/* Estilo agregado al texto que posee el enlace al manual de usuario: */
 .manual_button{
-    line-height: 3em;
+    line-height: 3em; /* Se crea una altura sobre la línea de texto que posee el enlace. */
 }
+/* Estilo añadido al texto que indica el copyright o los derechos reservados del sistema: */
 .site_rights{
-    text-align: center; 
-    line-height: 3em; 
-    color: #fff;
+    text-align: center; /* Se alinea el texto al centro de su contenedor. */ 
+    line-height: 3em; /* Se crea una altura sobre la línea de texto. */
+    color: #fff; /* Se define el color del texto. */
 }
+/* Estilo añadido a la imagen que corresponde al logo de la entidad SENA: */
 .sena_logo{
-    filter: invert(100%);
+    filter: invert(100%); /* Se invierte el color de la imagen, negro, para que pase a ser blanco. */
 }
-@media (max-width: 1250px) {
-    .search_course label{
-      margin-left: 0em;
-    }
-  }
-@media (max-width: 1250px) {
-    .input-group {
-      width: 40em;
-      margin-left: -11.95em;
-    }
-  }
-@media (max-width: 575px) {
-    .button_search_div {
-      margin-top: -0.5em;
-    }
-  }
+/* Se utiliza la regla '@media' para aplicar un estilo determinado cada vez que la resolución de la pantalla del dispositivo muestre la interfaz del navegador en 1000 pixeles: */
 @media (max-width: 1000px) {
+    /* Se llama al elemento al que se le hará un cambio al llegar a la resolución mencionada anteriormente. En este caso, el elemento es aquel que posee el identificador 'title': */
     #title {
-      text-align: center;
+      text-align: center; /* La alineación del texto pasará a ser en el centro y no a la izquierda del contenedor. */
     }
   }
+/* Se utiliza nuevamente la regla '@media' para aplicar un estilo determinado cada vez que la resolución de la pantalla del dispositivo muestre la interfaz del navegador en 1000 pixeles: */
 @media (max-width: 1000px) {
     .reda_image img{
-      display: block;
-      margin-left: auto;
+      display: block; /* Se define que la imagen sea un elemento en bloque y que, por lo tanto, tome todo el ancho del contenedor. */
+      margin-left: auto; /* Se define que el margen izquierdo y derecho alineen de manera automática la imagen, la cual quedaría alineada en el centro del contenedor. */
       margin-right: auto;
     }
   }
+/* Cuando la ventana del navegador posea un tamaño de 1000 pixeles, el mensaje de bienvenida mostrado al usuario cambiará con los siguientes estilos: */
 @media (max-width: 1000px) {
     .welcome {
-      text-align: center;
-      margin-left: 0em;
+      text-align: center; /* El texto será alineado al centro del contenedor. */
+      margin-left: 0em; /* Se remuve el margen izquierdo que poseía con anterioridad. */
     }
   }
+/* Cambios aplicados al 'badge' o insignia de Bootstrap, en el formulario de buscar una ficha, cuando el tamaño de la ventana del navegador es igual o menor a 1250 pixeles: */
+@media (max-width: 1250px) {
+    .search_course label{
+      margin-left: 0em; /* Se remueve el margen izquierdo que posería con anterioridad la insignia. */
+    }
+  }
+/* Cambios aplicados al campo input, en el formulario de buscar una ficha, cuando el tamaño de la ventana del navegador es igual o menor a 1250 pixeles: */
+@media (max-width: 1250px) {
+    .input-group {
+      width: 40em; /* El ancho del campo es reducido: */
+      margin-left: -11.95em; /* Se crea un margen izquierdo para controlar la posición horizontal del campo. */
+    }
+  }
+/* Cambios aplicados al contenedor del botón de buscar, en el formulario de buscar una ficha, cuando el tamaño de la ventana del navegador es igual o menor a 575 pixeles: */
+@media (max-width: 575px) {
+    .button_search_div {
+      margin-top: -0.5em; /* El contenedor cambia su alineación vertical al obtener un margen superior negativo. */
+    }
+  }
+/* Cambios aplicados al contenedor del formulario de buscar a un aprendiz cuando el tamaño de la ventana del navegador es igual o menor a 1200 pixeles: */
 @media (max-width: 1200px) {
     .container_search_appr {
-      height: 34em;
+      height: 34em; /* La altura del contenedor aumenta a '34em'. */
     }
   }
+/* En caso de que la ventana del navegador posea un tamaño igual o menor a 1079 pixeles, el siguiente cambio sucede en el contenedor anterior mencionado: */
 @media (max-width: 1079px) {
     .container_search_appr {
-      height: 38em;
+      height: 38em; /* La altura del contenedor aumenta a '38em'. */
     }
   }
+/* Y en caso de que la ventana del navegador sea menor o igual a 580px, el siguiente cambio sucede en el contenedor del formulario: */
 @media (max-width: 580px) {
     .container_search_appr {
-      height: 41em;
+      height: 41em; /* La altura del contenedor aumenta a '38em'. */
     }
   }
+/* Estilo aplicado al formulario de buscar a un aprendiz cuando la ventana del navegador es igual o menor a 1200 pixeles: */
 @media (max-width: 1200px) {
     .form_search_appr {
-      margin-top: 15em;
+      margin-top: 15em; /* La alineación vertical del formulario es controlada con un margen superior. */
     }
   }
-  @media (max-width: 1200px) {
+/* Estilos aplicados al icono del formulario de buscar a un aprendiz cuando la ventana del navegador es igual o menor a 1200 pixeles: */
+@media (max-width: 1200px) {
     .id_card_icon i{
-      position: absolute;
-      text-align: center;
-      display: inline-block;
+      position: absolute; /* Se asigna una posición absoluta al icono para un posicionamiento más exacto dentro la ventana del navegador. */ 
+      text-align: center; /* Se indica que el icono quede en el centro de su contenedor. */
+      display: inline-block; /* Se le asigna el valor 'inline-block' al icono para no ignorar las margenes que el elemento posee. */
     }
   }
