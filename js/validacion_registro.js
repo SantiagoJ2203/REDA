@@ -1,6 +1,6 @@
 // la función 'SoloLetras' verifica que los datos ingresados en el campo sean unicamente letras: 
 function SoloLetras(parametro){
-    // Se ha hecho uso de una expresión regular la cual verifica las letras de la 'A' a la 'Z' tanto en mayúsculas como en minúsculas, además de verificar si en el campo se ingresa alguna vocal con tílde o una letra propia del idioma español como la 'ñ':
+    // Se ha hecho uso de una expresión regular, la cual verifica las letras de la 'A' a la 'Z', tanto en mayúsculas como en minúsculas, además de verificar si en el campo se ingresa alguna vocal con tílde o una letra propia del idioma español como la 'ñ':
     var patron = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/;
     if(parametro.search(patron)){
         // En caso de que el parámetro no cumpla con el requisito de que sean solo letras se devolverá un valor false:
@@ -45,14 +45,14 @@ function validar_espacios(param2){
 
 // La función 'validar_password' es creada para validar la contraseña ingresada por el usuario:
  /* function validar_password(contrasena){
-    // Los parámetros para que la contraseña sea valida es que la misma contenga por lo menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial o raro: 
+    // Los parámetros para que la contraseña sea valida, es que la misma contenga por lo menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial o raro: 
        if(contrasena.length >=8){
         var mayus = false;
         var minus = false;
         var num = false;
         var especial = false;
 
-        // Mientras la contraseña contenga por lo menos 8 caracteres y cumpla con solo una de las condiciones anteriormente dichas, el valor correspondiente devolverá false, hasta que los demás parametros sean cumplidos y la contraseña sea finalmente correcta, devolviendo así un valor true:
+        // Mientras la contraseña contenga por lo menos 8 caracteres y cumpla con solo una de las condiciones anteriormente dichas, el valor correspondiente devolverá false, hasta que los demás parámetros sean cumplidos y la contraseña sea finalmente correcta, devolviendo así un valor true:
         for(var i = 0;i<contrasena.length;i++){
             if(contrasena.charCodeAt(i) >= 65 && contrasena.charCodeAt(i) <= 90){
                 mayus = true;
@@ -73,7 +73,8 @@ function validar_espacios(param2){
 } */
 
 // 1) LAS ALERTAS BOOTSTRAP SON LLAMADAS HACIENDO PRIMERAMENTE REFERENCIA AL DOCUMENTO O ARCHIVO EN CUESTIÓN, LUEGO OBTENIENDO EL ID DE UN ELEMENTO UBICADO EN EL ARCHIVO 'sign_up.php' Y SEGUIDAMENTE SE HACE USO DEL innerHTML PARA INCLUIR CÓDIGO HTML Y PODER AÑADIR LA ALERTA CON SU RESPECTIVA INFORMACIÓN. EN CASO DE NO INCLUIR CÓDIGO HTML, NINGUNA ALERTA APARECERÁ.
-// 2) TANTO LAS FUNCIONES DE 'validar_registro' Y LA DE 'registro_enviado' deben devolver valores true para que el formulario sea enviado sin problema alguno:
+
+// 2) TANTO LAS FUNCIONES DE 'validar_registro' Y LA DE 'registro_enviado' DEBEN DEVOLDER VALORES TRUE PARA QUE EL FORMULARIO SEA ENVIADO SIN PROBLEMA ALGUNO:
 
 // La función 'validar_registro' es creada para validar todos los campos del formulario de registro.  Las alertas de esta función aparecerán de manera inmediata en caso de que se ingrese algo indebido en los campos, esto debido al evento 'oninput' de JavaScript:
 function validar_registro(){
@@ -92,16 +93,18 @@ function validar_registro(){
         document.getElementById("alerta5").innerHTML = "";
     } */
 
-    // El siguiente código hace uso de la función 'validar_espacios', la cual lanza una alerta bootstrap en caso de que haya espacios en el campo de ingresar una contraseña: 
-    if(validar_espacios(formulario.contraseña.value) == false){
+    // El siguiente código verifica si el campo de contraseña se encuentra vacío. En caso de estarlo, la siguiente alerta Bootstrap aparecerá: 
+    if(formulario.contraseña.value == ""){
         document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese una contraseña</div>';
+        // El valor devuelto por parte de la variable 'correcto_registrar' se vuelve false:
         correcto_registrar = false;
-    // En caso de que una contraseña sea ingresada, la alerta bootstrap desaparecerá automaticamente:
-    }else if(formulario.contraseña.value == true){
+    // En caso de que una contraseña sea ingresada, la alerta Bootstrap desaparecerá automaticamente y el valor devuelto será entonces true:
+    }else{
         document.getElementById("alerta5").innerHTML = "";
     }
 
-    if(validar_espacios(formulario.confirmar_contraseña.value) == false){
+    // El siguiente código verifica si el campo de confirmar contraseña se encuentra vacío. En caso de estarlo, la siguiente alerta Bootstrap aparecerá: 
+    if(formulario.confirmar_contraseña.value == ""){
         document.getElementById("alerta6").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Confirme su contraseña</div>';
         correcto_registrar = false;
     // En caso de que el campo de ingresar contraseña y el de confirmar contraseña coincidan con sus datos, la alerta anterior desaparecerá automaticamente:
@@ -109,40 +112,40 @@ function validar_registro(){
         document.getElementById("alerta6").innerHTML = "";
     }
 
-    // Si el campo de correo electrónico contiene un e-mail con la estructura válida, es decir, la función 'ValidarEmail' devuelve true, la alerta bootstrap desaparecerá en caso de haber enviado el formulario vacío o con un e-mail no válido con anterioridad:
-    if(ValidarEmail(form_registro.email.value) == true){
+    // Si el campo de correo electrónico contiene un e-mail con la estructura válida, es decir, la función 'ValidarEmail' devuelve true, la alerta Bootstrap desaparecerá en caso de haber enviado el formulario vacío o con un e-mail no válido con anterioridad:
+    if(ValidarEmail(formulario.email.value) == true){
         document.getElementById("alerta4").innerHTML = "";
     }
 
-    // En el siguiente condicional se hace uso de la función 'SoloNumeros' para verificar si el campo de número de documento contiene unicamente números. En caso de que la función devuelva false, la alerta bootstrap aparecerá automaticamente:
-    if(SoloNumeros(form_registro.documento.value) == false){
+    // En el siguiente condicional, se hace uso de la función 'SoloNumeros' para verificar si el campo de número de documento contiene unicamente números. En caso de que la función devuelva false, la alerta Bootstrap aparecerá automaticamente:
+    if(SoloNumeros(formulario.documento.value) == false){
         document.getElementById("alerta3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo números para el número de documento</div>';
+        formulario.documento.value = "";
         correcto_registrar = false;
-    // En otro caso, se utiliza un condicional con la función 'validar_espacios' para verificar si el campo contiene espacios innecesarios. En caso de ser así, la alerta bootstrap indicando esto aparecerá:
+    // En otro caso, se utiliza un condicional con la función 'validar_espacios' para verificar si el campo contiene espacios innecesarios. En caso de ser así, la alerta Bootstrap indicando esto aparecerá:
     }else if(validar_espacios(formulario.documento.value) == false){
         document.getElementById("alerta3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese su número de documento</div>';
         // Para evitar que se añadan espacios, la siguiente línea de código limpia de manera automática e inmediata el campo en caso de detectar el uso de la barra espaciadora:
-        formulario.documento.value = "";
         correcto_registrar = false;
-    // Finalmente, si la función 'SoloNumeros' devuelve un valor true, es decir, si solo hay números en el campo, la alerta bootstrap desaparecerá:
-    }else if(SoloNumeros(form_registro.documento.value) == true){
+    // Finalmente, si la función 'SoloNumeros' devuelve un valor true, es decir, si solo hay números en el campo, la alerta Bootstrap desaparecerá:
+    }else if(SoloNumeros(formulario.documento.value) == true){
         document.getElementById("alerta3").innerHTML = "";
     }
 
-    // En los siguientes 4 condicionales se hace uso de la función 'SoloLetras' para verificar si en los campos de primer nombre, segundo nombre, primer apellido o segundo apellido hay algún caracter que no corresponda a una letra. En caso de ser así, una alerta aparecerá abajo del campo o de los campos que contengan dicha inconsistencia:
-    if(SoloLetras(form_registro.nombre1.value) == false){
+    // En los siguientes 4 condicionales se hace uso de la función 'SoloLetras', para verificar si en los campos de primer nombre, segundo nombre, primer apellido o segundo apellido hay algún caracter que no corresponda a una letra. En caso de ser así, una alerta aparecerá abajo del campo o de los campos que contengan dicha inconsistencia:
+    if(SoloLetras(formulario.nombre1.value) == false){
         document.getElementById("alerta").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres</div>';
         correcto_registrar = false;
     }
-    if(SoloLetras(form_registro.nombre2.value) == false){
+    if(SoloLetras(formulario.nombre2.value) == false){
         document.getElementById("alerta9").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los nombres</div>';
         correcto_registrar = false;
     }
-    if(SoloLetras(form_registro.apellido1.value) == false){
+    if(SoloLetras(formulario.apellido1.value) == false){
         document.getElementById("alerta2").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los apellidos</div>';
         correcto_registrar = false;
     }
-    if(SoloLetras(form_registro.apellido2.value) == false){
+    if(SoloLetras(formulario.apellido2.value) == false){
         document.getElementById("alerta8").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras en los apellidos</div>';
         correcto_registrar = false;
     }
@@ -153,7 +156,7 @@ function validar_registro(){
         // Los espacios son borrados de manera automática e inmediata en caso de ser ingresados:
         formulario.apellido1.value = "";
         correcto_registrar = false;
-    // En caso de que la función 'SoloLetras' devuelva un valor true, es decir, que los campos de los nombres o apellidos contengan solo letras, la alerta desaparecerá del campo que contenga los parámetros indicados: 
+    // En caso de que la función 'SoloLetras' devuelva un valor true, es decir, que los campos de los nombres o apellidos contengan solo letras, la alerta desaparecerá del campo o de los campos que contengan los parámetros indicados: 
     }else if(SoloLetras(form_registro.apellido1.value) == true){
         document.getElementById("alerta2").innerHTML = "";
     }
@@ -181,7 +184,7 @@ function validar_registro(){
     }else if(SoloLetras(form_registro.nombre2.value) == true){
         document.getElementById("alerta9").innerHTML = "";
     }
-// Se devuelve la variable 'correcto_registrar'. En caso de que sea true, la función 'validar_registro' no devolverá ninguna alerta contenida en ella, indicando que el formulario puede ser enviado sin problemas:
+// Se devuelve la variable 'correcto_registrar'. En caso de que sea true, la función 'validar_registro' no devolverá ninguna alerta contenida en ella::
 return correcto_registrar;
 }
 
@@ -192,29 +195,29 @@ function registro_enviado(){
     var formulario2 = document.form_registro;
 
     // Esta pieza de código verifica si el valor del campo de contraseña y el de confirmar contraseña no coinciden. En este caso, se le notificará al usuario de que ambas contraseñas no son coincidentes entre sí:
-    if(form_registro.contraseña.value != form_registro.confirmar_contraseña.value){
+    if(formulario2.contraseña.value != formulario2.confirmar_contraseña.value){
         document.getElementById("alerta6").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseñas digitadas no coinciden</div>';
         correcto_enviado = false;
     }
 
     // Esta pieza de código indica que si el valor del campo de contraseña se encuentra vacío al enviar el formulario se le pedirá al usuario que ingrese una. Este mismo proceso acontece también con todos los demás campos que estén vacíos y que sean obligatorios completar, como el campo de correo electrónico o el campo de número de documento:
-    if(form_registro.contraseña.value == ""){
+    if(formulario2.contraseña.value == ""){
         document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese una contraseña</div>';
         correcto_enviado = false;
     }
 
-    if(form_registro.confirmar_contraseña.value == ""){
+    if(formulario2.confirmar_contraseña.value == ""){
         document.getElementById("alerta6").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Confirme su contraseña</div>';
         correcto_enviado = false;
     }
 
     // En el siguiente condicional se hace uso de la función 'ValidarEmail' para verificar si el correo electrónico ingresado cumple o no cumple con la estructura correcta:
-    if(form_registro.email.value == "" || ValidarEmail(form_registro.email.value) == false){
+    if(formulario2.email.value == "" || ValidarEmail(formulario2.email.value) == false){
         document.getElementById("alerta4").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>La dirección de correo electrónico es incorrecta o no se ha ingresado ninguna</div>';
         correcto_enviado = false;
     }
 
-    if(form_registro.documento.value == ""){
+    if(formulario2.documento.value == ""){
         document.getElementById("alerta3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese su número de documento</div>';
         correcto_enviado = false;
     }
@@ -242,7 +245,7 @@ $(document).ready(function(){
         $('#confirmar_contraseña').removeAttr('type');
         // Aquí se añade una nueva clase al icono con el id '#show_password' y remueve la que tenía anteriormente. Entiéndase que, en este caso, por clase se está haciendo referencia a un icono diferente al predeterminado:
         $('#show_password').addClass('fa-eye-slash').removeClass('fa-eye');
-        // Aquí se añade un nuevo título al icono por medio de un llamado al atributo 'data-original-title', que permite mostrar un tooltip de boostrap (una pequeña caja con texto) al lado del icono:
+        // Aquí se añade un nuevo título al icono por medio de un llamado al atributo 'data-original-title', que permite mostrar un tooltip de Bootstrap (una pequeña caja con texto) al lado del icono:
         $('#show_password').attr('data-original-title', "Ocultar contraseñas").tooltip('show');
         }
     else{
