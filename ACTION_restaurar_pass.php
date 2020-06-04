@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<!-- Idioma en el que el archivo está definido: -->
+<html lang="es">
+<head>
+    <!-- Cofifiación de caracteres 'UTF-8' para evitar errores ortográficos al mostrar el texto en la pantalla: -->            
+    <meta charset="utf-8">
+    <!-- Etiqueta 'meta viewport' para controlar la composición en los navegadores móviles: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Kit de Font Awesome para utilizar sus iconos: -->
+    <script src="https://kit.fontawesome.com/ddefb55be1.js" crossorigin="anonymous"></script>
+    <!-- Archivo bootstrap para agregar el css del mismo: -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Título de la pestaña: -->
+    <title>Recuperación de contraseña - REDA</title>
+    <!-- Icono de la pestaña: -->
+    <link rel="icon" href="icons/reda2.png">
+    <!-- Archivo CSS (hoja de estilos) de este archivo en cuestión: -->
+    <link rel="stylesheet" type="text/css" href="css/restaurar_pass.css">
+</head>
+
 <?php
 
 // Se incluye el archivo 'ACTION_conexionBD.php' para acceder a la conexion de la base de datos 'reda' sin tener que escribir el script de conexión:
@@ -34,26 +54,6 @@ if (isset($_GET["token"]) && isset($_GET["email"])
         if ($expDate >= $curDate) {
             // En caso de ser así, el siguiente código HTML con el formulario para recuperar la contraseña será mostrado:
 ?>  
-
-<!DOCTYPE html>
-<!-- Idioma en el que el archivo está definido: -->
-<html lang="es">
-<head>
-    <!-- Cofifiación de caracteres 'UTF-8' para evitar errores ortográficos al mostrar el texto en la pantalla: -->            
-    <meta charset="utf-8">
-    <!-- Etiqueta 'meta viewport' para controlar la composición en los navegadores móviles: -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Kit de Font Awesome para utilizar sus iconos: -->
-    <script src="https://kit.fontawesome.com/ddefb55be1.js" crossorigin="anonymous"></script>
-    <!-- Archivo bootstrap para agregar el css del mismo: -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Título de la pestaña: -->
-    <title>Recuperación de contraseña - REDA</title>
-    <!-- Icono de la pestaña: -->
-    <link rel="icon" href="icons/reda2.png">
-    <!-- Archivo CSS (hoja de estilos) de este archivo en cuestión: -->
-    <link rel="stylesheet" type="text/css" href="css/restaurar_pass.css">
-</head>
 <body>
 <!-- Se colocan los 3 scripts para que la versión 4 de Bootstrap pueda funcionar en el código: -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -61,8 +61,8 @@ if (isset($_GET["token"]) && isset($_GET["email"])
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!-- Se usa una etiqueta '<a>' para añadir atributos que permiten que una ventana modal bootstrap no pueda ser cerrada si se da click por fuera de esta. La configuración para hacer esto se realiza en el archivo 'cambio_pass.js': -->
 <a data-controls-modal="pass_recovery" data-backdrop="static" data-keyboard="false">
-<!-- Se crea el formulario de restauración de contraseña con el nombre de 'form_pass': -->
-<form name="form_pass" action="" method="POST">
+<!-- Se crea el formulario de restauración de contraseña con el nombre de 'form_pass'. En caso de haber inconsistencias, aparecerán las alertas Bootstrap de la función 'cambio_pass'. Por otro lado, si hay inconsistencias en el formulario al tratar de ser enviado, aparecerán las alertas de la función 'enviado_cambio_pass': -->
+<form name="form_pass" action="" method="POST" oninput="return cambio_pass()" onsubmit="return enviado_cambio_pass() && cambio_pass();">
             <!-- Se crea una ventana modal de boostrap. La misma está configurada con código JQuery (del archivo 'cambio_pass.js') para que aparezca automaticamente cada vez que carga este archivo: -->    
             <div class="modal fade" id="pass_recovery" tabindex="-1" role="dialog" aria-labelledby="c_pass" aria-hidden="true">
                 <!-- Se define con la clase 'modal-dialog' que la ventana modal debe estar centrada vertical y horizontalmente: -->
@@ -72,16 +72,19 @@ if (isset($_GET["token"]) && isset($_GET["email"])
                         <!-- La clase 'modal-body' indica que el cuerpo del formulario empieza a mostrarse desde dicho punto: -->
                         <div class="modal-body">
                             <!-- En la zona superior del formulario se encuentran el título del formulario y una imagen llamada 'padlock.png' que indica esto: -->
-                            <i class='fas fa-sync-alt fa-5x'></i>
+                            <div class="change_icon">
+                                <i class='fas fa-sync-alt fa-5x'></i>
+                            </div>
                             <p id="font" class="font-weight-bold">Restauración de contraseña</p>
                             <!-- Se crea el primer campo del formulario (usando la clase 'form-group' de bootstrap para indicar que el campo corresponde a un formulario), el mismo sirve para que el usuario ingrese su contraseña nueva: -->
                             <div class="form-group">
                                     <input type="password" name="new" class="form-control" id="new_pass" placeholder="Digite su nueva contraseña">
-                                </div>
+                            </div>
                                 <!-- Aquí se coloca un icono del sitio web 'fontawesome.com'. Al mismo se le atribuye un tooltip de bootstrap (una caja con texto) que aparece al hacer un 'hover' sobre el icono. En este caso, la información mostrada es acerca de la visualización de las contraseñas ingresadas en los campos: -->
                                 <i class="fa fa-eye fa-lg" tool-tip-toggle="tooltip-pass" data-original-title="Mostrar contraseñas" id="passwords" id="show_password"></i>
                                 <!-- Un segundo icono de 'fontawesome' es colocado en el formulario, el mismo contiene también un tooltip, el cual esta vez informa al usuario sobre la seguridad de la contraseña al crear una: -->
                                 <i class="fa fa-info-circle fa-lg" id="information" tool-tip-toggle="tooltip-show" data-original-title="INFORMACIÓN: Se recomienda que para crear una contraseña fuerte siga los siguientes parámetros, es decir, que la contraseña contenga: 8 carácteres, una mayúscula, una minúscula, un número y un caracter raro o especial. Por ejemplo, la contraseña 'Sena_1234' cumple con los parámetros recomendados."></i>
+                                <div id="change3"></div>
                             <script type="text/javascript">
                                 /* Se crea una función JQuery para el formulario de cambiar contraseña. Esta función contendrá un par de eventos para activar 2 tooltips de bootstrap (cajas con texto) las cuales proporcionarán información al usuario al hacer 'hover' sobre alguno de ellos: */
                                 $(document).ready(function(){
@@ -97,7 +100,6 @@ if (isset($_GET["token"]) && isset($_GET["email"])
                                 });
                             </script>
                                 <!-- Se crea un 'div' con el id de 'change3', el cual es usado en el archivo 'cambio_pass.js' para hacer aparecer alertas en caso de existir incosistencias en el capo anterior: -->
-                                <div id="change3"></div>
 
                                 <!-- Se crea el segundo y último campo del formulario. AL igual que con el primero, posee la clase 'form-group' de bootstrap. Esta vez, este campo sirve para que el usuario confirme su contraseña nueva: -->
                                 <div class="form-group">
