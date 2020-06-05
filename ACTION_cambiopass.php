@@ -3,17 +3,37 @@
 // Se inicia o reanuda una sesión en caso de que un usuario ya haya ingresado al sistema por medio del log in o inicio de sesión: 
 session_start();
 
-// Se realiza la conexión al servidor local (phpMyAdmin) y a la base de datos con la función 'mysqli_connect'. Después del servidor local se coloca el nombre de usuario y seguidamente la contraseña del mismo:
+/* 
+@var $con
+@param string localhost | Nombre del servidor.
+@param string root | Nombre de usuario del gestor de bases de datos.
+@param string clave | Clave de usario del gestor de bases de datos.
+@param string reda | Nombre de la base de datos.
+
+Se realiza la conexión al servidor local (phpMyAdmin) y a la base de datos con la función 'mysqli_connect'. Después del servidor local se coloca el nombre de usuario y seguidamente la contraseña del mismo: */
 $con = mysqli_connect("localhost", "root", "", "reda");
 
 // Se comienza a verificar si la petición POST con los datos para cambiar la contraseña es correcta:
 if (isset($_POST['cambio'])) {
-    // Se define la variable '$contraseña' la cual contiene los datos del campo de contraseña actual, ubicado en el archivo 'system.php' o 'system_admin.php' (depende de la sesión en uso):
+    /* 
+    @var string $contraseña
+    @var string $nueva
+    
+    Se define la variable '$contraseña' la cual contiene los datos del campo de contraseña actual, ubicado en el archivo 'system.php' o 'system_admin.php' (depende de la sesión en uso):
+    */
     $contraseña = $_POST['actual'];
     // Se define la variable '$nueva' que contiene los datos ingresados en el campo de la contraseña nueva del usuario:
     $nueva = $_POST['new'];
 
-    // Se verifica con un condicional si la sesión actual corresponde al rol o cargo de instructor:
+    /* 
+    @var string $resultado
+    @var con
+    @var string $row
+    @var string $contraseñaBD
+    @var string $documento
+    
+    Se verifica con un condicional si la sesión actual corresponde al rol o cargo de instructor:
+    */
     if ($_SESSION['rol'] == 'Instructor') {
         // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se compara si la contraseña en la fila 'contrasena_instructor' de la tabla 'tbl_instructor' es igual a la ingresada por el usuario en el campo de contraseña actual:
         $resultado = mysqli_query($con, "SELECT * FROM tbl_instructor WHERE contrasena_instructor = '$contraseña';");
@@ -37,7 +57,15 @@ if (isset($_POST['cambio'])) {
 
     }
 
-    // Si la sesión no corresponde al rol o cargo instructor, se verifica verifica entonces con un condicional si la sesión actual corresponde al rol o cargo de administrador:
+    /* 
+    @var string $resultado
+    @var con
+    @var string $row
+    @var string $contraseñaBD
+    @var string $documento
+
+    Si la sesión no corresponde al rol o cargo instructor, se verifica verifica entonces con un condicional si la sesión actual corresponde al rol o cargo de administrador:
+    */
     if ($_SESSION['rol'] == 'Administrador') {
         // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se compara si la contraseña en la fila 'contrasena_administrador' de la tabla 'tbl_administrador' es igual a la ingresada por el usuario en el campo de contraseña actual:
         $resultado = mysqli_query($con, "SELECT * FROM tbl_administrador WHERE  contrasena_administrador = '$contraseña';");
@@ -60,7 +88,15 @@ if (isset($_POST['cambio'])) {
         }
     }
 
-    // Si la sesión no corresponde ni al rol o cargo de instructor o personal administrativo, se verifica por último con un condicional si la sesión actual corresponde al rol o cargo de personal administrativo (lo cual debe devolver true):
+    /* 
+    @var string $resultado
+    @var con
+    @var string $row
+    @var string $contraseñaBD
+    @var string $documento
+    
+    Si la sesión no corresponde ni al rol o cargo de instructor o personal administrativo, se verifica por último con un condicional si la sesión actual corresponde al rol o cargo de personal administrativo (lo cual debe devolver true):
+    */
     if ($_SESSION['rol'] == 'Personal administrativo') {
         // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se compara si la contraseña en la fila 'contrasena_administrativo' de la tabla 'tbl_personal_administrativo' es igual a la ingresada por el usuario en el campo de contraseña actual:
         $resultado = mysqli_query($con, "SELECT * FROM tbl_personal_administrativo WHERE contrasena_administrativo ='$contraseña';");

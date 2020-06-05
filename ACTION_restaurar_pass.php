@@ -23,7 +23,17 @@
 // Se incluye el archivo 'ACTION_conexionBD.php' para acceder a la conexion de la base de datos 'reda' sin tener que escribir el script de conexión:
 include ('ACTION_conexionBD.php');
 
-// Se verifica si los valores 'token', 'email y 'action' están ya definidos (esto viene desde el enlace que el usuario usa para restaurar su contraseña).
+/*
+@var string $key
+@var string $emailone
+@var string $curDate
+@var string $query
+@var string $row
+@var string $error
+@var string $expDate
+
+Se verifica si los valores 'token', 'email y 'action' están ya definidos (esto viene desde el enlace que el usuario usa para restaurar su contraseña).
+*/
 // Finalmente, se toma el token y se verifica si el valor definido 'action' no está vacío:
 if (isset($_GET["token"]) && isset($_GET["email"])
     && isset($_GET["action"]) && ($_GET["action"] == "reset")
@@ -143,7 +153,13 @@ if (isset($_GET["token"]) && isset($_GET["email"])
 if (isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"] == "update")) {
     // La variable '$error' deja de devolver un mensaje de error:
     $error = "";
-    // Se definen 2 variables ('$pass1', '$pass2') las cuales tendrán los datos de los campos de contraseña nueva y de confirmar contraseña, además de permitir con normalidad, usando la función 'mysqli_real_escape_string', que la contraseña nueva sea un string con caracteres especiales:
+    /*
+    @var string $pass1
+    @var string $pass2
+    @var $con
+
+    Se definen 2 variables ('$pass1', '$pass2') las cuales tendrán los datos de los campos de contraseña nueva y de confirmar contraseña, además de permitir con normalidad, usando la función 'mysqli_real_escape_string', que la contraseña nueva sea un string con caracteres especiales:
+    */
     $pass1 = mysqli_real_escape_string($con, $_POST["new"]);
     $pass2 = mysqli_real_escape_string($con, $_POST["confirmar_pass"]);
     // Se tiene el e-mail del usuario que solicitó el cambio de contraseña y que anteriormente fue obtenido en este archivo:

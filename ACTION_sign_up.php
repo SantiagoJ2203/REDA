@@ -3,10 +3,30 @@
 // Se comienza a verificar si la petición POST con los datos para cambiar la contraseña es correcta:
 if (isset($_POST['send'])) {
 
-    // Se realiza la conexión al servidor local (phpMyAdmin) y a la base de datos con la función 'mysqli_connect'. Después del servidor local se coloca el nombre de usuario y seguidamente la contraseña del mismo:
+    /* 
+    @var $con
+    @param string localhost | Nombre del servidor.
+    @param string root | Nombre de usuario del gestor de bases de datos.
+    @param string clave | Clave de usario del gestor de bases de datos.
+    @param string reda | Nombre de la base de datos.  
+
+    Se realiza la conexión al servidor local (phpMyAdmin) y a la base de datos con la función 'mysqli_connect'. Después del servidor local se coloca el nombre de usuario y seguidamente la contraseña del mismo: 
+    */
     $con = mysqli_connect("localhost", "root", "", "reda");
 
-    // Se definen una serie de variables que corresponden a los datos ingresados en los campos del formulario de registro ubicado en el archivo 'sign_up.php'. Los datos son recibidos por el método post para realizar una nueva solicitud de almacenamiento en la base de datos:
+    /*
+    @var string $documento 
+    @var string $nombre1
+    @var string $nombre2
+    @var string $apellido1
+    @var string $apellido2
+    @var string $email
+    @var string $cargo
+    @var string $contraseña
+    @var string $pass_cifrado
+    
+    Se definen una serie de variables que corresponden a los datos ingresados en los campos del formulario de registro ubicado en el archivo 'sign_up.php'. Los datos son recibidos por el método post para realizar una nueva solicitud de almacenamiento en la base de datos: 
+    */
     $documento = $_POST['documento'];
     $nombre1 = $_POST['nombre1'];
     $nombre2 = $_POST['nombre2'];
@@ -16,9 +36,21 @@ if (isset($_POST['send'])) {
     $cargo = $_POST['cargo'];
     $contraseña = $_POST['contraseña'];
     // Se hace uso de una variable llamada '$passcifrado' para guardar la función 'password_hash', la cual es útil para la encriptación de las contraseñas:
-    // $passcifrado = password_hash($contraseña, PASSWORD_DEFAULT, array("cost"=>12));
+    $pass_cifrado = password_hash($contraseña, PASSWORD_DEFAULT, array("cost"=>12));
 
-    // Se verifica con un condicional si el registro está tratando de hacerse para un usuario que tendrá el cargo de instructor:
+    /* 
+    @var string $query
+    @var string $query2
+    @var string $query3
+    @var string $result
+    @var string $result2
+    @var string $result3
+    @var string $num
+    @var string $num2
+    @var string $num3
+    
+    Se verifica con un condicional si el registro está tratando de hacerse para un usuario que tendrá el cargo de instructor:
+    */
     if ($cargo == 'Instructor') {
         // Se realizan un total de 3 consultas para realizar diferentes tipos de pruebas al momento de que el formulario es enviado. En dichas consultas se seleccionan las filas 'documento_instructor' y 'correo_instructor' de la tabla 'tbl_instructor'.
         // La variable '$query' compara el documento de la base de datos con el ingresado por el usuario, y el correo electrónico de la base de datos con el ingresado: 
@@ -43,7 +75,7 @@ if (isset($_POST['send'])) {
             // Si lo anterior devuelve true, entonces se realiza un segundo condicional donde se verifica por separado si alguna de las filas contiene algún registro ya almacenado con anterioridad. Si una sola de las tres condiciones se cumple, el código hará lo que sigue después:
             if ($num == 0 || $num2 == 0 || $num3 == 0) {
                 // En caso de que no hayan registros almacenados, un procedimiento almacenado, de nombre 'insertar_tbl_instructor', será llamado para almacenar en la base de datos al nuevo usuario con sus respectivos datos ingresados en el formulario:
-                $query = "CALL insertar_tbl_instructor ('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$email','$contraseña');";
+                $query = "CALL insertar_tbl_instructor ('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$email','$pass_cifrado');";
                 mysqli_query($con, $query);
                 // Por último, se redirecciona al administrador (aquel que registra a los nuevos usuarios) a la página de registro ('sign_up.php') para ser notificado, por medio de una alerta bootstrap, de que el registro ha sido exitoso.
                 header("location: sign_up.php?new_user=true");
@@ -59,7 +91,19 @@ if (isset($_POST['send'])) {
             header("location: sign_up.php?notemail=true");
         }
 
-      // Si el registro no es realizado para un usuario que vaya a tener el cargo de instructor, se verifica entonces con un condicional si el registro está tratando de hacerse para un usuario que tendrá el cargo de personal administrativo:
+      /* 
+      @var string $query
+      @var string $query2
+      @var string $query3
+      @var string $result
+      @var string $result2
+      @var string $result3
+      @var string $num
+      @var string $num2
+      @var string $num3
+
+      Si el registro no es realizado para un usuario que vaya a tener el cargo de instructor, se verifica entonces con un condicional si el registro está tratando de hacerse para un usuario que tendrá el cargo de personal administrativo:
+      */
     } elseif ($cargo == 'Personal administrativo') {
         // Se realizan un total de 3 consultas para realizar diferentes tipos de pruebas al momento de que el formulario es enviado. En dichas consultas se seleccionan las filas 'documento_administrativo' y 'correo_administrativo' de la tabla 'tbl_personal_administrativo'.
         // La variable '$query' compara el documento de la base de datos con el ingresado por el usuario, y el correo electrónico de la base de datos con el ingresado: 
@@ -84,7 +128,7 @@ if (isset($_POST['send'])) {
             // Si lo anterior devuelve true, entonces se realiza un segundo condicional donde se verifica por separado si alguna de las filas contiene algún registro ya almacenado con anterioridad. Si una sola de las tres condiciones se cumple, el código hará lo que sigue después:
             if ($num == 0 || $num2 == 0 || $num3 == 0) {
                 // En caso de que no hayan registros almacenados, un procedimiento almacenado, de nombre 'insertar_tbl_instructor', será llamado para almacenar en la base de datos al nuevo usuario con sus respectivos datos ingresados en el formulario:
-                $query = "CALL insertar_tbl_personal_administrativo ('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$email','$contraseña');";
+                $query = "CALL insertar_tbl_personal_administrativo ('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$email','$pass_cifrado');";
                 mysqli_query($con, $query);
                 // Por último, se redirecciona al administrador (aquel que registra a los nuevos usuarios) a la página de registro ('sign_up.php') para ser notificado, por medio de una alerta bootstrap, de que el registro ha sido exitoso.
                 header("location: sign_up.php?new_user=true");
@@ -101,7 +145,19 @@ if (isset($_POST['send'])) {
             header("location: sign_up.php?notemail=true");
         }
 
-    // Si el registro no es realizado para un usuario que vaya a tener el cargo de instructor, se verifica entonces con un condicional si el registro está tratando de hacerse para un usuario que tendrá el cargo de administrador (lo cual debe de devolver true):
+    /*
+    @var string $query
+    @var string $query2
+    @var string $query3
+    @var string $result
+    @var string $result2
+    @var string $result3
+    @var string $num
+    @var string $num2
+    @var string $num3
+
+    Si el registro no es realizado para un usuario que vaya a tener el cargo de instructor, se verifica entonces con un condicional si el registro está tratando de hacerse para un usuario que tendrá el cargo de administrador (lo cual debe de devolver true):
+    */
     } elseif ($cargo == 'Administrador') {
         // Se realizan un total de 3 consultas para realizar diferentes tipos de pruebas al momento de que el formulario es enviado. En dichas consultas se seleccionan las filas 'documento_administrador' y 'correo_administrador' de la tabla 'tbl_administrador'.
         // La variable '$query' compara el documento de la base de datos con el ingresado por el usuario, y el correo electrónico de la base de datos con el ingresado: 
@@ -126,7 +182,7 @@ if (isset($_POST['send'])) {
             // Si lo anterior devuelve true, entonces se realiza un segundo condicional donde se verifica por separado si alguna de las filas contiene algún registro ya almacenado con anterioridad. Si una sola de las tres condiciones se cumple, el código hará lo que sigue después:
             if ($num == 0 || $num2 == 0 || $num3 == 0) {
                 // En caso de que no hayan registros almacenados, un procedimiento almacenado, de nombre 'insertar_tbl_instructor', será llamado para almacenar en la base de datos al nuevo usuario con sus respectivos datos ingresados en el formulario:
-                $query = "CALL insertar_tbl_administrador ('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$email','$contraseña');";
+                $query = "CALL insertar_tbl_administrador ('$documento','$nombre1','$nombre2','$apellido1','$apellido2','$email','$pass_cifrado');";
                 mysqli_query($con, $query);
                 // Por último, se redirecciona al administrador (aquel que registra a los nuevos usuarios) a la página de registro ('sign_up.php') para ser notificado, por medio de una alerta bootstrap, de que el registro ha sido exitoso.
                 header("location: sign_up.php?new_user=true");

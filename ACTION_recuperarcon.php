@@ -13,7 +13,14 @@ require 'PHPMAILER/Exception.php';
 require 'PHPMAILER/OAuth.php';
 require 'vendor/autoload.php';
 
-// Se define si el valor 'email' es existente en el archivo HTML desde el que se enviaron los datos y se verifica si el valor 'email' no está vacío:
+/*
+@var string $emailone
+@var string $sel_queryone
+@var string $resultsone
+@var string $rowone
+
+Se define si el valor 'email' es existente en el archivo HTML desde el que se enviaron los datos y se verifica si el valor 'email' no está vacío:
+*/
 if (isset($_POST['email']) && (!empty($_POST['email']))) {
     // En caso de haber un dato en el valor 'email', el mismo es guardado en una variable llamada '$emailone':
     $emailone = $_POST['email'];
@@ -66,7 +73,20 @@ if (isset($_POST['email']) && (!empty($_POST['email']))) {
     }
     } */
 
-    /* Si no existe ningún tipo de error a la hora de verificar el e-mail y su existencia, comienza a hacerse el proceso para llenar la tabla donde se guardará un token que servirá para producir el enlace donde el usuario podrá recuperar su contraseña: */
+    /* 
+    @var string $error
+    @var string $expFormat
+    @var string $expDate
+    @var string $key
+    @var string $addKey
+    @var con
+    @var string $body
+    @var string $subject
+    @var string $email_to
+    @var string $mail
+
+    Si no existe ningún tipo de error a la hora de verificar el e-mail y su existencia, comienza a hacerse el proceso para llenar la tabla donde se guardará un token que servirá para producir el enlace donde el usuario podrá recuperar su contraseña: 
+    */
     if($error == "") {
         // Se recoge la fecha actual con la función 'mktime' y se le aumenta un día a dicha fecha para calcular el momento en el que el token debe quedar invalidado:
         $expFormat = mktime(date("H"), date("i"), date("s"), date("m"), date("d")+ 1, date("Y"));
@@ -83,19 +103,15 @@ if (isset($_POST['email']) && (!empty($_POST['email']))) {
         mysqli_query($con, "INSERT INTO `password_reset_temp` (`email`, `token`, `expDate`)
         VALUES ('".$emailone."', '".$key."', '".$expDate."');");
 
-        // Por medio de una única variable llamada '$output' se guarda todo el texto o cuerpo del correo que se enviará al usuario:
-        $output = '<p>Apreciado usuario,</p>';
-        $output = '<p>Por favor dé click en el siguiente link para recuperar su contraseña:</p>';
-        $output = '<p>-------------------------------------------------------------</p>';
-        // Se crea la dirección a la que accederá el usuario para cambiar su contraseña. Dicha dirección está compuesta por el token de la base de datos y el e-mail del correo que corresponde a dicho token:
-        $output = '<p><a href="localhost:80/reda-master/ACTION_restaurar_pass.php?key=' . $key . '&email=' . $emailone . '&action=reset" target="_blank">localhost:80/reda-master/ACTION_restaurar_pass.php?key=' . $key . '&email=' . $emailone . '&action=reset</a></p>';
-        $output = '<p>-------------------------------------------------------------</p>';
-        $output = '<p>por favor, asegúrese de copiar el link completo en la barra de su navegador, ya que el link, por cuestiones de seguridad, expira 1 día después de haber sido solicitado</p>';
-        $output = '<p>Si usted no ha solicitado este correo de cambio de contraseña, por favor haga caso omiso al mismo. Sin embargo, se le recomienda cambiar su contraseña de usuario para evitar algún tipo de fraude con su cuenta.</p>';
-        $output = '<p>Gracias,</p>';
-        $output = '<p>Equipo REDA</p>';
-        // Se toma todo lo que se encuentra dentro de la variable '$output' para colocarlo dentro de una sola variable llamada '$body', la cual recolecta todos los datos ingresados en la primera variable mencionada:
-        $body = $output;
+        /* Por medio de una única variable,, llamada '$body', se guarda todo el texto o cuerpo del correo que se enviará al usuario. Además, se crea la dirección a la que accederá el usuario para cambiar su contraseña. Dicha dirección está compuesta por el token de la base de datos y el e-mail del correo que corresponde a dicho token: */
+        $body = '<p>Apreciado usuario, por favor dé click en el siguiente link para recuperar su contraseña:</p> 
+        <p>-------------------------------------------------------------</p>
+        <p><a href="localhost:80/reda-master/ACTION_restaurar_pass.php?key=' . $key . '&email=' . $emailone . '&action=reset" target="_blank">localhost:80/reda-master/ACTION_restaurar_pass.php?key=' . $key . '&email=' . $emailone . '&action=reset</a></p>
+        <p>-------------------------------------------------------------</p>
+        <p>Por favor, asegúrese de copiar el link completo en la barra de su navegador, ya que el link, por cuestiones de seguridad, expira 1 día después de haber sido solicitado.</p>
+        <p>Si usted no ha solicitado este correo de cambio de contraseña, por favor haga caso omiso al mismo. Sin embargo, se le recomienda cambiar su contraseña de usuario para evitar algún tipo de fraude con su cuenta.</p>
+        <p>Gracias,</p>
+        <p>Equipo REDA</p>';
         // Se escribe dentro de la variable '$subject' el asunto del correo a enviar:
         $subject = "Recuperación de contraseña - REDA";
         // Se asigna la variable '$emailone' a otra llamada '$email_to', esto con el objetivo de hacer referencia a qué e-mail será enviado el correo:
