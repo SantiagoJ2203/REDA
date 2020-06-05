@@ -181,15 +181,15 @@ tbody{
 }
 /* Estilos para el elemento contenido dentro de la etiqueta 'label' que está en el formulario de buscar una ficha: */
 .search_course label{
-    margin-left: 7.95em; /* Se controla el posicionamiento horizontal del elemnto. */
-    margin-top: 3.5em; /* Se controla el posicionamiento vertical del elemnto. */
+    margin-left: 10.85em; /* Se controla el posicionamiento horizontal del elemento. */
+    margin-top: 6em; /* Se controla el posicionamiento vertical del elemento. */
 }
 /* Estilos para la insignia o 'badge' de Bootstrap contenida dentro de la clase ubicada en la etiqueta 'label' del formulario de buscar una ficha: */
 .search_badge{
     height: 2em; /* Se define la altura que ocupará la insignia. */
     background-color: #11b6a0; /* Se indica el color de fondo que poseerá. */
     color: #fff; /* Se le da el color que poseerá el texto dentro de la insignia. */
-    font-size: 1.5em; /* Se define el tamaño del texto. */
+    font-size: 1.1em; /* Se define el tamaño del texto. */
     border-radius: 0; /* Se indica que la insignia no posea bordes redondo alrededor suyo. */
     line-height: 1.4em; /* Se le da una altura a la línea de texto escrita dentro de la insignia. */
 }
