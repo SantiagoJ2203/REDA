@@ -229,6 +229,13 @@ tbody{
     background-color: #11b6a0; /* El color de fondo pasa a ser otro. */
     border: 2px solid #11b6a0; /* El borde también toma otro color distinto al original. */
 }
+/* Estilos otorgado a la alerta Bootstrap que aparece abajo del campo 'input' del formulario de buscar una ficha: */
+.alerta_ficha{
+    border-radius: 0; /* Se indica que el cuadro de alerta no posea bordes redondeados a su alrededor. */
+    font-weight: bold; /* Se declara que el texto dentro del cuadro de alerta esté en negrita. */
+    width: 38.05em; /* Se define el ancho que tendrá el cuadro de alerta en la pantalla. */
+    margin-left: 11.95em; /* Se utiliza un margen izquierdo para controlar la alineación horizontal del cuadro de alerta. */
+}
 /* Estilo para las imágenes que contienen los enlaces hacia las funciones principales del sistema: */
 .img_functions{
     width: 15em; /* Ancho de la imagen definido. */
@@ -290,6 +297,16 @@ tbody{
     background-color: #11b6a0; /* El color de fondo del botón cambia a uno diferente. */
     border: 2px solid #11b6a0; /* El borde del botón toma un color distinto al original. */ 
 }
+/* Estilos dados a las alertas Bootstrap que aparecen en el formulario de buscar a un aprendiz, así como a la alerta que aparece abajo del botón de buscar del ya mencionado formulario: */
+.alerta_aprendiz, .alerta_ap_final{
+    border-radius: 0; /* Se indica que las alertas no posean bordes redondeados alrededor suyos. */
+    font-weight: bold; /* Se declara que el texto dentro de los cuadros de alerta esté en negrita. */
+    margin-top: -1em; /* Se añade una margen superior para controlar el alineamiento vertical de los cuadros de alerta. */
+}
+/* Estilo añadido unicamente a la alerta que aparece abajo del botón de buscar en el formulario de buscar a un aprendiz: */
+.alerta_ap_final{
+    margin-top: 0em; /* Se define que esta alerta en concreto no posea ningún margen superior. */
+}
 /* Estilo dado al footer o al pie de página del archivo: */
 .system_footer{
     background-color: #11b6a0; /* Color de fondo asignado al footer. */
@@ -349,22 +366,11 @@ tbody{
       margin-top: -0.5em; /* El contenedor cambia su alineación vertical al obtener un margen superior negativo. */
     }
   }
-/* Cambios aplicados al contenedor del formulario de buscar a un aprendiz cuando el tamaño de la ventana del navegador es igual o menor a 1200 pixeles: */
-@media (max-width: 1200px) {
-    .container_search_appr {
-      height: 34em; /* La altura del contenedor aumenta a '34em'. */
-    }
-  }
-/* En caso de que la ventana del navegador posea un tamaño igual o menor a 1079 pixeles, el siguiente cambio sucede en el contenedor anterior mencionado: */
-@media (max-width: 1079px) {
-    .container_search_appr {
-      height: 38em; /* La altura del contenedor aumenta a '38em'. */
-    }
-  }
-/* Y en caso de que la ventana del navegador sea menor o igual a 580px, el siguiente cambio sucede en el contenedor del formulario: */
-@media (max-width: 580px) {
-    .container_search_appr {
-      height: 41em; /* La altura del contenedor aumenta a '38em'. */
+/* Cambios aplicados a la alerta Bootstrap, en el formulario de buscar una ficha, cuando el tamaño de la ventana del navegador es igual o menor a 1250 pixeles: */
+@media (max-width: 1250px) {
+    .alerta_ficha{
+      margin-left: 0em; /* Se elimina el margen izquierdo poseido de manera predeterminada para controlar la posición horizontal de la alerta. */
+      width: 28.05em; /* Se indica el ancho poseerá la alerta al mostrarse en la pantalla. */
     }
   }
 /* Estilo aplicado al formulario de buscar a un aprendiz cuando la ventana del navegador es igual o menor a 1200 pixeles: */

@@ -230,6 +230,13 @@ tbody{
     background-color: #11b6a0; /* El color de fondo pasa a ser otro. */
     border: 2px solid #11b6a0; /* El borde también toma otro color distinto al original. */
 }
+/* Estilos otorgado a la alerta Bootstrap que aparece abajo del campo 'input' del formulario de buscar una ficha: */
+.alerta_ficha{
+    border-radius: 0; /* Se indica que el cuadro de alerta no posea bordes redondeados a su alrededor. */
+    font-weight: bold; /* Se declara que el texto dentro del cuadro de alerta esté en negrita. */
+    width: 38.05em; /* Se define el ancho que tendrá el cuadro de alerta en la pantalla. */
+    margin-left: 11.95em; /* Se utiliza un margen izquierdo para controlar la alineación horizontal del cuadro de alerta. */
+}
 /* Estilo para las imágenes que contienen los enlaces hacia las funciones principales del sistema: */
 .img_functions{
     width: 15em; /* Ancho de la imagen definido. */
@@ -255,35 +262,6 @@ tbody{
 .txt_functions a{
     color: #000; /* Color negro asignado a los enlaces. */
 }
-/* Estilo asignado al contenedor que posee todos los elementos referentes al formulario de búsqueda de un aprendiz: */
-.container_search_appr{
-    background-color: rgba(219, 219, 219, 0.219); /* Color de fondo transparente asignado al contenedor. */
-}
-/* Estilo dado a todos los elementos ubicados dentro del formulario de búsqueda de un aprendiz: */
-.form_search_appr{
-    margin-top: 2em; /* Se controla la alineación vertical del formulario con un margen superior. */
-}/* Estilo añadido a los campos input del formulario de búsqueda de un aprendiz: */
-.form_search_appr input{
-    border: 2px solid rgba(0, 0, 0, 0.061); /* Se añade un borde transparente alrededor de cada campo. */
-}
-/* Estilo otorgado al icono con forma de carta de identificación en el formulario de búsqueda de aprendiz: */
-.id_card_icon{
-    font-size: 15em; /* Tamaño del icono definido. */
-}
-/* Estilos para el título principal del formulario de búsqueda de aprendiz: */
-.title_search_appr{
-    font-weight: bold; /* Grosor del texto en negrita. */
-    font-size: 2.5em; /* Tamaño de texto aplicado. */
-}
-/* Estilos dados al botón de buscar ubicado en el formulario de búsqueda de aprendiz: */
-.input_search_appr{
-    background-color: #fa7e36; /* Color de fondo para el botón. */
-    font-size: 1em; /* Tamaño del icono de lupa definido. */
-    border: 2px solid #fa7e36df; /* Borde delgado creado para el botón. */
-    border-radius: 0; /* Bordes redondos retirados del botón. */
-    color: #fff; /* Color blanco aplicado al icono en cuestión. */
-    transition: 0.2s; /* Transición ligera al comenzarse a aplicar los cambios al botón cuando se realiza un 'hover' sobre el mismo. */
-}
 /* Cambios de estilo aplicados al botón de búsqueda de aprendiz cuando se realiza un 'hover' sobre el mismo: */
 .input_search_appr:hover{
     color: #fff; /* El color del icono se mantiene. */
@@ -292,6 +270,7 @@ tbody{
 }
 /* Estilo dado al footer o al pie de página del archivo: */
 .system_footer{
+    margin-top: 1.5em; /* Se controla el alineamiento vertical del elemento con un margen superior. */
     background-color: #11b6a0; /* Color de fondo asignado al footer. */
 }
 /* Estilo agregado al texto que posee el enlace al manual de usuario: */
@@ -349,35 +328,10 @@ tbody{
       margin-top: -0.5em; /* El contenedor cambia su alineación vertical al obtener un margen superior negativo. */
     }
   }
-/* Cambios aplicados al contenedor del formulario de buscar a un aprendiz cuando el tamaño de la ventana del navegador es igual o menor a 1200 pixeles: */
-@media (max-width: 1200px) {
-    .container_search_appr {
-      height: 34em; /* La altura del contenedor aumenta a '34em'. */
-    }
-  }
-/* En caso de que la ventana del navegador posea un tamaño igual o menor a 1079 pixeles, el siguiente cambio sucede en el contenedor anterior mencionado: */
-@media (max-width: 1079px) {
-    .container_search_appr {
-      height: 38em; /* La altura del contenedor aumenta a '38em'. */
-    }
-  }
-/* Y en caso de que la ventana del navegador sea menor o igual a 580px, el siguiente cambio sucede en el contenedor del formulario: */
-@media (max-width: 580px) {
-    .container_search_appr {
-      height: 41em; /* La altura del contenedor aumenta a '38em'. */
-    }
-  }
-/* Estilo aplicado al formulario de buscar a un aprendiz cuando la ventana del navegador es igual o menor a 1200 pixeles: */
-@media (max-width: 1200px) {
-    .form_search_appr {
-      margin-top: 15em; /* La alineación vertical del formulario es controlada con un margen superior. */
-    }
-  }
-/* Estilos aplicados al icono del formulario de buscar a un aprendiz cuando la ventana del navegador es igual o menor a 1200 pixeles: */
-@media (max-width: 1200px) {
-    .id_card_icon i{
-      position: absolute; /* Se asigna una posición absoluta al icono para un posicionamiento más exacto dentro la ventana del navegador. */ 
-      text-align: center; /* Se indica que el icono quede en el centro de su contenedor. */
-      display: inline-block; /* Se le asigna el valor 'inline-block' al icono para no ignorar las margenes que el elemento posee. */
+/* Cambios aplicados a la alerta Bootstrap, en el formulario de buscar una ficha, cuando el tamaño de la ventana del navegador es igual o menor a 1250 pixeles: */
+@media (max-width: 1250px) {
+    .alerta_ficha{
+      margin-left: 0em; /* Se elimina el margen izquierdo poseido de manera predeterminada para controlar la posición horizontal de la alerta. */
+      width: 28.05em; /* Se indica el ancho poseerá la alerta al mostrarse en la pantalla. */
     }
   }
