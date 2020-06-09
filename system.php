@@ -15,7 +15,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
 <head lang="es">
     <!-- Codifiación de caracteres 'UTF-8' para evitar errores de escritura al mostrar el texto en la pantalla: --> 
     <meta charset="utf-8">
-    <!-- Uso de la etique meta viewport para mostrar los elementos de manera responsive u ordenada dependiendo del tamaño de la pantalla del dispositivo: -->
+    <!-- Uso de la etiqueta meta viewport para mostrar los elementos de manera responsive u ordenada dependiendo del tamaño de la pantalla del dispositivo: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Título de la pestaña: -->
     <title>REDA - SISTEMA</title>
@@ -145,8 +145,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                                         <tr>
                                             <th scope="col">Fecha</th>
                                             <th scope="col">Hora</th>
-                                            <th scope="col">Lugar cercano de ingreso</th>
-                                            <th scope="col">Característica del dispositivo usado</th>
+                                            <th scope="col">Sistema operativo usado</th>
+                                            <th scope="col">Navegador usado</th>
                                         </tr>
                                     </thead>
                                     <!-- Se usa la etiqueta '<tbody>' para empezar a agregar elementos al cuerpo de la tabla: -->
@@ -303,7 +303,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                             </div>
                                 <!-- Se añade un segundo icono con las mismas funcionalidades que el anterior, solo que esta vez el mensaje indica algunas recomendaciones al usuario para crear una contraseña segura: -->
                                 <div class="info_icon">
-                                    <i class="fa fa-info-circle fa-lg" tool-tip-toggle="tooltip-show" data-original-title="INFORMACIÓN: Se recomienda que para crear una contraseña fuerte siga los siguientes parámetros, es decir, que la contraseña contenga: 8 carácteres, una mayúscula, una minúscula, un número y un caracter raro o especial. Por ejemplo, la contraseña 'Sena_1234' cumple con los parámetros recomendados."></i>
+                                    <i class="fa fa-info-circle fa-lg" tool-tip-toggle="tooltip-show" data-original-title="INFORMACIÓN: Por cuestiones de seguridad, la contraseña debe contener como mínimo: 8 carácteres, una mayúscula, una minúscula, un número y un caracter especial o raro. Por ejemplo, la contraseña 'Sena_1234' cumple con los parámetros requeridos."></i>
                                 </div>
                             <script type="text/javascript">
                                 /* Se crea una función JQuery para el formulario de cambiar contraseña. Esta función contendrá un par de eventos para activar 2 tooltips de bootstrap (cajas con texto) las cuales proporcionarán información al usuario al hacer 'hover' sobre alguno de ellos: */
@@ -376,13 +376,13 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
     <div class="form-group search_course">
             <!-- Se crea un 'badge' o insignia de Bootstrap para mostrar el nombre del formulario: -->
             <label class="badge badge-info search_badge" for="input_search">Búsqueda de una ficha:</label>
-            <!-- Se crea el formulario con su respectivo método de envío y la acción que hará una vez se realice la búsqueda: -->
-            <form action="list_result.php" method="POST">
+            <!-- Se crea el formulario con su respectivo método de envío y la acción que hará una vez se realice la búsqueda. Además, se pone un nombre al formulario y dos eventos JavaScript ('oninput' y 'onsubmit'), con sus respectivas funciones de retorno, para validar el campo 'input' para buscar una ficha: -->
+            <form name="buscar_ficha" action="list_result.php" method="POST" oninput="return validar_ficha()" onsubmit="return enviado_ficha() && validar_ficha();">
             <!-- Se utiliza la clase 'input-group' para indicar que habrán dos o más elementos en línea a partir de un campo input: -->
             <div class="input-group">
                 <div class="input-group-prepend"></div>
-                <!-- Se crea el input en el que el usuario puede agregar el número de ficha que desea buscar: -->
-                <input type="text" class="form-control input_search" placeholder="Ingrese el número de la ficha a buscar...">
+                <!-- Se crea el 'input', con su respectivo nombre ('fichanombre'), en el que el usuario puede agregar el número de ficha que desea buscar: -->
+                <input type="text" class="form-control input_search" name="fichanombre" placeholder="Ingrese el número de la ficha a buscar...">
                 <!-- Se crea el 'div' que contendrá todos los elementos relacionados al botón del formulario: -->
                 <div class="button_search_div">
                 <!-- Se crea el botón en cuestión para buscar una ficha: -->
@@ -394,6 +394,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
             </form>
             <!-- Aquí finaliza el formulario de buscar una ficha. -->
         </div>
+        <!-- Se añade un 'div' con un identificador llamado 'alerta_ficha', el mismo muestra una alerta de Bootstrap en caso de que sucedan anomalías en el formulario: -->
+        <div id="alerta_ficha"></div>
     </div>
 </div>
 <!-- Aquí acaba de usarse el contenedor para el formulario de buscar una ficha. -->
@@ -463,8 +465,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
             </div>
             <!-- Se le indica al código que 6 columnas del contenedor serán utilizadas: -->
             <div class="col-6">
-                <!-- Inicia el formulario para ingresar los datos del aprendiz a buscar: -->
-                <form class="form_search_appr">
+                <!-- Se crea el formulario con su respectivo método de envío y la acción que hará una vez se realice la búsqueda. Además, se pone un nombre al formulario y dos eventos JavaScript ('oninput' y 'onsubmit'), con sus respectivas funciones de retorno, para validar el campo 'input' para buscar a un aprendiz: -->
+                <form name="form_aprendiz" class="form_search_appr" oninput="return validar_aprendiz()" onsubmit="return enviado_aprendiz() && validar_aprendiz();">
                     <!-- Se muestra el título que indica que el formulario corresponde a la búsqueda de un aprendiz en el sistema: -->
                     <div class="form-group">
                         <!-- Se asigna una clase al título para añadirle estilos desde el archivo CSS: -->
@@ -472,16 +474,22 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                     </div>
                     <!-- Se crea el primer campo del formulario, el cual sirve para ingresar el nombre del aprendiz:-->
                     <div class="form-group">
-                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nombre del aprendiz">
+                        <input type="text" name="ap_aprendiz" class="form-control" aria-describedby="emailHelp" placeholder="Nombre del aprendiz">
                     </div>
+                    <!-- 'Div' que contiene un identificador llamado 'alerta_ap_aprendiz', el cual permite que una alerta Bootstrap aparezca si hay alguna inconsistencia en el campo de nombre del aprendiz: -->
+                    <div id="alerta_ap_aprendiz"></div>
                     <!-- El segundo campo está hecho para ingresar la ficha en la que pueda estar el aprendiz: -->
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Número de ficha">
+                        <input type="text" name="ap_ficha" class="form-control" placeholder="Número de ficha">
                     </div>
+                    <!-- 'Div' que contiene un identificador llamado 'alerta_ap_ficha', el cual permite que una alerta Bootstrap aparezca si hay alguna inconsistencia en el campo de número de ficha del aprendiz: -->
+                    <div id="alerta_ap_ficha"></div>
                     <!-- Y el último campo está hecho para ingresar el número de documento del aprendiz en caso de saber cual es: -->
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Número de documento">
+                        <input type="text" name="ap_documento" class="form-control" placeholder="Número de documento">
                     </div>
+                    <!-- 'Div' que contiene un identificador llamado 'alerta_ap_documento', el cual permite que una alerta Bootstrap aparezca si hay alguna inconsistencia en el campo de número de documento del aprendiz: -->
+                    <div id="alerta_ap_documento"></div>
                     <!-- Se crea un botón con un icono de una lupa dentro de él; esto indica que al hacer click en el mismo la búsqueda del aprendiz comenzará a producirse en el sistema: -->
                     <button class="btn input_search_appr" type="submit">
                         <!-- Aquí se inserta el icono con forma de lupa: -->
@@ -489,6 +497,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                     </button>
                 </form>
                  <!-- Aquí finaliza el formulario de búsqueda de un aprendiz. -->
+                 <!-- Se añade un 'div' con un identificador llamado 'alerta_aprendiz', el mismo muestra una alerta de Bootstrap en caso de que sucedan anomalías generales en el formulario: -->
+                <div id="alerta_aprendiz"></div>
             </div>
         </div>
     </div>
@@ -522,6 +532,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
 </body>
 <!-- Se añade el uso del archivo 'cambio_pass.js' para permitir la aparición de alertas bootstrap en los casos donde sucedan cambios o anomalías en el formulario de cambiar contraseña: -->
 <script src="js/cambio_pass.js"></script>
+<!-- Se llama a un segundo archivo JavaScript, el mismo valida los formularios de buscar una ficha y de buscar a un aprendiz: -->
+<script src="js/validacion_buscar.js"></script>
 </html>
 <?php
 } else {
