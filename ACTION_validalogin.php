@@ -27,6 +27,9 @@ if (isset($_POST['ingresar'])){
     $cargo = $_POST['cargo'];
     $documento = $_POST['documento'];
     $contraseña=$_POST['contraseña'];
+    date_default_timezone_set("America/Bogota");
+    $fecha_actual = date('d-m-Y');
+    $hora_actual = time();
    
    /* 
       El siguiente condicional If evalúa si la variable $cargo es igual a 'Instructor'.
@@ -41,12 +44,11 @@ if (isset($_POST['ingresar'])){
       @var string $name1
       @var string $name2
 
-      Se realiza una consulta a la base de datos la cual muestra toda la información en la tabla tbl_instructor 
-      donde el documento_instructor sea igual al documento guardado en la variable $documento y la contraseña_instructor 
-      sea igual a la guardada en la variable $contraseña.
+      Se realiza una consulta a la base de datos la cual muestra toda la información en la tabla tbl_instructor, 
+      donde el documento_instructor sea igual al documento guardado en la variable $documento.
 
       */
-       $resultado = mysqli_query($con, "SELECT * FROM tbl_instructor WHERE documento_instructor='$documento' AND contrasena_instructor='$contraseña';");
+       $resultado = mysqli_query($con, "SELECT * FROM tbl_instructor WHERE documento_instructor='$documento'");
        // En la variable $row se guarda toda la información resultante de la consulta realizada a la base de datos.
        $row = mysqli_fetch_array($resultado);
 
@@ -65,14 +67,12 @@ if (isset($_POST['ingresar'])){
         //En la variable super global $SESSION['rol'] se guarda el cargo del instructor registrado en la base de datos.
         $_SESSION['rol']= $cargo;
       /* 
-         El siguiente condicional If evalúa si la variable $documentoBD que tiene el documento del instructor registrado en la base de datos
-         es igual a la variable $documento que contiene el documento ingresado en el formulario de inicio de sesión y si 
-         la variable $contraseñaBD que tiene la contraseña del instructor registrada en la base de datos
-         es igual a la variable $contraseña que contiene la contraseña ingresada en el formulario de inicio de sesión.
+         El siguiente condicional If evalúa si la variable $documentoBD que tiene el documento del instructor registrado en la base de datos es igual a la variable $documento que contiene el documento ingresado en el formulario de inicio de sesión. Y se evalúa si la contraseña ingresada por el usuario en el formulario es igual a la que se encuentra guardada en la fila 'contrasena_instructor' de la tabla. Lo anterior es realizado con la función 'password_verify', la cual permite comparar si los caracteres ingresados en el campo del formulario coinciden con los de la contraseña encriptada en la base de datos.
 
          Si es verdadero se ingresa al sistema.
       */
-       if ($documentoBD === $documento && $contraseñaBD === $contraseña){
+       if ($documentoBD === $documento && password_verify($contraseña, $row['contrasena_instructor'])){
+        mysqli_query("INSERT INTO tbl_historial_instructor ('documento_instructor', 'fecha_ingreso', 'hora_ingreso', 'so_usado', 'navegador_usado') VALUES ('$documento', '$fecha_actual', '$hora_actual', '', '');");
         header ('location:system.php');
       /* 
          Si el condicional anterior es falso, se manda una alerta de JavaScript que indica que los datos no son 
@@ -101,12 +101,11 @@ if (isset($_POST['ingresar'])){
       @var string $name1
       @var string $name2
 
-      Se realiza una consulta a la base de datos la cual muestra toda la información en la tabla tbl_administrador 
-      donde el documento_administrador sea igual al documento guardado en la variable $documento y la contraseña_administrador 
-      sea igual a la guardada en la variable $contraseña.
+      Se realiza una consulta a la base de datos la cual muestra toda la información en la tabla tbl_administrador, 
+      donde el documento_administrador sea igual al documento guardado en la variable $documento.
 
       */
-        $resultado = mysqli_query ($con,"SELECT * FROM tbl_administrador WHERE documento_administrador='$documento' AND contrasena_administrador='$contraseña';");
+        $resultado = mysqli_query ($con,"SELECT * FROM tbl_administrador WHERE documento_administrador='$documento'");
         // En la variable $row se guarda toda la información resultante de la consulta realizada a la base de datos.
         $row = mysqli_fetch_array($resultado);
         //En la variable $documentoBD se guarda el número de documento del administrador registrado en la base de datos.
@@ -124,15 +123,15 @@ if (isset($_POST['ingresar'])){
         //En la variable super global $SESSION['rol'] se guarda el cargo del administrador registrado en la base de datos.
         $_SESSION['rol']= $cargo;
       /* 
-         El siguiente condicional If evalúa si la variable $documentoBD que tiene el documento del administrador registrado en la base de datos
-         es igual a la variable $documento que contiene el documento ingresado en el formulario de inicio de sesión y si 
-         la variable $contraseñaBD que tiene la contraseña del administrador registrada en la base de datos
-         es igual a la variable $contraseña que contiene la contraseña ingresada en el formulario de inicio de sesión.
+         El siguiente condicional If evalúa si la variable $documentoBD que tiene el documento del administrador registrado en la base de datos es igual a la variable $documento que contiene el documento ingresado en el formulario de inicio de sesión. Y se evalúa si la contraseña ingresada por el usuario en el formulario es igual a la que se encuentra guardada en la fila 'contrasena_administrador' de la tabla. Lo anterior es realizado con la función 'password_verify', la cual permite comparar si los caracteres ingresados en el campo del formulario coinciden con los de la contraseña encriptada en la base de datos.
 
          Si es verdadero se ingresa al sistema.
       */
-      if ($documentoBD === $documento && $contraseñaBD === $contraseña){
-        header ('location:system_admin.php');
+      if ($documentoBD === $documento && password_verify($contraseña, $row['contrasena_administrador'])){
+       $query_administrador = "INSERT INTO tbl_historial_administrador ('id_administrador', 'fecha_ingreso', 'hora_ingreso', 'so_usado', 'navegador_usado') VALUES ('$documento', '$fecha_actual', '$hora_actual', '', '')";
+        mysqli_query($con, $query_administrador);
+        header("location: system_admin.php"); 
+
         /* 
          Si el condicional anterior es falso, se manda una alerta de JavaScript que indica que los datos no son 
          correctos y se redirecciona al index.
@@ -160,11 +159,10 @@ if (isset($_POST['ingresar'])){
       @var string $name2
 
       Se realiza una consulta a la base de datos la cual muestra toda la información en la tabla tbl_personal_administrativo
-      donde el documento_personal_administrativo sea igual al documento guardado en la variable $documento y la contraseña_personal_administrativo
-      sea igual a la guardada en la variable $contraseña.
+      donde el documento_personal_administrativo sea igual al documento guardado en la variable $documento.
 
       */
-      $resultado = mysqli_query ($con,"SELECT * FROM tbl_personal_administrativo WHERE documento_administrativo='$documento' AND contrasena_administrativo='$contraseña';");
+      $resultado = mysqli_query ($con,"SELECT * FROM tbl_personal_administrativo WHERE documento_administrativo='$documento'");
       // En la variable $row se guarda toda la información resultante de la consulta realizada a la base de datos.
       $row = mysqli_fetch_array($resultado); 
       //En la variable $documentoBD se guarda el número de documento del personal administrativo registrado en la base de datos.
@@ -182,14 +180,12 @@ if (isset($_POST['ingresar'])){
       //En la variable super global $SESSION['rol'] se guarda el cargo del personal administrativo registrado en la base de datos.
       $_SESSION['rol']= $cargo;
     /* 
-       El siguiente condicional If evalúa si la variable $documentoBD que tiene el documento del personal administrativo registrado en la base de datos
-       es igual a la variable $documento que contiene el documento ingresado en el formulario de inicio de sesión y si 
-       la variable $contraseñaBD que tiene la contraseña del personal administrativo registrada en la base de datos
-       es igual a la variable $contraseña que contiene la contraseña ingresada en el formulario de inicio de sesión.
+       El siguiente condicional If evalúa si la variable $documentoBD que tiene el documento del personal administrativo registrado en la base de datos es igual a la variable $documento que contiene el documento ingresado en el formulario de inicio de sesión. Y se evalúa si la contraseña ingresada por el usuario en el formulario es igual a la que se encuentra guardada en la fila 'contrasena_administrativo' de la tabla. Lo anterior es realizado con la función 'password_verify', la cual permite comparar si los caracteres ingresados en el campo del formulario coinciden con los de la contraseña encriptada en la base de datos.
 
        Si es verdadero se ingresa al sistema.
     */
-      if ($documentoBD === $documento && $contraseñaBD === $contraseña){
+      if ($documentoBD === $documento && password_verify($contraseña, $row['contrasena_administrativo'])){
+         mysqli_query("INSERT INTO tbl_historial_administrativo ('documento_administrativo', 'fecha_ingreso', 'hora_ingreso', 'so_usado', 'navegador_usado') VALUES ('$documento', '$fecha_actual', '$hora_actual', '', '');");
          header ('location:system.php');
    /* 
       Si el condicional anterior es falso, se manda una alerta de JavaScript que indica que los datos no son 

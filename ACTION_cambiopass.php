@@ -24,6 +24,8 @@ if (isset($_POST['cambio'])) {
     $contraseña = $_POST['actual'];
     // Se define la variable '$nueva' que contiene los datos ingresados en el campo de la contraseña nueva del usuario:
     $nueva = $_POST['new'];
+    // Se hace uso de una variable llamada '$new_pass_cifrado' para guardar la función 'password_hash', la cual es útil para la encriptación de las contraseñas:
+    $new_pass_cifrado = password_hash($nueva, PASSWORD_DEFAULT, array("cost"=>12));
 
     /* 
     @var string $resultado
@@ -35,26 +37,25 @@ if (isset($_POST['cambio'])) {
     Se verifica con un condicional si la sesión actual corresponde al rol o cargo de instructor:
     */
     if ($_SESSION['rol'] == 'Instructor') {
-        // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se compara si la contraseña en la fila 'contrasena_instructor' de la tabla 'tbl_instructor' es igual a la ingresada por el usuario en el campo de contraseña actual:
-        $resultado = mysqli_query($con, "SELECT * FROM tbl_instructor WHERE contrasena_instructor = '$contraseña';");
-        // Luego, se trae el resultado de la fila 'contrasena_instructor' en caso de que sí exista dicho resultado:
+        // Asignamos a la variable '$documento' el número de documento actual que está en la sesión (con el que se ha iniciado sesión con anterioridad):
+        $documento = $_SESSION['instructor'];
+        // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se toman todos los datos hallados dentro de la tabla 'tbl_instructor':
+        $resultado = mysqli_query($con, "SELECT * FROM tbl_instructor WHERE documento_instructor = $documento");
+        // Luego, se traen todos los resultados en caso de que sí existan dentro de la tabla:
         $row = mysqli_fetch_array($resultado);
         // Seguidamente, se almacena en la variable 'contraseñaBD' la fila 'contrasena_instructor' para mantener el resultado en una única variable que específica lo requerido:
         $contraseñaBD = $row['contrasena_instructor'];
-        // Después, asignamos a la variable '$documento' el número de documento actual que está en la sesión (con el que se ha iniciado sesión con anterioridad):
-        $documento = $_SESSION['instructor'];
-        // Se realiza un nuevo condicional en el cual se compara si en la base de datos sí existe una contraseña que cumpla con las mismas características que la ingresada por el usuario:
-        if ($contraseñaBD === $contraseña) {
-            /* En caso de ser correcto lo anterior, los datos guardados en la variable '$nueva' serán asignados a la nueva contraseña del usuario, usando una consulta UPDATE donde la contraseña del instructor sea ahora igual a '$nueva' donde esta corresponderá al identificador o número de documento del instructor (en este caso, al documento de la sesión actual): */
-            mysqli_query($con, "UPDATE tbl_instructor SET contrasena_instructor='$nueva' WHERE documento_instructor = '$documento';");
+        // Se realiza un nuevo condicional en el cual se compara si en la base de datos sí existe una contraseña que cumpla con las mismas características que la ingresada por el usuario. Para esto, se hace uso de la función 'password_verify', la cual identifica si los caracteres ingresados son totalmente coincidentes con la contraseña encriptada de la base de datos:
+        if (password_verify($contraseña, $row['contrasena_instructor'])) {
+            /* En caso de ser correcto lo anterior, los datos guardados en la variable '$new_pass_cifrado' serán asignados a la nueva contraseña del usuario, usando una consulta UPDATE donde la contraseña del instructor sea ahora igual a '$new_pass_cifrado' donde esta corresponderá al identificador o número de documento del instructor (en este caso, al documento de la sesión actual): */
+            mysqli_query($con, "UPDATE tbl_instructor SET contrasena_instructor='$new_pass_cifrado' WHERE documento_instructor = '$documento';");
             // Después de actualizar la contraseña correctamente, el usuario será redireccionado al archivo 'system.php' para ser notificado con una alerta bootstrap de que el cambio de contraseña ha sido exitoso:
             header("location: system.php?success=true");
           // Si la contraseña de la base de datos no cumple con las características de la ingresada por el usuario, es decir, no existe, será redireccionado al archivo 'system.php' sin haberse realizado cambio alguno:   
-        } elseif ($contraseñaBD != $contraseña) {
+        }else{
             // Además, se le mostrará una alerta bootstrap de color rojo indicando que la contraseña actual no coincide con la de la base de datos:
             header("location: system.php?notfound=true");
         }
-
     }
 
     /* 
@@ -67,22 +68,22 @@ if (isset($_POST['cambio'])) {
     Si la sesión no corresponde al rol o cargo instructor, se verifica verifica entonces con un condicional si la sesión actual corresponde al rol o cargo de administrador:
     */
     if ($_SESSION['rol'] == 'Administrador') {
-        // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se compara si la contraseña en la fila 'contrasena_administrador' de la tabla 'tbl_administrador' es igual a la ingresada por el usuario en el campo de contraseña actual:
-        $resultado = mysqli_query($con, "SELECT * FROM tbl_administrador WHERE  contrasena_administrador = '$contraseña';");
-        // Luego, se trae el resultado de la fila 'contrasena_administrador' en caso de que sí exista dicho resultado:
+        // Asignamos a la variable '$documento' el número de documento actual que está en la sesión (con el que se ha iniciado sesión con anterioridad):
+        $documento = $_SESSION['administrador'];
+        // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se toman todos los datos hallados dentro de la tabla 'tbl_administrador':
+        $resultado = mysqli_query($con, "SELECT * FROM tbl_administrador");
+        // Luego, se traen todos los resultados en caso de que sí existan dentro de la tabla:
         $row = mysqli_fetch_array($resultado);
         // Seguidamente, se almacena en la variable 'contraseñaBD' la fila 'contrasena_administrador' para mantener el resultado en una variable que específica lo requerido:
         $contraseñaBD = $row['contrasena_administrador'];
-        // Después, asignamos a la variable '$documento' el número de documento actual que está en la sesión (con el que se ha iniciado sesión con anterioridad):
-        $documento = $_SESSION['administrador'];
-        // Se realiza un nuevo condicional en el cual se compara si en la base de datos sí existe una contraseña que cumpla con las mismas características que la ingresada por el usuario:
-        if ($contraseñaBD === $contraseña) {
-            /* En caso de ser correcto lo anterior, los datos guardados en la variable '$nueva' serán asignados a la nueva contraseña del usuario, usando una consulta UPDATE donde la contraseña del administrador sea ahora igual a '$nueva' donde esta corresponderá al identificador o número de documento del administrador (en este caso, al documento de la sesión actual): */
-            mysqli_query($con, "UPDATE tbl_administrador SET contrasena_administrador='$nueva' WHERE documento_administrador = '$documento';");
+        // Se realiza un nuevo condicional en el cual se compara si en la base de datos sí existe una contraseña que cumpla con las mismas características que la ingresada por el usuario. Para esto, se hace uso de la función 'password_verify', la cual identifica si los caracteres ingresados son totalmente coincidentes con la contraseña encriptada de la base de datos::
+        if (password_verify($contraseña, $row['contrasena_administrador'])) {
+            /* En caso de ser correcto lo anterior, los datos guardados en la variable '$new_pass_cifrado' serán asignados a la nueva contraseña del usuario, usando una consulta UPDATE donde la contraseña del administrador sea ahora igual a '$new_pass_cifrado' donde esta corresponderá al identificador o número de documento del administrador (en este caso, al documento de la sesión actual): */
+            mysqli_query($con, "UPDATE tbl_administrador SET contrasena_administrador='$new_pass_cifrado' WHERE documento_administrador = '$documento';");
             // Después de actualizar la contraseña correctamente, el usuario será redireccionado al archivo 'system_admin.php' para ser notificado con una alerta bootstrap de que el cambio de contraseña ha sido exitoso:
             header("location: system_admin.php?success=true");
           // Si la contraseña de la base de datos no cumple con las características de la ingresada por el usuario, es decir, no existe, será rederigido al archivo 'system_admin.php' sin haberse realizado cambio alguno:  
-        } elseif ($contraseñaBD != $contraseña) {
+        }else{
             // Además, se le mostrará una alerta bootstrap de color rojo indicando que la contraseña actual no coincide con la de la base de datos:
             header("location: system_admin.php?notfound=true");
         }
@@ -98,22 +99,22 @@ if (isset($_POST['cambio'])) {
     Si la sesión no corresponde ni al rol o cargo de instructor o personal administrativo, se verifica por último con un condicional si la sesión actual corresponde al rol o cargo de personal administrativo (lo cual debe devolver true):
     */
     if ($_SESSION['rol'] == 'Personal administrativo') {
-        // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se compara si la contraseña en la fila 'contrasena_administrativo' de la tabla 'tbl_personal_administrativo' es igual a la ingresada por el usuario en el campo de contraseña actual:
-        $resultado = mysqli_query($con, "SELECT * FROM tbl_personal_administrativo WHERE contrasena_administrativo ='$contraseña';");
-        // Luego, se trae el resultado de la fila 'contrasena_administrativo' en caso de que sí exista dicho resultado:
+        // Asignamos a la variable '$documento' el número de documento actual que está en la sesión (con el que se ha iniciado sesión con anterioridad):
+        $documento = $_SESSION['personal'];
+        // En caso de ser así, se realiza una consulta a la base de datos 'reda' donde se toman todos los datos hallados dentro de la tabla 'tbl_personal_administrativo':
+        $resultado = mysqli_query($con, "SELECT * FROM tbl_personal_administrativo");
+        // Luego, se traen todos los resultados en caso de que sí existan dentro de la tabla:
         $row = mysqli_fetch_array($resultado);
         // Seguidamente, se almacena en la variable 'contraseñaBD' la fila 'contrasena_administrativo' para mantener el resultado en una variable que específica lo requerido:
         $contraseñaBD = $row['contrasena_administrativo'];
-        // Después, asignamos a la variable '$documento' el número de documento actual que está en la sesión (con el que se ha iniciado sesión con anterioridad):
-        $documento = $_SESSION['personal'];
-        // Se realiza un nuevo condicional en el cual se compara si en la base de datos sí existe una contraseña que cumpla con las mismas características que la ingresada por el usuario:
-        if ($contraseñaBD === $contraseña) {
-            /* En caso de ser correcto lo anterior, los datos guardados en la variable '$nueva' serán asignados a la nueva contraseña del usuario, usando una consulta UPDATE donde la contraseña del personal administrativo sea ahora igual a '$nueva' donde esta corresponderá al identificador o número de documento del personal administrativo (en este caso, al documento de la sesión actual): */
-            mysqli_query($con, "UPDATE tbl_personal_administrativo SET contrasena_administrativo='$nueva' WHERE documento_administrativo = '$documento';");
+        // Se realiza un nuevo condicional en el cual se compara si en la base de datos sí existe una contraseña que cumpla con las mismas características que la ingresada por el usuario. Para esto, se hace uso de la función 'password_verify', la cual identifica si los caracteres ingresados son totalmente coincidentes con la contraseña encriptada de la base de datos::
+        if (password_verify($contraseña, $row['contrasena_administrativo'])) {
+            /* En caso de ser correcto lo anterior, los datos guardados en la variable '$new_pass_cifrado' serán asignados a la nueva contraseña del usuario, usando una consulta UPDATE donde la contraseña del personal administrativo sea ahora igual a '$new_pass_cifrado' donde esta corresponderá al identificador o número de documento del personal administrativo (en este caso, al documento de la sesión actual): */
+            mysqli_query($con, "UPDATE tbl_personal_administrativo SET contrasena_administrativo='$new_pass_cifrado' WHERE documento_administrativo = '$documento';");
             // Después de actualizar la contraseña correctamente, el usuario será redireccionado al archivo 'system.php' para ser notificado con una alerta bootstrap de que el cambio de contraseña ha sido exitoso:
             header("location: system.php?success=true");
           // Si la contraseña de la base de datos no cumple con las características de la ingresada por el usuario, es decir, no existe, será rederigido al archivo 'system_admin.php' sin haberse realizado cambio alguno:  
-        } elseif ($contraseñaBD != $contraseña) {
+        }else{
             // Además, se le mostrará una alerta bootstrap de color rojo indicando que la contraseña actual no coincide con la de la base de datos:
             header("location: system.php?notfound=true");
         }

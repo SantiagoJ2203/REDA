@@ -65,7 +65,7 @@ if (isset($_SESSION['administrador'])) {
                                 aria-describedby="emailHelp" placeholder="Correo electrónico *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
                                 <!-- Se añade un icono de Font Awesome que permite indicar al usuario, al hacer hover sobre el mismo, que el correo electrónico debe funcionar con el servidor de Gmail: -->
                                 <span class="mail_icon">
-                                    <i class="fa fa-envelope fa-lg" tool-tip-toggle="tooltip-email" data-original-title="Se requiere que el correo electrónico funcione con el servidor de Gmail para así poder realizar la recuperación de la contraseña en caso de ser necesario. Por ejemplo, el correo 'example1@gmail.com' cumple con lo requerido."></i>
+                                    <i class="fa fa-envelope fa-lg" tool-tip-toggle="tooltip-email" data-original-title="Se requiere que el correo electrónico funcione con el servidor de Gmail, para así poder realizar la recuperación de la contraseña en caso de ser necesario. Por ejemplo, el correo 'example1@gmail.com' cumple con lo requerido."></i>
                                 </span>
                                 <div id="alerta4"></div>
                         </div>
@@ -82,7 +82,7 @@ if (isset($_SESSION['administrador'])) {
                             <input type="password" name="contraseña" class="form-control" id="contraseña"
                                 aria-describedby="emailHelp" placeholder="Contraseña *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
                             <span class="info_icon">
-                                <i class="fa fa-info-circle fa-lg" tool-tip-toggle="tooltip-show" data-original-title="INFORMACIÓN: Se recomienda que para crear una contraseña fuerte siga los siguientes parámetros, es decir, que la contraseña contenga: 8 carácteres, una mayúscula, una minúscula, un número y un caracter raro o especial. Por ejemplo, la contraseña 'Sena_1234' cumple con los parámetros recomendados."></i>
+                                <i class="fa fa-info-circle fa-lg" tool-tip-toggle="tooltip-show" data-original-title="INFORMACIÓN: Por cuestiones de seguridad, la contraseña debe contener como mínimo: 8 carácteres, una mayúscula, una minúscula, un número y un caracter especial o raro. Por ejemplo, la contraseña 'Sena_1234' cumple con los parámetros requeridos."></i>
                             </span>
                             <script type="text/javascript">
                                 /* Se crea una función que posee diferentes eventos con código JQuery. Las mismas permiten, usando el atributo 'tool-tip-toggle', que una pequeña caja con texto pueda ser mostrada arriba, abajo, a la izquierda o a la derecha del elemento que posee el valor puesto dentro del atributo ya mencionado. Una vez el código HTMl haya sido cargado correctamente, estas funciones podrán mostrarse haciendo 'hover' sobre el elemento que posee el atributo 'tool-tip-toggle': */
