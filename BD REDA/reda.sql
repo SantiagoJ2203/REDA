@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 20, 2020 at 10:58 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 09-06-2020 a las 17:41:28
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,14 +18,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `reda`
+-- Base de datos: `reda`
 --
 
 DELIMITER $$
 --
--- Procedures
+-- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_administrador` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(20))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_administrador` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(255))  BEGIN
 UPDATE tbl_administrador SET
 nombre1_administrador = _nombre1,
 nombre2_administrador = _nombre2,
@@ -56,7 +56,7 @@ documento_instructor = _documento_instructor
 WHERE numero_ficha = _numero_ficha;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_instructor` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(20))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_instructor` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(2555))  BEGIN
 UPDATE tbl_instructor SET
 nombre1_instructor = _nombre1,
 nombre2_instructor = _nombre2,
@@ -67,7 +67,7 @@ contrasena_instructor = _contrasena
 WHERE documento_instructor = _documento;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_personal_administrativo` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(20))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `actualizar_tbl_personal_administrativo` (`_documento` VARCHAR(15), `_nombre1` VARCHAR(30), `_nombre2` VARCHAR(30), `_apellido1` VARCHAR(35), `_apellido2` VARCHAR(35), `_correo` VARCHAR(60), `_contrasena` VARCHAR(255))  BEGIN
 UPDATE tbl_personal_administrativo SET
 nombre1_administrativo = _nombre1,
 nombre2_administrativo = _nombre2,
@@ -102,7 +102,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_tbl_personal_administrativ
 DELETE FROM tbl_personal_administrativo WHERE documento_personal_administrativo = _documento;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_administrador` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(20))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_administrador` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(255))  BEGIN
 INSERT INTO tbl_administrador (
 documento_administrador,
 nombre1_administrador,
@@ -168,7 +168,7 @@ _fecha_hora,
 _nombre_actividad);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_instructor` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(20))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_instructor` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(255))  BEGIN
 INSERT INTO tbl_instructor (
 documento_instructor,
 nombre1_instructor,
@@ -188,7 +188,7 @@ correo,
 contrasena);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_personal_administrativo` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(20))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertar_tbl_personal_administrativo` (IN `documento` VARCHAR(15), IN `nombre1` VARCHAR(30), IN `nombre2` VARCHAR(30), IN `apellido1` VARCHAR(35), IN `apellido2` VARCHAR(35), IN `correo` VARCHAR(60), IN `contrasena` VARCHAR(255))  BEGIN
 INSERT INTO tbl_personal_administrativo (
 documento_administrativo,
 nombre1_administrativo,
@@ -237,7 +237,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_reset_temp`
+-- Estructura de tabla para la tabla `password_reset_temp`
 --
 
 CREATE TABLE `password_reset_temp` (
@@ -247,16 +247,22 @@ CREATE TABLE `password_reset_temp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `password_reset_temp`
+-- Volcado de datos para la tabla `password_reset_temp`
 --
 
 INSERT INTO `password_reset_temp` (`email`, `token`, `expDate`) VALUES
-('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb09c7e3882018', '2020-05-21 15:55:01');
+('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb09c7e3882018', '2020-05-21 15:55:01'),
+('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb09b0d7eab85a', '2020-06-04 18:29:36'),
+('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb0920e5fdc3ac', '2020-06-06 11:17:01'),
+('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb0950b6441e24', '2020-06-06 11:22:44'),
+('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb09b19eb032b1', '2020-06-06 11:23:21'),
+('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb0912e9f23c8d', '2020-06-06 11:24:31'),
+('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb091ddda006a2', '2020-06-07 08:51:49');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `register`
+-- Estructura de tabla para la tabla `register`
 --
 
 CREATE TABLE `register` (
@@ -268,7 +274,7 @@ CREATE TABLE `register` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_administrador`
+-- Estructura de tabla para la tabla `tbl_administrador`
 --
 
 CREATE TABLE `tbl_administrador` (
@@ -278,21 +284,21 @@ CREATE TABLE `tbl_administrador` (
   `apellido1_administrador` varchar(35) CHARACTER SET utf8 NOT NULL,
   `apellido2_administrador` varchar(35) COLLATE utf8_spanish_ci DEFAULT NULL,
   `correo_administrador` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `contrasena_administrador` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `contrasena_administrador` varchar(255) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_administrador`
+-- Volcado de datos para la tabla `tbl_administrador`
 --
 
 INSERT INTO `tbl_administrador` (`documento_administrador`, `nombre1_administrador`, `nombre2_administrador`, `apellido1_administrador`, `apellido2_administrador`, `correo_administrador`, `contrasena_administrador`) VALUES
-('1000290467', 'Breyder', 'Camilo', 'Gonzalez', 'Castillo', 'breydercg.castle@gmail.com', '1234'),
-('1193227960', 'Santiago', '', 'JimÃ©nez', 'JimÃ©nez', 'santyjimenz22@gmail.com', 'reda');
+('1000290467', 'Breyder', 'Camilo', 'Gonzalez', 'Castillo', 'breydercg.castle@gmail.com', '$2y$12$wUetAm1uUtg4ghxnpNinm.mwYouFqpOecW5S/NsvXz2s0A0sgpDfK'),
+('1926540145', 'Santiago', '', 'Jiménez', 'Jiménez', 'santijimenz22@gmail.com', '$2y$12$SdFimCSvnLlRyw.nU5pGYOAznPhTL.HS4OhtLKOEg8q0Qvr7VApJ.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_aprendiz`
+-- Estructura de tabla para la tabla `tbl_aprendiz`
 --
 
 CREATE TABLE `tbl_aprendiz` (
@@ -306,7 +312,7 @@ CREATE TABLE `tbl_aprendiz` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_aprendiz`
+-- Volcado de datos para la tabla `tbl_aprendiz`
 --
 
 INSERT INTO `tbl_aprendiz` (`documento_aprendiz`, `nombre1_aprendiz`, `nombre2_aprendiz`, `apellido1_aprendiz`, `apellido2_aprendiz`, `correo_aprendiz`, `numero_ficha`) VALUES
@@ -341,7 +347,7 @@ INSERT INTO `tbl_aprendiz` (`documento_aprendiz`, `nombre1_aprendiz`, `nombre2_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_ficha`
+-- Estructura de tabla para la tabla `tbl_ficha`
 --
 
 CREATE TABLE `tbl_ficha` (
@@ -353,7 +359,7 @@ CREATE TABLE `tbl_ficha` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_ficha`
+-- Volcado de datos para la tabla `tbl_ficha`
 --
 
 INSERT INTO `tbl_ficha` (`numero_ficha`, `nombre_ficha`, `fecha_inicio`, `fecha_fin`, `documento_instructor`) VALUES
@@ -362,52 +368,52 @@ INSERT INTO `tbl_ficha` (`numero_ficha`, `nombre_ficha`, `fecha_inicio`, `fecha_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_historial`
---
-
-CREATE TABLE `tbl_historial` (
-  `id_historial` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha_hora` datetime DEFAULT NULL,
-  `nombre_actividad` varchar(30) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_historial_administrador`
+-- Estructura de tabla para la tabla `tbl_historial_administrador`
 --
 
 CREATE TABLE `tbl_historial_administrador` (
-  `id_historial` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `documento_administrador` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_ingreso_administrador` int(11) NOT NULL,
+  `documento_administrador` varchar(20) DEFAULT NULL,
+  `fecha_ingreso` date DEFAULT NULL,
+  `hora_ingreso` time DEFAULT NULL,
+  `so_usado` varchar(55) DEFAULT NULL,
+  `navegador_usado` varchar(55) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_historial_instructor`
+-- Estructura de tabla para la tabla `tbl_historial_administrativo`
+--
+
+CREATE TABLE `tbl_historial_administrativo` (
+  `id_ingreso_administrativo` int(11) NOT NULL,
+  `documento_administrativo` varchar(20) DEFAULT NULL,
+  `fecha_ingreso` date DEFAULT NULL,
+  `hora_ingreso` time DEFAULT NULL,
+  `so_usado` varchar(55) DEFAULT NULL,
+  `navegador_usado` varchar(55) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_historial_instructor`
 --
 
 CREATE TABLE `tbl_historial_instructor` (
-  `id_historial` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `documento_instructor` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `id_ingreso_instructor` int(11) NOT NULL,
+  `documento_instructor` varchar(20) DEFAULT NULL,
+  `fecha_ingreso` date DEFAULT NULL,
+  `hora_ingreso` time DEFAULT NULL,
+  `so_usado` varchar(55) DEFAULT NULL,
+  `navegador_usado` varchar(55) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_historial_personal_administrativo`
---
-
-CREATE TABLE `tbl_historial_personal_administrativo` (
-  `id_historial` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `documento_administrativo` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_huella_aprendiz`
+-- Estructura de tabla para la tabla `tbl_huella_aprendiz`
 --
 
 CREATE TABLE `tbl_huella_aprendiz` (
@@ -416,7 +422,7 @@ CREATE TABLE `tbl_huella_aprendiz` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_huella_aprendiz`
+-- Volcado de datos para la tabla `tbl_huella_aprendiz`
 --
 
 INSERT INTO `tbl_huella_aprendiz` (`documento_aprendiz`, `huella`) VALUES
@@ -432,7 +438,7 @@ INSERT INTO `tbl_huella_aprendiz` (`documento_aprendiz`, `huella`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_instructor`
+-- Estructura de tabla para la tabla `tbl_instructor`
 --
 
 CREATE TABLE `tbl_instructor` (
@@ -442,23 +448,24 @@ CREATE TABLE `tbl_instructor` (
   `apellido1_instructor` varchar(35) COLLATE utf8_spanish_ci NOT NULL,
   `apellido2_instructor` varchar(35) COLLATE utf8_spanish_ci DEFAULT NULL,
   `correo_instructor` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `contrasena_instructor` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `contrasena_instructor` varchar(255) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_instructor`
+-- Volcado de datos para la tabla `tbl_instructor`
 --
 
 INSERT INTO `tbl_instructor` (`documento_instructor`, `nombre1_instructor`, `nombre2_instructor`, `apellido1_instructor`, `apellido2_instructor`, `correo_instructor`, `contrasena_instructor`) VALUES
+('1000290467', 'Breyder', '', 'Gonzalez', '', 'breydercg.castle@gmail.com', '$2y$12$T2nLA7v7uC/YXk/8NDuVNeEfxqyhRNyjDqA0o5H09MYcE9WKxbohm'),
 ('1152441385', 'Alejandro', '', 'Mejia', 'Jaramillo', 'amejia583@misena.edu.co', 'reda'),
-('147852369', 'Camilo', '', 'Perez', 'MartÃ­nez', 'sadixss28@gmail.com', 'reda'),
 ('15675009', 'Aharon', 'Alexander', 'Aguas', 'Navarro', 'aaaguas@gmail.com', 'reda'),
-('158749631', 'Aurelio', 'Estefano', 'Rodrí­guez', 'Palomares', 'aurelio11@gmail.com4', 'reda123');
+('158749631', 'Aurelio', 'Estefano', 'Rodrí­guez', 'Palomares', 'aurelio11@gmail.com4', 'reda123'),
+('9401849012', 'Camilo', '', 'Gonzalez', '', 'fbafsk@gmail.com', '$2y$12$eiCHtpTdX0jg8a1obsD2vONYnAKw7wsTm1x9VQBFfre/CnwN0AfeO');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_personal_administrativo`
+-- Estructura de tabla para la tabla `tbl_personal_administrativo`
 --
 
 CREATE TABLE `tbl_personal_administrativo` (
@@ -468,13 +475,22 @@ CREATE TABLE `tbl_personal_administrativo` (
   `apellido1_administrativo` varchar(35) COLLATE utf8_spanish_ci NOT NULL,
   `apellido2_administrativo` varchar(35) COLLATE utf8_spanish_ci DEFAULT NULL,
   `correo_administrativo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `contrasena_administrativo` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `contrasena_administrativo` varchar(255) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_personal_administrativo`
+--
+
+INSERT INTO `tbl_personal_administrativo` (`documento_administrativo`, `nombre1_administrativo`, `nombre2_administrativo`, `apellido1_administrativo`, `apellido2_administrativo`, `correo_administrativo`, `contrasena_administrativo`) VALUES
+('12392110', 'Guillermo', '', 'del Toro', '', 'breajeas@gmail.com', '$2y$12$QeqTkgNvaJMV8mFIpoh1Z.5JNRs4BlksCKvw6hkFiggXrMesYY0l2'),
+('1940029', 'Isabel', '', 'Arrieta', '', 'sjasdkj@gmail.com', '$2y$12$QEEeUUTrlpcWVSMIIaAsBeEpeP6wZ.8jBXnEsZZ9D/UHTu5vfmIzK'),
+('85701390', 'Alfredo', '', 'Rentería', '', 'bfafjsfs@gmail.com', '$2y$12$spb1h5J1Bxf4jrqIw65pYeTMbri/DbUd5bpBMBu6bV4W39i2F9Kmu');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_registro`
+-- Estructura de tabla para la tabla `tbl_registro`
 --
 
 CREATE TABLE `tbl_registro` (
@@ -489,7 +505,7 @@ CREATE TABLE `tbl_registro` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_registro_aprendiz`
+-- Estructura de tabla para la tabla `tbl_registro_aprendiz`
 --
 
 CREATE TABLE `tbl_registro_aprendiz` (
@@ -500,7 +516,7 @@ CREATE TABLE `tbl_registro_aprendiz` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_registro_asistencia`
+-- Estructura de tabla para la tabla `tbl_registro_asistencia`
 --
 
 CREATE TABLE `tbl_registro_asistencia` (
@@ -509,18 +525,19 @@ CREATE TABLE `tbl_registro_asistencia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Dumping data for table `tbl_registro_asistencia`
+-- Volcado de datos para la tabla `tbl_registro_asistencia`
 --
 
 INSERT INTO `tbl_registro_asistencia` (`fecha_registroA`, `numero_ficha`) VALUES
 ('2020-03-27', '1828182'),
 ('2020-03-30', '1828182'),
-('2020-04-01', '1828182');
+('2020-04-01', '1828182'),
+('2020-05-28', '1828182');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_registro_reportes`
+-- Estructura de tabla para la tabla `tbl_registro_reportes`
 --
 
 CREATE TABLE `tbl_registro_reportes` (
@@ -531,7 +548,7 @@ CREATE TABLE `tbl_registro_reportes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_reportes`
+-- Estructura de tabla para la tabla `tbl_reportes`
 --
 
 CREATE TABLE `tbl_reportes` (
@@ -542,83 +559,74 @@ CREATE TABLE `tbl_reportes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `register`
+-- Indices de la tabla `register`
 --
 ALTER TABLE `register`
   ADD PRIMARY KEY (`documento_aprendiz`),
   ADD KEY `fecha_registroA` (`fecha_registroA`);
 
 --
--- Indexes for table `tbl_administrador`
+-- Indices de la tabla `tbl_administrador`
 --
 ALTER TABLE `tbl_administrador`
   ADD PRIMARY KEY (`documento_administrador`);
 
 --
--- Indexes for table `tbl_aprendiz`
+-- Indices de la tabla `tbl_aprendiz`
 --
 ALTER TABLE `tbl_aprendiz`
   ADD PRIMARY KEY (`documento_aprendiz`),
   ADD KEY `numero_ficha` (`numero_ficha`);
 
 --
--- Indexes for table `tbl_ficha`
+-- Indices de la tabla `tbl_ficha`
 --
 ALTER TABLE `tbl_ficha`
   ADD PRIMARY KEY (`numero_ficha`),
   ADD KEY `documento_instructor` (`documento_instructor`);
 
 --
--- Indexes for table `tbl_historial`
---
-ALTER TABLE `tbl_historial`
-  ADD PRIMARY KEY (`id_historial`);
-
---
--- Indexes for table `tbl_historial_administrador`
+-- Indices de la tabla `tbl_historial_administrador`
 --
 ALTER TABLE `tbl_historial_administrador`
-  ADD KEY `id_historial` (`id_historial`),
-  ADD KEY `documento_administrador` (`documento_administrador`);
+  ADD PRIMARY KEY (`id_ingreso_administrador`);
 
 --
--- Indexes for table `tbl_historial_instructor`
+-- Indices de la tabla `tbl_historial_administrativo`
+--
+ALTER TABLE `tbl_historial_administrativo`
+  ADD PRIMARY KEY (`id_ingreso_administrativo`);
+
+--
+-- Indices de la tabla `tbl_historial_instructor`
 --
 ALTER TABLE `tbl_historial_instructor`
-  ADD KEY `id_historial` (`id_historial`),
-  ADD KEY `documento_instructor` (`documento_instructor`);
+  ADD PRIMARY KEY (`id_ingreso_instructor`);
 
 --
--- Indexes for table `tbl_historial_personal_administrativo`
---
-ALTER TABLE `tbl_historial_personal_administrativo`
-  ADD KEY `id_historial` (`id_historial`),
-  ADD KEY `documento_administrativo` (`documento_administrativo`);
-
---
--- Indexes for table `tbl_huella_aprendiz`
+-- Indices de la tabla `tbl_huella_aprendiz`
 --
 ALTER TABLE `tbl_huella_aprendiz`
   ADD KEY `documento_aprendiz` (`documento_aprendiz`);
 
 --
--- Indexes for table `tbl_instructor`
+-- Indices de la tabla `tbl_instructor`
 --
 ALTER TABLE `tbl_instructor`
   ADD PRIMARY KEY (`documento_instructor`);
 
 --
--- Indexes for table `tbl_personal_administrativo`
+-- Indices de la tabla `tbl_personal_administrativo`
 --
 ALTER TABLE `tbl_personal_administrativo`
   ADD PRIMARY KEY (`documento_administrativo`);
 
 --
--- Indexes for table `tbl_registro`
+-- Indices de la tabla `tbl_registro`
 --
 ALTER TABLE `tbl_registro`
   ADD PRIMARY KEY (`id_registro`),
@@ -627,84 +635,85 @@ ALTER TABLE `tbl_registro`
   ADD KEY `documento_administrativo` (`documento_administrativo`);
 
 --
--- Indexes for table `tbl_registro_aprendiz`
+-- Indices de la tabla `tbl_registro_aprendiz`
 --
 ALTER TABLE `tbl_registro_aprendiz`
   ADD KEY `id_registro` (`id_registro`),
   ADD KEY `documento_aprendiz` (`documento_aprendiz`);
 
 --
--- Indexes for table `tbl_registro_asistencia`
+-- Indices de la tabla `tbl_registro_asistencia`
 --
 ALTER TABLE `tbl_registro_asistencia`
   ADD PRIMARY KEY (`fecha_registroA`),
   ADD KEY `numero_ficha` (`numero_ficha`);
 
 --
--- Indexes for table `tbl_registro_reportes`
+-- Indices de la tabla `tbl_registro_reportes`
 --
 ALTER TABLE `tbl_registro_reportes`
   ADD KEY `id_registro` (`id_registro`),
   ADD KEY `id_reporte` (`id_reporte`);
 
 --
--- Indexes for table `tbl_reportes`
+-- Indices de la tabla `tbl_reportes`
 --
 ALTER TABLE `tbl_reportes`
   ADD PRIMARY KEY (`id_reporte`);
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- Constraints for table `register`
+-- AUTO_INCREMENT de la tabla `tbl_historial_administrador`
+--
+ALTER TABLE `tbl_historial_administrador`
+  MODIFY `id_ingreso_administrador` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_historial_administrativo`
+--
+ALTER TABLE `tbl_historial_administrativo`
+  MODIFY `id_ingreso_administrativo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_historial_instructor`
+--
+ALTER TABLE `tbl_historial_instructor`
+  MODIFY `id_ingreso_instructor` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `register`
 --
 ALTER TABLE `register`
   ADD CONSTRAINT `register_ibfk_1` FOREIGN KEY (`documento_aprendiz`) REFERENCES `tbl_aprendiz` (`documento_aprendiz`),
   ADD CONSTRAINT `register_ibfk_2` FOREIGN KEY (`fecha_registroA`) REFERENCES `tbl_registro_asistencia` (`fecha_registroA`);
 
 --
--- Constraints for table `tbl_aprendiz`
+-- Filtros para la tabla `tbl_aprendiz`
 --
 ALTER TABLE `tbl_aprendiz`
   ADD CONSTRAINT `tbl_aprendiz_ibfk_1` FOREIGN KEY (`numero_ficha`) REFERENCES `tbl_ficha` (`numero_ficha`);
 
 --
--- Constraints for table `tbl_ficha`
+-- Filtros para la tabla `tbl_ficha`
 --
 ALTER TABLE `tbl_ficha`
   ADD CONSTRAINT `tbl_ficha_ibfk_1` FOREIGN KEY (`documento_instructor`) REFERENCES `tbl_instructor` (`documento_instructor`);
 
 --
--- Constraints for table `tbl_historial_administrador`
---
-ALTER TABLE `tbl_historial_administrador`
-  ADD CONSTRAINT `tbl_historial_administrador_ibfk_1` FOREIGN KEY (`id_historial`) REFERENCES `tbl_historial` (`id_historial`),
-  ADD CONSTRAINT `tbl_historial_administrador_ibfk_2` FOREIGN KEY (`documento_administrador`) REFERENCES `tbl_administrador` (`documento_administrador`);
-
---
--- Constraints for table `tbl_historial_instructor`
---
-ALTER TABLE `tbl_historial_instructor`
-  ADD CONSTRAINT `tbl_historial_instructor_ibfk_1` FOREIGN KEY (`id_historial`) REFERENCES `tbl_historial` (`id_historial`),
-  ADD CONSTRAINT `tbl_historial_instructor_ibfk_2` FOREIGN KEY (`documento_instructor`) REFERENCES `tbl_instructor` (`documento_instructor`);
-
---
--- Constraints for table `tbl_historial_personal_administrativo`
---
-ALTER TABLE `tbl_historial_personal_administrativo`
-  ADD CONSTRAINT `tbl_historial_personal_administrativo_ibfk_1` FOREIGN KEY (`id_historial`) REFERENCES `tbl_historial` (`id_historial`),
-  ADD CONSTRAINT `tbl_historial_personal_administrativo_ibfk_2` FOREIGN KEY (`documento_administrativo`) REFERENCES `tbl_personal_administrativo` (`documento_administrativo`);
-
---
--- Constraints for table `tbl_huella_aprendiz`
+-- Filtros para la tabla `tbl_huella_aprendiz`
 --
 ALTER TABLE `tbl_huella_aprendiz`
   ADD CONSTRAINT `tbl_huella_aprendiz_ibfk_1` FOREIGN KEY (`documento_aprendiz`) REFERENCES `tbl_aprendiz` (`documento_aprendiz`);
 
 --
--- Constraints for table `tbl_registro`
+-- Filtros para la tabla `tbl_registro`
 --
 ALTER TABLE `tbl_registro`
   ADD CONSTRAINT `tbl_registro_ibfk_1` FOREIGN KEY (`numero_ficha`) REFERENCES `tbl_ficha` (`numero_ficha`),
@@ -712,20 +721,20 @@ ALTER TABLE `tbl_registro`
   ADD CONSTRAINT `tbl_registro_ibfk_3` FOREIGN KEY (`documento_administrativo`) REFERENCES `tbl_personal_administrativo` (`documento_administrativo`);
 
 --
--- Constraints for table `tbl_registro_aprendiz`
+-- Filtros para la tabla `tbl_registro_aprendiz`
 --
 ALTER TABLE `tbl_registro_aprendiz`
   ADD CONSTRAINT `tbl_registro_aprendiz_ibfk_1` FOREIGN KEY (`id_registro`) REFERENCES `tbl_registro` (`id_registro`),
   ADD CONSTRAINT `tbl_registro_aprendiz_ibfk_2` FOREIGN KEY (`documento_aprendiz`) REFERENCES `tbl_aprendiz` (`documento_aprendiz`);
 
 --
--- Constraints for table `tbl_registro_asistencia`
+-- Filtros para la tabla `tbl_registro_asistencia`
 --
 ALTER TABLE `tbl_registro_asistencia`
   ADD CONSTRAINT `tbl_registro_asistencia_ibfk_1` FOREIGN KEY (`numero_ficha`) REFERENCES `tbl_ficha` (`numero_ficha`);
 
 --
--- Constraints for table `tbl_registro_reportes`
+-- Filtros para la tabla `tbl_registro_reportes`
 --
 ALTER TABLE `tbl_registro_reportes`
   ADD CONSTRAINT `tbl_registro_reportes_ibfk_1` FOREIGN KEY (`id_registro`) REFERENCES `tbl_registro` (`id_registro`),
