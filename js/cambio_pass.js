@@ -1,5 +1,5 @@
 // La función 'validar_password' es creada para validar la contraseña ingresada por el usuario:
- /* function validar_password(contrasena){
+    function validar_password(contrasena){
     // Los parámetros para que la contraseña sea valida es que la misma contenga por lo menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial o raro: 
     if(contrasena.length >=8){
         var mayus = false;
@@ -25,7 +25,7 @@
     }
     // En caso de no cumplir con todos los parámetros, se devolverá un valor false: 
     return false;
-} */
+}
 
 /* 1) LAS ALERTAS BOOTSTRAP SON LLAMADAS HACIENDO PRIMERAMENTE REFERENCIA AL DOCUMENTO O ARCHIVO EN CUESTIÓN, LUEGO OBTENIENDO EL ID DE UN ELEMENTO UBICADO EN LOS ARCHIVOS 'system.php', 'system_admin.php', 'form_cambio.php' O 'ACTION_restaurar_pass.php' Y SEGUIDAMENTE SE HACE USO DEL innerHTML PARA INCLUIR CÓDIGO HTML Y PODER AÑADIR LA ALERTA CON SU RESPECTIVA INFORMACIÓN. EN CASO DE NO INCLUIR CÓDIGO HTML, NINGUNA ALERTA APARECERÁ. */
 
@@ -58,16 +58,6 @@ function validacion_pass(){
         document.getElementById("change2").innerHTML = "";
     }
 
-    // Pieza de código que llama a una función (en este caso, validar_password, la cual valida que la contraseña contenga los parámetros requeridos):
-    /*  if(validar_password(form_cambio.new.value) == false){
-        // En caso de que el valor de la misma devuelva un valor false a la función, se hará uso del innerHTML para permitir la aparición de una alerta de Bootstrap al llamar el id 'change3', el cual se encuentra en el formulario de registro en el archivo 'system.php' y 'system_admin.php':
-        document.getElementById("change3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Las contraseña no cumple con los parámetros requeridos</div>';
-        correcto_cambio = false;
-        // En caso contrario, la alerta desaparecerá al instante si la contraseña cumple con los parámetros requeridos. Este mismo proceso acontece con todas las demás alertas donde el condicional verifica si el valor ingresado devuelve un valor tipo false a la función. 
-    }else if(validar_password(form_cambio.new.value) == true){
-        document.getElementById("change3").innerHTML = "";
-    } */
-
     // El siguiente código lanza una alerta de Bootstrap indicando que la contraseña actual y la contraseña nueva son las mismas. Mientras estas coincidan, la variable 'correcto_cambio' devolverá false:
     if(form_cambio.actual.value === form_cambio.new.value){
         document.getElementById("change3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold; margin-top: -1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Por favor ingrese una contraseña diferente a la actual</div>';
@@ -85,6 +75,13 @@ function enviado_pass(){
 
 var correcto_enviado = true;
 var form_dos = document.form_pass;
+
+    // Pieza de código que llama a una función (en este caso, validar_password, la cual valida que la contraseña contenga los parámetros requeridos):
+    if(validar_password(form_dos.new.value) == false){
+        // En caso de que el valor de la misma devuelva un valor false a la función, se hará uso del innerHTML para permitir la aparición de una alerta de Bootstrap al llamar el id 'change3', el cual se encuentra en el formulario de registro en el archivo 'system.php' y 'system_admin.php':
+        document.getElementById("change3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold; margin-top: -1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>La contraseña no cumple con los parámetros requeridos</div>';
+        correcto_enviado = false;
+    }
 
     if(form_dos.actual.value == ""){
         document.getElementById("change").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Digite su contraseña actual</div>';
@@ -120,6 +117,15 @@ function cambio_pass(){
     }else{
         document.getElementById("change2").innerHTML = "";
     }
+
+        // Pieza de código que llama a una función (en este caso, validar_password, la cual valida que la contraseña contenga los parámetros requeridos):
+        if(validar_password(form_change_pass.new_pass.value) == false){
+            // En caso de que el valor de la misma devuelva un valor false a la función, se hará uso del innerHTML para permitir la aparición de una alerta de Bootstrap al llamar el id 'change3', el cual se encuentra en el formulario de registro en el archivo 'system.php' y 'system_admin.php':
+            document.getElementById("change3").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold; margin-top: -1em;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>La contraseña no cumple con los parámetros requeridos</div>';
+            cambio_pass_correcto = false;
+        }else if(validar_password(form_change_pass.new_pass.value) == true){
+            document.getElementById("change3").innerHTML= "";
+        }
     // Se devuelve la variable 'cambio_pass_correcto' con un valor true o false:
     return cambio_pass_correcto;
 }

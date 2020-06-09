@@ -44,7 +44,7 @@ function validar_espacios(param2){
 }
 
 // La función 'validar_password' es creada para validar la contraseña ingresada por el usuario:
- /* function validar_password(contrasena){
+    function validar_password(contrasena){
     // Los parámetros para que la contraseña sea valida, es que la misma contenga por lo menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial o raro: 
        if(contrasena.length >=8){
         var mayus = false;
@@ -70,7 +70,7 @@ function validar_espacios(param2){
     }
     // En caso de no cumplir con todos los parámetros, se devolverá un valor false: 
     return false;
-} */
+} 
 
 // 1) LAS ALERTAS BOOTSTRAP SON LLAMADAS HACIENDO PRIMERAMENTE REFERENCIA AL DOCUMENTO O ARCHIVO EN CUESTIÓN, LUEGO OBTENIENDO EL ID DE UN ELEMENTO UBICADO EN EL ARCHIVO 'sign_up.php' Y SEGUIDAMENTE SE HACE USO DEL innerHTML PARA INCLUIR CÓDIGO HTML Y PODER AÑADIR LA ALERTA CON SU RESPECTIVA INFORMACIÓN. EN CASO DE NO INCLUIR CÓDIGO HTML, NINGUNA ALERTA APARECERÁ.
 
@@ -84,24 +84,14 @@ function validar_registro(){
     var formulario = document.form_registro;
 
     // Pieza de código que llama a una función (en este caso, validar_password, la cual valida que la contraseña contenga los parámetros requeridos):  
-/*    if(validar_password(formulario.contraseña.value) == false){
+      if(validar_password(formulario.contraseña.value) == false){
       // En caso de que el valor de la misma devuelva un valor false a la función, se hará uso del innerHTML para permitir la aparición de una alerta al llamar el id 'alerta5', el cual se encuentra en el formulario de registro en el archivo 'sign_up.php':
         document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>La contraseña no cumple con los parámetros requeridos</div>';
         correcto_registrar = false;
         // En caso contrario, la alerta desaparecerá al instante si la contraseña cumple con los parámetros requeridos. Este mismo proceso acontece con todas las demás alertas donde el condicional verifica si el valor ingresado devuelve un valor tipo false a la función: 
     }else if(validar_password(formulario.contraseña.value) == true){
         document.getElementById("alerta5").innerHTML = "";
-    } */
-
-    // El siguiente código verifica si el campo de contraseña se encuentra vacío. En caso de estarlo, la siguiente alerta Bootstrap aparecerá: 
-    if(formulario.contraseña.value == ""){
-        document.getElementById("alerta5").innerHTML= '<div class= "alert alert-danger alert-dismissible fade show" role="alert" style="border-radius: 0; font-weight: bold;"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese una contraseña</div>';
-        // El valor devuelto por parte de la variable 'correcto_registrar' se vuelve false:
-        correcto_registrar = false;
-    // En caso de que una contraseña sea ingresada, la alerta Bootstrap desaparecerá automaticamente y el valor devuelto será entonces true:
-    }else{
-        document.getElementById("alerta5").innerHTML = "";
-    }
+    } 
 
     // El siguiente código verifica si el campo de confirmar contraseña se encuentra vacío. En caso de estarlo, la siguiente alerta Bootstrap aparecerá: 
     if(formulario.confirmar_contraseña.value == ""){
