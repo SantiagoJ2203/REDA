@@ -13,6 +13,9 @@ session_start();
 En la variable $con se guarda la información para la conexión con la base de datos.
 */
 $con=mysqli_connect("localhost","root","","reda");
+
+include 'helper.php';
+
 /*
 El condicional If evalúa si en el formulario de incio de sesión del index, el botón 'ingresar' fue presionado, 
 al ser el resultado verdadero, se establecen las siguientes variables:
@@ -27,9 +30,6 @@ if (isset($_POST['ingresar'])){
     $cargo = $_POST['cargo'];
     $documento = $_POST['documento'];
     $contraseña=$_POST['contraseña'];
-    date_default_timezone_set("America/Bogota");
-    $fecha_actual = date('d-m-Y');
-    $hora_actual = time();
    
    /* 
       El siguiente condicional If evalúa si la variable $cargo es igual a 'Instructor'.
@@ -72,7 +72,8 @@ if (isset($_POST['ingresar'])){
          Si es verdadero se ingresa al sistema.
       */
        if ($documentoBD === $documento && password_verify($contraseña, $row['contrasena_instructor'])){
-        mysqli_query("INSERT INTO tbl_historial_instructor ('documento_instructor', 'fecha_ingreso', 'hora_ingreso', 'so_usado', 'navegador_usado') VALUES ('$documento', '$fecha_actual', '$hora_actual', '', '');");
+        /* Cada vez que un usuario con el cargo de instructor entre al sistema, una consulta a la base de datos será realizada para insertar datos en la tabla 'tbl_historial_instructor', la cual almacena el documento del instructor, la fecha en la que el instructor ha hecho el ingreso en cuestión, la hora en la que ingresó, el sistema operativo usado en el momento y el navegador web utilizado en el momento: */
+        mysqli_query($con, "INSERT INTO `tbl_historial_instructor` (`id_instructor`, `fecha_ingreso`, `hora_ingreso`, `so_usado`, `navegador_usado`) VALUES ('".$documento."', '".$expDate."', '".$expTime."', '".$so."', '".$navegador."');");
         header ('location:system.php');
       /* 
          Si el condicional anterior es falso, se manda una alerta de JavaScript que indica que los datos no son 
@@ -128,8 +129,8 @@ if (isset($_POST['ingresar'])){
          Si es verdadero se ingresa al sistema.
       */
       if ($documentoBD === $documento && password_verify($contraseña, $row['contrasena_administrador'])){
-       $query_administrador = "INSERT INTO tbl_historial_administrador ('id_administrador', 'fecha_ingreso', 'hora_ingreso', 'so_usado', 'navegador_usado') VALUES ('$documento', '$fecha_actual', '$hora_actual', '', '')";
-        mysqli_query($con, $query_administrador);
+        /* Cada vez que un usuario con el cargo de administrador entre al sistema, una consulta a la base de datos será realizada para insertar datos en la tabla 'tbl_historial_administrador', la cual almacena el documento del administrador, la fecha en la que el administrador ha hecho el ingreso en cuestión, la hora en la que ingresó, el sistema operativo usado en el momento y el navegador web utilizado en el momento: */
+        mysqli_query($con, "INSERT INTO `tbl_historial_administrador` (`id_administrador`, `fecha_ingreso`, `hora_ingreso`, `so_usado`, `navegador_usado`) VALUES ('".$documento."', '".$expDate."', '".$expTime."', '".$so."', '".$navegador."');");
         header("location: system_admin.php"); 
 
         /* 
@@ -185,7 +186,8 @@ if (isset($_POST['ingresar'])){
        Si es verdadero se ingresa al sistema.
     */
       if ($documentoBD === $documento && password_verify($contraseña, $row['contrasena_administrativo'])){
-         mysqli_query("INSERT INTO tbl_historial_administrativo ('documento_administrativo', 'fecha_ingreso', 'hora_ingreso', 'so_usado', 'navegador_usado') VALUES ('$documento', '$fecha_actual', '$hora_actual', '', '');");
+        /* Cada vez que un usuario con el cargo de personal administrativo entre al sistema, una consulta a la base de datos será realizada para insertar datos en la tabla 'tbl_historial_administrativo', la cual almacena el documento del personal administrativo, la fecha en la que ha hecho el ingreso en cuestión, la hora en la que ingresó, el sistema operativo usado en el momento y el navegador web utilizado en el momento: */
+         mysqli_query($con, "INSERT INTO `tbl_historial_administrativo` (`id_administrativo`, `fecha_ingreso`, `hora_ingreso`, `so_usado`, `navegador_usado`) VALUES ('".$documento."', '".$expDate."', '".$expTime."', '".$so."', '".$navegador."');");
          header ('location:system.php');
    /* 
       Si el condicional anterior es falso, se manda una alerta de JavaScript que indica que los datos no son 

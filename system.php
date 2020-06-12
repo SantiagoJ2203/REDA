@@ -55,13 +55,35 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                         <h2 class="welcome" >Bienvenido, 
                             <!-- Para mostrar el nombre del usuario se hace uso del siguiente código PHP: -->
                             <?php
-                            // Se verifica con un condicional si la sesión actual corresponde al cargo de instructor o al de personal administrativo:
+                            /*
+                             Se verifica con un condicional si la sesión actual corresponde al cargo de instructor o al de personal administrativo:
+                            */
                                 if ($_SESSION['rol'] == 'Instructor') {
-                            // Si es instructor, se trae la variable con su valor definido, la cual se encuentra en el archivo 'ACTION_validalogin.php'. Dicha variable contiene el primer nombre y el primer apellido del usuario en cuestión:
+                                /*
+                                 Si es así, se obtiene dentro de la variable 'session_instructor' el documento del usuario que se encuentra dentro del sistema en ese momento:
+                                */
+                                $sesion_instructor = $_SESSION['instructor'];
+                                /*
+                                 Luego, se trae la variable con su valor definido, la cual se encuentra en el archivo 'ACTION_validalogin.php'. Dicha variable contiene el primer nombre y el primer apellido del usuario en cuestión:
+                                */
                                 echo $_SESSION['nombre_instructor'];
-                                } else {
-                            // Si es al contrario, se mostrará el primer nombre y el primer apellido del personal administrativo que se encuentra en la sesión activa:
+                                /*
+                                 Finalmente, se realiza una consulta a la base de datos, donde se toman todos los registros de la tabla 'tbl_historial_instructor', donde el documento corresponda al de la sesión actual:
+                                */
+                                $query = "SELECT * FROM tbl_historial_instructor WHERE id_instructor = $sesion_instructor";
+                                    }else{
+                                /* 
+                                 Si el cargo del usuario en la sesión actual corresponde al de 'personal administrativo', entonces se obtendrá el documento de este dentro de la variable '$sesion_personal': 
+                                */
+                                $sesion_personal = $_SESSION['personal'];
+                                /*
+                                 Al ser así, se mostrará el primer nombre y el primer apellido del personal administrativo que se encuentra en la sesión activa:
+                                */
                                 echo $_SESSION['nombre_administrativo'];
+                                /*
+                                 Finalmente, se realiza una consulta a la base de datos, donde se toman todos los registros de la tabla 'tbl_historial_administrativo', donde el documento corresponda al de la sesión actual:
+                                */
+                                $query = "SELECT * FROM tbl_historial_administrativo WHERE id_administrativo = $sesion_personal";
                                 }
                             ?>
                         </h2>
@@ -151,29 +173,38 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                                     </thead>
                                     <!-- Se usa la etiqueta '<tbody>' para empezar a agregar elementos al cuerpo de la tabla: -->
                                     <tbody>
-                                        <!-- Se comienzan a agregar resultados a la tabla acerca de algunas especificaciones que poseía o posee el computador desde el que se ha entrado al sistema (ya sea con anterioridad o justo en el mismo día): -->
+                                        <!-- Se usa código PHP para mostrar en la tabla todos los ingresos que ha realizado el usuario al sistema: -->
+                                        <?php
+                                        /*
+                                         Dependiendo de la tabla a la que se le ha hecho la consulta ('tbl_historial_administrativo' o 'tbl_historial_instructor') los resultados obtenidos serán guardados dentro de la variable '$result':
+                                        */
+                                        $result = mysqli_query($con, $query);
+                                        // Se crea una variable que funciona como un contador:
+                                        $i = 0;
+                                        /*
+                                         Se crea un ciclo 'while', donde mientras las filas correspondan a los resultados devueltos de la consulta a la base de datos, el siguiente código será ejecutado:
+                                        */
+                                        while ($row = mysqli_fetch_array($result)) {
+
+                                        ?> 
+                                        <!-- Se comienzan a agregar resultados a la tabla acerca de algunas especificaciones de ingreso, como la hora, la fecha, el sistema operativo y el navegador web usado. Esto se hace trayendo los resultados de la consulta hecha a la tabla 'tbl_historial_administrativo' o 'tbl_historial_instructor': -->
                                         <tr>
                                             <!-- Fecha en la que el usuario ingresó: -->
-                                            <th scope="row">29/09/2019</th>
+                                            <th scope="row"><?php echo $row['fecha_ingreso'] ?></th>
                                             <!-- Hora a la que ingresó: -->
-                                            <th>18:55</th>
-                                            <!-- Lugar desde el que realizó el ingresó: -->
-                                            <td>Medellín, Antioquia</td>
-                                            <!-- Sistema operativo con el que ingresó: -->
-                                            <td>SO Windows 7</td>
+                                            <th><?php echo $row['hora_ingreso'] ?></th>
+                                            <!-- Sistema operativo que estaba usando en el momento: -->
+                                            <td><?php echo $row['so_usado'] ?></td>
+                                            <!-- Navegador web con el que ingresó: -->
+                                            <td><?php echo $row['navegador_usado'] ?></td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">18/07/2019</th>
-                                            <th>09:14</th>
-                                            <td>Medellín, Antioquia</td>
-                                            <td>SO Windows 10</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">01/10/2019</th>
-                                            <th>20:40</th>
-                                            <td>Medellín, Antioquia</td>
-                                            <td>SO Windows 8</td>
-                                        </tr>
+                                        <?php 
+                                        /*
+                                         El contador de la variable '$i' aumenta hasta que todos los datos devueltos por la consulta a la base de datos sean mostrados en la tabla:
+                                        */
+                                        $i++;
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                                 <!-- Aquí finaliza la estructura de la tabla. -->

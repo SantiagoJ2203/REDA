@@ -1,139 +1,111 @@
-<?php 
-session_start();
+<?php
+/*
+Este archivo posee variables que permiten tomar la fecha y hora actual de la zona horaria de la ciudad de Bogotá, así como posee funciones que permiten detectar qué navegador web y qué sistema operativo está usando alguien en un momento determinado.
+*/
 
-include ('ACTION_conexionBD.php');
+    // Se define la zona horaria que tendrán los datos de entrada como la hora o la fecha:
+    date_default_timezone_set("America/Bogota");
+    // Usando la función 'mktime' se toma la hora actual (H:i:s) y la fecha actual (m-d-Y):
+    $expFormat = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"));
+    // Se guarda en una variable el formato de la fecha, la cual posee el formato 'mktime' guardado en la variable '$expFormat':
+    $expDate = date("Y-m-d", $expFormat);
+    // Se guarda en una variable el formato de la hora, la cual posee el formato 'mktime' guardado en la variable '$expFormat':
+    $expTime = date("H:i:s", $expFormat);
 
-if (isset($_SESSION['instructor'])  || isset($_SESSION['personal'])){
+    /*
+     la variable 'user_agent' guarda información acerca del array que permite detectar qué navegador web, y qué sistema operativo, está usando el usuario en el momento:
+    */
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-// namespace Mini\Libs;
+    /*
+     La función 'getPlatform' es creada para usar el agente de usuario o el 'user agent', esto con el objetivo de que la variable '$user_agent' detecte el sistema operativo del usuario (de acuerdo a las cadenas tipo 'string' que el array requiere para validar y entender un sistema operativo determinado):
+    */
+    function getPlatform($user_agent) {
 
-class Helper
-{
-    /**
-     * debugPDO
-     *
-     * Shows the emulated SQL query in a PDO statement. What it does is just extremely simple, but powerful:
-     * It combines the raw query and the placeholders. For sure not really perfect (as PDO is more complex than just
-     * combining raw query and arguments), but it does the job.
-     *
-     * @author Panique
-     * @param string $raw_sql
-     * @param array $parameters
-     * @return string
-     */
-    public static function debugPDO($raw_sql, $parameters = null)
-    {
-        $keys = array();
-        $values = $parameters;
+       // Se guarda en una variable el array que contendrá el nombre de varios sistemas operativos:
+       $plataformas = array(
+           /*
+            Aquí comienzan a listarse los sistemas operativos que son posibles detectar con la variable '$user_agent'. Al lado izquierdo se ha escrito el nombre del sistema operativo que será mostrado en la pantalla, mientras que al lado derecho se ha escrito el patrón que identifica al sistema operativo y que el array de la variable puede comprender:
+           */
+          'Windows 10' => 'Windows NT 10.0+',
+          'Windows 8.1' => 'Windows NT 6.3+',
+          'Windows 8' => 'Windows NT 6.2+',
+          'Windows 7' => 'Windows NT 6.1+',
+          'Windows Vista' => 'Windows NT 6.0+',
+          'Windows XP' => 'Windows NT 5.1+',
+          'Windows 2003' => 'Windows NT 5.2+',
+          'Windows' => 'Windows otros',
+          'iPhone' => 'iPhone',
+          'iPad' => 'iPad',
+          'Mac OS X' => '(Mac OS X+)|(CFNetwork+)',
+          'Mac otros' => 'Macintosh',
+          'Android' => 'Android',
+          'BlackBerry' => 'BlackBerry',
+          'Linux' => 'Linux',
+       );
+       /*
+        Se asigna que cada nombre de un sistema operativo esté guardado dentro de la variable '$plataforma', mientras que el patrón de cada uno esté guardado en la variable '$pattern':
+       */
+       foreach($plataformas as $plataforma=>$pattern){
+           /*
+            Se realiza un condicional donde se identifica si un patrón dentro de la variable '$pattern' posee relación con la información guardada dentro del array de la variable '$user_agent':
+           */
+          if (preg_match('/(?i)'.$pattern.'/', $user_agent))
+            /*
+             Si hay alguna relación entre las dos variables, entonces se devolverá el resultado que posee, dentro de la variable '$plataforma', el nombre del sistema operativo:
+            */
+             return $plataforma;
+       }
+       /*
+        Si ningún resultado es traido entre las dos variables, entonces se mostrará en la pantalla que el sistema operativo utilizado corresponde a uno no identificado por el array, es decir, uno no añadido en la función 'getPlatform':
+       */
+       return 'No detectado';
 
-        foreach ($parameters as $key => $value) {
+    }
 
-            // check if named parameters (':param') or anonymous parameters ('?') are used
-            if (is_string($key)) {
-                $keys[] = '/' . $key . '/';
-            } else {
-                $keys[] = '/[?]/';
-            }
+    /*
+     La función 'getBrowser' usa el agente de usuario o el 'user agent' para detectar el navegador que está ussando el usuario en el momento.
+    */
+    function getBrowser($user_agent){
 
-            // bring parameter into human-readable format
-            if (is_string($value)) {
-                $values[$key] = "'" . $value . "'";
-            } elseif (is_array($value)) {
-                $values[$key] = implode(',', $value);
-            } elseif (is_null($value)) {
-                $values[$key] = 'NULL';
-            }
-        }
-
-        /*
-        echo "<br> [DEBUG] Keys:<pre>";
-        print_r($keys);
-
-        echo "\n[DEBUG] Values: ";
-        print_r($values);
-        echo "</pre>";
+    // La función 'strpos' es usada para buscar una posición en concreto dentro del array de la variable '$user_agent':
+    if(strpos($user_agent, 'MSIE') !== FALSE)
+        /*/
+         Si se encuentra una coincidencia en el array con el nombre dado dentro de la función, entonces se devolverá una cadena string con un valor true, en este caso, el nombre del navegador web sería 'Internet Explorer':
         */
+        return 'Internet explorer';
+    elseif(strpos($user_agent, 'Edge') !== FALSE)
+        // Navegador web devuelto: Microsoft Edge:
+        return 'Microsoft Edge';
+    elseif(strpos($user_agent, 'Trident') !== FALSE)
+        // Navegador web devuelto: Internet Explorer 11:
+        return 'Internet explorer';
+    elseif(strpos($user_agent, 'Opera Mini') !== FALSE)
+        // Navegador web devuelto: Opera mini:
+        return "Opera Mini";
+    elseif(strpos($user_agent, 'Opera') || strpos($user_agent, 'OPR') !== FALSE)
+        // Navegador web devuelto: Opera:
+        return "Opera";
+    elseif(strpos($user_agent, 'Firefox') !== FALSE)
+        // Navegador web devuelto: Mozilla Firefox:
+        return 'Mozilla Firefox';
+    elseif(strpos($user_agent, 'Chrome') !== FALSE)
+        // Navegador web devuelto: Google Chrome:
+        return 'Google Chrome';
+    elseif(strpos($user_agent, 'Safari') !== FALSE)
+        // Navegador web devuelto: Safari:
+        return "Safari";
+    /*
+     En caso de no haber coincidencias con ninguno de los condicionales anteriores, la cadena string devuelta mostrará que el navegador web no ha podido ser detectado:
+    */
+    else
+    return 'No detectado';
 
-        $raw_sql = preg_replace($keys, $values, $raw_sql, 1, $count);
-
-        return $raw_sql;
     }
 
-    public static function getOS()
-    {
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
-
-        $os_platform  = "Unknown OS Platform";
-
-        $os_array     = array(
-                          '/windows nt 10/i'      =>  'Windows 10',
-                          '/windows nt 6.3/i'     =>  'Windows 8.1',
-                          '/windows nt 6.2/i'     =>  'Windows 8',
-                          '/windows nt 6.1/i'     =>  'Windows 7',
-                          '/windows nt 6.0/i'     =>  'Windows Vista',
-                          '/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
-                          '/windows nt 5.1/i'     =>  'Windows XP',
-                          '/windows xp/i'         =>  'Windows XP',
-                          '/windows nt 5.0/i'     =>  'Windows 2000',
-                          '/windows me/i'         =>  'Windows ME',
-                          '/win98/i'              =>  'Windows 98',
-                          '/win95/i'              =>  'Windows 95',
-                          '/win16/i'              =>  'Windows 3.11',
-                          '/macintosh|mac os x/i' =>  'Mac OS X',
-                          '/mac_powerpc/i'        =>  'Mac OS 9',
-                          '/linux/i'              =>  'Linux',
-                          '/ubuntu/i'             =>  'Ubuntu',
-                          '/iphone/i'             =>  'iPhone',
-                          '/ipod/i'               =>  'iPod',
-                          '/ipad/i'               =>  'iPad',
-                          '/android/i'            =>  'Android',
-                          '/blackberry/i'         =>  'BlackBerry',
-                          '/webos/i'              =>  'Mobile'
-                    );
-
-        foreach ($os_array as $regex => $value) {
-            if (preg_match($regex, $user_agent)) {
-                $os_platform = $value;
-            }
-        }
-
-        return $os_platform;
-    }
-
-    public static function getBrowser()
-    {
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
-        
-        $browser        = "Unknown Browser";
-
-        $browser_array = array(
-                            '/msie/i'      => 'Internet Explorer',
-                            '/firefox/i'   => 'Firefox',
-                            '/safari/i'    => 'Safari',
-                            '/chrome/i'    => 'Chrome',
-                            '/edge/i'      => 'Edge',
-                            '/opera/i'     => 'Opera',
-                            '/netscape/i'  => 'Netscape',
-                            '/maxthon/i'   => 'Maxthon',
-                            '/konqueror/i' => 'Konqueror',
-                            '/mobile/i'    => 'Handheld Browser'
-                     );
-
-        foreach ($browser_array as $regex => $value) {
-            if (preg_match($regex, $user_agent)) {
-                $browser = $value;
-            }
-        }
-
-        return $browser;
-    }
-}
-
-}else{
-    
-    header("location: index.php?failone=true");
-    
-}
-
+    // El resultado devuelto por la función 'getBrowser' es guardado dentro de la variable '$navegador':
+    $navegador = getBrowser($user_agent); 
+    // El resultado devuelto por la función 'getPlatform' es guardado dentro de la variable '$so':  
+    $so = getPlatform($user_agent);
 
 ?>
