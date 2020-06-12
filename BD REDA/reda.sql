@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-06-2020 a las 17:41:28
+-- Tiempo de generación: 10-06-2020 a las 02:34:53
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -372,9 +372,8 @@ INSERT INTO `tbl_ficha` (`numero_ficha`, `nombre_ficha`, `fecha_inicio`, `fecha_
 --
 
 CREATE TABLE `tbl_historial_administrador` (
-  `id_ingreso_administrador` int(11) NOT NULL,
-  `documento_administrador` varchar(20) DEFAULT NULL,
-  `fecha_ingreso` date DEFAULT NULL,
+  `id_administrador` varchar(20) NOT NULL,
+  `fecha_ingreso` date NOT NULL,
   `hora_ingreso` time DEFAULT NULL,
   `so_usado` varchar(55) DEFAULT NULL,
   `navegador_usado` varchar(55) DEFAULT NULL
@@ -387,8 +386,7 @@ CREATE TABLE `tbl_historial_administrador` (
 --
 
 CREATE TABLE `tbl_historial_administrativo` (
-  `id_ingreso_administrativo` int(11) NOT NULL,
-  `documento_administrativo` varchar(20) DEFAULT NULL,
+  `documento_administrativo` varchar(20) NOT NULL,
   `fecha_ingreso` date DEFAULT NULL,
   `hora_ingreso` time DEFAULT NULL,
   `so_usado` varchar(55) DEFAULT NULL,
@@ -402,8 +400,7 @@ CREATE TABLE `tbl_historial_administrativo` (
 --
 
 CREATE TABLE `tbl_historial_instructor` (
-  `id_ingreso_instructor` int(11) NOT NULL,
-  `documento_instructor` varchar(20) DEFAULT NULL,
+  `documento_instructor` varchar(20) NOT NULL,
   `fecha_ingreso` date DEFAULT NULL,
   `hora_ingreso` time DEFAULT NULL,
   `so_usado` varchar(55) DEFAULT NULL,
@@ -593,19 +590,19 @@ ALTER TABLE `tbl_ficha`
 -- Indices de la tabla `tbl_historial_administrador`
 --
 ALTER TABLE `tbl_historial_administrador`
-  ADD PRIMARY KEY (`id_ingreso_administrador`);
+  ADD PRIMARY KEY (`id_administrador`);
 
 --
 -- Indices de la tabla `tbl_historial_administrativo`
 --
 ALTER TABLE `tbl_historial_administrativo`
-  ADD PRIMARY KEY (`id_ingreso_administrativo`);
+  ADD PRIMARY KEY (`documento_administrativo`);
 
 --
 -- Indices de la tabla `tbl_historial_instructor`
 --
 ALTER TABLE `tbl_historial_instructor`
-  ADD PRIMARY KEY (`id_ingreso_instructor`);
+  ADD PRIMARY KEY (`documento_instructor`);
 
 --
 -- Indices de la tabla `tbl_huella_aprendiz`
@@ -660,28 +657,6 @@ ALTER TABLE `tbl_registro_reportes`
 --
 ALTER TABLE `tbl_reportes`
   ADD PRIMARY KEY (`id_reporte`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `tbl_historial_administrador`
---
-ALTER TABLE `tbl_historial_administrador`
-  MODIFY `id_ingreso_administrador` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tbl_historial_administrativo`
---
-ALTER TABLE `tbl_historial_administrativo`
-  MODIFY `id_ingreso_administrativo` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tbl_historial_instructor`
---
-ALTER TABLE `tbl_historial_instructor`
-  MODIFY `id_ingreso_instructor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
