@@ -68,7 +68,7 @@ a:hover{
     box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris y difuminada. */
 }
 /* Estilos para el campo input hallado en la ventana modal 'Recuperar contraseña': */
-#input_email{
+#input_email, #cargo_recuperar{
     width: 70%; /* Se le otorga un ancho al campo. */
     height: 2em; /* Se le otorga una altura al campo. */
     border: none; /* Se posea que el campo no posea ningún borde a su alrededor. */
