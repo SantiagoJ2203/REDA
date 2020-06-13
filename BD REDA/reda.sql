@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-06-2020 a las 02:34:53
+-- Tiempo de generación: 13-06-2020 a las 20:14:05
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.4
 
@@ -251,13 +251,9 @@ CREATE TABLE `password_reset_temp` (
 --
 
 INSERT INTO `password_reset_temp` (`email`, `token`, `expDate`) VALUES
-('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb09c7e3882018', '2020-05-21 15:55:01'),
-('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb09b0d7eab85a', '2020-06-04 18:29:36'),
-('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb0920e5fdc3ac', '2020-06-06 11:17:01'),
-('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb0950b6441e24', '2020-06-06 11:22:44'),
-('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb09b19eb032b1', '2020-06-06 11:23:21'),
-('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb0912e9f23c8d', '2020-06-06 11:24:31'),
-('breydercg.castle@gmail.com', '91b77406925fecbacc5d0362ff5cfb091ddda006a2', '2020-06-07 08:51:49');
+('fjaskf@gmail.com', 'c329198d1c96433a3018fc224d3dc12e0fd4b42148', '2020-06-13 12:29:20'),
+('asjfash@gmail.com', 'fe7be8eaf6eb1f048ee2e4578ff9efe272131f680a', '2020-06-13 12:43:56'),
+('', '070421161fffa74cd26e010cd741d447ad6aa71ffd', '2020-06-13 12:44:28');
 
 -- --------------------------------------------------------
 
@@ -292,8 +288,9 @@ CREATE TABLE `tbl_administrador` (
 --
 
 INSERT INTO `tbl_administrador` (`documento_administrador`, `nombre1_administrador`, `nombre2_administrador`, `apellido1_administrador`, `apellido2_administrador`, `correo_administrador`, `contrasena_administrador`) VALUES
-('1000290467', 'Breyder', 'Camilo', 'Gonzalez', 'Castillo', 'breydercg.castle@gmail.com', '$2y$12$wUetAm1uUtg4ghxnpNinm.mwYouFqpOecW5S/NsvXz2s0A0sgpDfK'),
-('1926540145', 'Santiago', '', 'Jiménez', 'Jiménez', 'santijimenz22@gmail.com', '$2y$12$SdFimCSvnLlRyw.nU5pGYOAznPhTL.HS4OhtLKOEg8q0Qvr7VApJ.');
+('1000290467', 'Breyder', 'Camilo', 'Gonzalez', 'Castillo', 'breydercg.castle@gmail.com', '$2y$12$W58sVgVksvmWgtdZE3p0Uua4b.DBEAxMZi9O91A56aYnQvdbguWie'),
+('1007633617', 'María', 'Camila', 'Parra', 'Bedoya', 'kamiiila283@gmail.com', '$2y$12$u9kcz9S4.WW1r3tlaSZYzOG8u1.7fNiHOYYuBxS7721ZJTiVSM0gK'),
+('1193227960', 'Santiago', '', 'Jiménez', 'Jiménez', 'santijimenz22@gmail.com', '$2y$12$DGoLcR3mjcWtqFKT03izgeShl8bX5s40PtDkfIDHabIgbcve.Zb/e');
 
 -- --------------------------------------------------------
 
@@ -372,12 +369,36 @@ INSERT INTO `tbl_ficha` (`numero_ficha`, `nombre_ficha`, `fecha_inicio`, `fecha_
 --
 
 CREATE TABLE `tbl_historial_administrador` (
+  `id_ingreso_administrador` int(11) NOT NULL,
   `id_administrador` varchar(20) NOT NULL,
   `fecha_ingreso` date NOT NULL,
   `hora_ingreso` time DEFAULT NULL,
   `so_usado` varchar(55) DEFAULT NULL,
   `navegador_usado` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tbl_historial_administrador`
+--
+
+INSERT INTO `tbl_historial_administrador` (`id_ingreso_administrador`, `id_administrador`, `fecha_ingreso`, `hora_ingreso`, `so_usado`, `navegador_usado`) VALUES
+(13, '1000290467', '2020-06-11', '13:25:38', 'Windows 10', 'Google Chrome'),
+(14, '1000290467', '2020-06-12', '11:42:28', 'Windows 10', 'Opera'),
+(15, '1000290467', '2020-06-12', '11:43:06', 'Windows 10', 'Opera'),
+(16, '1000290467', '2020-06-12', '11:52:16', 'Windows 10', 'Opera'),
+(17, '1000290467', '2020-06-12', '12:04:20', 'Windows 10', 'Opera'),
+(18, '1000290467', '2020-06-12', '12:46:58', 'Windows 10', 'Opera'),
+(19, '1000290467', '2020-06-12', '12:49:54', 'Windows 10', 'Opera'),
+(20, '1000290467', '2020-06-13', '11:04:50', 'Windows 10', 'Opera'),
+(21, '1000290467', '2020-06-13', '11:11:28', 'Windows 10', 'Opera'),
+(22, '1000290467', '2020-06-13', '11:14:45', 'Windows 10', 'Opera'),
+(23, '1000290467', '2020-06-13', '11:15:39', 'Windows 10', 'Opera'),
+(24, '1000290467', '2020-06-13', '11:19:15', 'Windows 10', 'Opera'),
+(25, '1000290467', '2020-06-13', '11:31:05', 'Windows 10', 'Opera'),
+(26, '1000290467', '2020-06-13', '11:34:21', 'Windows 10', 'Opera'),
+(27, '1000290467', '2020-06-13', '11:41:05', 'Windows 10', 'Opera'),
+(28, '1000290467', '2020-06-13', '11:54:02', 'Windows 10', 'Opera'),
+(29, '1000290467', '2020-06-13', '12:17:24', 'Windows 10', 'Opera');
 
 -- --------------------------------------------------------
 
@@ -386,12 +407,23 @@ CREATE TABLE `tbl_historial_administrador` (
 --
 
 CREATE TABLE `tbl_historial_administrativo` (
-  `documento_administrativo` varchar(20) NOT NULL,
+  `id_ingreso_administrativo` int(11) NOT NULL,
+  `id_administrativo` varchar(20) NOT NULL,
   `fecha_ingreso` date DEFAULT NULL,
   `hora_ingreso` time DEFAULT NULL,
   `so_usado` varchar(55) DEFAULT NULL,
   `navegador_usado` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tbl_historial_administrativo`
+--
+
+INSERT INTO `tbl_historial_administrativo` (`id_ingreso_administrativo`, `id_administrativo`, `fecha_ingreso`, `hora_ingreso`, `so_usado`, `navegador_usado`) VALUES
+(11, '1000290467', '2020-06-11', '13:26:08', 'Windows 10', 'Opera'),
+(12, '1000290467', '2020-06-12', '11:43:44', 'Windows 10', 'Opera'),
+(13, '147819471', '2020-06-13', '12:52:02', 'Windows 10', 'Opera'),
+(14, '147819471', '2020-06-13', '12:58:55', 'Windows 10', 'Opera');
 
 -- --------------------------------------------------------
 
@@ -400,12 +432,26 @@ CREATE TABLE `tbl_historial_administrativo` (
 --
 
 CREATE TABLE `tbl_historial_instructor` (
-  `documento_instructor` varchar(20) NOT NULL,
+  `id_ingreso_instructor` int(11) NOT NULL,
+  `id_instructor` varchar(20) NOT NULL,
   `fecha_ingreso` date DEFAULT NULL,
   `hora_ingreso` time DEFAULT NULL,
   `so_usado` varchar(55) DEFAULT NULL,
   `navegador_usado` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tbl_historial_instructor`
+--
+
+INSERT INTO `tbl_historial_instructor` (`id_ingreso_instructor`, `id_instructor`, `fecha_ingreso`, `hora_ingreso`, `so_usado`, `navegador_usado`) VALUES
+(16, '1000290467', '2020-06-11', '09:09:45', 'Windows 10', 'Opera'),
+(17, '1000290467', '2020-06-11', '13:23:53', 'Windows 10', 'Opera'),
+(18, '1000290467', '2020-06-12', '11:43:21', 'Windows 10', 'Opera'),
+(19, '12345648', '2020-06-13', '12:09:12', 'Windows 10', 'Opera'),
+(20, '12345648', '2020-06-13', '12:13:55', 'Windows 10', 'Opera'),
+(21, '12345648', '2020-06-13', '12:19:06', 'Windows 10', 'Opera'),
+(22, '12345648', '2020-06-13', '12:36:16', 'Windows 10', 'Opera');
 
 -- --------------------------------------------------------
 
@@ -453,11 +499,9 @@ CREATE TABLE `tbl_instructor` (
 --
 
 INSERT INTO `tbl_instructor` (`documento_instructor`, `nombre1_instructor`, `nombre2_instructor`, `apellido1_instructor`, `apellido2_instructor`, `correo_instructor`, `contrasena_instructor`) VALUES
-('1000290467', 'Breyder', '', 'Gonzalez', '', 'breydercg.castle@gmail.com', '$2y$12$T2nLA7v7uC/YXk/8NDuVNeEfxqyhRNyjDqA0o5H09MYcE9WKxbohm'),
+('1000290467', 'Breyder', '', 'Gonzalez', '', 'breydercg.castle@gmail.com', '$2y$12$W58sVgVksvmWgtdZE3p0Uua4b.DBEAxMZi9O91A56aYnQvdbguWie'),
 ('1152441385', 'Alejandro', '', 'Mejia', 'Jaramillo', 'amejia583@misena.edu.co', 'reda'),
-('15675009', 'Aharon', 'Alexander', 'Aguas', 'Navarro', 'aaaguas@gmail.com', 'reda'),
-('158749631', 'Aurelio', 'Estefano', 'Rodrí­guez', 'Palomares', 'aurelio11@gmail.com4', 'reda123'),
-('9401849012', 'Camilo', '', 'Gonzalez', '', 'fbafsk@gmail.com', '$2y$12$eiCHtpTdX0jg8a1obsD2vONYnAKw7wsTm1x9VQBFfre/CnwN0AfeO');
+('12345648', 'Camilo', '', 'Gonzalez', '', 'breydercg358@gmail.com', '$2y$12$j/RrJi5iZus3QgZuNiMmSOBupD7nCxcc0m/T8HybjBsh.tLeD4GQa');
 
 -- --------------------------------------------------------
 
@@ -480,9 +524,8 @@ CREATE TABLE `tbl_personal_administrativo` (
 --
 
 INSERT INTO `tbl_personal_administrativo` (`documento_administrativo`, `nombre1_administrativo`, `nombre2_administrativo`, `apellido1_administrativo`, `apellido2_administrativo`, `correo_administrativo`, `contrasena_administrativo`) VALUES
-('12392110', 'Guillermo', '', 'del Toro', '', 'breajeas@gmail.com', '$2y$12$QeqTkgNvaJMV8mFIpoh1Z.5JNRs4BlksCKvw6hkFiggXrMesYY0l2'),
-('1940029', 'Isabel', '', 'Arrieta', '', 'sjasdkj@gmail.com', '$2y$12$QEEeUUTrlpcWVSMIIaAsBeEpeP6wZ.8jBXnEsZZ9D/UHTu5vfmIzK'),
-('85701390', 'Alfredo', '', 'Rentería', '', 'bfafjsfs@gmail.com', '$2y$12$spb1h5J1Bxf4jrqIw65pYeTMbri/DbUd5bpBMBu6bV4W39i2F9Kmu');
+('1000290467', 'Breyder', '', 'Gonzalez', '', 'breydercg.castle@gmail.com', '$2y$12$W58sVgVksvmWgtdZE3p0Uua4b.DBEAxMZi9O91A56aYnQvdbguWie'),
+('147819471', 'Mart', '', 'Tzwain', '', 'bigfounder.kingdom@gmail.com', '$2y$12$Z3PBKdyJexyo/H2gls/Lse6gtac8CNoNAaEYvtDRWSLpsjDgRr.7i');
 
 -- --------------------------------------------------------
 
@@ -590,19 +633,19 @@ ALTER TABLE `tbl_ficha`
 -- Indices de la tabla `tbl_historial_administrador`
 --
 ALTER TABLE `tbl_historial_administrador`
-  ADD PRIMARY KEY (`id_administrador`);
+  ADD PRIMARY KEY (`id_ingreso_administrador`);
 
 --
 -- Indices de la tabla `tbl_historial_administrativo`
 --
 ALTER TABLE `tbl_historial_administrativo`
-  ADD PRIMARY KEY (`documento_administrativo`);
+  ADD PRIMARY KEY (`id_ingreso_administrativo`);
 
 --
 -- Indices de la tabla `tbl_historial_instructor`
 --
 ALTER TABLE `tbl_historial_instructor`
-  ADD PRIMARY KEY (`documento_instructor`);
+  ADD PRIMARY KEY (`id_ingreso_instructor`);
 
 --
 -- Indices de la tabla `tbl_huella_aprendiz`
@@ -657,6 +700,28 @@ ALTER TABLE `tbl_registro_reportes`
 --
 ALTER TABLE `tbl_reportes`
   ADD PRIMARY KEY (`id_reporte`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_historial_administrador`
+--
+ALTER TABLE `tbl_historial_administrador`
+  MODIFY `id_ingreso_administrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_historial_administrativo`
+--
+ALTER TABLE `tbl_historial_administrativo`
+  MODIFY `id_ingreso_administrativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_historial_instructor`
+--
+ALTER TABLE `tbl_historial_instructor`
+  MODIFY `id_ingreso_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas
