@@ -14,7 +14,9 @@ require 'PHPMAILER/OAuth.php';
 require 'vendor/autoload.php';
 
 /*
+@var string $cargo_recuperar
 @var string $emailone
+@var string $cargo_recuperar
 @var string $sel_queryone
 @var string $resultsone
 @var string $rowone
@@ -24,16 +26,19 @@ Se define si el valor 'email' es existente en el archivo HTML desde el que se en
 if (isset($_POST['email']) && (!empty($_POST['email']))) {
     // En caso de haber un dato en el valor 'email', el mismo es guardado en una variable llamada '$emailone':
     $emailone = $_POST['email'];
+    // Se guarda en la variable '$cargo_recuperar' el cargo que el usuario seleccionó al momento de enviar el correo de recuperación de contraseña:
+    $cargo_recuperar = $_POST['cargo_recuperar'];
     // Se añade un filtro a la variable '$emailone' para eliminar los caracteres prohibidos, ilegales o no adecuados en caso de que el e-mail los contenga:
     $emailone = filter_var($emailone, FILTER_SANITIZE_EMAIL);
     // Se verifica si la variable '$emailone' contiene un e-mail válido, esto se hace con el filtro 'FILTER_VALIDATE_EMAIL':
     $emailone = filter_var($emailone, FILTER_VALIDATE_EMAIL);
-    // En caso de que el e-mail siga siendo inválido (es decir, no tiene la estructura adecuada) incluso después de aplicados los filtros, se aplica el siguiente código:
-    if (!$emailone) {
+
+    // En caso de que el e-mail sea inválido para el cargo de administrador (es decir, no tiene la estructura adecuada) incluso después de aplicados los filtros, se aplica el siguiente código:
+    if ($cargo_recuperar == 'Administrador' && !$emailone) {
         // El usuario es redireccionado al archivo 'index.php', donde verá una alerta bootstrap que le indica que el e-mail ingresado es inválido, y, por lo tanto, el correo no es enviado:
         header("location: index.php?wrong=true");
         return false;
-    } else {
+    }elseif($cargo_recuperar == 'Administrador'){
         /* Por otro lado, si el correo tiene una estructura válida, se realiza una consulta a la base de datos 'reda', verificando si en la fila 'correo_administrador' de la tabla 'tbl_administrador' existe un e-mail con las mismas características que el ingresado por el usuario: */
         $sel_queryone = "SELECT * FROM `tbl_administrador` WHERE correo_administrador = '".$emailone."'";
         // Se guarda el resultado obtenido (en caso de que exista) en la variable '$resultsone':
@@ -48,30 +53,59 @@ if (isset($_POST['email']) && (!empty($_POST['email']))) {
         }
     }
 
-    /*if(!$emailtwo){
+    /*
+    @var string $cargo_recuperar
+    @var string @sel_querytwo
+    @var string @resultstwo
+    @var string @rowtwo
+        
+    En caso de que el e-mail sea inválido para el cargo de instructor (es decir, no tiene la estructura adecuada) incluso después de aplicados los filtros, se aplica el siguiente código:
+    */
+    if($cargo_recuperar == 'Instructor' && !$emailone){
+        // El usuario es redireccionado al archivo 'index.php', donde verá una alerta bootstrap que le indica que el e-mail ingresado es inválido, y, por lo tanto, el correo no es enviado:
         header("location: index.php?wrong=true");
         return false;
-    }else{
-    $sel_querytwo = "SELECT * FROM tbl_instructor WHERE correo_instructor = '".$emailtwo."'";
+    }elseif($cargo_recuperar == 'Instructor'){
+    /* Por otro lado, si el correo tiene una estructura válida, se realiza una consulta a la base de datos 'reda', verificando si en la fila 'correo_instructor' de la tabla 'tbl_instructor' existe un e-mail con las mismas características que el ingresado por el usuario: */
+    $sel_querytwo = "SELECT * FROM tbl_instructor WHERE correo_instructor = '".$emailone."'";
+    // Se guarda el resultado obtenido (en caso de que exista) en la variable '$resultstwo':
     $resultstwo = mysqli_query($con, $sel_querytwo);
-    $rowone = mysqli_num_rows($resultstwo);
+    // Se utiliza la función 'mysqli_num_rows' para realizar un conteo de cuantos e-mails existen con las mismas características que el enviado por el usuario:
+    $rowtwo = mysqli_num_rows($resultstwo);
+    // En caso de no existir ninguno, se ejecuta el siguiente código:
     if($rowtwo == ""){
+        // El usuario es redireccionado de vuelta al archivo 'index.php' para ser indicado de que el e-mail que ha ingresado no existe en la base de datos, y que, por lo tanto, el correo no ha podido ser enviado:
         header("location: index.php?notuser=true");
         return false;
         }
     }
-    if(!$emailthree){
+
+    /*
+    @var string $cargo_recuperar
+    @var string $sel_querythree
+    @var string $resultsthree
+    @var string $rowthree
+
+    En caso de que el e-mail sea inválido para el cargo de personal administrativo (es decir, no tiene la estructura adecuada) incluso después de aplicados los filtros, se aplica el siguiente código:
+    */
+    if($cargo_recuperar == 'Personal administrativo' && !$emailone){
+        // El usuario es redireccionado al archivo 'index.php', donde verá una alerta bootstrap que le indica que el e-mail ingresado es inválido, y, por lo tanto, el correo no es enviado:
         header("location: index.php?wrong=true");
         return false;
-    }
-    else{
-        $sel_querythree = "SELECT * FROM tbl_personal_administrativo WHERE correo_administrativo = '".$email."'";
+    }elseif($cargo_recuperar == 'Personal administrativo'){
+        /* Por otro lado, si el correo tiene una estructura válida, se realiza una consulta a la base de datos 'reda', verificando si en la fila 'correo_administrativo' de la tabla 'tbl_personal_administrativo' existe un e-mail con las mismas características que el ingresado por el usuario: */
+        $sel_querythree = "SELECT * FROM tbl_personal_administrativo WHERE correo_administrativo = '".$emailone."'";
+        // Se guarda el resultado obtenido (en caso de que exista) en la variable '$resultsthree':
         $resultsthree = mysqli_query($con, $sel_querythree);
+        // Se utiliza la función 'mysqli_num_rows' para realizar un conteo de cuantos e-mails existen con las mismas características que el enviado por el usuario:
         $rowthree = mysqli_num_rows($resultsthree);
+        // En caso de no existir ninguno, se ejecuta el siguiente código:
         if($rowthree == ""){
-            echo $error;
-    }
-    } */
+            // El usuario es redireccionado de vuelta al archivo 'index.php' para ser indicado de que el e-mail que ha ingresado no existe en la base de datos, y que, por lo tanto, el correo no ha podido ser enviado:
+            header("location: index.php?notuser=true");
+            return false;
+        }
+    } 
 
     /* 
     @var string $error
@@ -104,9 +138,9 @@ if (isset($_POST['email']) && (!empty($_POST['email']))) {
         VALUES ('".$emailone."', '".$key."', '".$expDate."');");
 
         /* Por medio de una única variable,, llamada '$body', se guarda todo el texto o cuerpo del correo que se enviará al usuario. Además, se crea la dirección a la que accederá el usuario para cambiar su contraseña. Dicha dirección está compuesta por el token de la base de datos y el e-mail del correo que corresponde a dicho token: */
-        $body = '<p>Apreciado usuario, por favor dé click en el siguiente link para recuperar su contraseña:</p> 
+        $body = '<p>Apreciado usuario, copie el siguiente enlace para recuperar su contraseña:</p> 
         <p>-------------------------------------------------------------</p>
-        <p><a href="localhost:80/reda-master/ACTION_restaurar_pass.php?key=' . $key . '&email=' . $emailone . '&action=reset" target="_blank">localhost:80/reda-master/ACTION_restaurar_pass.php?key=' . $key . '&email=' . $emailone . '&action=reset</a></p>
+        <p><a href="localhost:80/reda/ACTION_restaurar_pass.php?key='.$key.'&email='.$emailone.'&cargo='.$cargo_recuperar.'&action=reset" target="_blank">localhost:80/reda/ACTION_restaurar_pass.php?key='.$key.'&email='.$emailone.'&cargo='.$cargo_recuperar.'&action=reset</a></p>
         <p>-------------------------------------------------------------</p>
         <p>Por favor, asegúrese de copiar el link completo en la barra de su navegador, ya que el link, por cuestiones de seguridad, expira 1 día después de haber sido solicitado.</p>
         <p>Si usted no ha solicitado este correo de cambio de contraseña, por favor haga caso omiso al mismo. Sin embargo, se le recomienda cambiar su contraseña de usuario para evitar algún tipo de fraude con su cuenta.</p>

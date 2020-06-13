@@ -30,11 +30,15 @@ if (isset($_GET["failone"]) && $_GET["failone"] == 'true') {
 // Por otro lado, si ninguno de los dos valores mencionados anteriormente devuelve true, entonces se verifica y se obtiene si el valor 'notuser' sí lo hace:
 }elseif (isset($_GET["notuser"]) && $_GET["notuser"] == 'true') {
     // En un penúltimo caso, si lo anterior devuelve true, la alerta ahora será de tipo 'danger' e indicará al usuario de que el e-mail ingresado para recuperar la contraseña no existe, y, por lo tanto, no puede ser enviado el correo de recuperación:
-    echo "<div class= 'alert alert-danger alert-dismissible fade show' role='alert' style='border-radius: 0; text-align: center; font-weight: bold; width:100%;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>Ningún usuario se encuentra registrado en el sistema con ese correo electrónico.</div>";
+    echo "<div class= 'alert alert-danger alert-dismissible fade show' role='alert' style='border-radius: 0; text-align: center; font-weight: bold; width:100%;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>Ningún usuario se encuentra registrado en el sistema con ese correo electrónico o con ese cargo.</div>";
 // Por último, si ninguno de los 3 valores ya mencionados devuelve true, entonces el valor 'wrong' sí que debe de devolverlo:
 }elseif (isset($_GET["wrong"]) && $_GET["wrong"] == 'true') {
     // Esta última alerta, de tipo 'danger' también, indica que el e-mail ingresado para recuperar la contraseña no cumple con la estructura de un e-mail convencional, por lo cual el correo no puede ser enviado tampoco:
     echo "<div class= 'alert alert-danger alert-dismissible fade show' role='alert' style='border-radius: 0; text-align: center; font-weight: bold; width:100%;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>El correo electrónico ingresado es inválido, por favor ingrese uno que exista y que tenga la estructura de un correo electrónico convencional.</div>";
+// Esta alerta posee relación con el formulario de recuperación de contraseña. Si el valor definido 'password_recovered' y el valor obtenido 'password_recovered' devuelven true, se muestra otra alerta diferente a la anterior:
+}elseif(isset($_GET["password_recovered"]) && $_GET["password_recovered"] == 'true'){
+    // En este caso, la alerta bootstrap es de tipo 'success' e indica que la contraseña ha sido recuperada con éxito:
+    echo "<div class= 'alert alert-success alert-dismissible fade show' role='alert' style='border-radius: 0; text-align: center; font-weight: bold; width:100%;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>Su contraseña ha sido recuperada con éxito. Ahora puede iniciar sesión con su nueva contraseña establecida.</div>";
 }
 ?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -71,15 +75,15 @@ if (isset($_GET["failone"]) && $_GET["failone"] == 'true') {
                                                             </div>
                                                             <p id="font" class="display-4 font-weight-bold">Inicio de
                                                                 sesión</p>
-                                                            <div class="form-group">
-                                                                <span id="perfil"
-                                                                    class="badge font-weight-bold">Cargo</span>
-                                                            <select name="cargo" class="form-control">
-                                                                    <option>Instructor</option>
-                                                                    <option>Personal administrativo</option>
-                                                                    <option>Administrador</option>
-                                                                </select>
+                    <div class="form-group">
+                        <span id="perfil" class="badge font-weight-bold">Cargo</span>
+                        <select name="cargo" class="form-control">
+                            <option>Instructor</option>
+                            <option>Personal administrativo</option>
+                            <option>Administrador</option>
+                        </select>
                     </div>
+
                     <div class="form-group ">
                         <input type="text" name="documento" class="form-control" id="documento" aria-describedby="emailHelp" placeholder="Número de documento">
                         <div id="aviso"></div>
@@ -126,15 +130,22 @@ if (isset($_GET["fallo"]) && $_GET["fallo"] == 'true') {
 
                     </form>
 
-                <form name="recuperar_pass" action="ACTION_recuperarcon.php" method="post" oninput="return enviado_email()">
+                    <form name="recuperar_pass" action="ACTION_recuperarcon.php" method="post" oninput="return enviado_email()" onsubmit="return enviado_email()">
                     <div class="modal fade" id="recuperacion_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-body modal_recovery">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h2>Recuperación de contraseña</h2>
-                                    <label for="email"><b>Introduzca su correo electrónico:</b></label>
+                                    <label for="email"><b>Seleccione su cargo e introduzca su correo electrónico:</b></label>
                                     <br>
+                                    <div class="form-group text-center d-flex justify-content-center">
+                                        <select name="cargo_recuperar" class="form-control" id="cargo_recuperar">
+                                            <option>Instructor</option>
+                                            <option>Personal administrativo</option>
+                                            <option>Administrador</option>
+                                        </select>
+                                    </div>
                                     <input type="email" name="email" id="input_email">
                                     <div id="warning3"></div>
                                     <input type="submit" value="Enviar" id="enter_button_recovery">

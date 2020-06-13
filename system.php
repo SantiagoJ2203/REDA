@@ -56,6 +56,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                             <!-- Para mostrar el nombre del usuario se hace uso del siguiente código PHP: -->
                             <?php
                             /*
+                            @var string $sesion_instructor
+
                              Se verifica con un condicional si la sesión actual corresponde al cargo de instructor o al de personal administrativo:
                             */
                                 if ($_SESSION['rol'] == 'Instructor') {
@@ -73,6 +75,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                                 $query = "SELECT * FROM tbl_historial_instructor WHERE id_instructor = $sesion_instructor";
                                     }else{
                                 /* 
+                                @var string $sesion_personal                
+
                                  Si el cargo del usuario en la sesión actual corresponde al de 'personal administrativo', entonces se obtendrá el documento de este dentro de la variable '$sesion_personal': 
                                 */
                                 $sesion_personal = $_SESSION['personal'];
@@ -176,6 +180,10 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                                         <!-- Se usa código PHP para mostrar en la tabla todos los ingresos que ha realizado el usuario al sistema: -->
                                         <?php
                                         /*
+                                        @var string $result
+                                        @var integer $i
+                                        @var string $row
+
                                          Dependiendo de la tabla a la que se le ha hecho la consulta ('tbl_historial_administrativo' o 'tbl_historial_instructor') los resultados obtenidos serán guardados dentro de la variable '$result':
                                         */
                                         $result = mysqli_query($con, $query);

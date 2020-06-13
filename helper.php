@@ -3,7 +3,13 @@
 Este archivo posee variables que permiten tomar la fecha y hora actual de la zona horaria de la ciudad de Bogotá, así como posee funciones que permiten detectar qué navegador web y qué sistema operativo está usando alguien en un momento determinado.
 */
 
-    // Se define la zona horaria que tendrán los datos de entrada como la hora o la fecha:
+    /*
+    @var string $expFormat
+    @var string $expDate
+    @var string $expTime
+
+     Se define la zona horaria que tendrán los datos de entrada como la hora o la fecha:
+    */
     date_default_timezone_set("America/Bogota");
     // Usando la función 'mktime' se toma la hora actual (H:i:s) y la fecha actual (m-d-Y):
     $expFormat = mktime(date("H"), date("i"), date("s"), date("m"), date("d"), date("Y"));
@@ -13,6 +19,8 @@ Este archivo posee variables que permiten tomar la fecha y hora actual de la zon
     $expTime = date("H:i:s", $expFormat);
 
     /*
+    @var string $user_agent
+
      la variable 'user_agent' guarda información acerca del array que permite detectar qué navegador web, y qué sistema operativo, está usando el usuario en el momento:
     */
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
@@ -22,7 +30,13 @@ Este archivo posee variables que permiten tomar la fecha y hora actual de la zon
     */
     function getPlatform($user_agent) {
 
-       // Se guarda en una variable el array que contendrá el nombre de varios sistemas operativos:
+       /*
+       @var string $plataformas
+       @var string $pattern
+       @var string $plataforma
+
+        Se guarda en una variable el array que contendrá el nombre de varios sistemas operativos:
+       */
        $plataformas = array(
            /*
             Aquí comienzan a listarse los sistemas operativos que son posibles detectar con la variable '$user_agent'. Al lado izquierdo se ha escrito el nombre del sistema operativo que será mostrado en la pantalla, mientras que al lado derecho se ha escrito el patrón que identifica al sistema operativo y que el array de la variable puede comprender:
@@ -103,7 +117,12 @@ Este archivo posee variables que permiten tomar la fecha y hora actual de la zon
 
     }
 
-    // El resultado devuelto por la función 'getBrowser' es guardado dentro de la variable '$navegador':
+    /*
+    @var string $navegador
+    @var string $so
+
+     El resultado devuelto por la función 'getBrowser' es guardado dentro de la variable '$navegador':
+    */
     $navegador = getBrowser($user_agent); 
     // El resultado devuelto por la función 'getPlatform' es guardado dentro de la variable '$so':  
     $so = getPlatform($user_agent);

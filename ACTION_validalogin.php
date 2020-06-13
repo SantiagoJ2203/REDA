@@ -72,7 +72,14 @@ if (isset($_POST['ingresar'])){
          Si es verdadero se ingresa al sistema.
       */
        if ($documentoBD === $documento && password_verify($contraseña, $row['contrasena_instructor'])){
-        /* Cada vez que un usuario con el cargo de instructor entre al sistema, una consulta a la base de datos será realizada para insertar datos en la tabla 'tbl_historial_instructor', la cual almacena el documento del instructor, la fecha en la que el instructor ha hecho el ingreso en cuestión, la hora en la que ingresó, el sistema operativo usado en el momento y el navegador web utilizado en el momento: */
+        /* 
+        @var string $documento
+        @var string $expDate
+        @var string $expTime
+        @var string $so
+        @var string $navegador
+        
+        Cada vez que un usuario con el cargo de instructor entre al sistema, una consulta a la base de datos será realizada para insertar datos en la tabla 'tbl_historial_instructor', la cual almacena el documento del instructor, la fecha en la que el instructor ha hecho el ingreso en cuestión, la hora en la que ingresó, el sistema operativo usado en el momento y el navegador web utilizado en el momento: */
         mysqli_query($con, "INSERT INTO `tbl_historial_instructor` (`id_instructor`, `fecha_ingreso`, `hora_ingreso`, `so_usado`, `navegador_usado`) VALUES ('".$documento."', '".$expDate."', '".$expTime."', '".$so."', '".$navegador."');");
         header ('location:system.php');
       /* 
@@ -123,7 +130,13 @@ if (isset($_POST['ingresar'])){
         $_SESSION['nombre_administrador'] = $name1." ".$name2;
         //En la variable super global $SESSION['rol'] se guarda el cargo del administrador registrado en la base de datos.
         $_SESSION['rol']= $cargo;
-      /* 
+      /*  
+        @var string $documento
+        @var string $expDate
+        @var string $expTime
+        @var string $so
+        @var string $navegador
+        
          El siguiente condicional If evalúa si la variable $documentoBD que tiene el documento del administrador registrado en la base de datos es igual a la variable $documento que contiene el documento ingresado en el formulario de inicio de sesión. Y se evalúa si la contraseña ingresada por el usuario en el formulario es igual a la que se encuentra guardada en la fila 'contrasena_administrador' de la tabla. Lo anterior es realizado con la función 'password_verify', la cual permite comparar si los caracteres ingresados en el campo del formulario coinciden con los de la contraseña encriptada en la base de datos.
 
          Si es verdadero se ingresa al sistema.
@@ -181,6 +194,12 @@ if (isset($_POST['ingresar'])){
       //En la variable super global $SESSION['rol'] se guarda el cargo del personal administrativo registrado en la base de datos.
       $_SESSION['rol']= $cargo;
     /* 
+      @var string $documento
+      @var string $expDate
+      @var string $expTime
+      @var string $so
+      @var string $navegador
+        
        El siguiente condicional If evalúa si la variable $documentoBD que tiene el documento del personal administrativo registrado en la base de datos es igual a la variable $documento que contiene el documento ingresado en el formulario de inicio de sesión. Y se evalúa si la contraseña ingresada por el usuario en el formulario es igual a la que se encuentra guardada en la fila 'contrasena_administrativo' de la tabla. Lo anterior es realizado con la función 'password_verify', la cual permite comparar si los caracteres ingresados en el campo del formulario coinciden con los de la contraseña encriptada en la base de datos.
 
        Si es verdadero se ingresa al sistema.
