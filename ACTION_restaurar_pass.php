@@ -34,7 +34,7 @@ if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["cargo"]) && iss
         $error = '<div style="text-align:center; margin-top: 12em; font-size: 1.5em;">
         <h2>Enlace inválido.</h2>
         <p>El enlace es invalido o ha expirado. Si no copiaste bien el enlace del correo, o si ya lo has usado (caso en el cual es desactivado),</p>
-        <p><a href="localhost:80/reda/index.php">lo invitamos a dar clic aquí para solicitar un nuevo correo de recuperación para cambiar su contraseña</a></p>
+        <p><a href="localhost:80/reda/index.php" style="color: #fa7e36; font-weight: bold; text-decoration: none; border-bottom: 2px solid #fa7e36;">lo invitamos a dar clic aquí para solicitar un nuevo correo de recuperación para cambiar su contraseña</a></p>
         </div>';
         echo $error;
       // En caso de sí haber un resultado en la base de datos, se ejecuta el siguiente código:  
@@ -147,10 +147,11 @@ if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["cargo"]) && iss
         // Por otro lado, si la fecha actual es mayor que la fecha de expiración, se ejecutará entonces el siguiente código:
         }else{
             // Se le informará al usuario que el link ha expirado debido a que ha pasado 1 día desde que se solicitó:
-            $error = "<div style='text-align:center; margin-top: 12em; font-size: 1.5em;'>
+            $error = '<div style="text-align:center; margin-top: 12em; font-size: 1.5em;">
             <h2>El link ha expirado.</h2>
-            <p>Estás intentando acceder a un enlace que fue solicitado hace más de 24 horas. Recuerda que dichos enlaces son válidos por unicamente un día.<br /><br /></p>
-            </div>";
+            <p>Está intentando acceder a un enlace que fue solicitado hace más de 24 horas. Recuerde que dichos enlaces son válidos por unicamente un día.</p>
+            <p><a href="localhost:80/reda/index.php" style="color: #fa7e36; font-weight: bold; text-decoration: none; border-bottom: 2px solid #fa7e36;">Puede dar clic aquí sí desea solicitar un nuevo correo para recuperar su contraseña.</a></p>
+            </div>';
             echo $error;
         }
     }
