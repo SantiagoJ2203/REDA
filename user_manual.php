@@ -12,8 +12,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || ($_SESSION
     ?>
 
 <!DOCTYPE html>
-<html lang="en">
-<head lang="es">
+<html lang="es">
+<head>
     <title>Manual de usuario - REDA</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,6 +35,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || ($_SESSION
             </li>
         </div>
     </nav>
+
+    <iframe src="pdf/manual_de_usuario_reda.pdf" id="pdf_window"></iframe>
 
     <div class="modal-footer">
         <?php
