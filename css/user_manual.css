@@ -22,6 +22,13 @@ li{
     font-size: 2em; /* Se define el tamaño del texto. */
     font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita al usarse un valor numérico de 900. */
 }
+/* Se nombra al identificador 'pdf_window', el mismo es un contenedor que permite mostrar el archivo de manual de usuario del sistema: */
+#pdf_window{
+    width: 100%; /* Se indica que el contenedor ocupe todo el ancho de la pantalla. */
+    height: 38em; /* Se otorga una altura al contenedor en pantalla. */
+    border: none; /* Se declara que el contenedor no posea bordes a su alrededor. */
+    box-shadow: 2px 2px 5px #000; /* Se le otorga una sombra oscura y difuminada a los lados izquierdo e inferior del contenedor. */
+}
 /* Se nombra al identificador 'go_back' para asignarle estilos al enlace que permite volver al inicio del sistema del proyecto: */
 #go_back{
     color: #000; /* Se asigna que el color del texto sea negro. */
