@@ -60,63 +60,37 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
     <!-- Se usa el elemento p para mostrar el título del módulo-->
     <p class="display-4 text-center first_line">Eliminar
         <!-- Se emplea un span para darle un color de letra diferente a la parte final del título-->
-        <span class="second_line">ficha</span>
+        <span class="second_line">usuario</span>
     </p>
 
     <!-- Se crea un tipo de formulario -->
-    <form action="ACTION_eliminar_ficha.php" method="POST">
+    <form action="ACTION_eliminar_usuarios.php" method="POST">
     <!-- Se crea un contenedor fluido de Bootstrap que adapta su tamaño automaticamente a la resolución de la pantalla: --> 
-    <div class="container-fluid justify-content-around">
-    <!-- Se usa una tarjeta de Boostrap-->
-        <div class="card-group text-center">
-            <div class="card">
-                <div class="course">
-                    <i class='fas fa-users'></i>
-                </div>
-                <div class="card-body">
-                <!-- El título de la tarjeta-->
-                    <h5 class="card-title text-center font-weight-bold">Seleccionar ficha</h5>
-             
-                    <?php
-                            $con = mysqli_connect("localhost", "root", "", "reda");
-                            // Consulta a la base de datos que trae la información relacionada con la ficha que corresponde al número guardado en la variable $fichanombre
-                            $query = mysqli_query($con, "SELECT * FROM tbl_ficha;");
-                            // Se guarda los resultados de la consulta en la variable arrow
-                            $row = mysqli_fetch_array($query);
-                            // Se guarda el número de ficha en la variable $number
-                            $number = $row['numero_ficha'];
-                            // Se guarda el número de resultados de la consulta en la variable $num 
-                            $num = mysqli_num_rows($query);
-                            // Variable $i se incializa en cero
-                            $i = 0;
-                    ?>
-                    <!-- Se crea un espacio de selección múltiple -->
-                    <select name=ficha>
+    <div class="container-fluid justify-content-around col-2">
+    <!-- Se indica, con una clase Bootstrap, que el elemento a añadir hace para de un formulario: -->
+    <div class="form-group">
+                            <!-- Se crea el input o campo en el que se digitará el número de documento del usuario. El mismo cuenta con el tipo de dato respectivo, el nombre del campo y dos últimos atributos que permiten mostrar un tooltip, o caja con texto, que muestra información de interés al usuario: -->
+                            <input type="text" name="documento" class="form-control" id="documento" aria-describedby="emailHelp" placeholder="Número de documento *" tool-tip-toggle="tooltip-required" data-original-title="Este campo es obligatorio">
+                            <!-- Se añade una etiqueta '<div>' con un identificador dentro, este permite mostrar las alertas que vienen desde el archivo 'validacion_registro.js' y que son referentes a las validaciones del campo de número de documento: -->
+                            <div id="alerta3"></div>
+                        </div>
 
-                    <?php
-                    // Consulta a la base de datos que trae la información relacionada con la ficha que corresponde al número guardado en la variable $fichanombre
-                    $query = mysqli_query($con, "SELECT * FROM tbl_ficha;");
-                        while($i<$num){
-                            // Se incrementa la variable $i
-                            $i += 1;
-                            // Se guarda los resultados de la consulta en la variable $row
-                            $row = mysqli_fetch_array($query);
-                            // Se guarda el número de ficha en la variable $number
-                            $number = $row['numero_ficha'];
-                    ?>
-                    
-                    <!-- Se muestra las opciones de fichas registradas en la base de datos -->
-                        <option><?php echo $number; ?></option>
-                        <!-- Se cierra el ciclo mientras-->
-                        <?php  } ?>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <!-- Se indica, con una clase Bootstrap, que el elemento a añadir hace para de un formulario: -->
+                        <div class="form-group">
+                            <!-- Se crea un 'badge' o insignia de Bootstrap, la cual muestra un título dentro de un contenedor pequeño: -->
+                            <span id="perfil" class="badge font-weight-bold">Cargo *</span>
+                            <!-- Se añade una etiqueta '<select>', la misma contiene las opciones para escoger el cargo que poseerá el nuevo usuario, así como una caja con texto informativa que es diferente a las demás ya mencionadas: -->
+                            <select name="cargo" class="form-control" tool-tip-toggle="tooltip-required" data-original-title="Escoja el cargo de acuerdo a la funcionalidad del usuario">
+                                <!-- Cargos disponibles en el formulario: -->
+                                <option>Instructor</option>
+                                <option>Personal administrativo</option>
+                                <option>Administrador</option>
+                            </select>
+                        </div>
     <!-- A continuación, se usa un container que tiene un botón el cual inicia el registro direccionando a list_register.php -->
     <div class="container">
         <button type="submit" name="eliminar" class="btn btn-danger btn-lg " id="txt_button">Eliminar</button>
+    </div>
     </div>
     </form>
     <!-- Fin del formulario-->

@@ -98,7 +98,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
                         while($i<$num){
                             // Se incrementa la variable $i
                             $i += 1;
-                            // Se guarda los resultados de la consulta en la variable arrow
+                            // Se guarda los resultados de la consulta en la variable $row
                             $row = mysqli_fetch_array($query);
                             // Se guarda el número de ficha en la variable $number
                             $number = $row['numero_ficha'];

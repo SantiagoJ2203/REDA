@@ -334,7 +334,7 @@ if (isset($_SESSION['administrador'])) {
                 <!-- Se crea una segunda carta que posee las mismas características que las dos anteriores: -->
                 <div class="card col functions">
                     <!-- Se agrega el enlace hacia el cual será direccionado el usuario una vez dé click sobre la carta: -->
-                    <a href="reports.php">
+                    <a href="manage_usuarios.php">
                     <!-- Se añade una imagen alusiva a la función, la cual posee la misma clase que la de las dos anteriores cartas: -->
                     <img class="card-img-top mx-auto d-block img_functions" src="icons/eliminar_u.png" alt="Card image cap">
                     <!-- Texto añadido al cuerpo de la carta, el mismo indica el nombre de la función: -->

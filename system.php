@@ -200,15 +200,6 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                             <h1 class="modal-title font-weight-bold d-flex justify-content-center">
                                 Copias de seguridad
                             </h1>
-                            <!-- Se le da la opción al usuario de seleccionar cada cuanto quiere que se realice una copia de seguridad: -->
-                            <span>Frecuencia de creación automática de copias:</span>
-                            <select class="select_frequency">
-                            <!-- Se muestran las opciones que posee el usuario para definir la frecuencia de creación de la copia de seguridad: -->
-                                <option>Cada día</option>
-                                <option>Cada semana</option>
-                                <option>Cada mes</option>
-                                <option>Nunca</option>
-                            </select>
                             <!-- Se define que la ventana modal se adapte a cualquier tipo de resolución: -->
                             <div class="table-responsive-xl">
                                 <!-- Se crea una tabla con el texto centrado dentro de ella: -->
@@ -254,10 +245,6 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                             </div>
 
                         </div>
-                        <!-- Se crea un botón con el que el usuario puede crear una nueva copia de seguridad: -->
-                        <button type="button" class="btn btn-primary" id="txt_button">
-                            Crear nueva copia de seguridad
-                        </button>
                     </div>
                 </div>
             <!-- Aquí termina la estructura de la ventana modal. -->
