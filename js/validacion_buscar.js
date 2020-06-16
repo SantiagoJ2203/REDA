@@ -1,16 +1,3 @@
-// la función 'SoloLetras' verifica que los datos ingresados en el campo sean unicamente letras: 
-function SoloLetras(parametro){
-    /* Se ha hecho uso de una expresión regular, la cual verifica las letras de la 'A' a la 'Z', tanto en mayúsculas como en minúsculas, además de verificar si en el campo se ingresa alguna vocal con tílde o una letra propia del idioma español como la 'ñ': */
-    var patron = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/;
-    if(parametro.search(patron)){
-        // En caso de que el parámetro no cumpla con el requisito de que sean solo letras se devolverá un valor false:
-        return false;
-    } else{
-        // Caso contrario, se devolverá true:
-        return true;
-    }
-}
-
 // La función 'SoloNumeros' es creada para verificar que los datos ingresados en un campo correspondan a solo números:
 function SoloNumeros(param3){
     // Se usa una expresión regular para que solo haya existencia desde el número 0 hasta el 9 en la función, comparando el parámetro 'param3' para verificar si es diferente o si es correcto con lo que se ha ingresado en el campo correspondiente: 
@@ -76,27 +63,6 @@ function validar_aprendiz(){
     var correcto_aprendiz = true;
     // Se crea la variable 'formulario_aprendiz' para llamar al formulario en cuestión, esto con el propósito de usar, de manera más directa, los condicionales 'if' con el formulario:
     var formulario_aprendiz = document.form_aprendiz;
-
-    // El siguiente condicional evalúa si la función 'SoloLetras' devuelve un valor false. En caso de ser así, se le indicará al usuario de que solo debe ingresar letras en el campo de nombre del aprendiz:
-    if(SoloLetras(formulario_aprendiz.ap_aprendiz.value) == false){
-        document.getElementById("alerta_ap_aprendiz").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show text-center alerta_aprendiz" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo letras para el campo de nombre del aprendiz.</div>';
-        // La variable 'correcto_aprendiz' obtiene un valor false al haber una inconsistencia en el formulario:
-        correcto_aprendiz = false;
-    }else if(SoloLetras(formulario_aprendiz.ap_aprendiz.value) == true){
-        // En caso de que el usuario ingrese solo letras en el campo, la alerta Bootstrap desaparecerá automaticamente, esto en caso de que haya sido activada con anterioridad:
-        document.getElementById("alerta_ap_aprendiz").innerHTML = "";
-    }
-
-    // El siguiente código evalúa también si el campo de número de ficha contiene caracteres diferentes a números. Si es así, una alerta Bootstrap aprecerá para indicar esto al usuario:
-    if(SoloNumeros(formulario_aprendiz.ap_ficha.value) == false){
-        document.getElementById("alerta_ap_ficha").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show text-center alerta_aprendiz" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo números para el campo de número de ficha.</div>';
-        // La variable 'correcto_aprendiz' obtiene un calor false al haber inconsistencias en el formulario:
-        correcto_aprendiz = false;
-    }else if(SoloNumeros(formulario_aprendiz.ap_ficha.value) == true){
-        // Por otro lado, en caso de solo haber números dentro del formulario, la alerta Bootstrap desaparecerá automaticamente de la pantalla del usuario:
-        documento.getElementById("alerta_ap_ficha").innerHTML = "";
-    }
-
     /* Este último condicional, evalúa si el campo de número de documento contiene caracteres diferentes a números. En caso de ser cierto lo anterior, aparecerá una alerta Bootstrap para indicar al usuario de que solo debe ingresar números en el campo: */
     if(SoloNumeros(formulario_aprendiz.ap_documento.value) == false){
         document.getElementById("alerta_ap_documento").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show text-center alerta_aprendiz" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese solo números para el campo de número de documento.</div>';
@@ -120,7 +86,7 @@ function enviado_aprendiz(){
 
     // El siguiente condicional evalúa si los tres campos del formulario se hallan vacíos. En caso de ser así, se le notificará al usuario, con una alerta Bootstrap, de que, como mínimo, ingrese datos en uno de los campos:
     if(form_enviado_aprendiz.ap_aprendiz.value == "" && form_enviado_aprendiz.ap_ficha.value == "" && form_enviado_aprendiz.ap_documento.value == ""){
-        document.getElementById("alerta_aprendiz").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show text-center alerta_ap_final" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese datos al menos en uno de los campos del formulario.</div>';
+        document.getElementById("alerta_aprendiz").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show text-center alerta_ap_final" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese un dato en el campo de número de documento.</div>';
         /* Se regresa la variable con un valor false al haber una inconsistencia dentro del formulario: */
         enviado_aprendiz = false;
     }else{
