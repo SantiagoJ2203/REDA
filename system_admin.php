@@ -78,9 +78,9 @@ if (isset($_SESSION['administrador'])) {
                 <div class="row">
                     <!-- Se usan de manera predeterminada 3 columnas de las 12 que posee el contenedor Bootstrap: -->
                     <div class="col">
-                    <!-- Se crea un botón que permite abrir una ventana modal para agregar o eliminar fichas: -->
+                    <!-- Se crea un botón que permite abrir una ventana modal para agregar fichas: -->
                         <button type="button" class="btn btn-outline" data-toggle="modal" data-target="#modal_add_delete"  id="button_nav">
-                            Agregar/eliminar fichas
+                            Agregar fichas
                         </button>
                     </div>
                     <!-- Se usan otras 3 columnas del contenedor: -->
@@ -125,7 +125,7 @@ if (isset($_SESSION['administrador'])) {
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <!-- Se muestra el título principal de la ventana modal: -->
-                            <h1 class="modal-title font-weight-bold">Agregar/Eliminar fichas</h1>
+                            <h1 class="modal-title font-weight-bold">Agregar fichas</h1>
                             <!-- Se define que la ventana modal se adapte a cualquier tipo de resolución de pantalla: -->
                             <div class="table-responsive-xl">
                                 <!-- Se crea una tabla para mostrar la información de los ingresos realizados al sistema por el usuario: -->
@@ -139,7 +139,6 @@ if (isset($_SESSION['administrador'])) {
                                             <th scope="col">Número</th>
                                             <th scope="col">Programa</th>
                                             <th scope="col">Gestor</th>
-                                            <th scope="col">Eliminar</th>
                                         </tr>
                                     </thead>
                                     <!-- Se usa la etiqueta '<tbody>' para empezar a agregar elementos al cuerpo de la tabla: -->
@@ -151,23 +150,6 @@ if (isset($_SESSION['administrador'])) {
                                             <th>1828182</th>
                                             <th>Análisis y desarrollo de sistemas de información</th>
                                             <th>Lee Jared Escobar</th>
-                                            <td><a href="#" class="delete_icon"><i class='far fa-trash-alt'></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">12/12/2018</th>
-                                            <th>12/12/2020</th>
-                                            <th>1828182</th>
-                                            <th>Análisis y desarrollo de sistemas de información</th>
-                                            <th>Lee Jared Escobar</th>
-                                            <td><a href="#" class="delete_icon"><i class='far fa-trash-alt'></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">12/12/2018</th>
-                                            <th>12/12/2020</th>
-                                            <th>1828182</th>
-                                            <th>Análisis y desarrollo de sistemas de información</th>
-                                            <th>Lee Jared Escobar</th>
-                                            <td><a href="#" class="delete_icon"><i class='far fa-trash-alt'></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -326,13 +308,13 @@ if (isset($_SESSION['administrador'])) {
                 <!-- Se crea una única y primera carta que posee una clase para los estilos CSS ('functions') y que ocupa automaticamente parte de las columnas de Bootstrap -->
                 <div class="card col functions">
                     <!-- Enlace hacia el cual será direccionado el usuario una vez dé click sobre la carta: -->
-                    <a href="manage_list.php">
+                    <a href="manage_ficha.php">
                     <!-- Se añade una imagen alusiva a la función, la misma posee una clase para los estilos CSS ('img_functions'): -->
-                    <img class="card-img-top mx-auto d-block img_functions" src="icons/responsive.png" alt="Card image cap">
+                    <img class="card-img-top mx-auto d-block img_functions" src="icons/eliminar_d.png" alt="Card image cap">
                     <!-- Texto añadido al cuerpo de la carta, el mismo indica el nombre de la función: -->
                     <div class="card-body">
                         <!-- El texto posee su propia clase CSS y hace parte del enlace que direcciona al usuario a la pestaña de la función: -->
-                        <p class="card-text txt_functions"><span><strong>Gestionar listados</strong></span></a>
+                        <p class="card-text txt_functions"><span><strong>Eliminar fichas</strong></span></a>
                     </div>
                 <!-- Aquí finaliza esta carta: -->
                 </div>
@@ -354,11 +336,11 @@ if (isset($_SESSION['administrador'])) {
                     <!-- Se agrega el enlace hacia el cual será direccionado el usuario una vez dé click sobre la carta: -->
                     <a href="reports.php">
                     <!-- Se añade una imagen alusiva a la función, la cual posee la misma clase que la de las dos anteriores cartas: -->
-                    <img class="card-img-top mx-auto d-block img_functions" src="icons/report.png" alt="Card image cap">
+                    <img class="card-img-top mx-auto d-block img_functions" src="icons/eliminar_u.png" alt="Card image cap">
                     <!-- Texto añadido al cuerpo de la carta, el mismo indica el nombre de la función: -->
                     <div class="card-body">
                         <!-- El texto posee su propia clase CSS y hace también parte del enlace que direcciona al usuario a la pestaña de la función: -->
-                        <p class="card-text txt_functions"><span><strong>Reportes de asistencia</strong></span></a>
+                        <p class="card-text txt_functions"><span><strong>Eliminar usuarios</strong></span></a>
                     </div>
                 <!-- Aquí finaliza esta tercera y última carta: -->
                 </div>
