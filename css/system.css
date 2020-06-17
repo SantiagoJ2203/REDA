@@ -267,7 +267,7 @@ tbody{
 }
 /* Estilo dado a todos los elementos ubicados dentro del formulario de búsqueda de un aprendiz: */
 .form_search_appr{
-    margin-top: 2em; /* Se controla la alineación vertical del formulario con un margen superior. */
+    margin-top: 4em; /* Se controla la alineación vertical del formulario con un margen superior. */
 }
 /* Estilo añadido a los campos input del formulario de búsqueda de un aprendiz: */
 .form_search_appr input{
@@ -275,7 +275,7 @@ tbody{
 }
 /* Estilo otorgado al icono con forma de carta de identificación en el formulario de búsqueda de aprendiz: */
 .id_card_icon{
-    font-size: 15em; /* Tamaño del icono definido. */
+    font-size: 17em; /* Tamaño del icono definido. */
 }
 /* Estilos para el título principal del formulario de búsqueda de aprendiz: */
 .title_search_appr{
