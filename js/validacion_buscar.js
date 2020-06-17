@@ -84,8 +84,8 @@ function enviado_aprendiz(){
     // Se crea la variable 'form_enviado_aprendiz' para acceder de una manera más directa al formulario en cuestión y, por lo tanto, para hacer uso de el condicional 'if':
     var form_enviado_aprendiz = document.form_aprendiz;
 
-    // El siguiente condicional evalúa si los tres campos del formulario se hallan vacíos. En caso de ser así, se le notificará al usuario, con una alerta Bootstrap, de que, como mínimo, ingrese datos en uno de los campos:
-    if(form_enviado_aprendiz.ap_aprendiz.value == "" && form_enviado_aprendiz.ap_ficha.value == "" && form_enviado_aprendiz.ap_documento.value == ""){
+    // El siguiente condicional evalúa si el campo del formulario se halla vacío. En caso de ser así, se le notificará al usuario, con una alerta Bootstrap, de que ingrese un dato en el campo:
+    if(form_enviado_aprendiz.ap_documento.value == ""){
         document.getElementById("alerta_aprendiz").innerHTML = '<div class= "alert alert-danger alert-dismissible fade show text-center alerta_ap_final" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span></button>Ingrese un dato en el campo de número de documento.</div>';
         /* Se regresa la variable con un valor false al haber una inconsistencia dentro del formulario: */
         enviado_aprendiz = false;
