@@ -66,11 +66,8 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
         <div class="col-xl-12 text-center">
         <h2>Vista de reportes</h2>
         <div class="btn-group" role="group" aria-label="">
-            <button id="btnColumnas" type="button" class="btn btn-secondary">Columnas</button>
-            <button id="btnLineas" type="button" class="btn btn-primary">Líneas</button>            
-            <button id="btnTorta" type="button" class="btn btn-dark">Torta</button>
-            <button id="btnPrueba" type="button" class="btn btn-danger">Gráfico de Prueba</button>            
-            <button id="btnBD" type="button" class="btn btn-info">Gráficos desde BD</button>
+            <button id="btnColumnas" type="button" class="btn btn-primary">Columnas</button>
+           
         </div>
     </div>
     <div id="contenedor"></div>
