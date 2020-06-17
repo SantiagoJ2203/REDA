@@ -94,7 +94,6 @@ Se verifica si el botón 'buscar' en el módulo system.php o system_admin.php fu
                     <th scope="col">Número de ficha</th>
                     <th scope="col">Nombre del programa</th>
                     <th scope="col">Visualización</th>
-                    <th scope="col">Descarga al sistema</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,8 +101,7 @@ Se verifica si el botón 'buscar' en el módulo system.php o system_admin.php fu
                 <!-- Se muestra la información de cada columna traída con las variables $list y $name -->
                     <td> <?php echo $list; ?> </td>
                     <td> <?php echo $name; ?> </td>
-                    <td><a href="#" class="view"><i class="fa fa-eye fa-lg"></i></a></td>
-                    <td><a href="#" class="down"><i class="fas fa-download fa-lg"></i></a></td>
+                    <td><a href="asistencia.php" class="view"><i class="fa fa-eye fa-lg"></i></a></td>
                 </tr>
             </tbody>
         </table>
