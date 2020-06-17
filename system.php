@@ -438,7 +438,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                 <!-- Se crea una única y primera carta que posee una clase para los estilos CSS ('functions') y que ocupa automaticamente parte de las columnas de Bootstrap -->
                 <div class="card col functions">
                     <!-- Enlace hacia el cual será direccionado el usuario una vez dé click sobre la carta: -->
-                    <a href="manage_list.php">
+                    <a href="asistencia.php">
                     <!-- Se añade una imagen alusiva a la función, la misma posee una clase para los estilos CSS ('img_functions'): -->
                     <img class="card-img-top mx-auto d-block img_functions" src="icons/responsive.png" alt="Card image cap">
                     <!-- Texto añadido al cuerpo de la carta, el mismo indica el nombre de la función: -->
