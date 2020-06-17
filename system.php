@@ -55,13 +55,40 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                         <h2 class="welcome" >Bienvenido, 
                             <!-- Para mostrar el nombre del usuario se hace uso del siguiente código PHP: -->
                             <?php
-                            // Se verifica con un condicional si la sesión actual corresponde al cargo de instructor o al de personal administrativo:
+                            /*
+                            @var string $sesion_instructor
+
+                            Se verifica con un condicional si la sesión actual corresponde al cargo de instructor o al de personal administrativo:
+                            */
                                 if ($_SESSION['rol'] == 'Instructor') {
-                            // Si es instructor, se trae la variable con su valor definido, la cual se encuentra en el archivo 'ACTION_validalogin.php'. Dicha variable contiene el primer nombre y el primer apellido del usuario en cuestión:
+                                /*
+                                 Si es así, se obtiene dentro de la variable 'session_instructor' el documento del usuario que se encuentra dentro del sistema en ese momento:
+                                */
+                                $sesion_instructor = $_SESSION['instructor'];
+                                /*
+                                 Finalmente, se realiza una consulta a la base de datos, donde se toman todos los registros de la tabla 'tbl_historial_instructor', donde el documento corresponda al de la sesión actual:
+                                */
+                                $query = "SELECT * FROM tbl_historial_instructor WHERE id_instructor = $sesion_instructor";
+                                /*
+                                 Luego, se trae la variable con su valor definido, la cual se encuentra en el archivo 'ACTION_validalogin.php'. Dicha variable contiene el primer nombre y el primer apellido del usuario en cuestión:
+                                */
                                 echo $_SESSION['nombre_instructor'];
                                 } else {
                             // Si es al contrario, se mostrará el primer nombre y el primer apellido del personal administrativo que se encuentra en la sesión activa:
+                                /* 
+                                @var string $sesion_personal
+
+                                Si el cargo del usuario en la sesión actual corresponde al de 'personal administrativo', entonces se obtendrá el documento de este dentro de la variable '$sesion_personal': 
+                                */
+                                $sesion_personal = $_SESSION['personal'];
+                                /*
+                                 Al ser así, se mostrará el primer nombre y el primer apellido del personal administrativo que se encuentra en la sesión activa:
+                                */
                                 echo $_SESSION['nombre_administrativo'];
+                                /*
+                                 Finalmente, se realiza una consulta a la base de datos, donde se toman todos los registros de la tabla 'tbl_historial_administrativo', donde el documento corresponda al de la sesión actual:
+                                */
+                                $query = "SELECT * FROM tbl_historial_administrativo WHERE id_administrativo = $sesion_personal";
                                 }
                             ?>
                         </h2>
@@ -152,28 +179,43 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                                     <!-- Se usa la etiqueta '<tbody>' para empezar a agregar elementos al cuerpo de la tabla: -->
                                     <tbody>
                                         <!-- Se comienzan a agregar resultados a la tabla acerca de algunas especificaciones que poseía o posee el computador desde el que se ha entrado al sistema (ya sea con anterioridad o justo en el mismo día): -->
+
+                                        <!-- Se usa código PHP para mostrar en la tabla todos los ingresos que ha realizado el usuario al sistema: -->
+                                        <?php
+                                        /*
+                                        @var string $result
+                                        @var integer $i
+                                        @var string $row
+
+                                        Dependiendo de la tabla a la que se le ha hecho la consulta ('tbl_historial_administrativo' o 'tbl_historial_instructor') los resultados obtenidos serán guardados dentro de la variable '$result':
+                                        */
+                                        $result = mysqli_query($con, $query);
+                                        // Se crea una variable que funciona como un contador:
+                                        $i = 0;
+                                        /*
+                                         Se crea un ciclo 'while', donde mientras las filas correspondan a los resultados devueltos de la consulta a la base de datos, el siguiente código será ejecutado:
+                                        */
+                                        while ($row = mysqli_fetch_array($result)) {
+
+                                        ?> 
+                                        <!-- Se comienzan a agregar resultados a la tabla acerca de algunas especificaciones de ingreso, como la hora, la fecha, el sistema operativo y el navegador web usado. Esto se hace trayendo los resultados de la consulta hecha a la tabla 'tbl_historial_administrativo' o 'tbl_historial_instructor': -->
                                         <tr>
                                             <!-- Fecha en la que el usuario ingresó: -->
-                                            <th scope="row">29/09/2019</th>
+                                            <th scope="row"><?php echo $row['fecha_ingreso'] ?></th>
                                             <!-- Hora a la que ingresó: -->
-                                            <th>18:55</th>
-                                            <!-- Lugar desde el que realizó el ingresó: -->
-                                            <td>Medellín, Antioquia</td>
-                                            <!-- Sistema operativo con el que ingresó: -->
-                                            <td>SO Windows 7</td>
+                                            <th><?php echo $row['hora_ingreso'] ?></th>
+                                            <!-- Sistema operativo que estaba usando en el momento: -->
+                                            <td><?php echo $row['so_usado'] ?></td>
+                                            <!-- Navegador web con el que ingresó: -->
+                                            <td><?php echo $row['navegador_usado'] ?></td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">18/07/2019</th>
-                                            <th>09:14</th>
-                                            <td>Medellín, Antioquia</td>
-                                            <td>SO Windows 10</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">01/10/2019</th>
-                                            <th>20:40</th>
-                                            <td>Medellín, Antioquia</td>
-                                            <td>SO Windows 8</td>
-                                        </tr>
+                                        <?php 
+                                        /*
+                                         El contador de la variable '$i' aumenta hasta que todos los datos devueltos por la consulta a la base de datos sean mostrados en la tabla:
+                                        */
+                                        $i++;
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                                 <!-- Aquí finaliza la estructura de la tabla. -->
@@ -454,7 +496,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
             <!-- Se le indica al código que 6 columnas del contenedor serán utilizadas: -->
             <div class="col-5 py-4">
                 <!-- Se crea el formulario con su respectivo método de envío y la acción que hará una vez se realice la búsqueda. Además, se pone un nombre al formulario y dos eventos JavaScript ('oninput' y 'onsubmit'), con sus respectivas funciones de retorno, para validar el campo 'input' para buscar a un aprendiz: -->
-                <form name="form_aprendiz" class="form_search_appr" action="ACTION_buscar_aprendiz.php" method="POST" oninput="return validar_aprendiz();" onsubmit="return enviado_aprendiz() && validar_aprendiz();">
+                <form name="form_aprendiz" class="form_search_appr" action="ACTION_buscar_aprendiz.php" method="POST" oninput="return validar_aprendiz()" onsubmit="return enviado_aprendiz() && validar_aprendiz();">
                     <!-- Se muestra el título que indica que el formulario corresponde a la búsqueda de un aprendiz en el sistema: -->
                     <div class="form-group">
                         <!-- Se asigna una clase al título para añadirle estilos desde el archivo CSS: -->
@@ -462,10 +504,22 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal'])) {
                     </div>
                     <!-- Este campo campo está hecho para ingresar el número de documento del aprendiz en caso de saber cual es: -->
                     <div class="form-group">
-                        <input type="text" name="ap_documento" class="form-control-m" placeholder="Número de documento">
+                        <input type="text" name="ap_documento" class="form-control" placeholder="Número de documento">
                     </div>
                     <!-- 'Div' que contiene un identificador llamado 'alerta_ap_documento', el cual permite que una alerta Bootstrap aparezca si hay alguna inconsistencia en el campo de número de documento del aprendiz: -->
                     <div id="alerta_ap_documento"></div>
+                    <!-- El siguiente código PHP, permite la aparición de una alerta en caso de que no existan resultados en la búsqueda de un aprendiz: -->
+                    <?php
+                        /* 
+                        Si el valor definido 'noapprentice' devuelve un valor true, y el valor obtenido 'noapprentice' devuelve también un valor true, se ejecutará el siguiente código:
+                        */
+                        if(isset($_GET['noapprentice']) == true && $_GET['noapprentice'] == true){
+                        /*
+                        Se inserta código HTML, el mismo contiene clases Bootstrap y estilos CSS para mostrar la alerta en cuestión: 
+                        */
+                        echo "<div class= 'alert alert-danger alert-dismissible fade show' role='alert' style='border-radius: 0; text-align: center; font-weight: bold; width:100%;'><button type='button' class='close' data-dismiss='alert' aria-label='close'><span aria-hidden='true'>&times;</span></button>No existe ningún aprendiz registrado con ese número de documento.</div>";
+                        }
+                    ?>
                     <!-- Se crea un botón con un icono de una lupa dentro de él; esto indica que al hacer click en el mismo la búsqueda del aprendiz comenzará a producirse en el sistema: -->
                     <button class="btn input_search_appr" name="buscar" type="submit">
                         <!-- Aquí se inserta el icono con forma de lupa: -->

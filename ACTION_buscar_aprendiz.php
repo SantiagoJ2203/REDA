@@ -56,7 +56,17 @@ if (isset($_POST['buscar'])) {
     $nombre = $name1 . " " . $name2 . " " . $apellido1 . " " . $apellido2;
     // Se guarda el segundo apellido del aprendiz extraído de la base de datos en la variable $apellido2
     $ficha = $row['numero_ficha'];
+    // Se crea la variable '$num' para guardar el númerode resultados obtenidos desde la consulta.
+    $num = mysqli_num_rows($query);
   
+}
+/*
+@var string $num
+
+Se crea el siguiente condicional, donde si no existe ningún resultado dentro de la variable '$num', el usuario será redireccionado nuevamente al archivo 'system.php' para ser informado con una alerta de que no hay resultados disponibles:
+*/
+if($num == ""){
+    header("location: system.php?noapprentice=true");
 }
 ?>
 

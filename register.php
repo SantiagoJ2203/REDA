@@ -111,18 +111,6 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
                     </select>
                 </div>
             </div>
-            <!-- Se usa otra tarjeta-->
-            <div class="card">
-                <div class="date"> 
-                    <i class="far fa-calendar-alt"></i>
-                </div>
-                <div class="card-body">
-                <!-- Se indca el título de la tarjeta-->
-                    <h5 class="card-title text-center font-weight-bold">Fecha actual</h5>
-                    <!-- Se emplea un espacio para ingresar la fecha, algo que es requerido-->
-                    <input type="date" class="form-control text-center" id="current_pass" required>
-                </div>
-            </div>
         </div>
     </div>
     <!-- A continuación, se usa un container que tiene un botón el cual inicia el registro direccionando a list_register.php -->
