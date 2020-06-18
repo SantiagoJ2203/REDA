@@ -1,4 +1,4 @@
-|<?php
+<?php
 // Se incluye el archivo 'ACTION_conexionBD.php' para acceder a la conexion de la base de datos 'reda' sin tener que escribir el script de conexión:
 include "ACTION_conexionBD.php";
 ?>
