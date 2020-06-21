@@ -1,0 +1,72 @@
+/* ARCHIVO CSS PARA LAS VISTAS 'ACTION_restaurar_pass.php' y 'form_cambio.php*/
+
+/* Se nombra a la etiqueta de HTML llamada 'body' para añadir estilo a todos los elementos que se encuentren dentro de dicha etiqueta:*/
+body{
+    font-family: sans-serif; /* Se define una fuente sans-serif para todo el texto del archivo, esto para hacer más fácil la lectura de las palabras. */
+}
+/* Se llama a la etiqueta HTML llamada 'a' para añadirle un estilo al momento de que el usuraio hace un 'hover' o, en otras palabras, pasar el cursor por encima de un enlace: */
+a:hover{
+    text-decoration: none;  /* En este caso, se indica que el texto del enlace no contenga ningún tipo de decoración (como el subrayado) al hacer un 'hover' sobre el mismo. */
+}
+/* Se nombra al identificador 'font' para darle estilo al título mostrado dentro de la ventana modal del formulario: */
+#font{
+    font-size: 2.5em; /* Se le asigna un tamaño de '2.5em' al título. */
+}
+/* Estilo para el icono que permite mostrar y ocultar las contraseñas ingresadas en los campos input: */
+#passwords{
+    float: right; /* Se flota el icono a la derecha del campo input. Dicho icono quedaría posicionado en el extremo derecho del campo. */
+    margin-top: -1.9em; /* Se controla la alineación vertical del icono con un margen superior. */
+    margin-right: 0.5em; /* Se controla la alineación horizontal con un margen derecho. */
+}
+/* Estilo para el icono que permite mostrar al usuario las recomendaciones para crear una contraseña segura: */
+#information{
+    float: right; /* Se flota el icono a la derecha del campo input. Dicho icono quedaría posicionado en el extremo derecho del campo. */
+    margin-right: 2.2em; /* Se controla la alineación vertical del icono con un margen derecho. */ 
+    margin-top: -1.9em; /* Se controla la alineación horizontal con un margen superior. */
+}
+/* Se llama al identificador 'contenido_sesion' para agregarle un estilo al contenido mostrado por la ventana modal:*/
+#contenido_sesion{
+    border: 4px solid rgb(255, 255, 255); /* Se aplica un borde sólido, de color blanco y con un tamaño de 4 pixeles alrededor de la ventana modal. */
+}
+/* Estilo para el título de la ventana modal (#font) y para el icono mostrado arriba del título (.change_icon)*/
+#font, .change_icon{
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto y del icono, una sombra oscura que contiene un difuminado suave. */
+}
+/* Estilos para el botón que permite guardar los cambios una vez el usuario haya creado una nueva contraseña para su cuenta: */
+#enter_button{
+    font-size: 1.1em; /* Se define el tamaño del texto dentro del botón. */
+    background-color: rgba(0, 0, 0, 0.603); /* Se asigna un color de fondo con transparencia para el botón. */
+    color: #fff; /* Se asigna el color para el texto dentro del botón. */
+    border-radius: 0; /* Se declara que el botón no contenga ningún borde redondo. */
+    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos al hacer los cambios de estilo con un 'hover'. */
+    width: 11em; /* Se define el ancho del botón. */
+    display: block; /* Se declara que el botón sea un elemento en bloque y que, por lo tanto, ocupe todo el ancho de su contenedor. */
+    margin-left: auto; /* Se define que el margen izquierdo y derecho alineen de manera automática el botón, el cual quedaría alineado al centro de su contenedor. */
+    margin-right: auto;
+}
+/* Cambios al botón de guardar cambios para crear una nueva contraseña al hacer un 'hover' o pasar el cursor sobre el mismo: */
+#enter_button:hover{
+    background-color: rgba(0, 0, 0, 0.76); /* Se asigna un color de fondo que cambia ligeramente a uno más oscuro que el original. */
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris y difuminada. */
+}
+/* Estilos para todo los elementos hallados dentro del cuerpo de la ventana modal: */
+.modal-body{
+    background-color:rgba(35, 130, 117, 0.589); /* Se define un color verde oscuro como el fondo de la ventana modal. */
+    text-align: center; /* Se alinea el texto incluido en la ventana modal al centro de las misma. */
+    border-radius: 2px; /* Se aplica un borde redondo a cada extremo de la ventana modal. */
+}
+/* Estilo agregado a los campos input del formulario: */
+.form-group input{
+    border: none; /* Se define que los campos no posean ningún borde. */
+    border-radius: 0; /* Se define que no hayan bordes redondeados alrededor de los campos. */
+    font-weight: bold; /* Se define que el texto dentro de los campos esté en negrita. */
+}
+/* Estilo añadido a los campos input cuando se hace un enfoque (ingresar datos) sobre alguno de ellos: */
+.form-group input:focus{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.513); /* Se aplica una sombra de color oscuro al lado derecho e inferior del campo. */
+}
+/* Estilos agregados a las cajas de mensaje (tooltips) que aparecen al hacerse un 'hover' sobre alguno de los iconos ubicados en el primer campo input: */
+.tooltip-inner{
+    text-align: center !important; /* El texto dentro de los tooltips es alineado centralmente. Se usa la declaración '!important' para definir que tal valor siempre va a ser aplicado en primer lugar, sin importar el orden del mismo. */ 
+    border: 2px solid #fff; /* Se define un borde sólido de color blanco para los tooltips. */
+}

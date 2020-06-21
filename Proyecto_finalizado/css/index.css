@@ -1,0 +1,393 @@
+/* ARCHIVO CSS PARA LA VISTA 'index.php' */
+
+/* Se nombra a la etiqueta de HTML llamada 'body' para añadir estilo a todos los elementos que se encuentren dentro de dicha etiqueta:*/
+body{
+    font-family: sans-serif; /* Se define una fuente sans-serif para todo el texto del archivo, esto para hacer más fácil la lectura de las palabras. */
+    overflow-x: hidden; /* Se evita que exista un scroll lateral al momento de cargarse el documento en el navegador web. */
+    overflow-y: scroll; /* Permite que haya un scroll vertical en todos los casos donde la página requiera tenerlo. */
+}
+/* Se llama a la etiqueta HTML llamada 'a' para añadirle un estilo al momento de que el usuraio hace un 'hover' o, en otras palabras, pasar el cursor por encima de un enlace: */
+a:hover{
+    text-decoration: none; /* En este caso, se indica que el texto del enlace no contenga ningún tipo de decoración (como el subrayado) al hacer un 'hover' sobre el mismo. */
+}
+/* Estilo  añadido al selector universal (afecta el estilo de todos los elementos en este archivo): */
+*{
+    list-style: none; /* La propiedad 'list-style' permite personalizar el signo que aparece antes de cada elemento dentro de una lista. Para este caso se ha definido que ningún elemento posea algún estilo de lista, como un número o un círculo. */
+}
+/* Se nombra al identificador 'header' para dar estilo a la cabecera que contiene el logo y el título del proyecto: */
+#header{
+    background-color: #11b6a0; /* Se asigna un color verde esmeralda a la cabecera. */ 
+    border-radius: 0%; /* Se define que la cabecera no contenga ningún borde redondo en alguno de sus extremos. */
+}
+/* Se llama al identificador 'title' para otorgale estilos al nombre del proyecto que se encuentra dentro del contenedor que posee el identificador 'header': */
+#title{
+    font-size: 2em; /* Se define el tamaño del texto. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita al usarse un valor numérico de 900. */
+}
+/* Estilos aplicados para el botón de inicio de sesión ubicado en la cabecera o 'header' del archivo: */ 
+#boton2{
+    width: 8em; /* Se específica el ancho del botón con la unidad de medida 'em'. */
+    margin-top: 0.6em; /* Se crea un margen superior para controlar el alineamiento del botón de manera vertical.*/
+    color: #fff; /* Se escoge el color blanco para el texto hallado dentro del botón. */
+    background: rgba(255, 255, 255, 0.315); /* Se define el color de fondo para el elemento (en este caso, se usa el modelo de color RGB junto al adicional 'alpha', que otorga transparencia al color). */
+    border-radius: 0; /* Con el valor numérico '0', no se añade a ningún extremo del elemento un borde redondeado. */
+    transition: all .5 ease; /* Se hace una transición que dura 0.5 milisegundos, la cual aplica un cambio a todas las propiedades supuestas a cambiar su valor (all) y específica la velocidad de la transición (ease). Esto sucede hacer 'hover' sobre el botón. */
+}
+/* Al hacer un 'hover' o pasar el cursor sobre el botón de iniciar sesión, suceden los siguientes cambios: */
+#boton2:hover{
+    color: #fff; /* El color blanco para el texto permanece en el botón. */
+    background: #fa7e36; /* El color de fondo para el botón cambia a naranja de manera ligera al tener una transición de 0.5 milisegundos. */
+}
+/* Estilos para el título de la ventana modal 'Iniciar sesión': */
+#font{
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto, una sombra oscura que contiene un difuminado suave. */
+}
+/* Estilos agregados a la clase 'badge' de Bootstrap y a su respectivo texto dentro del mismo ('Cargo *') en la ventana modal 'Iniciar sesión': */
+#perfil{
+    float: left; /* Se posiciona el 'badge' o insignia totalmente a la izquierda de donde está contenido.*/
+    letter-spacing: 0.03em; /* Se genera un pequeño espaciado entre cada letra de la palabra. */
+    font-size: 1.1em; /* Se define el tamaño para el texto dentro del 'badge' o insignia. */
+    border-radius: 0; /* Se declara que el 'badge' no contenga bordes redondos en sus extremos. */
+    background-color: rgba(255, 255, 255, 0.747); /* Se agrega un color de fondo para el 'badge'. */
+    margin-left: 0.050em; /* Se controla el posicionamiento horizontal del elemento con un margen izquierdo. */
+}
+/* Estilos para el botón que permite iniciar sesión al usuario una vez ha rellenado los campos del formulario: */
+#enter_button{
+    font-size: 1.1em; /* Se define el tamaño del texto dentro del botón. */
+    background-color: rgba(0, 0, 0, 0.603); /* Se asigna un color de fondo con transparencia para el botón. */
+    color: #fff; /* Se asigna el color para el texto dentro del botón. */
+    border-radius: 0; /* Se declara que el botón no contenga ningún borde redondo. */
+    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos al hacer los cambios de estilo con un 'hover'. */
+    width: 11em; /* Se define el ancho del botón. */
+    margin-left: auto; /* Se define que el margen izquierdo y derecho alineen de manera automática el botón, el cual quedaría alineado al centro de su contenedor. */
+    margin-right: auto;
+}
+/* Cambios al botón de iniciar sesión al hacer un 'hover' o pasar el cursor sobre el mismo: */
+#enter_button:hover{
+    background-color: rgba(0, 0, 0, 0.76); /* Se asigna un color de fondo que cambia ligeramente a uno más oscuro que el original. */
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris y difuminada. */
+}
+/* Estilos para el campo input hallado en la ventana modal 'Recuperar contraseña': */
+#input_email, #cargo_recuperar{
+    width: 70%; /* Se le otorga un ancho al campo. */
+    height: 2em; /* Se le otorga una altura al campo. */
+    border: none; /* Se posea que el campo no posea ningún borde a su alrededor. */
+    font-weight: bold; /* Se define que el grosor del texto en el campo sea en negrita. */
+}
+/* Estilos para el botón que permite enviar un correo de recuperación de contraseña al e-mail del usuario ingresado en el campo del formulario 'Recuperar contraseña': */
+#enter_button_recovery{
+    font-size: 1.1em; /* Se define el tamaño del texto dentro del botón. */
+    background-color: rgba(0, 0, 0, 0.603); /* Se asigna un color de fondo con transparencia para el botón. */
+    color: #fff; /* Se asigna el color para el texto dentro del botón. */
+    border-radius: 0; /* Se declara que el botón no contenga ningún borde redondo. */
+    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos al hacer los cambios de estilo con un 'hover'. */
+    width: 11em; /* Se define el ancho del botón. */
+    border: none; /* Se declara que el botón no posea ningún borde a su alrededor. */
+    margin-top: 1.5em; /* Se asigna un margen superior para mantener el espacio entre el campo y el botón de enviar. */
+    margin-left: auto; /* Se define que el margen izquierdo y derecho alineen de manera automática el botón, el cual quedaría alineado al centro de su contenedor. */
+    margin-right: auto;
+}
+/* Cambios al botón de enviar un correo de recuperación de contraseña al hacer un 'hover' o pasar el cursor sobre el mismo: */
+#enter_button_recovery:hover{
+    background-color: rgba(0, 0, 0, 0.76); /* Se asigna un color de fondo que cambia ligeramente a uno más oscuro que el original. */
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris y difuminada. */
+}
+/* Estilos para el enlace que permite abrir la ventana modal 'Recuperación de contraseña' */
+#recovery{
+    color: #fff; /* Se asigna que el texto sea de color blanco. */
+    transition: 0.2s; /* Se crea una transición ligera para el cambio de estilo que el enlace obtiene al hacerse un 'hover' sobre él. */
+}
+/* Cambio de estilo que el enlace de la ventana modal anterior descrita recibe al hacerse un 'hover' sobre él: */
+#recovery:hover{
+    border-bottom: 2px solid #fa7e36; /* Se crea un borde inferior de color naranja para hacer indicativo el 'hover' hecho sobre el enlace. */
+}
+/* Estilos para el carousel o slider ubicado abajo de la cabecera del archivo: */
+#demo{
+    box-shadow: 2px 2px 5px #000; /* Se crea en la parte derecha e inferior del elemento una sombra de color negro. */
+    height: 530px; /* Se específica la longitud vertical o la altura para el elemento en cuestión. */
+}
+/* Estilos para las imágenes halladas dentro del carousel o slider anterior descrito: */
+#demo img{
+    width: 100%; /* Se indica que cada imagen ocupe el 100% del ancho del contenedor. */
+    height: 530px; /* Se específica la altura que cada imagen ocupará dentro del contenedor. */
+}
+/* Estilo para el botón 'Acerca del software' ubicado en el 'footer' o pie de página del archivo: */
+#about_button{
+    color: #fff; /* Se asigna el color para el texto hallado dentro del botón. */
+    border-radius: 0; /* Se retiran los bordes redondeados que el elemento posee. */
+    background-color: #fa7e36; /* Se añade un color de fondo al botón. */
+    border: 2px solid #fff; /* Se añade un borde solido de color claro y con un tamaño delgado. */
+    transition: 0.5s; /* Se crea una transición con una duración de 0.5 milisegundos para los cambios hechos en el botón al hacer un 'hover' sobre el mismo. */
+}
+/* Cambios de estilo que el botón anterior descrito obtiene al hacerse un 'hover' sobre él: */
+#about_button:hover{
+    background-color: #db6f31; /* Se cambia el color de fondo del botón a uno más opaco. */
+    transition: 0.5s; /* Se genera una transición de 0.5 milisegundos al momento en que los cambios desaparecen después de dejar de hacer un 'hover' sobre el botón. */
+}
+/* Estilo añadido al icono ubicado dentro de la ventana modal 'Iniciar sesión': */
+.id_icon{
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del icono, una sombra oscura que contiene un difuminado suave. */
+}
+/* Estilos para la ventana modal 'Iniciar sesión':*/
+.modal-body{
+    background-color:rgba(35, 130, 117, 0.589); /* Se define un color verde oscuro como el fondo de la ventana modal. */
+    text-align: center; /* Se alinea el texto incluido en la ventana modal al centro de la misma. */
+    border-radius: 2px; /* Se aplica un borde redondo a cada extremo de la ventana modal. */
+    border: 5px solid #fff; /* Se crea un borde grueso alrededor de la ventana modal. */
+}
+/* Estilos para la ventana modal 'Recuperar contraseña': */
+.modal_recovery{
+    background-color: rgba(35, 130, 117, 0.589); /* Se define un color verde oscuro como el fondo de la ventana modal. */
+    text-align: center; /* Se alinea el texto incluido en la ventana modal al centro de la misma. */
+    border-radius: 0; /* Se retiran todos los bordes redondos que la ventana modal posee alrededor. */
+    border: 5px solid rgba(0, 0, 0, 0.637); /* Se crea un borde oscuro y con transparencia alrededor de la ventana modal. */
+}
+/* Estilo para el texto que indica lo que pasará al momento del usuario solicitar un correo de recuperación de contraseña: */
+.recovery_text{
+    color: #fff; /* Se define que el color del texto sea blanco. */
+    letter-spacing: 0.1em; /* Se crea un pequeño espaciado entre cada letra de cada palabra. */
+}
+/* Estilo para los campos input y campos select de los formularios de iniciar sesión y recuperar contraseña: */
+.form-group input, .form-group select{
+    border: none; /* Se define que los campos no posean ningún borde alrededor. */
+    border-radius: 0; /* Se define que no hayan bordes redondeados alrededor de los campos. */
+    font-weight: bold; /* Se define que el texto dentro de los campos esté en negrita. */
+}
+/* Estilo para los campos input y campos select al hacer un enfoque (ingresar datos) sobre alguno de ellos: */
+.form-group input:focus, .form-group select:focus{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.513); /* Se aplica una sombra de color verde oscuro al lado derecho e inferior del campo. */
+}
+/* Estilo para el icono que permite mostrar y ocultar las contraseñas ingresadas en el campo input del formulario de iniciar sesión: */
+.show_icon{
+    color: #000; /* Se define que el icono sea de color negro. */
+    margin-top: -1.75em; /* Se controla la alineación vertical con un margen superior. */
+    margin-right: 1em; /* Se controla la alineación horizontal del icono con un margen derecho. */  
+    float: right; /* Se flota el icono a la derecha del campo input. Dicho icono quedaría posicionado en el extremo derecho del campo. */ 
+}
+/* Estilos agregados a la caja de mensaje (tooltips) que aparece al hacerse un 'hover' sobre el icono que muestra y oculta la contraseña ingresada por el usuario: */
+.tooltip-inner{
+    text-align: center !important; /* El texto dentro del tolltip es alineado centralmente. Se usa la declaración '!important' para definir que tal valor siempre va a ser aplicado en primer lugar, sin importar el orden del mismo. */ 
+    border: 2px solid #fff; /* Se define un borde sólido de color blanco para el tooltip. */
+}
+/* Estilo para la alerta Bootstrap que aparece en caso de que el usuario trate de ingresar al sistema con datos incorrectos:*/
+.nouser{
+    border-radius: 0; /* Se retiran todos los bordes redondeados que la alerta posee. */
+    font-weight: bold; /* Se define que el texto dentro de la alerta esté en negrita. */
+    width: 100%; /* Se declara que la alerta tome el ancho del 100% de su contenedor. */
+}
+/* Estilos para los 2 contenedores que muestran la misión y la visión del proyecto: */
+.objectives_container{
+    background:#20c7b1; /* Se añade un fondo de color verde esmeralda a los contenedores. */
+    border: 3px solid rgba(0, 0, 0, 0.3); /* Se crea un borde sólido y oscuro para ambos contenedores. */
+    border-radius: 0; /* Se define que los contenedores no posean bordes redondeados en sus alrededores. */
+}
+/* Estilo para los títulos principales de los contenedores anteriormente descritos: */
+.objectives_titles{
+    background-color: rgba(226, 226, 226, 0.171); /* Se define el color de fonto para el contenedor de los títulos */
+    font-weight: bold; /* Se asigna que el texto esté en negrita. */
+}
+/* Estilos para los contenedores que muestran los elementos usados para realizar el proyecto: */
+.used_elements{
+    border: 3px solid rgba(0, 0, 0, 0.1); /* Borde con transparencia creado para los dos contenedores. */
+    border-radius: 0; /*Se retiran los bordes redondeados que los contenedores poseen.  */
+    max-width: 540px; /* Se define el ancho máximo que ambos contenedores pueden tener.*/
+}
+/* Estilo añadido al icono Google que se encuentra dentro del contenedor que muestra información acerca del lector de huellas: */
+.material-icons.md-48{
+    font-size: 130px; /* Se específica el tamaño que el icono poseerá. */
+}
+/* Contenedor 'grid' o de grilla que guarda varios elementos en columnas y/o filas y con un diseño que puede ser personalizado: */
+.grid-container {
+    display: grid; /* Se específica que la clase será mostrada en pantalla como un 'grid' o grilla: */
+    align-content: center; /* Se alinea de manera centrada el contenido que tendrá. */
+    grid-template-columns: auto auto auto; /* Se declara que hayan 3 elementos por cada columna y que el tamaño de cada uno sea automático. */
+    grid-gap: 10px; /* Se asigna un espaciado entre cada elemento del 'grid': */
+    background-color:white; /* Se asigna un color blanco de fondo al 'grid': */
+    padding: 50px; /* Se le otorga un espaciado interno al 'grid'. */
+  }
+/* Estilos asignados a todos los elementos dentro de la clase 'grid-container' y que, adicionalmente, estén dentro de una etiqueta 'div': */  
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8); /* Se les asigna un color claro de fondo. */
+    text-align: center; /* Se les indica que el texto que contengan irá alineado en el centro del elemento. */
+    padding: 20px 0; /* Se asigna un espaciado interno al elemento contenido. */
+    font-size: 30px; /* Se da un tamaño personalizado al texto. */
+  }
+/* Estilos dados a la clase 'flip-card' que contiene todo lo relacionado a cada 'card' o carta Bootstrap contenida en el CSS Grid: */
+  .flip-card {
+    background-color: transparent; /* Se indica que el color de fondo de la carta, el cual es exterior,sea transparente. */
+    width: 300px; /* Se asigna el ancho de la 'card' o carta. */
+    height: 300px; /* Se asigna la altura de la 'card' o carta. */
+    perspective: 1000px; /* Se otorga una suave perspectiva 3D a la carta. */
+    margin-left: 20%; /* Se controla el posicionamiento horizontal de la carta con un margen izquierdo. */
+  }
+/* Estilos dados en general a cada carta o 'card' del CSS Grid en el archivo: */  
+  .flip-card-inner {
+    position: relative; /* Se usa una posición relativa para controlar el posicionamiento de cada elemento en la pantalla. */
+    width: 100%; /* Se indica que el ancho interior de la carta para contener sus elementos debe ser igual a todo el que el 'grid' permite  tener. */
+    height: 100%; /* Se indica que la altura interior de la carta para contener sus elementos debe ser igual a toda la que el 'grid' permite tener. */
+    text-align: center; /* Se alinea al centro el texto de la carta. */
+    transition: transform 0.6s; /* Se crea una pequeña transición para los cambios de estilo al momento de hacer un 'hover' sobre alguna de las cartas. */
+    transform-style: preserve-3d; /* Se preserva el estilo 3D para que el elemento posea su propio espacio al momento de hacer su movimiento para mostrar la cara frontal o trasera de la carta. */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Se agrega una sombra oscura con difuminado a la cara frontal de cada carta. */
+  }
+/* Cambio general que ocurrirá a una 'card' o carta del Grid CSS al hacer 'hover' sobre esta: */  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg); /* La carta hace un giro de 180 grados para dejar ver su parte trasera mientras el 'hover' se mantenga. */
+  }
+/* Estilos dados tanto a la cara frontal como a la cara trasera de las 'cards' o cartas Bootstrap en el archivo: */  
+  .flip-card-front, .flip-card-back {
+    position: fixed; /* Se usa la posición 'fixed' para que la cara trasera y frontal se mantengan en su posición supuesta antes y después de un 'hover' */
+    width: 100%; /* Se específica que el ancho de la cara frontal y trasera de cada carta sea el máximo asignado por el 'grid' */
+    height: 100%; /* Se específica que la altura de la cara frontal y trasera de cada carta sea el máximo asignado por el 'grid' */
+    backface-visibility: hidden; /* Se declara que desde la parte frontal de la carta no pueda ser observada la parte trasera, y viceversa. */
+  }
+/* Estilos añadidos a la parte trasera de las 'cards' o cartas Bootstrap en el archivo: */ 
+  .flip-card-back {
+    color: white; /* Se le asigna el color blanco al texto. */
+    font-size: 23px; /* Se le asigna un tamaño personalizado al texto. */
+    transform: rotateY(180deg); /* Se usa la propiedad 'transform' para indicar el cambio de orientación de la parte trasera de la carta al dejar de ser tocada por el cursor ('hover'). */
+    padding: 2px; /* Se indica el espaciado interno entre elementos. */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Se agrega una sombra oscura con difuminado a la cara trasera de cada carta. */
+  }
+/* Se asigna un margen izquierdo y margen derecho al texto añadido a cada 'card' o carta en su cara trasera al ser volteda con un 'hover'; además de alinear dicho texto al centro: */
+.flip-card-back p{
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+/* Colo aplicado a los iconos de la carta de dinamismo y de la carta de ahorro de tinta en la sección de beneficios del archivo: */
+.flip_dinamism_icon, .flip_ink_icon{
+    color: rgb(35, 130, 118);
+}
+/* Color aplicado a los iconos de la carta de ahorro de papel y de la carta de simpleza en la sección de beneficios del archivo: */
+.flip_paper_icon, .flip_simple_icon{
+    color: rgb(89, 181, 72);
+}
+/* Color aplicado a los iconos de la carta de ahorro de energía y de la carta de escalabilidad en la sección de beneficios del archivo: */
+.flip_energy_icon, .flip_scale_icon{
+    color: #fa7e36;
+}
+/* Color de fondo para la cara trasera de las cartas de dinamismo y de ahorro de tinta en la sección de beneficios del archivo: */
+.flip_dinamism_bg, .flip_ink_bg{
+    background-color: rgb(35, 130, 118);
+}
+/* Color de fondo para la cara trasera de las cartas de ahorro de papel y de simpleza en la sección de beneficios del archivo: */
+.flip_paper_bg, .flip_simple_bg{
+    background-color: rgb(89, 181, 72);
+}
+/* Color de fondo para la cara trasera de las cartas de ahorro de energía y de escalabilidad en la sección de beneficios del archivo: */
+.flip_energy_bg, .flip_scale_bg{
+    background-color: #fa7e36
+}
+/* Estilos para los títulos de las caras traseras de cada 'card' o carta Bootstrap: */
+.titulos{
+    text-align: center; /* Se alinea el título al centro del contenedor. */
+    font-weight: bold; /* Se define que el grosor del texto esté en negrita. */
+}
+/* Estilos agregados al párrafo que explica el proyecto REDA, al párrafo de la misión y al párrafo de la visión del proyecto: */
+.txt_first_section{
+    font-size: 20px; /* Se personaliza el tamaño de la fuente. */
+    text-align: justify; /* Se ordena el texto de manera justificada para que cada línea del párrafo se alinee con ambos márgenes (derecho e izquierdo) al finalizar una de estas.*/
+}
+/* Estilo dado al texto que muestra los nombres de cada uno de los desarrolladores del proyecto: */
+.txt_last_section{
+    font-size:1.5em; /* Se personaliza el tamaño de la fuente. */
+}
+/* Estilo dado a las fotografías de los desarrolladores del proyecto: */
+.img_developers{
+    width: 15em; /* Se asigna el tamaño que se desea que cada imagen posea. */
+}
+/* Estilo dado en general a las 'cards' o cartas Bootstrap que contienen tanto las fotografías como el texto con los nombres de los desarrolladores: */
+.creator{
+    border: none; /* Se elimina cualquier borde que las cartas puedan contener. */
+}
+/* Estilos otorgados a los títulos de cada sección del archivo (explicación del proyecto, elementos utilizados, beneficios y acerca de los desarrolladores): */
+.main_titles{
+    background-color: rgba(0, 0, 0, 0.048); /* Se asigna un fondo casi transparente para los títulos. */
+    font-size: 2.5em; /* Se personaliza el tamaño de la fuente para los títulos. */
+}
+/* Estilo dado al contenedor que muestra el footer o pie de página del archivo: */
+.index_footer{
+    background-color: #fa7e36; /* Se le otorga un color de fondo naranja al footer. */
+}
+/* Estilo para el texto que contiene el enlace que abre la ventana modal 'Acerca del software' */
+.about_software{
+    line-height: 3em; /* Se crea una línea invisible de altura sobre el texto del enlace. */
+}
+/* Estilos para el texto que indica el copyright o los derechos reservados del proyecto: */
+.site_rights{
+    text-align: center; /* Se alinea el texto al centro del contenedor. */
+    line-height: 3em; /* Se crea una línea invisible de altura sobre el texto en cuestión. */
+    color: #fff; /* Se indica que el texto sea de color blanco. */
+}
+/* Estilo para la imagen correspondiente al logo de la entidad SENA en el footer o pie de página del archivo: */
+.sena_logo{
+    filter: invert(100%); /* Se usa un filtro para invertir el color original de la imagen (negro) para volverla a un color blanco. */
+}
+/* Estilos para la ventana modal 'Acerca del software' ubicada en el footer o pie de página del archivo: */
+.modal_about{
+    background-color: #fff; /* Se indica que el color de fondo de la ventana modal sea el blanco. */
+    border-radius: 0; /* Se define que la ventana modal no posea bordes redondeados alrededor suyo. */
+}
+/* Estilo para las dos primeras palabras del título principal de la ventana modal 'Acerca del software': */
+.text_one{
+    color: #fa7e36; /* Se le asigna un color naranja a las palabras */
+}
+/* Estilo para las dos últimas palabras del título principal de la ventana modal 'Acerca del software': */
+.text_two{
+    color: rgb(35, 130, 117); /* Se le asigna a las palabras un color verde esmeraldaa. */
+}
+/* Se asigna un color único para cada icono que se encuentra dentro de la ventana modal 'Acerca del software', ubicada en el footer o pie de página del archivo: */
+.bootstrap_logo{
+    /* Color para el logo de Bootstrap: */
+    color: rgb(78, 43, 128);
+}
+.java_logo{
+    /* Color para el logo de Java: */
+    color: rgb(227, 87, 36);
+}
+.php_logo{
+    /* Color para el logo de PHP: */
+    color: rgb(119, 133, 212);
+}
+/* Se utiliza la regla '@media' para aplicar un estilo determinado cada vez que la resolución de la pantalla del dispositivo muestre la interfaz del navegador en 1000 pixeles: */
+@media (max-width: 1000px) {
+    /* Se llama al elemento al que se le hará un cambio al llegar a la resolución mencionada anteriormente. En este caso, el elemento es aquel que posee el identificador 'title': */
+    #title {
+      text-align: center; /* La alineación del texto pasará a ser en el centro y no a la izquierda del contenedor. */
+    }
+  }
+/* Se utiliza nuevamente la regla '@media' para aplicar un estilo determinado cada vez que la resolución de la pantalla del dispositivo muestre la interfaz del navegador en 1000 pixeles: */
+@media (max-width: 1000px) {
+    .reda_image img{
+      display: block; /* Se define que la imagen sea un elemento en bloque y que, por lo tanto, tome todo el ancho del contenedor. */
+      margin-left: auto; /* Se define que el margen izquierdo y derecho alineen de manera automática la imagen, la cual quedaría alineada en el centro del contenedor. */
+      margin-right: auto;
+    }
+  }
+/* Cambio para el botón de inicio de sesión cuando la ventana del navegador posee un tamaño de 750 pixeles: */
+@media (max-width: 750px) {
+    #boton2{
+        margin-left: -2em; /* Se otorga un margen izquierdo al botón para controlar su alineación horizontal en el contenedor. */
+    }
+  }
+/* Cambio para el carousel o slider y para las imagenes contenidas en el slider cuando la ventana del navegador posee un tamaño de 750 pixeles: */
+@media (max-width: 750px) {
+    #demo, #demo img{
+        height: 400px; /* Se reduce la altura de los elementos ya mencionados y, por lo tanto, la forma en cómo son mostrados en la pantalla. */
+    }
+  }
+/* Cambio para el 'grid' o grilla de Bootstrap cuando la ventana del navegador posee un tamaño de 1050 pixeles: */
+@media (max-width: 1050px) {
+    .grid-container{
+        grid-template-columns: auto auto; /* El grid poseerá dos elementos por columna en vez de tres. */
+    }
+  }
+/* Cambio para el 'grid' o grilla de Bootstrap cuando la ventana del navegador posee un tamaño de 720 pixeles: */
+@media (max-width: 720px) {
+    .grid-container{
+        grid-template-columns: auto;  /* El grid poseerá un elementos por columna en vez de dos o tres. */
+        margin-left: 0%; /* Se retira el margen izquierdo que los elementos poseen en el 'grid'. */
+        padding: 0; /* Se elimina el padding que crea separación entre dos elementos o más en el 'grid'. */
+    }
+  }

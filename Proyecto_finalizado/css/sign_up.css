@@ -1,0 +1,93 @@
+/* ARCHIVO CSS PARA LA VISTA 'sign_up.php' */
+
+/* Se nombra a la etiqueta de HTML llamada 'body' para añadir estilo a todos los elementos que se encuentren dentro de dicha etiqueta:*/
+body{
+    font-family: sans-serif; /* Se define una fuente sans-serif para todo el texto del archivo, esto para hacer más fácil la lectura de las palabras. */
+}
+/* Se llama a la etiqueta HTML llamada 'a' para añadirle un estilo al momento de que el usuraio hace un 'hover' o, en otras palabras, pasar el cursor por encima de un enlace: */
+a:hover{
+    text-decoration: none; /* En este caso, se indica que el texto del enlace no contenga ningún tipo de decoración (como el subrayado) al hacer un 'hover' sobre el mismo. */
+}
+/* Estilos agregados a la clase 'badge' de Bootstrap y a su respectivo texto dentro del mismo ('Cargo *'): */
+#perfil{
+    float: left; /* Se posiciona el 'badge' o insignia totalmente a la izquierda de donde está contenido.*/
+    letter-spacing: 0.03em; /* Se genera un pequeño espaciado entre cada letra de la palabra. */
+    font-size: 1.1em; /* Se define el tamaño para el texto dentro del 'badge' o insignia. */
+    border-radius: 0; /* Se declara que el 'badge' no contenga bordes redondos en sus extremos. */
+    background-color: rgba(255, 255, 255, 0.747); /* Se agrega un color de fondo para el 'badge'. */
+    margin-left: 0.050em; /* Se controla el posicionamiento horizontal del elemento con un margen izquierdo. */
+}
+/* Estilos para el botón que permite registrar a un usuario una vez el administrador haya rellenado los campos necesarios del formulario: */
+#enter_button{
+    font-size: 1.1em; /* Se define el tamaño del texto dentro del botón. */
+    background-color: rgba(0, 0, 0, 0.603); /* Se asigna un color de fondo con transparencia para el botón. */
+    color: #fff; /* Se asigna el color para el texto dentro del botón. */
+    border-radius: 0; /* Se declara que el botón no contenga ningún borde redondo. */
+    transition: 0.5s; /* Se crea una transición ligera que dura 0.5 milisegundos al hacer los cambios de estilo con un 'hover'. */
+    width: 11em; /* Se define el ancho del botón. */
+    margin-left: auto; /* Se define que el margen izquierdo y derecho alineen de manera automática el botón, el cual quedaría alineado al centro de su contenedor. */
+    margin-right: auto;
+}
+/* Cambios al botón de registrar a un usuario al hacer un 'hover' o pasar el cursor sobre el mismo: */
+#enter_button:hover{
+    background-color: rgba(0, 0, 0, 0.76); /* Se asigna un color de fondo que cambia ligeramente a uno más oscuro que el original. */
+    box-shadow: -4px -4px 5px 4px rgba(255, 255, 255, 0.2), 4px 4px 5px 4px rgba(255, 255, 255, 0.2); /* Se crean 2 tipos de sombra para el botón, las cuales corresponden a bordear cada lado del botón con una sombra gris y difuminada. */
+}
+/* Se nombra al identificador 'go_back2' para asignarle estilos al enlace que permite volver al inicio del sistema del proyecto: */
+#go_back2{
+    color: #fff; /* Se asigna que el color del texto sea blanco. */
+    transition: 0.2s; /* Se crea una transición para que el cambio sucedido al hacer 'hover' sobre el enlace no sea tan repentino. */
+}
+/* Se llama nuevamente al identificador 'go_back2', en este caso para asignarle un estilo cada vez que se hace 'hover' sobre el enlace: */
+#go_back2:hover{
+    border-bottom: 2px solid #e17323; /* Se crea un borde inferior al enlace, el cual permite identificar que el cursor está sobre el enlace. */
+}
+/* Estilo para el título de la ventana modal (#font) y para el icono mostrado arriba del título (.user_plus_icon)*/
+.user_plus_icon, #font{
+    text-shadow: -5px -5px 5px rgba(0, 0, 0, 0.253); /* Se agrega, para el lado izquierdo del texto y del icono, una sombra oscura que contiene un difuminado suave. */
+}
+/* Estilos para todo los elementos hallados dentro del cuerpo de la ventana modal de registrar a un usuario: */
+.modal-body{
+    background-color: rgba(35, 130, 117); /* Se define un color verde oscuro como el fondo de la ventana modal. */
+    text-align: center; /* Se alinea el texto incluido en la ventana modal al centro de las misma. */
+    border-radius: 2px; /* Se aplica un borde redondo a cada extremo de la ventana modal. */
+    box-shadow: -4px -4px 5px 4px rgba(192, 191, 191, 0.507), 4px 4px 5px 4px rgba(168, 168, 168, 0.507); /* Se crea una sombra oscura y difuminada alrededor de ambos lados de la ventana modal. */
+}
+/* Estilo agregado a los campos input y a los campos select del formulario: */
+.form-group input, .form-group select{
+    border: none; /* Se define que los campos no posean ningún borde. */
+    border-radius: 0; /* Se define que no hayan bordes redondeados alrededor de los campos. */
+    font-weight: bold; /* Se define que el texto dentro de los campos esté en negrita. */
+}
+/* Estilo añadido a los campos input y campos select cuando se hace un enfoque (ingresar datos) sobre alguno de ellos: */
+.form-group input:focus, .form-group select:focus{
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.513); /* Se aplica una sombra de color oscuro al lado derecho e inferior del campo. */
+}
+/* Estilos agregados a las cajas de mensaje (tooltips) que aparecen al hacerse un 'hover' sobre alguno de los iconos ubicados en algunos campos input del formulario: */
+.tooltip-inner{
+    text-align: center !important; /* El texto dentro de los tooltips es alineado centralmente. Se usa la declaración '!important' para definir que tal valor siempre va a ser aplicado en primer lugar, sin importar el orden del mismo. */ 
+    border: 2px solid #fff; /* Se define un borde sólido de color blanco para los tooltips. */
+}
+/* Estilo para el icono que permite mostrar información referente al requerimiento al ingresar el correo electrónico del usuario: */
+.mail_icon{
+    float: right; /* Se flota el icono a la derecha del campo input. Dicho icono quedaría posicionado en el extremo derecho del campo. */ 
+    margin-right: 1.5em; /* Se controla la alineación vertical del icono con un margen derecho. */  
+    margin-top: -1.85em; /* Se controla la alineación horizontal con un margen superior. */
+}
+/* Estilo para el icono que permite mostrar al usuario las recomendaciones para crear una contraseña segura: */
+.info_icon{
+    float: right; /* Se flota el icono a la derecha del campo input. Dicho icono quedaría posicionado en el extremo derecho del campo. */ 
+    margin-right: 1.5em; /* Se controla la alineación horizontal del icono con un margen derecho. */  
+    margin-top: -1.8em; /* Se controla la alineación vertical con un margen superior. */
+}
+/* Estilo para el icono que permite mostrar y ocultar las contraseñas ingresadas en los campos input: */
+.show_icon{
+    float: right; /* Se flota el icono a la derecha del campo input. Dicho icono quedaría posicionado en el extremo derecho del campo. */
+    margin-top: -1.8em; /* Se controla la alineación vertical del icono con un margen derecho. */  
+    margin-right: 4em; /* Se controla la alineación horizontal con un margen superior. */ 
+}
+/* Estilo para los mensajes de alerta que aparecen en caso de que el usuario haya sido registrado con éxito o en caso de que haya alguna anomalía al enviar el formulario: */
+.last_alerts{
+    border-radius: 0; /* Se define que las alertas no posean ningún borde redondo alrededor. */
+    font-weight: bold; /* Se define que el texto dentro de las alertas esté en negrita. */
+}

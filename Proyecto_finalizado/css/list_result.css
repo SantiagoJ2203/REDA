@@ -1,0 +1,76 @@
+/* ARCHIVO CSS PARA LA VISTA 'list_result.php' */
+
+/* Se nombra a la etiqueta de HTML llamada 'body' para añadir estilo a todos los elementos que se encuentren dentro de dicha etiqueta:*/
+body{
+    font-family: sans-serif; /* Se define una fuente sans-serif para todo el texto del archivo, esto para hacer más fácil la lectura de las palabras. */
+}
+/* Se añade un estilo para todos los elementos que estén dentro de la etiqueta HTML llamada 'li': */
+li{
+    list-style: none; /* La propiedad 'list-style' permite personalizar el signo que aparece antes de cada elemento dentro de una lista. Para este caso se ha definido que ningún elemento posea algún estilo de lista, como un número o un círculo. */
+}
+/* Estilos añadidos a los elementos contenidos dentro de la etiqueta 'thead', la cual es usada para la cabecera de las tablas HTML: */
+thead{
+    color: #fff; /* Se define que el color del texto en la cabecera sea blanco. */
+    background-color: rgba(35, 130, 117); /* Se asigna el color de fondo para la cabecera de la tabla. */
+}
+/* Estilo agregado a los elementos dentro de la etiqueta 'tbody', la cual permite definir el cuerpo de una tabla HTML: */
+tbody{
+    background-color: rgba(128, 128, 128, 0.103); /* Se asigna un color de fondo con transparencia al cuerpo de la tabla. */
+}
+/* Se llama a la etiqueta HTML llamada 'a' para añadirle un estilo al momento de que el usuraio hace un 'hover' o, en otras palabras, pasar el cursor por encima de un enlace: */
+a:hover{
+    text-decoration: none; /* En este caso, se indica que el texto del enlace no contenga ningún tipo de decoración (como el subrayado) al hacer un 'hover' sobre el mismo. */
+}
+/* Se nombra al identificador 'header' para dar estilo a la cabecera que contiene el logo y el título del proyecto: */
+#header{
+    background-color: #11b6a0; /* Se asigna un color verde esmeralda a la cabecera. */ 
+    border-radius: 0%; /* Se define que la cabecera no contenga ningún borde redondo en alguno de sus extremos. */
+}
+/* Se llama al identificador 'title' para otorgale estilos al nombre del proyecto que se encuentra dentro del contenedor que posee el identificador 'header' */
+#title{
+    font-size: 2em; /* Se define el tamaño del texto. */
+    font-weight: 900; /* Se define el grosor del texto, el cual, para esta ocasión, equivale a negrita al usarse un valor numérico de 900. */
+}
+/* Se nombra al identificador 'go_back' para asignarle estilos al enlace que permite volver al inicio del sistema del proyecto: */
+#go_back{
+    color: #000; /* Se asigna que el color del texto sea negro. */
+    transition: 0.2s; /* Se crea una transición para que el cambio sucedido al hacer 'hover' sobre el enlace no sea tan repentino. */
+}
+/* Se llama nuevamente al identificador 'go_back', en este caso para asignarle un estilo cada vez que se hace 'hover' sobre el enlace: */
+#go_back:hover{
+    border-bottom: 2px solid #e17323; /* Se crea un borde inferior al enlace, el cual permite identificar que el cursor está sobre el enlace. */
+}
+/* Estilos agregados a parte del texto principal hallado en la clase 'first_line', que indica los resultados de las listas encontradas en el sistema: */
+.first_line{
+    color: rgb(225, 115, 35); /* Se asigna que el texto sea de color naranja. */
+}
+/* Estilo agregado al número, hallado en la clase 'second_line' que indica la cantidad de listas que han sido encontradas en la búsqueda de fichas: */
+.second_line{
+    color:rgb(35, 130, 118); /* Se asigna un color verde esmeralda al número mostrado. */
+}
+/* Se llama a la clase 'view', la cual contiene el icono que permite al usuario visualizar el listado de asistencia seleccionado, y a la clase 'down' que contiene el icono que permite descargar dicho listado: */
+.view, .down{
+    color: #000; /* Se declara que ambos iconos sean de color negro. */
+    transition: 0.2s; /* Se le asigna una breve transición a los iconos para mostrar de manera suave los cambios aplicados a estos al realizar un 'hover' sobre alguno de ellos. */
+}
+/* Se llama nuevamente a la clase 'view' y a la clase 'down', esta vez para añadirles estilos cada vez que el usuario haga un 'hover' sobre los iconos: */
+.view:hover, .down:hover{
+    color: #59b548; /* Se añade un cambio de color a los iconos, esto para hacer indicativo el 'hover' hecho: */
+    transition: 0.2s; /* Se añade otra transición suave, esta es para cuando el usuario deja de posar el cursor sobre alguno de los iconos y los cambios hechos desaparecen:*/
+}
+/* Se utiliza la regla '@media' para aplicar un estilo determinado cada vez que la resolución de la pantalla del dispositivo muestre la interfaz del navegador en 990 pixeles: */
+@media (max-width: 990px) {
+    /* Se llama al elemento al que se le hará un cambio al llegar a la resolución mencionada anteriormente. En este caso, el elemento es aquel que posee el identificador 'title': */
+    #title {
+      text-align: center; /* La alineación del texto pasará a ser en el centro y no a la izquierda del contenedor. */
+    }
+  }
+/* Se utiliza nuevamente la regla '@media' para aplicar un estilo determinado cada vez que la resolución de la pantalla del dispositivo muestre la interfaz del navegador en 990 pixeles: */
+@media (max-width: 990px) {
+    /* Ahora el cambio es aplicado a la imagen que se encuentra dentro de la clase 'reda_image', la cual corresponde al logo del proyecto. */
+    .reda_image img{
+      display: block; /* Se define que la imagen sea un elemento en bloque y que, por lo tanto, tome todo el ancho del contenedor. */
+      margin-left: auto; /* Se define que el margen izquierdo y derecho alineen de manera automática la imagen, la cual quedaría alineada en el centro del contenedor. */
+      margin-right: auto;
+    }
+  }
