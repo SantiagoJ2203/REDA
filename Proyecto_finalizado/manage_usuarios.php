@@ -89,7 +89,7 @@ if (isset($_SESSION['instructor']) || isset($_SESSION['personal']) || isset($_SE
                         </div>
     <!-- A continuación, se usa un container que tiene un botón el cual inicia el registro direccionando a list_register.php -->
     <div class="container">
-        <button type="submit" name="eliminar" class="btn btn-danger btn-lg " id="txt_button">Eliminar</button>
+        <button type="submit" name="eliminar" class="btn btn-danger btn-lg btn-block" id="txt_button">Eliminar</button>
     </div>
     </div>
     </form>
